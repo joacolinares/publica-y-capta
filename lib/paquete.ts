@@ -7,7 +7,11 @@ import { png } from "./render";
 import { bonos, bump, guionesExtra, upsell } from "./extras";
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const slug = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-zA-Z0-9 ]/g, "").trim().slice(0, 50);
+// Nombre de archivo ASCII de hasta 50 caracteres, cortado en una palabra completa.
+const slug = (s: string) => {
+  const t = s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s+/g, " ").trim();
+  return t.length <= 50 ? t : t.slice(0, 51).replace(/\s+\S*$/, "");
+};
 const dd = (n: number) => String(n).padStart(2, "0");
 
 export function pagina(titulo: string, cuerpo: string, color: string) {

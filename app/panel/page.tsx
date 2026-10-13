@@ -163,14 +163,17 @@ function Descargar({ productos }: { productos: Productos }) {
   const [estado, setEstado] = useState<"" | "armando" | "listo">("");
   const [error, setError] = useState("");
 
+  const [correo, setCorreo] = useState(false);
+  const [url, setUrl] = useState("");
+
   async function generar() {
     setError(""); setEstado("armando");
     try {
-      const r = await api("/api/generar", { method: "POST" });
-      const url = URL.createObjectURL(await r.blob());
+      const j = await (await api("/api/generar", { method: "POST" })).json();
+      setCorreo(Boolean(j.correo));
+      setUrl(j.url);
       const a = document.createElement("a");
-      a.href = url; a.download = "Publica y Capta.zip"; a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 60_000);
+      a.href = j.url; a.rel = "noopener"; a.click();
       setEstado("listo");
     } catch (e) { setError((e as Error).message); setEstado(""); }
   }
@@ -183,7 +186,7 @@ function Descargar({ productos }: { productos: Productos }) {
         {productos.pack ? (
           <button onClick={generar} disabled={estado === "armando"}>{estado === "armando" ? "Armando tu pack, tarda 1 o 2 minutos..." : "Armar y descargar mi pack"}</button>
         ) : <p className="ayuda">Tu compra no incluye el pack.</p>}
-        {estado === "listo" && <div className="ok">Listo. Abre el archivo descargado y empieza por <b>00 EMPIEZA AQUI</b>. Si cambias tus datos, vuelve a armarlo.</div>}
+        {estado === "listo" && <><div className="ok">Listo. Abre el archivo descargado y empieza por <b>00 EMPIEZA AQUI</b>.{correo ? " También te mandamos el link a tu correo." : ""} Si cambias tus datos, vuelve a armarlo.</div><a className="boton" href={url}>Si no bajó solo, toca aquí</a></>}
         {error && <div className="error">{error}</div>}
       </div>
       {productos.bump && <div className="tarjeta"><b>Del mensaje a la visita</b><p className="ayuda">50 respuestas de WhatsApp. Vienen dentro de tu pack.</p></div>}

@@ -1,6 +1,6 @@
 # Publica y Capta · app
 
-El asesor paga en Impul Tienda, entra con su correo (link mágico, sin contraseña), llena un formulario y descarga un ZIP con 90 publicaciones, calendario, 40 diseños con su marca y guiones. Con "Nueva propiedad" arma el post de cada casa que capta (con el bloque NOM-247 en venta).
+El asesor paga en Impul Tienda, entra con su correo (link mágico, sin contraseña), llena un formulario y descarga un ZIP (también le llega el link por correo) con 90 publicaciones, calendario, 40 diseños con su marca y guiones. Con "Nueva propiedad" arma el post de cada casa que capta (con el bloque NOM-247 en venta).
 
 ## Cómo está armada
 
@@ -14,8 +14,13 @@ El asesor paga en Impul Tienda, entra con su correo (link mágico, sin contrase�
 | ZIP | `lib/paquete.ts` |
 | Firebase servidor (compras, perfiles, imágenes, sesión) | `lib/servidor.ts` |
 | Impul (firma del webhook y búsqueda de órdenes de respaldo) | `lib/impul.ts` |
+| Correos (Resend) | `lib/correo.ts` |
 | Pantallas | `app/page.tsx` (entrar), `app/entrar`, `app/panel`, `app/privacidad` |
 | API | `app/api/webhooks/impul`, `acceso`, `perfil`, `generar`, `propiedad` |
+
+## Pack de ejemplo
+
+`muestra/pack-ejemplo-Laura.zip`: lo que recibe una asesora inventada (Laura Gómez, Zapopan) con bump y kit.
 
 ## Probar sin cuentas
 
@@ -32,7 +37,8 @@ npm run demo:propiedad -- salida    # post de propiedad de ejemplo
    `allow read, write: if false;`
 3. **Claude:** crear una clave en console.anthropic.com. Por defecto usa `claude-opus-5-5`; con `CLAUDE_MODEL=claude-haiku-5-5` cuesta bastante menos.
 4. **Railway:** conectar el repo, cargar las variables de `.env.example` y desplegar (`railway.json` ya trae build y start).
-5. **Impul:** en el panel, Webhooks → URL `https://TU-DOMINIO/api/webhooks/impul`, eventos `order.approved`, `order.refunded`, `order.chargeback`. Copiar el secreto a `IMPULTIENDA_WEBHOOK_SECRET`. Crear una API key (`itd_...`) para el respaldo. Poner los ids de producto del bump y el upsell en `IMPUL_PRODUCTO_BUMP` y `IMPUL_PRODUCTO_UPSELL`. Entrega del producto: "Link externo" a `https://TU-DOMINIO`.
+5. **Resend (correo):** crear cuenta en resend.com, verificar tu dominio y crear una API key. Cargar `RESEND_API_KEY`, `CORREO_REMITENTE` (por ejemplo `Publica y Capta <hola@tudominio.com>`) y `APP_URL` (la URL de Railway). Sin dominio verificado, Resend solo entrega a tu propio correo: sirve para probar.
+6. **Impul:** en el panel, Webhooks → URL `https://TU-DOMINIO/api/webhooks/impul`, eventos `order.approved`, `order.refunded`, `order.chargeback`. Copiar el secreto a `IMPULTIENDA_WEBHOOK_SECRET`. Crear una API key (`itd_...`) para el respaldo. Poner los ids de producto del bump y el upsell en `IMPUL_PRODUCTO_BUMP` y `IMPUL_PRODUCTO_UPSELL`. Entrega del producto: "Link externo" a `https://TU-DOMINIO`.
 
 ## Colecciones
 

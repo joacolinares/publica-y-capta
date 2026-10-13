@@ -1,4 +1,5 @@
 // Webhook de Impul Tienda: activa el acceso al aprobarse el pago y lo corta con reembolso o contracargo.
+import { correoBienvenida } from "@/lib/correo";
 import { aOrden, firmaValida } from "@/lib/impul";
 import { db, registrarOrden, type Orden } from "@/lib/servidor";
 
@@ -11,7 +12,7 @@ export async function POST(req: Request) {
   if (!firmaValida(cuerpo, req.headers.get("x-impultienda-timestamp"), req.headers.get("x-impultienda-signature")))
     return Response.json({ error: "firma inválida" }, { status: 401 });
 
-  const ev = JSON.parse(cuerpo) as { id: string; event: string; data: Parameters<typeof aOrden>[0] };
+  const ev = JSON.parse(cuerpo) as { id: string; event: string; data: Parameters<typeof aOrden>[0] & { is_post_purchase?: boolean } };
   const estado = ESTADO[ev.event];
   if (!estado) return Response.json({ ok: true, ignorado: ev.event });
 
@@ -21,5 +22,7 @@ export async function POST(req: Request) {
 
   await registrarOrden(aOrden(ev.data, estado));
   await visto.set({ evento: ev.event, orden: ev.data.order_id, recibido: new Date().toISOString() });
+  // Respaldo del correo de entrega de Impul (no se repite en el upsell post-compra).
+  if (estado === "approved" && !ev.data.is_post_purchase) await correoBienvenida(ev.data.customer.email).catch(() => false);
   return Response.json({ ok: true });
 }
