@@ -14,8 +14,13 @@ export default function Entrar() {
       await signInWithEmailLink(auth(), correo, location.href);
       localStorage.removeItem("correo");
       location.replace("/panel");
-    } catch {
-      setError("Este link ya se usó o venció. Vuelve a pedir uno.");
+    } catch (e) {
+      const code = (e as { code?: string }).code ?? "";
+      setError(code === "auth/admin-restricted-operation" || code === "auth/user-not-found"
+        ? "No encontramos una compra con este correo. Entra con el mismo correo que usaste al pagar."
+        : code === "auth/invalid-email"
+          ? "Ese correo no coincide con el del link. Escribe el mismo correo al que te llegó."
+          : "Este link ya se usó o venció. Vuelve a pedir uno.");
     }
   }
 

@@ -25,12 +25,23 @@ export function reemplazar(texto: string, p: Perfil): string {
     [/\[colonia \/ tu zona\]/gi, col],
     [/\[tu zona\]/gi, p.zona],
     [/\[colonia\]/gi, col],
-    [/\[X años\]/gi, p.aniosExperiencia ? `${p.aniosExperiencia} años` : "varios años"],
+    [/\[X años\]/gi, anios(p.aniosExperiencia)],
     [/asesor\/a inmobiliario\/a/gi, g === "o/a" ? "asesor/a inmobiliario/a" : g === "a" ? "asesora inmobiliaria" : "asesor inmobiliario"],
     [/asesor\/a/gi, g === "o/a" ? "asesor/a" : g === "a" ? "asesora" : "asesor"],
   ];
   return pares.reduce((t, [re, v]) => t.replace(re, v), texto);
 }
+
+/** "8", "8 años" o "1" → "8 años" / "1 año"; vacío → "varios años". */
+function anios(v: string) {
+  const n = (v ?? "").trim().replace(/\s*años?\.?$/i, "");
+  return !n ? "varios años" : n === "1" ? "1 año" : `${n} años`;
+}
+
+/** Igual que reemplazar, pero deja [colonia] para completar: en propiedades, bump y kit es la colonia de la casa o del cliente. */
+export const reemplazarSinColonia = (t: string, p: Perfil) =>
+  reemplazar(t.replace(/\[colonia, ciudad\]/gi, "\u0000, [tu ciudad]").replace(/#\[colonia\]/gi, "#\u0001").replace(/\[colonia\]/gi, "\u0000"), p)
+    .replace(/\u0001/g, "[colonia]").replace(/\u0000/g, "[colonia]");
 
 /** Corchetes que siguen en el texto (los completa el asesor con cada propiedad). */
 export const pendientes = (t: string) => [...new Set(t.match(/\[[^\]]+\]/g) ?? [])];

@@ -15,7 +15,8 @@ export const PropiedadSchema = z.object({
   precio: z.string().regex(/^[\d.,]+$/, "Solo números").max(15),
   caracteristicas: z.array(z.string().max(60)).max(3).default([]),
   creditos: z.array(z.enum(["bancario", "Infonavit", "Fovissste"])).default([]),
-  foto: z.string().optional(), // data URL
+  // Solo PNG o JPG en base64: nunca una URL (satori la descargaría desde el servidor).
+  foto: z.string().max(6_000_000, "La foto pesa demasiado. Usa una más chica.").regex(/^data:image\/(png|jpeg);base64,[A-Za-z0-9+/=]+$/, "La foto tiene que ser PNG o JPG.").optional(),
 });
 export type Propiedad = z.infer<typeof PropiedadSchema>;
 
@@ -31,8 +32,8 @@ export function postPropiedad(m: Marca, x: Propiedad) {
   const cerrada = x.etiqueta === "Vendida" || x.etiqueta === "Rentada";
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: "#FFFFFF", color: m.pal.tinta, position: "relative", fontFamily: "Montserrat" }}>
-      <div style={{ display: "flex", width: 1080, height: 760, background: m.pal.suave, alignItems: "center", justifyContent: "center", color: m.pal.gris, fontSize: 36 }}>
-        {x.foto ? <img src={x.foto} width={1080} height={760} style={{ objectFit: "cover" }} /> : "Foto de la propiedad"}
+      <div style={{ display: "flex", width: 1080, height: 760, background: m.pal.principal }}>
+        {x.foto ? <img src={x.foto} width={1080} height={760} style={{ objectFit: "cover" }} /> : null}
       </div>
       <div style={{ position: "absolute", left: 60, top: 60, display: "flex", background: cerrada ? m.pal.principal : m.pal.acento, color: cerrada ? m.pal.sobrePrincipal : m.pal.sobreAcento, fontWeight: 800, fontSize: 34, padding: "16px 30px", borderRadius: 12 }}>
         {x.etiqueta.toUpperCase()}

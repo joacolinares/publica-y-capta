@@ -229,12 +229,12 @@ Lista general. Suele pedirse lo siguiente, pero cada notaría y cada estado pued
 ## Del inmueble
 
 - [ ] Escritura de la propiedad, inscrita en el Registro Público de la Propiedad.
-- [ ] Boletas de predial al corriente (suele pedirse el año en curso pagado). [verificar con asesor]
+- [ ] Boletas de predial al corriente (suele pedirse el año en curso pagado).
 - [ ] Recibos de agua al corriente.
-- [ ] Constancia de no adeudo de agua y/o predial, según lo pida la notaría. [verificar con asesor]
+- [ ] Constancia de no adeudo de agua y/o predial, según lo pida la notaría.
 - [ ] Si tiene hipoteca: carta de saldo del banco, Infonavit o Fovissste, y después de liquidar, carta de liberación o instrucción para cancelar la hipoteca.
-- [ ] Si está en condominio: reglamento o escritura del régimen de condominio y constancia de que las cuotas de mantenimiento están al corriente. [verificar con asesor]
-- [ ] Planos, licencia de construcción, terminación de obra o alineamiento y asignación de número, si los tienes. [verificar con asesor]
+- [ ] Si está en condominio: reglamento o escritura del régimen de condominio y constancia de que las cuotas de mantenimiento están al corriente.
+- [ ] Planos, licencia de construcción, terminación de obra o alineamiento y asignación de número, si los tienes.
 
 ## Del vendedor
 
@@ -242,13 +242,13 @@ Lista general. Suele pedirse lo siguiente, pero cada notaría y cada estado pued
 - [ ] CURP.
 - [ ] RFC o constancia de situación fiscal.
 - [ ] Comprobante de domicilio reciente.
-- [ ] Si eres casado/a: acta de matrimonio. Si te casaste por sociedad conyugal, normalmente también firma tu pareja. [verificar con asesor]
+- [ ] Si eres casado/a: acta de matrimonio. Si te casaste por sociedad conyugal, normalmente también firma tu pareja.
 - [ ] Si vende otra persona por ti: poder notarial vigente que le permita vender.
 
 ## Antes de la firma
 
 - [ ] Pregunta al notario qué impuestos te tocan como vendedor y si aplica alguna exención. El cálculo lo hace el notario; si tienes dudas, consulta también a tu contador.
-- [ ] Pregunta al notario si necesita algún documento extra por tu caso (herencia, copropiedad, divorcio). [verificar con asesor]
+- [ ] Pregunta al notario si necesita algún documento extra por tu caso (herencia, copropiedad, divorcio).
 
 > Nota para el asesor: el nombre de algunos trámites cambia por estado (por ejemplo, la constancia de no adeudo, la asignación de número o los papeles del condominio). Ajusta esta lista a tu ciudad antes de entregarla.
 

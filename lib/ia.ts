@@ -32,7 +32,7 @@ Trabaja en ${esp}. Su cliente principal: ${cliente}. Tono: ${p.tono === "cercano
 export async function adaptarConIA(dias: Dia[], p: Perfil): Promise<Map<number, { post: string; whatsapp: string }>> {
   const out = new Map<number, { post: string; whatsapp: string }>();
   if (!process.env.ANTHROPIC_API_KEY) return out;
-  const client = new Anthropic({ timeout: 120_000, maxRetries: 1 });
+  const client = new Anthropic({ timeout: 240_000, maxRetries: 0 });
   const candidatos = dias.filter((d) => !d.tecnico && d.publico !== "Propiedad");
   const lotes: Dia[][] = [];
   for (let i = 0; i < candidatos.length; i += 12) lotes.push(candidatos.slice(i, i + 12));

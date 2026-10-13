@@ -30,19 +30,25 @@ npm run demo -- salida              # ZIP de ejemplo con un asesor inventado
 npm run demo:propiedad -- salida    # post de propiedad de ejemplo
 ```
 
+## Prueba completa sin cuentas
+
+`npm run prueba` levanta los emuladores de Firebase (necesita Java 11+), simula los webhooks de Impul y prueba: firma del webhook, acceso solo con el link, intento de robo de cuenta, perfil, generación (y que no se pueda generar dos veces a la vez), descarga, "Nueva propiedad", reembolso y compra nueva.
+
 ## Poner en marcha
 
-1. **Firebase:** crear proyecto. Activar Authentication → Correo electrónico → "Vínculo de correo electrónico (acceso sin contraseña)". Agregar el dominio de Railway en Authentication → Configuración → Dominios autorizados. Crear Firestore y Storage. Descargar una cuenta de servicio (JSON).
+1. **Firebase:** crear proyecto. Activar Authentication → Correo electrónico → "Vínculo de correo electrónico (acceso sin contraseña)". Agregar el dominio de Railway en Authentication → Configuración → Dominios autorizados. En Authentication → Plantillas, poner el idioma en español; en Configuración del proyecto, el "nombre público" en "Publica y Capta". La app solo acepta sesiones con el correo verificado por el link, y crea la cuenta del comprador apenas llega el pago (si alguien se había registrado con ese correo, esa cuenta se borra). Como protección extra, en Authentication → Configuración → Acciones del usuario, desactiva "Habilitar creación (registro)". Crear Firestore y Storage. Descargar una cuenta de servicio (JSON).
 2. **Reglas de Firestore y Storage:** cerradas para el navegador (todo pasa por el servidor):
    `allow read, write: if false;`
 3. **Claude:** crear una clave en console.anthropic.com. Por defecto usa `claude-opus-5-5`; con `CLAUDE_MODEL=claude-haiku-5-5` cuesta bastante menos.
 4. **Railway:** conectar el repo, cargar las variables de `.env.example` y desplegar (`railway.json` ya trae build y start).
 5. **Resend (correo):** crear cuenta en resend.com, verificar tu dominio y crear una API key. Cargar `RESEND_API_KEY`, `CORREO_REMITENTE` (por ejemplo `Publica y Capta <hola@tudominio.com>`) y `APP_URL` (la URL de Railway). Sin dominio verificado, Resend solo entrega a tu propio correo: sirve para probar.
-6. **Impul:** en el panel, Webhooks → URL `https://TU-DOMINIO/api/webhooks/impul`, eventos `order.approved`, `order.refunded`, `order.chargeback`. Copiar el secreto a `IMPULTIENDA_WEBHOOK_SECRET`. Crear una API key (`itd_...`) para el respaldo. Poner los ids de producto del bump y el upsell en `IMPUL_PRODUCTO_BUMP` y `IMPUL_PRODUCTO_UPSELL`. Entrega del producto: "Link externo" a `https://TU-DOMINIO`.
+6. **Impul:** en el panel, Webhooks → URL `https://TU-DOMINIO/api/webhooks/impul`, eventos `order.approved`, `order.refunded`, `order.chargeback`. Copiar el secreto a `IMPULTIENDA_WEBHOOK_SECRET`. Crear una API key (`itd_...`) para el respaldo. Poner los ids de producto del pack, el bump y el upsell en `IMPUL_PRODUCTO_PACK`, `IMPUL_PRODUCTO_BUMP` y `IMPUL_PRODUCTO_UPSELL` (con `IMPUL_PRODUCTO_PACK` cargado, un producto desconocido no da acceso). Entrega del producto: "Link externo" a `https://TU-DOMINIO`.
 
 ## Colecciones
 
-- `compras/{correo}`: productos vigentes (`pack`, `bump`, `upsell`) y órdenes. Un reembolso o contracargo los apaga.
+- `compras/{correo}`: productos vigentes (`pack`, `bump`, `upsell`) y órdenes. Un reembolso o contracargo los apaga y es definitivo para esa orden.
+- `busquedas/{correo}`: última consulta de respaldo a la API de Impul (una cada 10 minutos por correo).
+- `limites/{uid}`: una generación a la vez y hasta 10 por día.
 - `perfiles/{uid}`: el formulario. Logo y foto en Storage `usuarios/{uid}/logo|foto`.
 - `webhooks/{id}`: entregas ya procesadas (Impul puede reenviar).
 - `generaciones`: registro de cada ZIP armado (sirve como prueba de entrega en una disputa).

@@ -1,6 +1,7 @@
 import JSZip from "jszip";
 import type { Perfil } from "./perfil";
-import { TEXTOS, reemplazar, pendientes, revisar } from "./personalizar";
+import { TEXTOS, reemplazar, reemplazarSinColonia, pendientes, revisar } from "./personalizar";
+import { mdAHtml } from "./md";
 import { adaptarConIA } from "./ia";
 import { catalogo, elemento, marca, MEDIDAS } from "./disenos";
 import { png } from "./render";
@@ -34,9 +35,12 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
   const ia = op.usarIA ? await adaptarConIA(TEXTOS, perfil) : new Map();
   const dias = TEXTOS.map((d) => {
     const base = ia.get(d.dia) ?? { post: d.post, whatsapp: d.whatsapp };
-    const post = reemplazar(base.post, perfil);
-    const whatsapp = reemplazar(base.whatsapp, perfil);
-    return { ...d, tema: reemplazar(d.tema, perfil), post, whatsapp, guion: reemplazar(d.guion, perfil), adaptado: ia.has(d.dia), faltan: pendientes(post) };
+    // En los días de propiedad, [colonia] es la de la casa: se deja para completar.
+    const r = d.publico === "Propiedad" ? reemplazarSinColonia : reemplazar;
+    const post = r(base.post, perfil);
+    const whatsapp = r(base.whatsapp, perfil);
+    const story = d.story ? r(d.story, perfil).replace(/^Story\s*(\(Diseño \d+\))?:\s*/i, "") : "";
+    return { ...d, tema: r(d.tema, perfil), post, whatsapp, story, guion: r(d.guion, perfil), adaptado: ia.has(d.dia), faltan: pendientes(post + "\n" + whatsapp) };
   });
   const alertas = dias.flatMap((d) => revisar(d.post + d.whatsapp).map((r) => `Día ${d.dia}: ${r}`));
 
@@ -53,11 +57,11 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
   // 3. Publicaciones: un archivo por día (fácil de copiar en el celular) + todas juntas
   for (const d of dias) {
     const extra = d.faltan.length ? `\n\n— Completa antes de publicar: ${d.faltan.join(", ")}` : "";
-    zip.file(`02 Publicaciones/Dia ${dd(d.dia)} - ${slug(d.tema)}.txt`, `${d.post}\n\n— Estado de WhatsApp —\n${d.whatsapp}${extra}\n`);
+    zip.file(`02 Publicaciones/Dia ${dd(d.dia)} - ${slug(d.tema)}.txt`, `${d.post}\n\n— Estado de WhatsApp —\n${d.whatsapp}${d.story ? `\n\n— Story —\n${d.story}` : ""}${extra}\n`);
   }
   zip.file("02 Publicaciones/Todas las publicaciones.html", pagina("90 publicaciones", `<h1>Tus 90 publicaciones</h1>` + dias.map((d) =>
     `<h2>Día ${d.dia} · ${esc(d.publico)} · ${esc(d.tema)}</h2><p class="meta">${esc(d.formato)}${disenoDe.has(d.dia) ? ` · Diseño: ${esc(disenoDe.get(d.dia)!)}` : d.publico === "Propiedad" ? " · Arma el diseño en la app con la opción Nueva propiedad" : ""}</p>
-<div class="post">${esc(d.post)}</div><p class="meta">Estado de WhatsApp</p><div class="wa">${esc(d.whatsapp)}</div>${d.nota ? `<p class="meta">Nota: ${esc(d.nota)}</p>` : ""}`).join(""), color));
+<div class="post">${esc(d.post)}</div><p class="meta">Estado de WhatsApp</p><div class="wa">${esc(d.whatsapp)}</div>${d.story ? `<p class="meta">Story</p><div class="wa">${esc(d.story)}</div>` : ""}${d.nota ? `<p class="meta">Nota: ${esc(d.nota)}</p>` : ""}`).join(""), color));
 
   // 4. Calendario
   const fila = (c: string[]) => c.map((v) => `"${v.replace(/"/g, '""')}"`).join(",");
@@ -69,7 +73,7 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
   const conGuion = dias.filter((d) => d.guion);
   const extra = guionesExtra(perfil);
   const nExtra = (extra.match(/<h3>Extra \d+/g) ?? []).length;
-  zip.file("04 Guiones de reels.html", pagina("Guiones", `<h1>Guiones para reels</h1><p>Graba con el celular en vertical. Las tomas de 2 a 3 segundos funcionan mejor.</p>` + conGuion.map((d) => `<h2>Día ${d.dia} · ${esc(d.tema)}</h2><div class="post">${esc(d.guion)}</div>`).join("") + (extra ? `<h1 style="margin-top:48px">${nExtra} guiones extra</h1>${extra}` : ""), color));
+  zip.file("04 Guiones de reels.html", pagina("Guiones", `<h1>Guiones para reels</h1><p>Graba con el celular en vertical. Las tomas de 2 a 3 segundos funcionan mejor.</p>` + conGuion.map((d) => `<h2>Día ${d.dia} · ${esc(d.tema)}</h2>${mdAHtml(d.guion)}`).join("") + (extra ? `<h1 style="margin-top:48px">${nExtra} guiones extra</h1>${extra}` : ""), color));
 
   // 6. Bonos, bump y upsell
   const bs = bonos(perfil);
@@ -87,6 +91,7 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
 <div class="paso"><div class="n">1</div><div>Abre <b>01 Calendario 90 dias</b> y busca el día que toca.</div></div>
 <div class="paso"><div class="n">2</div><div>Abre ese día en <b>02 Publicaciones</b> y copia el texto. Si dice "Completa antes de publicar", cambia esos datos.</div></div>
 <div class="paso"><div class="n">3</div><div>Sube el diseño de <b>03 Disenos</b> (o tu foto) y pega el texto. Listo.</div></div>
+<p>En los diseños de story, pon el sticker de encuesta o de preguntas de Instagram encima del recuadro <b>Responde aquí</b>.</p>
 <p>En <b>04 Guiones de reels</b> tienes los guiones para grabar, y en <b>05 Bonos</b> la guía para dejar tu perfil listo en 1 hora (hazla antes del Día 1) y 20 prompts para adaptar textos a tu colonia.</p>${op.bump ? "<p>En <b>06 Del mensaje a la visita</b> están tus 50 respuestas de WhatsApp.</p>" : ""}${kit ? "<p>En <b>07 Kit Captacion Exclusiva</b> está tu presentación para dueños (se edita en el navegador y se guarda en PDF), la opinión de valor, el guion de exclusiva, el checklist de documentos y 10 publicaciones de resultados.</p>" : ""}
 <p>Para las propiedades que captes, entra a la app y usa <b>Nueva propiedad</b>: te arma el post con foto, precio y tus datos.</p>
 <p class="meta">Los textos sobre créditos, escrituras e impuestos son información general. Cada caso puede cambiar según el estado y la institución.</p>`, color));

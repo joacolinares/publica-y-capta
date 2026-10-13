@@ -81,7 +81,7 @@ function Portada({ m, d }: { m: Marca; d: Datos }) {
       </div>
       {d.sub ? <div style={{ display: "flex", marginTop: 50, fontFamily: SANS, fontSize: 38, fontWeight: 600, opacity: 0.9 }}>{d.sub}</div> : null}
       <div style={{ position: "absolute", right: 50, bottom: 40, display: "flex", fontFamily: SERIF, fontWeight: 700, fontSize: 460, lineHeight: 1, color: m.pal.sobrePrincipal, opacity: 0.08 }}>{String(d.dia).padStart(2, "0")}</div>
-      <div style={{ position: "absolute", left: 80, bottom: 90, display: "flex", fontFamily: SANS, fontWeight: 700, fontSize: 30 }}>Desliza ›</div>
+      <div style={{ position: "absolute", left: 80, bottom: 90, display: "flex", fontFamily: SANS, fontWeight: 700, fontSize: 30 }}>Guárdalo para después</div>
       <div style={{ position: "absolute", right: 80, bottom: 90, display: "flex", fontFamily: SANS, fontWeight: 600, fontSize: 26, opacity: 0.85 }}>{m.perfil.nombre}</div>
     </div>
   );
@@ -134,7 +134,6 @@ function Encuesta({ m, d }: { m: Marca; d: Datos }) {
       {d.sub ? <div style={{ display: "flex", marginTop: 60, fontFamily: SANS, fontSize: 44, fontWeight: 600, lineHeight: 1.4 }}>{d.sub}</div> : null}
       <div style={{ display: "flex", flexDirection: "column", marginTop: 100, background: "#FFFFFF", borderRadius: 36, padding: 50, boxShadow: "0 10px 40px rgba(0,0,0,.12)" }}>
         <div style={{ display: "flex", justifyContent: "center", fontFamily: SANS, fontWeight: 800, fontSize: 40 }}>Responde aquí</div>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: 20, fontFamily: SANS, fontSize: 28, color: m.pal.gris }}>(pon aquí el sticker de encuesta o de preguntas)</div>
       </div>
       <div style={{ position: "absolute", left: 90, right: 90, bottom: 200, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", flexDirection: "column", fontFamily: SANS }}>
@@ -196,6 +195,9 @@ const ETIQUETA: Record<string, string> = { Compradores: "Compradores", Vendedore
 
 /** Las 40 piezas del pack: 34 posts del calendario + 6 stories de interacción. */
 /** Título de diseño: sin paréntesis ni datos por completar. */
+/** Títulos que en el calendario son una instrucción para el asesor y en el diseño hablan a sus seguidores. */
+const TITULO: Record<number, string> = { 1: "Hola, soy [Tu nombre]" };
+
 const limpiar = (t: string) => t.replace(/\s*\([^)]*\)/g, "").replace(/\s*(de\s+)?\$?\[[^\]]*\]/g, "").trim();
 
 export function catalogo(datos: (t: string) => string = (t) => t): Pieza[] {
@@ -210,7 +212,7 @@ export function catalogo(datos: (t: string) => string = (t) => t): Pieza[] {
     else if (d.publico === "Tu marca") layout = "marca";
     else if (f.includes("carrusel")) layout = alterna++ % 2 ? "consejo" : "portada";
     else layout = alterna++ % 2 ? "consejo" : "frase";
-    piezas.push({ id: `dia-${String(d.dia).padStart(2, "0")}`, dia: d.dia, layout, formato: FORMATO_DE[layout], datos: { titulo: limpiar(datos(d.tema)), etiqueta: ETIQUETA[d.publico] ?? d.publico, dia: d.dia, sub: gancho(d.post) } });
+    piezas.push({ id: `dia-${String(d.dia).padStart(2, "0")}`, dia: d.dia, layout, formato: FORMATO_DE[layout], datos: { titulo: limpiar(datos(TITULO[d.dia] ?? d.tema)), etiqueta: ETIQUETA[d.publico] ?? d.publico, dia: d.dia, sub: gancho(d.post) } });
   }
   // Se priorizan carruseles, consejos y marca; los reels con portada quedan si sobra lugar.
   const orden: Layout[] = ["portada", "marca", "encuesta", "frase", "consejo", "reel"];

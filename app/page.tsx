@@ -13,6 +13,7 @@ export default function Inicio() {
     e.preventDefault();
     setError(""); setEstado("enviando");
     try {
+      await fetch("/api/preparar", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email.trim() }) }).catch(() => null);
       await sendSignInLinkToEmail(auth(), email.trim(), { url: `${location.origin}/entrar`, handleCodeInApp: true });
       localStorage.setItem("correo", email.trim());
       setEstado("enviado");

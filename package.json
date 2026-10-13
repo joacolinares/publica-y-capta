@@ -9,7 +9,8 @@
     "start": "next start -p ${PORT:-3000}",
     "textos": "node scripts/build-textos.mjs",
     "demo": "tsx scripts/demo.ts",
-    "demo:propiedad": "tsx scripts/demo-propiedad.ts"
+    "demo:propiedad": "tsx scripts/demo-propiedad.ts",
+    "prueba": "bash pruebas/correr.sh"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "0.133.0",
@@ -30,6 +31,6 @@
     "typescript": "^5.6.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
   }
 }

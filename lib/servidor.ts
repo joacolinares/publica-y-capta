@@ -18,16 +18,20 @@ export type Compra = { email: string; productos: Productos; activo: boolean; ord
 
 export const normalizar = (email: string) => email.trim().toLowerCase();
 
-/** Lee la compra de un correo. Si el webhook no llegó, la busca en la API de Impul. */
+/** Lee la compra de un correo. Si no hay pack vigente (webhook perdido), la busca en la API de Impul, como máximo cada 10 minutos. */
 export async function compraDe(email: string): Promise<Compra | null> {
-  const ref = db().collection("compras").doc(normalizar(email));
-  const snap = await ref.get();
-  if (snap.exists) return snap.data() as Compra;
+  const id = normalizar(email);
+  const ref = db().collection("compras").doc(id);
+  const actual = (await ref.get()).data() as Compra | undefined;
+  if (actual?.productos?.pack) return actual;
+  const busqueda = db().collection("busquedas").doc(id);
+  const ultima = (await busqueda.get()).data()?.revisado as number | undefined;
+  if (ultima && Date.now() - ultima < 10 * 60 * 1000) return actual ?? null;
+  await busqueda.set({ revisado: Date.now() });
   const { buscarEnImpul } = await import("./impul");
   const ordenes = await buscarEnImpul(email);
-  if (!ordenes.length) return null;
   for (const o of ordenes) await registrarOrden(o);
-  return ((await ref.get()).data() as Compra) ?? null;
+  return ((await ref.get()).data() as Compra | undefined) ?? null;
 }
 
 export type Orden = { id: string; email: string; estado: "approved" | "refunded" | "chargeback"; productos: (keyof Productos)[]; fecha: string };
@@ -37,6 +41,10 @@ export async function registrarOrden(o: Orden) {
   const ref = db().collection("compras").doc(normalizar(o.email));
   await db().runTransaction(async (tx) => {
     const actual = ((await tx.get(ref)).data() as Compra | undefined) ?? { email: normalizar(o.email), productos: { pack: false, bump: false, upsell: false }, activo: false, ordenes: {} };
+    actual.ordenes ??= {};
+    // Un reembolso o contracargo es definitivo: un "approved" que llega tarde o repetido no devuelve el acceso.
+    const previo = actual.ordenes[o.id]?.estado;
+    if (o.estado === "approved" && (previo === "refunded" || previo === "chargeback")) return;
     actual.ordenes[o.id] = { productos: o.productos, estado: o.estado, fecha: o.fecha };
     const vigentes = Object.values(actual.ordenes).filter((x) => x.estado === "approved");
     const tiene = (p: keyof Productos) => vigentes.some((x) => x.productos.includes(p));
@@ -50,11 +58,54 @@ export async function registrarOrden(o: Orden) {
 export async function sesion(req: Request) {
   const token = req.headers.get("authorization")?.replace(/^Bearer /, "");
   if (!token) throw new ErrorHttp(401, "Inicia sesión con tu correo.");
-  const u = await getAuth(app()).verifyIdToken(token).catch(() => null);
-  if (!u?.email) throw new ErrorHttp(401, "Tu sesión venció. Vuelve a entrar con tu correo.");
+  // checkRevoked + email_verified: solo vale un correo probado con el link mágico (nadie puede registrarse con el correo de otro).
+  const u = await getAuth(app()).verifyIdToken(token, true).catch(() => null);
+  if (!u?.email || u.email_verified !== true) throw new ErrorHttp(401, "Tu sesión venció. Vuelve a entrar con tu correo.");
   const compra = await compraDe(u.email);
-  if (!compra?.activo) throw new ErrorHttp(403, "No encontramos una compra con este correo. Entra con el mismo correo que usaste al pagar.");
+  if (!compra?.productos?.pack) throw new ErrorHttp(403, "No encontramos una compra con este correo. Entra con el mismo correo que usaste al pagar.");
   return { uid: u.uid, email: normalizar(u.email), compra };
+}
+
+/** Deja lista la cuenta de acceso de un comprador. La app nunca crea cuentas con contraseña, así que una cuenta
+ *  con el correo sin verificar solo puede venir de alguien que se registró con el correo de otro: se borra y se crea de nuevo. */
+export async function asegurarUsuario(email: string) {
+  const a = getAuth(app());
+  const correo = normalizar(email);
+  const existente = await a.getUserByEmail(correo).catch(() => null);
+  if (existente?.emailVerified) return existente.uid;
+  if (existente) await a.deleteUser(existente.uid);
+  return (await a.createUser({ email: correo, emailVerified: false })).uid;
+}
+
+/** Limita la generación: una a la vez por usuario y hasta 10 por día (cuida el costo de la IA y el correo). */
+export async function reservarGeneracion(uid: string) {
+  const ref = db().collection("limites").doc(uid);
+  const hoy = new Date().toISOString().slice(0, 10);
+  await db().runTransaction(async (tx) => {
+    const l = ((await tx.get(ref)).data() ?? {}) as { enCurso?: number; dia?: string; usadas?: number };
+    if (l.enCurso && Date.now() - l.enCurso < 10 * 60 * 1000) throw new ErrorHttp(429, "Tu pack ya se está armando. Espera a que termine; también te llega por correo.");
+    const usadas = l.dia === hoy ? l.usadas ?? 0 : 0;
+    if (usadas >= 10) throw new ErrorHttp(429, "Ya armaste tu pack 10 veces hoy. Vuelve a intentarlo mañana.");
+    tx.set(ref, { enCurso: Date.now(), dia: hoy, usadas: usadas + 1 });
+  });
+  return () => ref.set({ enCurso: 0 }, { merge: true });
+}
+
+/** Lee el cuerpo como texto con un tope de bytes (evita que un pedido gigante tumbe el servidor). */
+export async function leerCuerpo(req: Request, max: number) {
+  if (Number(req.headers.get("content-length") ?? 0) > max) throw new ErrorHttp(413, "El archivo es demasiado grande.");
+  const reader = req.body?.getReader();
+  if (!reader) return "";
+  const partes: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.length;
+    if (total > max) { await reader.cancel(); throw new ErrorHttp(413, "El archivo es demasiado grande."); }
+    partes.push(value);
+  }
+  return Buffer.concat(partes).toString("utf8");
 }
 
 export class ErrorHttp extends Error {
@@ -69,7 +120,7 @@ export function responderError(e: unknown) {
 
 /** Guarda una imagen (data URL) del usuario en Storage y la devuelve como data URL normalizada. */
 export async function guardarImagen(uid: string, nombre: "logo" | "foto", dataUrl: string) {
-  const m = dataUrl.match(/^data:(image\/(png|jpeg|webp));base64,(.+)$/);
+  const m = dataUrl.match(/^data:(image\/(png|jpeg));base64,([A-Za-z0-9+/=]+)$/);
   if (!m) throw new ErrorHttp(400, "La imagen tiene que ser PNG o JPG.");
   const buf = Buffer.from(m[3], "base64");
   if (buf.length > 3 * 1024 * 1024) throw new ErrorHttp(400, "La imagen pesa más de 3 MB. Usa una más chica.");

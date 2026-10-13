@@ -10,11 +10,22 @@ const config = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-export const auth = () => getAuth(getApps()[0] ?? initializeApp(config));
+export const auth = () => {
+  const a = getAuth(getApps()[0] ?? initializeApp(config));
+  a.languageCode = "es"; // el correo con el link de acceso sale en español
+  return a;
+};
 
 export async function api(ruta: string, init: RequestInit = {}) {
   const token = await auth().currentUser?.getIdToken();
-  const r = await fetch(ruta, { ...init, headers: { ...(init.body && typeof init.body === "string" ? { "Content-Type": "application/json" } : {}), Authorization: `Bearer ${token}`, ...init.headers } });
+  let r: Response;
+  try {
+    r = await fetch(ruta, { ...init, headers: { ...(init.body && typeof init.body === "string" ? { "Content-Type": "application/json" } : {}), Authorization: `Bearer ${token}`, ...init.headers } });
+  } catch {
+    throw new Error(ruta === "/api/generar"
+      ? "Se cortó la conexión. Si tu pack se alcanzó a armar, te llega por correo en unos minutos: revisa tu correo antes de volver a intentarlo."
+      : "No hay conexión. Revisa tu internet e intenta de nuevo.");
+  }
   if (!r.ok) {
     const j = await r.json().catch(() => ({}));
     throw new Error(j.error || "No se pudo completar. Intenta de nuevo.");

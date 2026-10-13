@@ -2,14 +2,14 @@
 import extras from "@/content/extras.json";
 import type { Perfil } from "./perfil";
 import { mdAHtml } from "./md";
-import { reemplazar } from "./personalizar";
+import { reemplazar, reemplazarSinColonia } from "./personalizar";
 import type { Paleta } from "./colores";
 
 const marcar = (html: string) => html.replace(/\[([^\]<]{1,80})\]/g, "<mark>[$1]</mark>");
 export const html = (md: string, p: Perfil) => marcar(mdAHtml(reemplazar(md, p)));
 
 /** En el bump y el upsell, [colonia] es la del cliente o la propiedad, no la del asesor: se deja para completar. */
-const conColonia = (md: string, p: Perfil) => reemplazar(md.replace(/\[colonia\]/g, "\u0000"), p).replace(/\u0000/g, "[colonia]");
+const conColonia = reemplazarSinColonia;
 const htmlCliente = (md: string, p: Perfil) => marcar(mdAHtml(conColonia(md, p)));
 
 const sinTitulo = (md: string) => md.replace(/^# .*\n/, "");

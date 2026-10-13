@@ -97,7 +97,7 @@ function Formulario({ inicial, onGuardado }: { inicial: Perfil; onGuardado: (p: 
       </div>
       <div className="fila">
         <div><label>WhatsApp</label><input type="tel" required minLength={8} value={p.whatsapp} onChange={(e) => set("whatsapp", e.target.value)} placeholder="33 1234 5678" /></div>
-        <div><label>Años de experiencia</label><input type="text" value={p.aniosExperiencia} onChange={(e) => set("aniosExperiencia", e.target.value)} placeholder="8" /></div>
+        <div><label>Años de experiencia</label><input type="text" inputMode="numeric" value={p.aniosExperiencia} onChange={(e) => set("aniosExperiencia", e.target.value)} placeholder="8" /></div>
       </div>
       <label>Correo para tus anuncios</label>
       <input type="email" required value={p.correo} onChange={(e) => set("correo", e.target.value)} />
@@ -149,7 +149,7 @@ function Formulario({ inicial, onGuardado }: { inicial: Perfil; onGuardado: (p: 
         <div><label>Color de acento</label><div className="color"><input type="color" value={p.colorAcento} onChange={(e) => set("colorAcento", e.target.value.toUpperCase())} /><span>{p.colorAcento}</span></div></div>
       </div>
       <label>Una foto tuya (opcional)</label>
-      <input type="file" accept="image/png,image/jpeg" onChange={async (e) => { const f = e.target.files?.[0]; if (f) setFoto(await achicar(f, 1200, "image/jpeg")); }} />
+      <input type="file" accept="image/png,image/jpeg" onChange={async (e) => { const f = e.target.files?.[0]; if (!f) return; try { setFoto(await achicar(f, 1200, "image/jpeg")); } catch (err) { setError((err as Error).message); } }} />
       <p className="ayuda">Va en los posts de "Conóceme". Si no subes, usamos tus iniciales.</p>
 
       <p className="ayuda" style={{ marginTop: 22 }}>Al guardar confirmas que tienes derecho a usar este logo y esta foto. Usamos tus datos solo para armar tu contenido. Ver el <a href="/privacidad">aviso de privacidad</a>.</p>
@@ -184,7 +184,7 @@ function Descargar({ productos }: { productos: Productos }) {
         <b>Tu pack de 90 días</b>
         <p className="ayuda">90 publicaciones con tu nombre y tu zona, calendario, 40 diseños con tu logo y tus colores, y guiones de reels.</p>
         {productos.pack ? (
-          <button onClick={generar} disabled={estado === "armando"}>{estado === "armando" ? "Armando tu pack, tarda 1 o 2 minutos..." : "Armar y descargar mi pack"}</button>
+          <button onClick={generar} disabled={estado === "armando"}>{estado === "armando" ? "Armando tu pack, puede tardar unos minutos. No cierres esta pantalla..." : "Armar y descargar mi pack"}</button>
         ) : <p className="ayuda">Tu compra no incluye el pack.</p>}
         {estado === "listo" && <><div className="ok">Listo. Abre el archivo descargado y empieza por <b>00 EMPIEZA AQUI</b>.{correo ? " También te mandamos el link a tu correo." : ""} Si cambias tus datos, vuelve a armarlo.</div><a className="boton" href={url}>Si no bajó solo, toca aquí</a></>}
         {error && <div className="error">{error}</div>}
@@ -249,7 +249,7 @@ function NuevaPropiedad() {
         </div>
       </>)}
       <label>Foto principal</label>
-      <input type="file" accept="image/png,image/jpeg" onChange={async (e) => { const f = e.target.files?.[0]; if (f) set("foto", await achicar(f, 1400, "image/jpeg")); }} />
+      <input type="file" accept="image/png,image/jpeg" required onChange={async (e) => { const f = e.target.files?.[0]; if (!f) return; try { set("foto", await achicar(f, 1400, "image/jpeg")); } catch (err) { setError((err as Error).message); } }} />
       <button disabled={enviando}>{enviando ? "Armando..." : "Armar mi publicación"}</button>
       {error && <div className="error">{error}</div>}
       {res && (
