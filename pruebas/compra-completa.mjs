@@ -85,3 +85,4 @@ check("approved tardío no devuelve acceso", s === 403, String(s));
 check("compra nueva sí da acceso", s === 200, String(s));
 
 console.log(`\n${resultados.filter(Boolean).length}/${resultados.length} ok`);
+process.exitCode = resultados.every(Boolean) ? 0 : 1;

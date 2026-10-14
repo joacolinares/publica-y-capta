@@ -40,9 +40,9 @@ npm run demo:propiedad -- salida    # post de propiedad de ejemplo
 2. **Reglas de Firestore y Storage:** cerradas para el navegador (todo pasa por el servidor):
    `allow read, write: if false;`
 3. **Claude:** crear una clave en console.anthropic.com. Por defecto usa `claude-opus-5-5`; con `CLAUDE_MODEL=claude-haiku-5-5` cuesta bastante menos.
-4. **Railway:** conectar el repo, cargar las variables de `.env.example` y desplegar (`railway.json` ya trae build y start).
+4. **Railway:** conectar el repo con "Add variables" (no "Deploy Now"), cargar las variables de `.env.example` y desplegar. Los servicios nuevos de Railway ya no leen `railway.json`: en Settings poner Builder = Railpack, Custom Start Command = `npm start` y Healthcheck Path = `/`.
 5. **Resend (correo):** crear cuenta en resend.com, verificar tu dominio y crear una API key. Cargar `RESEND_API_KEY`, `CORREO_REMITENTE` (por ejemplo `Publica y Capta <hola@tudominio.com>`) y `APP_URL` (la URL de Railway). Sin dominio verificado, Resend solo entrega a tu propio correo: sirve para probar.
-6. **Impul:** en el panel, Webhooks → URL `https://TU-DOMINIO/api/webhooks/impul`, eventos `order.approved`, `order.refunded`, `order.chargeback`. Copiar el secreto a `IMPULTIENDA_WEBHOOK_SECRET`. Crear una API key (`itd_...`) para el respaldo. Poner los ids de producto del pack, el bump y el upsell en `IMPUL_PRODUCTO_PACK`, `IMPUL_PRODUCTO_BUMP` y `IMPUL_PRODUCTO_UPSELL` (con `IMPUL_PRODUCTO_PACK` cargado, un producto desconocido no da acceso). Entrega del producto: "Link externo" a `https://TU-DOMINIO`.
+6. **Impul:** en el panel, Webhooks → URL `https://TU-DOMINIO/api/webhooks/impul`, eventos `order.approved`, `order.refunded`, `order.chargeback`. Los webhooks son solo del plan Max. Copiar la "Clave de firma" a `IMPULTIENDA_WEBHOOK_SECRET`. Impul todavía no tiene API pública, así que `IMPULTIENDA_API_KEY` queda vacío. Poner los ids de producto del pack, el bump y el upsell en `IMPUL_PRODUCTO_PACK`, `IMPUL_PRODUCTO_BUMP` y `IMPUL_PRODUCTO_UPSELL` (con `IMPUL_PRODUCTO_PACK` cargado, un producto desconocido no da acceso). Entrega del producto: "Link externo" a `https://TU-DOMINIO`.
 
 ## Colecciones
 

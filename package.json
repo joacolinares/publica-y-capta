@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p ${PORT:-3000}",
+    "start": "next start -p ${PORT:-3000} --keepAliveTimeout 70000",
     "textos": "node scripts/build-textos.mjs",
     "demo": "tsx scripts/demo.ts",
     "demo:propiedad": "tsx scripts/demo-propiedad.ts",

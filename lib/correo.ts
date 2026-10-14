@@ -6,7 +6,7 @@ export async function enviarCorreo(para: string, asunto: string, html: string) {
   if (!key) { console.warn("Correo sin enviar: falta RESEND_API_KEY"); return false; }
   const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", "User-Agent": "publica-y-capta/1.0" },
     body: JSON.stringify({ from: process.env.CORREO_REMITENTE || "Publica y Capta <onboarding@resend.dev>", to: [para], subject: asunto, html }),
   }).catch((e) => { console.error("Resend", e); return null; });
   if (!r?.ok) { console.error("Resend", r?.status, await r?.text()); return false; }

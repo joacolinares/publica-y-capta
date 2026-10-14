@@ -31,3 +31,4 @@ check("pedir otro link no la saca de su cuenta", acc2.status === 200, String(acc
 const pr = await (await fetch(`${APP}/api/preparar`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: "nadie@x.com" }) })).json();
 check("preparar no revela si compró", pr.ok === true);
 console.log(`${ok}/${n} ok`);
+process.exitCode = ok === n ? 0 : 1;

@@ -4,10 +4,19 @@ import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
 
+/** Lee el JSON de la cuenta de servicio tal como lo pegue la persona: entero, en una línea, con saltos reales o en base64. */
+function cuentaDeServicio() {
+  const crudo = (process.env.FIREBASE_SERVICE_ACCOUNT || "").trim().replace(/^'([\s\S]*)'$/, "$1");
+  if (!crudo) return {};
+  for (const t of [crudo, crudo.replace(/\r?\n/g, "\\n"), Buffer.from(crudo, "base64").toString("utf8")]) {
+    try { return JSON.parse(t); } catch { /* sigue con el siguiente formato */ }
+  }
+  throw new Error("FIREBASE_SERVICE_ACCOUNT no es un JSON válido: pega el contenido completo del archivo .json de la cuenta de servicio.");
+}
+
 function app() {
   if (getApps().length) return getApps()[0];
-  const cuenta = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || "{}");
-  return initializeApp({ credential: cert(cuenta), storageBucket: process.env.FIREBASE_STORAGE_BUCKET });
+  return initializeApp({ credential: cert(cuentaDeServicio()), storageBucket: process.env.FIREBASE_STORAGE_BUCKET });
 }
 
 export const db = () => getFirestore(app());
@@ -118,13 +127,26 @@ export function responderError(e: unknown) {
   return Response.json({ error: "Algo falló de nuestro lado. Intenta de nuevo en un minuto." }, { status: 500 });
 }
 
+/** Sube un archivo a Storage. Reintenta hasta 3 veces si la conexión se corta o Storage responde 429/5xx (sobrescribir es seguro). */
+export async function subir(ruta: string, datos: Buffer, contentType: string) {
+  for (let intento = 1; ; intento++) {
+    try { return await bucket().file(ruta).save(datos, { contentType, resumable: false }); }
+    catch (e) {
+      const codigo = (e as { code?: string | number }).code;
+      const pasajero = ["EPIPE", "ECONNRESET", "ETIMEDOUT", "ECONNREFUSED", "EAI_AGAIN"].includes(String(codigo)) || codigo === 429 || (typeof codigo === "number" && codigo >= 500);
+      if (intento >= 3 || !pasajero) throw e;
+      await new Promise((r) => setTimeout(r, 500 * intento));
+    }
+  }
+}
+
 /** Guarda una imagen (data URL) del usuario en Storage y la devuelve como data URL normalizada. */
 export async function guardarImagen(uid: string, nombre: "logo" | "foto", dataUrl: string) {
   const m = dataUrl.match(/^data:(image\/(png|jpeg));base64,([A-Za-z0-9+/=]+)$/);
   if (!m) throw new ErrorHttp(400, "La imagen tiene que ser PNG o JPG.");
   const buf = Buffer.from(m[3], "base64");
   if (buf.length > 3 * 1024 * 1024) throw new ErrorHttp(400, "La imagen pesa más de 3 MB. Usa una más chica.");
-  await bucket().file(`usuarios/${uid}/${nombre}`).save(buf, { contentType: m[1], resumable: false });
+  await subir(`usuarios/${uid}/${nombre}`, buf, m[1]);
 }
 
 export async function leerImagen(uid: string, nombre: "logo" | "foto") {
