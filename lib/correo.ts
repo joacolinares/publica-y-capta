@@ -7,7 +7,11 @@ export async function enviarCorreo(para: string, asunto: string, html: string) {
   const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", "User-Agent": "publica-y-capta/1.0" },
-    body: JSON.stringify({ from: process.env.CORREO_REMITENTE || "Publica y Capta <onboarding@resend.dev>", to: [para], subject: asunto, html }),
+    body: JSON.stringify({
+      from: process.env.CORREO_REMITENTE || "Publica y Capta <onboarding@resend.dev>", to: [para], subject: asunto, html,
+      // Las respuestas de los clientes van a un buzón real (el remitente de Resend no recibe correos).
+      ...(process.env.CORREO_RESPUESTAS ? { reply_to: process.env.CORREO_RESPUESTAS } : {}),
+    }),
   }).catch((e) => { console.error("Resend", e); return null; });
   if (!r?.ok) { console.error("Resend", r?.status, await r?.text()); return false; }
   return true;
