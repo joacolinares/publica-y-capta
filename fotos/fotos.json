@@ -1,0 +1,218 @@
+[
+  {
+    "archivo": "sala-1.jpg",
+    "etiqueta": "sala",
+    "ancho": 1197,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "55% 60%",
+    "descripcion": "Dos sillas blancas tapizadas junto a una ventana con cortinas translúcidas y luz cálida sobre piso de madera"
+  },
+  {
+    "archivo": "sala-2.jpg",
+    "etiqueta": "sala",
+    "ancho": 1500,
+    "alto": 1125,
+    "orientacion": "horizontal",
+    "posicion": "60% 45%",
+    "descripcion": "Sala y comedor abiertos con piso de madera, sillones de piel oscura y ventanas que dan al jardín"
+  },
+  {
+    "archivo": "sala-3.jpg",
+    "etiqueta": "sala",
+    "ancho": 1425,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "50% 45%",
+    "descripcion": "Sofá azul con cojines claros y mesa de centro redonda de madera junto a un ventanal"
+  },
+  {
+    "archivo": "cocina-3.jpg",
+    "etiqueta": "cocina",
+    "ancho": 850,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "50% 55%",
+    "descripcion": "Cocina moderna con gabinetes oscuros, cubierta beige y repisas abiertas"
+  },
+  {
+    "archivo": "recamara-1.jpg",
+    "etiqueta": "recamara",
+    "ancho": 1500,
+    "alto": 1125,
+    "orientacion": "horizontal",
+    "posicion": "45% 60%",
+    "descripcion": "Recámara amplia y luminosa con cama blanca, piso de madera y cortinas beige"
+  },
+  {
+    "archivo": "recamara-2.jpg",
+    "etiqueta": "recamara",
+    "ancho": 1500,
+    "alto": 1125,
+    "orientacion": "horizontal",
+    "posicion": "50% 50%",
+    "descripcion": "Cabecera de madera con almohadas y colcha blancas"
+  },
+  {
+    "archivo": "bano-1.jpg",
+    "etiqueta": "bano",
+    "ancho": 1425,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "50% 45%",
+    "descripcion": "Lilis rosas en florero de vidrio sobre cubierta de mármol blanco en el baño"
+  },
+  {
+    "archivo": "bano-2.jpg",
+    "etiqueta": "bano",
+    "ancho": 1500,
+    "alto": 1500,
+    "orientacion": "horizontal",
+    "posicion": "70% 45%",
+    "descripcion": "Rosas rosa pálido en florero de vidrio junto a muro de mármol beige y toallero"
+  },
+  {
+    "archivo": "comedor-1.jpg",
+    "etiqueta": "comedor",
+    "ancho": 1500,
+    "alto": 998,
+    "orientacion": "horizontal",
+    "posicion": "60% 55%",
+    "descripcion": "Comedor de madera con sillas de ratán en un solario con cortinas blancas y plantas"
+  },
+  {
+    "archivo": "terraza-1.jpg",
+    "etiqueta": "terraza",
+    "ancho": 1500,
+    "alto": 1125,
+    "orientacion": "horizontal",
+    "posicion": "45% 65%",
+    "descripcion": "Terraza en azotea con sillas de mimbre blancas, mesa de vidrio y vista a las montañas"
+  },
+  {
+    "archivo": "jardin-1.jpg",
+    "etiqueta": "jardin",
+    "ancho": 1069,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "45% 60%",
+    "descripcion": "Jardín con pasto, árbol grande y maceta de barro con agave"
+  },
+  {
+    "archivo": "fachada-1.jpg",
+    "etiqueta": "fachada",
+    "ancho": 1425,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "50% 55%",
+    "descripcion": "Fachada colonial azul con puerta de madera blanca, ventanas de cuatro lóbulos y bugambilias"
+  },
+  {
+    "archivo": "fachada-2.jpg",
+    "etiqueta": "fachada",
+    "ancho": 1425,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "50% 45%",
+    "descripcion": "Casa colonial color terracota con balcón blanco, plantas y faroles"
+  },
+  {
+    "archivo": "fachada-3.jpg",
+    "etiqueta": "fachada",
+    "ancho": 1451,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "45% 40%",
+    "descripcion": "Fachada turquesa con celosías de madera torneada, bugambilias y farol"
+  },
+  {
+    "archivo": "edificio-1.jpg",
+    "etiqueta": "edificio",
+    "ancho": 1267,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "60% 55%",
+    "descripcion": "Edificio de departamentos moderno con balcones y celosías de madera bajo cielo azul"
+  },
+  {
+    "archivo": "calle-1.jpg",
+    "etiqueta": "calle",
+    "ancho": 1500,
+    "alto": 1229,
+    "orientacion": "horizontal",
+    "posicion": "45% 55%",
+    "descripcion": "Banqueta arbolada en una calle residencial tranquila con setos y casas"
+  },
+  {
+    "archivo": "calle-2.jpg",
+    "etiqueta": "calle",
+    "ancho": 1425,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "55% 60%",
+    "descripcion": "Andador entre casas de dos pisos con setos, palmeras y flores en macetas"
+  },
+  {
+    "archivo": "puerta-1.jpg",
+    "etiqueta": "puerta",
+    "ancho": 1072,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "50% 45%",
+    "descripcion": "Puerta antigua de madera con clavos de hierro en un marco de piedra encalada"
+  },
+  {
+    "archivo": "llaves-1.jpg",
+    "etiqueta": "llaves",
+    "ancho": 1500,
+    "alto": 1000,
+    "orientacion": "horizontal",
+    "posicion": "75% 50%",
+    "descripcion": "Llaves antiguas de hierro colgando de un mueble de madera"
+  },
+  {
+    "archivo": "escritorio-1.jpg",
+    "etiqueta": "escritorio",
+    "ancho": 1425,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "55% 60%",
+    "descripcion": "Laptop sobre escritorio de madera con planta y luz cálida de la tarde"
+  },
+  {
+    "archivo": "firma-1.jpg",
+    "etiqueta": "firma",
+    "ancho": 1500,
+    "alto": 1000,
+    "orientacion": "horizontal",
+    "posicion": "60% 45%",
+    "descripcion": "Mano escribiendo con pluma sobre una libreta abierta, sin rostro"
+  },
+  {
+    "archivo": "detalle-1.jpg",
+    "etiqueta": "detalle",
+    "ancho": 1500,
+    "alto": 1125,
+    "orientacion": "horizontal",
+    "posicion": "50% 50%",
+    "descripcion": "Bloque de celosía de barro con diseño de flor sobre madera"
+  },
+  {
+    "archivo": "detalle-2.jpg",
+    "etiqueta": "detalle",
+    "ancho": 1262,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "55% 45%",
+    "descripcion": "Muro color terracota con soporte de madera y cuenco de cobre colgante"
+  },
+  {
+    "archivo": "ventana-1.jpg",
+    "etiqueta": "ventana",
+    "ancho": 1425,
+    "alto": 1900,
+    "orientacion": "vertical",
+    "posicion": "50% 65%",
+    "descripcion": "Plantas en macetas junto a una ventana luminosa con cortinas translúcidas"
+  }
+]

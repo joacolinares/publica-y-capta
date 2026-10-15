@@ -29,6 +29,9 @@ function describir(p: Perfil) {
 Trabaja en ${esp}. Su cliente principal: ${cliente}. Tono: ${p.tono === "cercano" ? "cercano y amable" : "formal y profesional"}.${p.historia ? `\nSu historia (úsala solo en textos de marca personal): ${p.historia}` : ""}`;
 }
 
+/** Las palabras clave de la llamada a la acción ("palabra CONSEJO"), en orden. */
+const clave = (s: string) => [...s.matchAll(/[Pp]alabra ([A-ZÁÉÍÓÚÑ]{3,})/g)].map((m) => m[1]).join("|");
+
 export async function adaptarConIA(dias: Dia[], p: Perfil): Promise<Map<number, { post: string; whatsapp: string }>> {
   const out = new Map<number, { post: string; whatsapp: string }>();
   if (!process.env.ANTHROPIC_API_KEY) return out;
@@ -56,9 +59,9 @@ export async function adaptarConIA(dias: Dia[], p: Perfil): Promise<Map<number, 
         for (const t of res.parsed_output.textos) {
           const orig = lote.find((d) => d.dia === t.dia);
           if (!orig) continue;
-          // Se descarta la versión de la IA si rompe una regla o pierde corchetes.
+          // Se descarta la versión de la IA si rompe una regla, pierde corchetes o cambia la palabra clave (la piden el guion y los diseños).
           const corchetesOk = (orig.post.match(/\[[^\]]+\]/g) ?? []).every((c) => t.post.includes(c));
-          if (revisar(t.post + t.whatsapp).length === 0 && corchetesOk) out.set(t.dia, { post: t.post, whatsapp: t.whatsapp });
+          if (revisar(t.post + t.whatsapp).length === 0 && corchetesOk && clave(t.post) === clave(orig.post)) out.set(t.dia, { post: t.post, whatsapp: t.whatsapp });
         }
       } catch (e) {
         console.error("IA: lote con error, se usa el texto base", e instanceof Error ? e.message : e);

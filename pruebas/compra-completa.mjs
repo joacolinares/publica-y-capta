@@ -63,13 +63,20 @@ if (okG) {
 [s, j] = await api("/api/generar", token, { method: "POST" });
 check("generar otra vez al terminar → 200", s === 200, j?.error ?? "");
 
+// 5b. Pedir el link para entrar: sin Resend, la app le deja el envío a Firebase y no revela si hay compra.
+for (const correo of [comprador, "nadie@x.com", "no-es-correo"]) {
+  [s, j] = await api("/api/enlace", "", { method: "POST", body: JSON.stringify({ email: correo }) });
+  check(`enlace ${correo} → firebase`, s === 200 && j?.modo === "firebase", `${s} ${JSON.stringify(j)}`);
+}
+
 // 6. Nueva propiedad
 const base = { operacion: "venta", tipo: "Casa", colonia: "Jardines", precio: "2450000", recamaras: "3", banos: "2", m2: "120", caracteristicas: [], creditos: ["Infonavit"] };
 [s, j] = await api("/api/propiedad", token, { method: "POST", body: JSON.stringify({ ...base, foto: "http://169.254.169.254/latest/meta-data" }) });
 check("foto con URL → 400", s === 400, j?.error);
 const png1 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==";
 [s, j] = await api("/api/propiedad", token, { method: "POST", body: JSON.stringify({ ...base, foto: png1 }) });
-check("propiedad → 200 con texto NOM", s === 200 && j.imagen.startsWith("data:image/png") && /Av\. Patria/.test(j.texto) && /gratuito/.test(j.texto), (j?.texto ?? j?.error ?? "").split("\n")[0]);
+check("propiedad → 200 con texto NOM", s === 200 && /^data:image\/(png|jpeg);base64,/.test(j.imagen) && /Av\. Patria/.test(j.texto) && /gratuito/.test(j.texto), (j?.texto ?? j?.error ?? "").split("\n")[0]);
+check("propiedad trae la historia", /^data:image\/(png|jpeg);base64,/.test(j?.historia ?? ""), String(j?.historia ?? "").slice(0, 30));
 
 // 7. Reembolso corta el acceso y un approved tardío no lo devuelve
 [s, j] = await webhook(orden("e1-r", "order.refunded", comprador, [{ product_id: "P" }, { product_id: "B" }]));

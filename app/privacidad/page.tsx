@@ -1,23 +1,39 @@
-// BORRADOR del aviso de privacidad (LFPDPPP). Tiene que revisarlo un abogado mexicano antes de lanzar.
-// Completar lo que está entre [corchetes].
-export const metadata = { title: "Aviso de privacidad · Publica y Capta" };
+// Aviso de privacidad (LFPDPPP). Responsable, domicilio y correo salen de lib/oferta.ts (variables de entorno):
+// si falta un dato, la frase se arma sin él. Conviene que lo revise un abogado mexicano antes de lanzar.
+import { BarraApp } from "../_web/BarraApp";
+import { ASoporte, CorreoSoporte } from "../_web/Contacto";
+import { LEGAL_ACTUALIZADO, PROVEEDOR, SOPORTE } from "@/lib/oferta";
+
+export const metadata = { title: "Aviso de privacidad" };
 
 export default function Privacidad() {
+  const { nombre, domicilio } = PROVEEDOR;
   return (
-    <main>
-      <h1>Aviso de privacidad</h1>
-      <p><b>Responsable:</b> [Nombre o razón social], con domicilio en [domicilio], es responsable del uso de tus datos personales. Contacto: [correo de privacidad].</p>
+    <>
+    <BarraApp />
+    <main className="legal">
+      <div className="cap">Publica y Capta</div>
+      <h1>Aviso de <em>privacidad</em></h1>
+      <p>
+        <b>Responsable:</b> {nombre || "Publica y Capta"}{domicilio ? <>, con domicilio en {domicilio},</> : null} es responsable del uso de tus datos personales.
+        {SOPORTE ? <> Contacto: <CorreoSoporte />.</> : null}
+      </p>
       <h2>Qué datos usamos</h2>
-      <p>Tu correo, nombre, nombre comercial, teléfono de WhatsApp, domicilio de oficina, ciudad, zona y colonias donde trabajas, tu usuario de redes, tu logo y, si la subes, tu foto. También los datos de las propiedades que cargues.</p>
+      <p>Tu correo y los datos de tu compra que nos manda Impul Tienda (número de orden, productos, fecha y estado del pago). Lo que llenas en el formulario: nombre, nombre comercial, cómo te presentas, WhatsApp, correo para tus anuncios, domicilio de tu oficina, ciudad, zona y colonias, años de experiencia, especialidad, tipo de cliente, tono, colores, usuario de redes, tu logo y, si la subes, tu foto. También los datos y la foto de las propiedades que cargues y el registro de cada pack que armas. No pedimos datos sensibles.</p>
       <h2>Para qué</h2>
-      <p>Solo para armar tu contenido (publicaciones, diseños y guiones), darte acceso a lo que compraste y atender tus dudas. No vendemos ni compartimos tus datos con terceros para publicidad.</p>
+      <p>Para armar tu contenido (publicaciones, diseños y guiones), darte acceso a lo que compraste y atender tus dudas y tus solicitudes de reembolso. También guardamos el registro de tu compra y de tus descargas por si hay una aclaración o un contracargo. Todo esto es necesario para darte el servicio que compraste: no vendemos tus datos ni los usamos o compartimos para publicidad.</p>
       <h2>Con quién se comparten</h2>
-      <p>Con los proveedores que hacen funcionar el servicio: alojamiento y base de datos (Google Firebase, Railway), la tienda donde pagaste (Impul Tienda) y el servicio de inteligencia artificial que adapta el tono de los textos (Anthropic). Ellos procesan los datos por nuestra cuenta.</p>
+      <p>Con los proveedores que hacen funcionar el servicio, solo para eso: el alojamiento y la base de datos (Google Firebase y Railway), el envío de correos (Resend), la tienda donde pagaste (Impul Tienda), que nos manda los datos de tu compra, y el servicio de inteligencia artificial que adapta el tono de los textos (Anthropic), que recibe tu nombre, ciudad, zona, colonias, especialidad, tipo de cliente y tono.</p>
+      <h2>Cómo limitar el uso de tus datos</h2>
+      <p>Puedes pedirnos que dejemos de usar o que borremos tus datos, tu logo o tu foto escribiéndonos<ASoporte />.</p>
       <h2>Tus derechos (ARCO)</h2>
-      <p>Puedes pedir acceder, corregir, cancelar u oponerte al uso de tus datos escribiendo a [correo de privacidad]. Te respondemos en un máximo de 20 días hábiles.</p>
+      <p>Puedes pedir acceder a tus datos, corregirlos, cancelarlos u oponerte a su uso. Escríbenos<ASoporte /> con tu nombre, el correo con el que compraste, qué derecho quieres ejercer y sobre qué datos, y una identificación oficial (o la de tu representante y el documento que lo acredite). Te respondemos en un máximo de 20 días hábiles y, si procede, lo hacemos efectivo dentro de los 15 días hábiles siguientes. Por el mismo medio puedes revocar tu consentimiento.</p>
       <h2>Tu logo y tus fotos</h2>
       <p>Al subirlos confirmas que tienes derecho a usarlos. Solo los usamos para armar tu contenido.</p>
-      <p className="ayuda">Última actualización: [fecha].</p>
+      <h2>Cambios a este aviso</h2>
+      <p>Si lo cambiamos, publicamos la versión nueva en esta página con su fecha y, si el cambio es importante, te avisamos por correo.</p>
+      <p className="ayuda">Última actualización: {LEGAL_ACTUALIZADO}. Lee también los <a href="/terminos">términos y condiciones</a>.</p>
     </main>
+    </>
   );
 }

@@ -31,7 +31,8 @@ for (const p of partes) {
   };
   const post = quote(sec("Instagram y Facebook")) || quote(sec("Texto del reel"));
   const whatsapp = quote(sec("Estado de WhatsApp"));
-  const guionM = p.match(/\*\*Guion corto\*\*([\s\S]*?)(?=\n\*\*|\n---|\n## |$)/);
+  // El guion lleva sus propias negritas (**La idea:**, **Cierre:**...): termina solo en otra sección del día.
+  const guionM = p.match(/\*\*Guion del reel\*\*\s*(?:\(([^)\n]*)\))?([\s\S]*?)(?=\n\*\*(?:Estado de WhatsApp|Instagram y Facebook|Texto del reel|Story|Nota para el asesor)|\n---|\n## |$)/);
   const notaM = p.match(/\*\*Nota para el asesor[^*]*\*\*\s*([^\n]+)/);
   const tecnico = p.match(/_Revisión técnica: ([^_]+)_/);
   const storyM = p.match(/\*\*Story\*?\*?:?\*?\*?[^\n]*\n?([^\n]*)/);
@@ -42,20 +43,21 @@ for (const p of partes) {
     formato: formatos[dia] || "",
     post,
     whatsapp,
-    guion: guionM ? guionM[1].trim() : "",
-    nota: notaM ? notaM[1].trim() : "",
+    guion: guionM ? guionM[2].trim() : "",
+    guionTipo: guionM?.[1]?.trim() ?? "",
+    nota: notaM ? notaM[1].trim().replace(/^\p{Ll}/u, (c) => c.toUpperCase()) : "",
     tecnico: tecnico ? tecnico[1].trim() : null,
     story: storyM ? storyM[0].replace(/\*\*/g, "").trim() : "",
   });
 }
 
-const faltan = dias.filter((d) => !d.post || !d.whatsapp).map((d) => d.dia);
+const faltan = dias.filter((d) => !d.post || !d.whatsapp || (/^Reel/.test(d.formato) && !d.guion)).map((d) => d.dia);
 if (dias.length !== 90 || faltan.length) {
-  console.error(`Error: ${dias.length} días, sin texto: ${faltan.join(", ")}`);
+  console.error(`Error: ${dias.length} días, sin texto o sin guion: ${faltan.join(", ")}`);
   process.exit(1);
 }
 writeFileSync(new URL("../content/textos.json", import.meta.url), JSON.stringify(dias, null, 1));
-console.log(`OK: ${dias.length} días, ${dias.filter((d) => d.tecnico).length} técnicos`);
+console.log(`OK: ${dias.length} días, ${dias.filter((d) => d.tecnico).length} técnicos, ${dias.filter((d) => d.guion).length} guiones`);
 
 // Extras: guiones extra, bonos, bump y upsell (Markdown tal cual; la app los convierte a HTML).
 const extras = {};

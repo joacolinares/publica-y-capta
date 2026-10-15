@@ -1,0 +1,1535 @@
+{
+ "dias": [
+  {
+   "dia": 1,
+   "tipo": "post",
+   "etiqueta": "Conóceme",
+   "titulo": {
+    "serif": "Hola, soy",
+    "script": "[Tu nombre]"
+   },
+   "bajada": "Ayudo a familias de [tu zona] a comprar, vender y rentar su casa.",
+   "boton": "Escríbeme y platicamos",
+   "foto": "sala"
+  },
+  {
+   "dia": 2,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores",
+   "titulo": {
+    "serif": "3 errores al comprar tu",
+    "script": "primera casa"
+   },
+   "bajada": "Y cómo evitarlos antes de apartar.",
+   "boton": "Desliza",
+   "foto": "sala",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Fijarte solo en la",
+      "acento": "mensualidad"
+     },
+     "texto": "Suma también el enganche, el avalúo y los gastos notariales, que pueden ser una parte importante del precio."
+    },
+    {
+     "titulo": {
+      "serif": "No revisar los",
+      "acento": "papeles"
+     },
+     "texto": "Antes de apartar, pide ver la escritura y que el predial y el agua estén al corriente."
+    },
+    {
+     "titulo": {
+      "serif": "Apartar sin conocer la",
+      "acento": "zona"
+     },
+     "texto": "Visítala de día y de noche, y pregunta por transporte, escuelas y servicios."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Te ayudo a revisar",
+     "script": "una casa?"
+    },
+    "texto": "Antes de que apartes. Guarda este post para cuando empieces a buscar.",
+    "palabra": "CASA"
+   }
+  },
+  {
+   "dia": 3,
+   "tipo": "post",
+   "etiqueta": "Vendedores · Papeles",
+   "titulo": {
+    "serif": "Antes de poner el",
+    "script": "letrero"
+   },
+   "bajada": "Revisa tus papeles: escritura, predial y agua, y la hipoteca si la hay.",
+   "boton": "Escríbeme \"PAPELES\"",
+   "foto": "escritorio"
+  },
+  {
+   "dia": 6,
+   "tipo": "post",
+   "etiqueta": "Vendedores",
+   "titulo": {
+    "serif": "¿En cuánto vendo mi",
+    "script": "depa?"
+   },
+   "bajada": "El precio lo pone lo que se vendió hace poco en tu colonia.",
+   "boton": "Escríbeme \"PRECIO\"",
+   "foto": "sala"
+  },
+  {
+   "dia": 8,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores · Enganche",
+   "titulo": {
+    "serif": "¿Cuánto juntar para el",
+    "script": "enganche?"
+   },
+   "bajada": "Y de dónde puede salir.",
+   "boton": "Desliza",
+   "foto": "terraza",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "La parte que pagas",
+      "acento": "tú"
+     },
+     "texto": "El enganche es la parte del precio que pagas tú, sin crédito. Cuánto necesitas depende del tipo de crédito y de la casa que elijas."
+    },
+    {
+     "titulo": {
+      "serif": "Con crédito",
+      "acento": "bancario"
+     },
+     "texto": "El banco te dice qué parte del precio te presta y cuánto tienes que poner tú. Pide tu precalificación antes de buscar."
+    },
+    {
+     "titulo": {
+      "serif": "Con crédito",
+      "acento": "Infonavit"
+     },
+     "texto": "Depende de tu monto de crédito y del precio de la casa. Si tu crédito no alcanza, la diferencia la pones tú. El trámite de tu crédito Infonavit es gratuito."
+    },
+    {
+     "titulo": {
+      "serif": "Los gastos de",
+      "acento": "escrituración"
+     },
+     "texto": "No te olvides de ellos: se pagan aparte del enganche."
+    },
+    {
+     "titulo": {
+      "serif": "¿De dónde puede",
+      "acento": "salir?"
+     },
+     "texto": "Ahorro, aguinaldo o tu subcuenta de vivienda pueden ayudarte. Pregunta en tu banco o en el Infonavit cómo se puede usar cada uno."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Quieres saber cuánto",
+     "script": "necesitas?"
+    },
+    "texto": "Te ayudo a calcularlo para una casa en [tu zona].",
+    "palabra": "AHORRO"
+   }
+  },
+  {
+   "dia": 9,
+   "tipo": "post",
+   "etiqueta": "Vendedores",
+   "titulo": {
+    "serif": "¿Tu casa lleva meses",
+    "script": "publicada?"
+   },
+   "bajada": "Casi siempre es el precio, las fotos o los papeles. Las tres se pueden corregir.",
+   "boton": "Mándame \"VENTA\"",
+   "foto": "fachada"
+  },
+  {
+   "dia": 10,
+   "tipo": "carrusel",
+   "etiqueta": "Rentas",
+   "titulo": {
+    "serif": "¿Vas a rentar un",
+    "script": "depa?"
+   },
+   "bajada": "Antes de firmar o dejar un depósito, revisa esto.",
+   "boton": "Desliza",
+   "foto": "edificio",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Quién te",
+      "acento": "renta"
+     },
+     "texto": "Pide ver una identificación y algún documento que muestre que es el dueño o que tiene permiso para rentarlo."
+    },
+    {
+     "titulo": {
+      "serif": "El depa por",
+      "acento": "dentro"
+     },
+     "texto": "Abre llaves, prende luces, revisa humedad, puertas y ventanas. Toma fotos de cómo lo recibes."
+    },
+    {
+     "titulo": {
+      "serif": "Revisa bien el",
+      "acento": "contrato"
+     },
+     "texto": "Que diga cuánto pagas, cada cuándo, quién paga mantenimiento y servicios, y qué pasa si te quieres ir antes."
+    },
+    {
+     "titulo": {
+      "serif": "Una regla de",
+      "acento": "oro"
+     },
+     "texto": "No deposites nada sin haber visto el depa en persona."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Buscas depa en",
+     "script": "renta?"
+    },
+    "texto": "Te digo qué tengo disponible en [tu zona].",
+    "palabra": "RENTA"
+   }
+  },
+  {
+   "dia": 11,
+   "tipo": "post",
+   "etiqueta": "Compradores · Crédito",
+   "titulo": {
+    "serif": "¿Qué es el",
+    "script": "avalúo?"
+   },
+   "bajada": "Un estudio que hace un valuador autorizado para calcular cuánto vale la casa.",
+   "boton": "Mándame \"AVALÚO\"",
+   "foto": "detalle"
+  },
+  {
+   "dia": 15,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores · Crédito",
+   "titulo": {
+    "serif": "¿Crédito bancario o",
+    "script": "Infonavit?"
+   },
+   "bajada": "La respuesta depende de tu situación.",
+   "boton": "Desliza",
+   "foto": "escritorio",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Quién puede",
+      "acento": "pedirlo"
+     },
+     "texto": "El Infonavit es para quien cotiza con un patrón. El bancario lo puedes pedir si compruebas ingresos, aunque trabajes por tu cuenta."
+    },
+    {
+     "titulo": {
+      "serif": "Cómo se",
+      "acento": "calcula"
+     },
+     "texto": "El Infonavit toma en cuenta tu salario, tu ahorro en la subcuenta de vivienda y otros factores. El banco revisa tus ingresos, tu historial y el enganche que puedes poner."
+    },
+    {
+     "titulo": {
+      "serif": "Compara las",
+      "acento": "condiciones"
+     },
+     "texto": "Tasa, plazo, seguros y comisiones cambian entre opciones. Compara el costo total, no solo la mensualidad."
+    },
+    {
+     "titulo": {
+      "serif": "También se pueden",
+      "acento": "combinar"
+     },
+     "texto": "Con Cofinavit sumas tu crédito Infonavit y uno del banco para la misma casa. El trámite de tu crédito Infonavit es gratuito."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Comparamos tus opciones",
+     "script": "con calma?"
+    },
+    "texto": "La respuesta depende de tu situación: la vemos juntos.",
+    "palabra": "COMPARAR"
+   }
+  },
+  {
+   "dia": 17,
+   "tipo": "post",
+   "etiqueta": "Rentas · Requisitos",
+   "titulo": {
+    "serif": "¿Qué te pide un",
+    "script": "arrendador?"
+   },
+   "bajada": "Identificación, comprobantes de ingresos y una garantía, según el dueño.",
+   "boton": "Escríbeme \"REQUISITOS\"",
+   "foto": "recamara"
+  },
+  {
+   "dia": 20,
+   "tipo": "carrusel",
+   "etiqueta": "Preguntas frecuentes",
+   "titulo": {
+    "serif": "Lo que me preguntan",
+    "script": "todos los días"
+   },
+   "bajada": "Las respuestas, en corto.",
+   "boton": "Desliza",
+   "foto": "comedor",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "“¿Cuánto vale mi",
+      "acento": "casa?”"
+     },
+     "texto": "Depende de lo que se ha vendido hace poco en tu colonia. Lo puedo estimar comparando casas parecidas.",
+     "tipo": "pregunta"
+    },
+    {
+     "titulo": {
+      "serif": "“¿Me alcanza con mi",
+      "acento": "crédito?”"
+     },
+     "texto": "Primero consulta tu precalificación con tu banco o en Mi Cuenta Infonavit. Con ese dato buscamos casas en tu presupuesto.",
+     "tipo": "pregunta"
+    },
+    {
+     "titulo": {
+      "serif": "“¿Cuánto",
+      "acento": "cobras?”"
+     },
+     "texto": "Te lo explico desde la primera plática, por escrito y sin letras chiquitas.",
+     "tipo": "pregunta"
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Tienes otra",
+     "script": "pregunta?"
+    },
+    "texto": "Déjala en los comentarios o mándame un mensaje y te respondo.",
+    "palabra": "PREGUNTA"
+   }
+  },
+  {
+   "dia": 23,
+   "tipo": "carrusel",
+   "etiqueta": "Vendedores · Precio",
+   "titulo": {
+    "serif": "Así hago una",
+    "script": "opinión de valor"
+   },
+   "bajada": "Para saber en cuánto puedes vender tu casa.",
+   "boton": "Desliza",
+   "foto": "fachada",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Busco casas",
+      "acento": "parecidas"
+     },
+     "texto": "Casas parecidas a la tuya que se vendieron hace poco en tu colonia o cerca."
+    },
+    {
+     "titulo": {
+      "serif": "Lo que",
+      "acento": "comparo"
+     },
+     "texto": "Metros, recámaras, baños, estacionamiento, antigüedad y estado de conservación."
+    },
+    {
+     "titulo": {
+      "serif": "Lo que hace distinta a",
+      "acento": "tu casa"
+     },
+     "texto": "Ajusto por una remodelación, una vista, o algo que el comprador tendría que arreglar."
+    },
+    {
+     "titulo": {
+      "serif": "Un rango",
+      "acento": "realista"
+     },
+     "texto": "Con eso te doy un rango de precio realista para salir al mercado."
+    },
+    {
+     "titulo": {
+      "serif": "Ojo: no es un",
+      "acento": "avalúo"
+     },
+     "texto": "Una opinión de valor no es un avalúo. El avalúo lo hace un valuador autorizado y se pide, por ejemplo, para un crédito."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Quieres una opinión de valor de",
+     "script": "tu casa?"
+    },
+    "texto": "Sin compromiso, con lo que se vendió hace poco en tu colonia.",
+    "palabra": "OPINIÓN"
+   }
+  },
+  {
+   "dia": 25,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores",
+   "titulo": {
+    "serif": "¿Casa nueva o",
+    "script": "usada?"
+   },
+   "bajada": "Las dos tienen lo suyo. Esto conviene revisar en cada una.",
+   "boton": "Desliza",
+   "foto": "jardin",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Casa",
+      "acento": "nueva"
+     },
+     "lista": [
+      "Todo está sin uso",
+      "Puedes elegir acabados en algunos desarrollos"
+     ],
+     "marca": "si",
+     "texto": "Ojo: a veces la zona todavía está creciendo. Revisa transporte, escuelas y servicios."
+    },
+    {
+     "titulo": {
+      "serif": "Casa",
+      "acento": "usada"
+     },
+     "lista": [
+      "Ves la casa terminada",
+      "La colonia ya está hecha"
+     ],
+     "marca": "si",
+     "texto": "Ojo: puede necesitar arreglos. Revisa instalaciones, humedad y que los papeles estén al corriente."
+    },
+    {
+     "titulo": {
+      "serif": "En las",
+      "acento": "dos"
+     },
+     "texto": "Pide ver la escritura o los documentos del desarrollador, y confirma que la casa pueda comprarse con el crédito que vas a usar."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿No sabes cuál te",
+     "script": "conviene?"
+    },
+    "texto": "Lo platicamos según lo que buscas.",
+    "palabra": "OPCIONES"
+   }
+  },
+  {
+   "dia": 26,
+   "tipo": "carrusel",
+   "etiqueta": "Vendedores · Notaría",
+   "titulo": {
+    "serif": "Lo que te va a pedir el",
+    "script": "notario"
+   },
+   "bajada": "Los documentos que normalmente te pide para vender.",
+   "boton": "Desliza",
+   "foto": "firma",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Tu",
+      "acento": "escritura"
+     },
+     "texto": "Inscrita en el Registro Público de la Propiedad."
+    },
+    {
+     "titulo": {
+      "serif": "Tu identificación y tus",
+      "acento": "datos fiscales"
+     },
+     "texto": "Tu identificación vigente, tu CURP y tus datos fiscales."
+    },
+    {
+     "titulo": {
+      "serif": "Predial y",
+      "acento": "agua"
+     },
+     "texto": "Boletas de predial y agua al corriente."
+    },
+    {
+     "titulo": {
+      "serif": "Si estás",
+      "acento": "casado/a"
+     },
+     "texto": "Tu acta de matrimonio, porque el régimen puede cambiar quién firma."
+    },
+    {
+     "titulo": {
+      "serif": "Si tu casa está en",
+      "acento": "condominio"
+     },
+     "texto": "La constancia de no adeudo de mantenimiento."
+    },
+    {
+     "titulo": {
+      "serif": "Si tuvo",
+      "acento": "hipoteca"
+     },
+     "texto": "El documento que muestra que ya está liquidada y cancelada."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Revisamos tus papeles antes de",
+     "script": "vender?"
+    },
+    "texto": "La lista puede variar según el estado y la notaría. Pregunta al notario qué te falta con tiempo.",
+    "palabra": "NOTARIO"
+   }
+  },
+  {
+   "dia": 28,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores · Preventa",
+   "titulo": {
+    "serif": "Antes de apartar en",
+    "script": "preventa"
+   },
+   "bajada": "Si te gustó una casa o depa, revisa esto primero.",
+   "boton": "Desliza",
+   "foto": "edificio",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Quién es el",
+      "acento": "desarrollador"
+     },
+     "texto": "Busca su nombre, sus proyectos anteriores y visita alguno ya entregado."
+    },
+    {
+     "titulo": {
+      "serif": "Revisa los",
+      "acento": "permisos"
+     },
+     "texto": "Pregunta si tiene licencia de construcción y si el terreno está a nombre del desarrollador."
+    },
+    {
+     "titulo": {
+      "serif": "Lo que dice el",
+      "acento": "contrato"
+     },
+     "texto": "Que diga fecha de entrega, acabados, forma de pago y qué pasa si se retrasa la obra o si tú cancelas."
+    },
+    {
+     "titulo": {
+      "serif": "A quién le",
+      "acento": "pagas"
+     },
+     "texto": "Haz los pagos a una cuenta a nombre de la empresa y pide recibo de cada uno."
+    },
+    {
+     "titulo": {
+      "serif": "Si vas a usar",
+      "acento": "crédito"
+     },
+     "texto": "Confirma con tu banco o el Infonavit que esa vivienda se pueda comprar con él."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Revisamos una preventa",
+     "script": "juntos?"
+    },
+    "texto": "Antes de apartar, la vemos con calma.",
+    "palabra": "PREVENTA"
+   }
+  },
+  {
+   "dia": 32,
+   "tipo": "carrusel",
+   "etiqueta": "Rentar o comprar",
+   "titulo": {
+    "serif": "¿Rentar o",
+    "script": "comprar?"
+   },
+   "bajada": "No hay una respuesta para todos. Hazte estas preguntas.",
+   "boton": "Desliza",
+   "foto": "sala",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "¿Cuánto tiempo piensas",
+      "acento": "vivir aquí?"
+     },
+     "texto": "Si te vas a mover pronto de [tu ciudad], rentar te da flexibilidad."
+    },
+    {
+     "titulo": {
+      "serif": "¿Tienes ahorro para el",
+      "acento": "enganche?"
+     },
+     "texto": "Y para los gastos de escrituración, sin quedarte sin colchón para emergencias."
+    },
+    {
+     "titulo": {
+      "serif": "¿Tu ingreso es",
+      "acento": "estable?"
+     },
+     "texto": "Para comprometerte con una mensualidad durante años."
+    },
+    {
+     "titulo": {
+      "serif": "¿Ya sabes cuánto te",
+      "acento": "prestan?"
+     },
+     "texto": "Consulta tu precalificación con tu banco o en Mi Cuenta Infonavit."
+    },
+    {
+     "titulo": {
+      "serif": "Si dijiste que sí a",
+      "acento": "casi todo"
+     },
+     "texto": "Vale la pena hacer números. Si no, rentar un tiempo más también es una buena decisión."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Hacemos los números",
+     "script": "juntos?"
+    },
+    "texto": "Para decidir si te conviene seguir rentando o comprar.",
+    "palabra": "DECIDIR"
+   }
+  },
+  {
+   "dia": 35,
+   "tipo": "carrusel",
+   "etiqueta": "Evita fraudes",
+   "titulo": {
+    "serif": "Antes de dar un solo",
+    "script": "peso"
+   },
+   "bajada": "Por una casa o un depa, revisa estas señales.",
+   "boton": "Desliza",
+   "foto": "puerta",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Precio muy por debajo de la",
+      "acento": "zona"
+     },
+     "texto": "Si suena demasiado bueno, pregunta por qué."
+    },
+    {
+     "titulo": {
+      "serif": "Prisa por",
+      "acento": "depositar"
+     },
+     "texto": "Desconfía si te piden apartar sin haber visto la propiedad o sin firmar nada."
+    },
+    {
+     "titulo": {
+      "serif": "Pagos a cuentas",
+      "acento": "personales"
+     },
+     "texto": "O en efectivo, sin recibo. Paga solo a cuentas verificadas y pide comprobante."
+    },
+    {
+     "titulo": {
+      "serif": "Quien vende o renta no es el",
+      "acento": "dueño"
+     },
+     "texto": "Pide ver escritura e identificación, y que los nombres coincidan."
+    },
+    {
+     "titulo": {
+      "serif": "Recuerda: el trámite es",
+      "acento": "gratuito"
+     },
+     "texto": "El trámite de tu crédito Infonavit es gratuito. Nadie te debe cobrar por tramitarlo."
+    },
+    {
+     "titulo": {
+      "serif": "Lo que revisa el",
+      "acento": "notario"
+     },
+     "texto": "Si vas a comprar, el notario revisa que la casa no tenga adeudos ni gravámenes antes de la firma."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Tienes dudas de una",
+     "script": "propiedad?"
+    },
+    "texto": "Antes de dar un solo peso, la revisamos juntos.",
+    "palabra": "REVISAR"
+   }
+  },
+  {
+   "dia": 40,
+   "tipo": "post",
+   "etiqueta": "Vendedores · Precio",
+   "titulo": {
+    "serif": "No infles tu",
+    "script": "precio de salida"
+   },
+   "bajada": "“Lo pongo más caro y ya luego bajo” casi nunca ayuda.",
+   "boton": "Escríbeme \"PRECIO\"",
+   "foto": "calle"
+  },
+  {
+   "dia": 42,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores · Visitas",
+   "titulo": {
+    "serif": "Checklist para tu",
+    "script": "primera visita"
+   },
+   "bajada": "Lleva esta lista y no se te pasa nada.",
+   "boton": "Desliza",
+   "foto": "cocina",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Revisa el",
+      "acento": "agua"
+     },
+     "texto": "Abre las llaves y jala la cadena. Revisa la presión y si sale agua caliente."
+    },
+    {
+     "titulo": {
+      "serif": "Busca",
+      "acento": "humedad"
+     },
+     "texto": "Manchas en techos, esquinas y detrás de los muebles."
+    },
+    {
+     "titulo": {
+      "serif": "Prueba la",
+      "acento": "luz"
+     },
+     "texto": "Apagadores y contactos. Pregunta por la antigüedad de la instalación."
+    },
+    {
+     "titulo": {
+      "serif": "Ruido y",
+      "acento": "entorno"
+     },
+     "texto": "Escucha la calle y pregunta a un vecino cómo es la colonia."
+    },
+    {
+     "titulo": {
+      "serif": "Pide los",
+      "acento": "papeles"
+     },
+     "texto": "La escritura y los recibos de predial y agua al corriente."
+    },
+    {
+     "titulo": {
+      "serif": "Toma fotos y",
+      "acento": "notas"
+     },
+     "texto": "De todo. Después de tres casas, todas se te van a revolver."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Te acompaño",
+     "script": "a la visita?"
+    },
+    "texto": "Guarda este post y llévalo a la casa que vas a ver.",
+    "palabra": "VISITA"
+   }
+  },
+  {
+   "dia": 45,
+   "tipo": "carrusel",
+   "etiqueta": "Cómo trabajo",
+   "titulo": {
+    "serif": "Así es trabajar",
+    "script": "conmigo"
+   },
+   "bajada": "El proceso, paso a paso.",
+   "boton": "Desliza",
+   "foto": "comedor",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Primero",
+      "acento": "platicamos"
+     },
+     "texto": "Me cuentas qué buscas o qué quieres vender, y en qué tiempos."
+    },
+    {
+     "titulo": {
+      "serif": "Revisamos",
+      "acento": "papeles"
+     },
+     "texto": "Antes de avanzar, vemos que todo esté en orden."
+    },
+    {
+     "titulo": {
+      "serif": "Hacemos el",
+      "acento": "plan"
+     },
+     "texto": "Si compras, buscamos opciones en tu presupuesto. Si vendes, definimos precio y cómo presentar tu casa."
+    },
+    {
+     "titulo": {
+      "serif": "Visitas y",
+      "acento": "ofertas"
+     },
+     "texto": "Te acompaño en cada cita y en la negociación."
+    },
+    {
+     "titulo": {
+      "serif": "Llega la",
+      "acento": "firma"
+     },
+     "texto": "Coordinamos con el notario y te explico cada documento."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Agendamos una primera",
+     "script": "plática?"
+    },
+    "texto": "Tú decides en cada paso. Yo te doy la información para que decidas con calma.",
+    "palabra": "PASOS"
+   }
+  },
+  {
+   "dia": 47,
+   "tipo": "post",
+   "etiqueta": "Rentas · Dueños",
+   "titulo": {
+    "serif": "¿Quieres rentar tu depa sin",
+    "script": "perseguir pagos?"
+   },
+   "bajada": "Todo por escrito, inventario con fotos y un inquilino bien revisado.",
+   "boton": "Escríbeme \"RENTA\"",
+   "foto": "recamara"
+  },
+  {
+   "dia": 48,
+   "tipo": "carrusel",
+   "etiqueta": "Vendedores",
+   "titulo": {
+    "serif": "¿Qué hace un asesor por ti",
+    "script": "y qué no?"
+   },
+   "bajada": "Lo que sí hago y lo que no.",
+   "boton": "Desliza",
+   "foto": "detalle",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Lo que",
+      "acento": "sí hago"
+     },
+     "lista": [
+      "Te ayudo a poner un precio con datos de tu zona",
+      "Preparo fotos y anuncios, y atiendo a los interesados"
+     ],
+     "marca": "si"
+    },
+    {
+     "titulo": {
+      "serif": "De la visita a la",
+      "acento": "firma"
+     },
+     "lista": [
+      "Filtro compradores y organizo visitas",
+      "Te acompaño en la negociación",
+      "Coordino con el notario hasta la firma"
+     ],
+     "marca": "si"
+    },
+    {
+     "titulo": {
+      "serif": "Lo que",
+      "acento": "no hago"
+     },
+     "lista": [
+      "No te prometo un precio ni una fecha de venta",
+      "No sustituyo al notario ni a tu contador"
+     ],
+     "marca": "no",
+     "texto": "El precio y la fecha los decide el mercado. Para temas legales o de impuestos, te digo con quién ir."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Platicamos de tu",
+     "script": "venta?"
+    },
+    "texto": "Prefiero decírtelo claro desde el principio.",
+    "palabra": "ASESOR"
+   }
+  },
+  {
+   "dia": 52,
+   "tipo": "post",
+   "etiqueta": "Compradores · Presupuesto",
+   "titulo": {
+    "serif": "Calcula tu mensualidad",
+    "script": "cómoda"
+   },
+   "bajada": "Ingresos fijos, menos gastos fijos y un colchón: lo que sobra es tu mensualidad.",
+   "boton": "Escríbeme \"MENSUALIDAD\"",
+   "foto": "escritorio"
+  },
+  {
+   "dia": 54,
+   "tipo": "carrusel",
+   "etiqueta": "Rentas · Entrega",
+   "titulo": {
+    "serif": "El día de la",
+    "script": "entrega"
+   },
+   "bajada": "De ese día depende que el depósito se regrese sin pleitos.",
+   "boton": "Desliza",
+   "foto": "llaves",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Recorre cada",
+      "acento": "espacio"
+     },
+     "texto": "Hazlo con el inquilino y toma fotos y video con fecha."
+    },
+    {
+     "titulo": {
+      "serif": "Prueba llaves y",
+      "acento": "contactos"
+     },
+     "texto": "Llaves de agua, boiler, contactos, puertas y ventanas."
+    },
+    {
+     "titulo": {
+      "serif": "Anota los",
+      "acento": "medidores"
+     },
+     "texto": "La lectura de los medidores de luz, agua y gas."
+    },
+    {
+     "titulo": {
+      "serif": "Lo que se",
+      "acento": "queda"
+     },
+     "texto": "Haz la lista: muebles, cortinas, aparatos, llaves y controles."
+    },
+    {
+     "titulo": {
+      "serif": "Firmen el",
+      "acento": "inventario"
+     },
+     "texto": "Los dos, y anéxenlo al contrato."
+    },
+    {
+     "titulo": {
+      "serif": "Al terminar la",
+      "acento": "renta"
+     },
+     "texto": "Se repite el recorrido con esa misma lista. Así se compara contra lo que se entregó y no contra la memoria de cada quien."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Quieres un formato de",
+     "script": "inventario?"
+    },
+    "texto": "Para usarlo en la entrega y al terminar la renta.",
+    "palabra": "ENTREGA"
+   }
+  },
+  {
+   "dia": 57,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores · Mitos",
+   "titulo": {
+    "serif": "Mitos de",
+    "script": "comprar casa"
+   },
+   "bajada": "¿Cuántas de estas has escuchado?",
+   "boton": "Desliza",
+   "foto": "fachada",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "“Con Infonavit solo puedes comprar",
+      "acento": "casa nueva”"
+     },
+     "texto": "También se puede usar para vivienda usada, si cumple con lo que pide el Instituto.",
+     "tipo": "mito"
+    },
+    {
+     "titulo": {
+      "serif": "“Hay que pagarle a un gestor para",
+      "acento": "el Infonavit”"
+     },
+     "texto": "El trámite de tu crédito Infonavit es gratuito.",
+     "tipo": "mito"
+    },
+    {
+     "titulo": {
+      "serif": "“El precio publicado no se",
+      "acento": "negocia”"
+     },
+     "texto": "Muchas veces hay margen. Depende del mercado y del vendedor.",
+     "tipo": "mito"
+    },
+    {
+     "titulo": {
+      "serif": "“Si ya me aprobaron el crédito, ya",
+      "acento": "está todo”"
+     },
+     "texto": "Falta el avalúo, revisar papeles y la firma ante notario.",
+     "tipo": "mito"
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Tienes otro mito que",
+     "script": "aclarar?"
+    },
+    "texto": "Ante cualquier duda de crédito, la fuente es tu banco o el Infonavit.",
+    "palabra": "MITO"
+   }
+  },
+  {
+   "dia": 65,
+   "tipo": "carrusel",
+   "etiqueta": "Vendedores",
+   "titulo": {
+    "serif": "¿Exclusiva o con",
+    "script": "varios asesores?"
+   },
+   "bajada": "Las dos formas de vender tu casa.",
+   "boton": "Desliza",
+   "foto": "terraza",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Con varios",
+      "acento": "asesores"
+     },
+     "texto": "Cada uno la publica por su lado. Puede verse en más lugares, pero también pueden salir anuncios con precios o fotos distintos, y nadie lleva el control de las visitas."
+    },
+    {
+     "titulo": {
+      "serif": "En",
+      "acento": "exclusiva"
+     },
+     "texto": "Un solo asesor se encarga de todo: un precio, un anuncio claro, un plan de promoción y un reporte de lo que pasa con cada interesado."
+    },
+    {
+     "titulo": {
+      "serif": "En cualquiera de las dos,",
+      "acento": "cuida esto"
+     },
+     "lista": [
+      "Todo por escrito: comisión, duración y qué hace el asesor",
+      "Que sepas quién atiende a cada interesado",
+      "Que puedas pedir avances cuando quieras"
+     ]
+    },
+    {
+     "titulo": {
+      "serif": "No hay una respuesta igual para",
+      "acento": "todos"
+     },
+     "texto": "Depende de tu casa y de tus tiempos."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Vemos cuál le queda a",
+     "script": "tu casa?"
+    },
+    "texto": "Comparamos las dos formas con calma.",
+    "palabra": "EXCLUSIVA"
+   }
+  },
+  {
+   "dia": 68,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores · Primera casa",
+   "titulo": {
+    "serif": "Primera casa:",
+    "script": "¿por dónde empiezo?"
+   },
+   "bajada": "Cuatro pasos y un aviso.",
+   "boton": "Desliza",
+   "foto": "puerta",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Saber cuánto puedes",
+      "acento": "pagar"
+     },
+     "texto": "Si cotizas, consulta tu precalificación en Mi Cuenta Infonavit; si no, pide una precalificación a tu banco. Así buscas con un número real."
+    },
+    {
+     "titulo": {
+      "serif": "Lo que necesitas además del",
+      "acento": "crédito"
+     },
+     "texto": "Enganche si aplica, avalúo, gastos notariales y la mudanza."
+    },
+    {
+     "titulo": {
+      "serif": "Elige zona antes que",
+      "acento": "casa"
+     },
+     "texto": "Piensa en tu trabajo, la escuela de los niños y el transporte."
+    },
+    {
+     "titulo": {
+      "serif": "Visita y",
+      "acento": "compara"
+     },
+     "texto": "Ve a varias casas, toma fotos y notas, y revisa los papeles antes de apartar."
+    },
+    {
+     "titulo": {
+      "serif": "Ojo: el trámite es",
+      "acento": "gratuito"
+     },
+     "texto": "El trámite de tu crédito Infonavit es gratuito. Si alguien te quiere cobrar por tramitarlo, desconfía."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Armamos tu",
+     "script": "plan?"
+    },
+    "texto": "Te ayudo a armarlo, paso por paso.",
+    "palabra": "PRIMERA"
+   }
+  },
+  {
+   "dia": 71,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores",
+   "titulo": {
+    "serif": "Depa o casa: lo que le queda a",
+    "script": "tu vida"
+   },
+   "bajada": "No hay respuesta correcta. Te dejo pros, contras y preguntas.",
+   "boton": "Desliza",
+   "foto": "ventana",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Vivir en",
+      "acento": "departamento"
+     },
+     "lista": [
+      "Suele estar en zonas con más servicios y transporte",
+      "Menos espacio que mantener"
+     ],
+     "marca": "si",
+     "texto": "Ojo: pagas cuota de mantenimiento y sigues las reglas del condominio."
+    },
+    {
+     "titulo": {
+      "serif": "Vivir en",
+      "acento": "casa"
+     },
+     "lista": [
+      "Más espacio y, muchas veces, patio o cochera",
+      "Más libertad para hacer cambios"
+     ],
+     "marca": "si",
+     "texto": "Ojo: el mantenimiento corre por tu cuenta."
+    },
+    {
+     "titulo": {
+      "serif": "Preguntas para",
+      "acento": "decidir"
+     },
+     "lista": [
+      "¿Cuánto tiempo pasas en casa y cuánto en traslados?",
+      "¿Tienes niños, mascotas o planes de crecer la familia?",
+      "¿Prefieres pagar mantenimiento o encargarte tú?"
+     ]
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Ya lo tienes",
+     "script": "claro?"
+    },
+    "texto": "Te mando lo que hay en [tu zona]. Si no, guarda este post y respóndete con calma.",
+    "palabra": "OPCIONES"
+   }
+  },
+  {
+   "dia": 77,
+   "tipo": "carrusel",
+   "etiqueta": "Vendedores · Oferta",
+   "titulo": {
+    "serif": "¡Aceptaste una oferta!",
+    "script": "¿Y ahora?"
+   },
+   "bajada": "Esto es lo que suele seguir.",
+   "boton": "Desliza",
+   "foto": "firma",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Acuerdo por",
+      "acento": "escrito"
+     },
+     "texto": "Precio, forma de pago y fechas, muchas veces en una promesa de compraventa."
+    },
+    {
+     "titulo": {
+      "serif": "Papeles para el",
+      "acento": "notario"
+     },
+     "texto": "Escritura, identificaciones, predial y agua al corriente, y lo demás que te pida."
+    },
+    {
+     "titulo": {
+      "serif": "El",
+      "acento": "avalúo"
+     },
+     "texto": "Si el comprador usa crédito, el banco o el Infonavit pide un avalúo de la casa."
+    },
+    {
+     "titulo": {
+      "serif": "Autorización del",
+      "acento": "crédito"
+     },
+     "texto": "Los tiempos dependen de cada institución."
+    },
+    {
+     "titulo": {
+      "serif": "Firma y",
+      "acento": "entrega"
+     },
+     "texto": "Se firma la escritura ante notario y se acuerda cuándo se entregan las llaves."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Tienes una oferta en la",
+     "script": "mesa?"
+    },
+    "texto": "El orden y los tiempos cambian en cada caso. Tu notario te dice exactamente qué necesita.",
+    "palabra": "OFERTA"
+   }
+  },
+  {
+   "dia": 79,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores · Visitas",
+   "titulo": {
+    "serif": "5 preguntas para hacer en la",
+    "script": "visita"
+   },
+   "bajada": "Llévalas anotadas.",
+   "boton": "Desliza",
+   "foto": "bano",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "¿Por qué se",
+      "acento": "vende?"
+     },
+     "texto": "La respuesta te da contexto para negociar."
+    },
+    {
+     "titulo": {
+      "serif": "¿Los papeles están en",
+      "acento": "orden?"
+     },
+     "texto": "Escritura, predial y agua al corriente."
+    },
+    {
+     "titulo": {
+      "serif": "¿Qué se queda en la",
+      "acento": "casa?"
+     },
+     "texto": "Cocina, closets, boiler, cortinas."
+    },
+    {
+     "titulo": {
+      "serif": "¿Ha tenido humedad o",
+      "acento": "goteras?"
+     },
+     "texto": "Pregunta también por reparaciones grandes."
+    },
+    {
+     "titulo": {
+      "serif": "¿Cuánto se paga de",
+      "acento": "servicios?"
+     },
+     "texto": "Si es condominio, pregunta también por la cuota de mantenimiento."
+    },
+    {
+     "titulo": {
+      "serif": "Además, abre las",
+      "acento": "llaves"
+     },
+     "texto": "Prende la luz en cada cuarto y fíjate en paredes y techos.",
+     "extra": true
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Quieres que te",
+     "script": "acompañe?"
+    },
+    "texto": "Guarda este post para tu próxima visita.",
+    "palabra": "PREGUNTAS"
+   }
+  },
+  {
+   "dia": 85,
+   "tipo": "post",
+   "etiqueta": "Vendedores · Precio",
+   "titulo": {
+    "serif": "Tu casa vale lo que",
+    "script": "pagan por ella"
+   },
+   "bajada": "No lo que pediste. El valor lo marca el mercado.",
+   "boton": "Escríbeme \"VALOR\"",
+   "foto": "fachada"
+  },
+  {
+   "dia": 86,
+   "tipo": "carrusel",
+   "etiqueta": "Compradores · Anuncios",
+   "titulo": {
+    "serif": "Aprende a leer un",
+    "script": "anuncio"
+   },
+   "bajada": "Antes de llamar por una casa.",
+   "boton": "Desliza",
+   "foto": "ventana",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Precio en",
+      "acento": "pesos"
+     },
+     "texto": "Pregunta si hay gastos aparte, como los de escrituración, que normalmente paga el comprador."
+    },
+    {
+     "titulo": {
+      "serif": "Los",
+      "acento": "metros"
+     },
+     "texto": "No es lo mismo construcción que terreno. Revisa los dos."
+    },
+    {
+     "titulo": {
+      "serif": "Datos de quien",
+      "acento": "anuncia"
+     },
+     "texto": "En la venta de vivienda, la NOM-247 pide nombre, domicilio, teléfono y correo del proveedor. Si no sabes con quién tratas, pregunta más."
+    },
+    {
+     "titulo": {
+      "serif": "Fíjate en las",
+      "acento": "fotos"
+     },
+     "texto": "Si son de la casa real o imágenes ilustrativas."
+    },
+    {
+     "titulo": {
+      "serif": "“Acepta",
+      "acento": "crédito”"
+     },
+     "texto": "Pregunta qué crédito y pide ver los papeles.",
+     "tipo": "anuncio"
+    },
+    {
+     "titulo": {
+      "serif": "Nunca des",
+      "acento": "dinero"
+     },
+     "texto": "Sin haber visto la casa y la escritura."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Quieres una segunda",
+     "script": "opinión?"
+    },
+    "texto": "Mándame el anuncio que viste y lo revisamos.",
+    "palabra": "ANUNCIO"
+   }
+  },
+  {
+   "dia": 88,
+   "tipo": "carrusel",
+   "etiqueta": "Vendedores · Paso a paso",
+   "titulo": {
+    "serif": "El calendario de tu",
+    "script": "venta"
+   },
+   "bajada": "¿Vendes este año? Así se ve el camino, paso a paso.",
+   "boton": "Desliza",
+   "foto": "calle",
+   "laminas": [
+    {
+     "titulo": {
+      "serif": "Pon en orden tus",
+      "acento": "papeles"
+     },
+     "texto": "Escritura, predial, agua y, si tienes crédito, cómo liquidarlo."
+    },
+    {
+     "titulo": {
+      "serif": "Define el",
+      "acento": "precio"
+     },
+     "texto": "Una opinión de valor con ventas recientes de tu colonia."
+    },
+    {
+     "titulo": {
+      "serif": "Prepara tu",
+      "acento": "casa"
+     },
+     "texto": "Arreglos pequeños, limpieza y fotos."
+    },
+    {
+     "titulo": {
+      "serif": "Arranca la",
+      "acento": "promoción"
+     },
+     "texto": "Publicaciones, letrero y atención a interesados."
+    },
+    {
+     "titulo": {
+      "serif": "Visitas y",
+      "acento": "ofertas"
+     },
+     "texto": "Filtrar, mostrar y negociar."
+    },
+    {
+     "titulo": {
+      "serif": "Firma en la",
+      "acento": "notaría"
+     },
+     "texto": "El notario revisa los papeles, calcula los impuestos y gastos que correspondan, y se firma la escritura."
+    }
+   ],
+   "cierre": {
+    "titulo": {
+     "serif": "¿Hacemos tu",
+     "script": "calendario?"
+    },
+    "texto": "Cada paso toma su tiempo y depende de tu casa, del comprador y de su crédito.",
+    "palabra": "CALENDARIO"
+   }
+  },
+  {
+   "dia": 89,
+   "tipo": "post",
+   "etiqueta": "Compradores · Asesoría",
+   "titulo": {
+    "serif": "Tu siguiente paso: una",
+    "script": "asesoría"
+   },
+   "bajada": "Sin compromiso, en persona o por videollamada. Sales con un plan claro.",
+   "boton": "Escríbeme \"ASESORÍA\"",
+   "foto": "comedor"
+  }
+ ],
+ "historias": [
+  {
+   "id": "story-1",
+   "dia": 6,
+   "tipo": "encuesta",
+   "etiqueta": "Vendedores",
+   "titulo": {
+    "serif": "¿Ya sabes cuánto vale tu",
+    "script": "casa hoy?"
+   },
+   "bajada": "Responde aquí. Te hago una opinión de valor sin compromiso.",
+   "opciones": [
+    "Sí",
+    "No"
+   ],
+   "foto": "fachada"
+  },
+  {
+   "id": "story-2",
+   "dia": 62,
+   "tipo": "preguntas",
+   "etiqueta": "Comprar · Vender · Rentar",
+   "titulo": {
+    "serif": "Pregúntame lo que",
+    "script": "quieras"
+   },
+   "bajada": "Respondo hoy en mis historias, sin decir quién preguntó.",
+   "foto": "sala"
+  },
+  {
+   "id": "story-3",
+   "tipo": "encuesta",
+   "etiqueta": "Comprar o rentar",
+   "titulo": {
+    "serif": "¿Compras o",
+    "script": "rentas?"
+   },
+   "bajada": "Vota y cuéntame qué buscas en [tu zona].",
+   "opciones": [
+    "Compro",
+    "Rento"
+   ],
+   "foto": "calle"
+  },
+  {
+   "id": "story-4",
+   "tipo": "encuesta",
+   "etiqueta": "Compradores",
+   "titulo": {
+    "serif": "¿Primera casa",
+    "script": "este año?"
+   },
+   "bajada": "Vota y te comparto por dónde empezar.",
+   "opciones": [
+    "Sí",
+    "Todavía no"
+   ],
+   "foto": "puerta"
+  },
+  {
+   "id": "story-5",
+   "tipo": "encuesta",
+   "etiqueta": "Compradores",
+   "titulo": {
+    "serif": "¿Casa o",
+    "script": "depa?"
+   },
+   "bajada": "Vota y cuéntame qué le queda a tu vida.",
+   "opciones": [
+    "Casa",
+    "Depa"
+   ],
+   "foto": "jardin"
+  },
+  {
+   "id": "story-6",
+   "tipo": "preguntas",
+   "etiqueta": "Rentas · Dueños",
+   "titulo": {
+    "serif": "¿Rentas tu",
+    "script": "depa?"
+   },
+   "bajada": "¿Buscas inquilino? Déjame tu duda sobre contrato o inventario.",
+   "foto": "sala"
+  }
+ ]
+}

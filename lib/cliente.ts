@@ -23,7 +23,7 @@ export async function api(ruta: string, init: RequestInit = {}) {
     r = await fetch(ruta, { ...init, headers: { ...(init.body && typeof init.body === "string" ? { "Content-Type": "application/json" } : {}), Authorization: `Bearer ${token}`, ...init.headers } });
   } catch {
     throw new Error(ruta === "/api/generar"
-      ? "Se cortó la conexión. Si tu pack se alcanzó a armar, te llega por correo en unos minutos: revisa tu correo antes de volver a intentarlo."
+      ? "Se cortó la conexión. Espera unos minutos: si te llegó el correo con el link, úsalo; si no, vuelve a armar tu pack."
       : "No hay conexión. Revisa tu internet e intenta de nuevo.");
   }
   if (!r.ok) {

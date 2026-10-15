@@ -17,6 +17,7 @@ export function reemplazar(texto: string, p: Perfil): string {
     [/\[correo\]/gi, p.correo],
     [/\[Domicilio de tu oficina\]|\[domicilio\]/gi, p.domicilio],
     [/#\[tuciudad\]/gi, "#" + hashtag(p.ciudad)],
+    [/ #\[tuzona\]/gi, hashtag(p.zona) === hashtag(p.ciudad) ? "" : " #" + hashtag(p.zona)],
     [/#\[tuzona\]/gi, "#" + hashtag(p.zona)],
     [/#\[colonia\]/gi, "#" + hashtag(col)],
     [/\[tuciudad\]/gi, hashtag(p.ciudad)],
@@ -32,10 +33,10 @@ export function reemplazar(texto: string, p: Perfil): string {
   return pares.reduce((t, [re, v]) => t.replace(re, v), texto);
 }
 
-/** "8", "8 años" o "1" → "8 años" / "1 año"; vacío → "varios años". */
+/** "8", "8 años" o "1" → "8 años" / "1 año"; vacío → "[X años]", para que el asesor lo complete (no se inventa experiencia). */
 function anios(v: string) {
   const n = (v ?? "").trim().replace(/\s*años?\.?$/i, "");
-  return !n ? "varios años" : n === "1" ? "1 año" : `${n} años`;
+  return !n ? "[X años]" : n === "1" ? "1 año" : `${n} años`;
 }
 
 /** Igual que reemplazar, pero deja [colonia] para completar: en propiedades, bump y kit es la colonia de la casa o del cliente. */
