@@ -81,3 +81,20 @@ export function coloresDeLogo(dataUrl: string): Promise<[string, string] | null>
     img.src = dataUrl;
   });
 }
+
+/** true si las 4 esquinas del logo son opacas: casi seguro trae fondo (blanco o de color) en vez de transparente. */
+export function tieneFondo(dataUrl: string): Promise<boolean> {
+  return new Promise((ok) => {
+    const img = new Image();
+    img.onload = () => {
+      const c = document.createElement("canvas");
+      c.width = img.width; c.height = img.height;
+      const x = c.getContext("2d")!;
+      x.drawImage(img, 0, 0);
+      const esquinas = [[0, 0], [img.width - 1, 0], [0, img.height - 1], [img.width - 1, img.height - 1]];
+      ok(esquinas.every(([px, py]) => x.getImageData(px, py, 1, 1).data[3] > 240));
+    };
+    img.onerror = () => ok(false);
+    img.src = dataUrl;
+  });
+}
