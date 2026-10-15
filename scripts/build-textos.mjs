@@ -45,7 +45,7 @@ for (const p of partes) {
     whatsapp,
     guion: guionM ? guionM[2].trim() : "",
     guionTipo: guionM?.[1]?.trim() ?? "",
-    nota: notaM ? notaM[1].trim() : "",
+    nota: notaM ? notaM[1].trim().replace(/^\p{Ll}/u, (c) => c.toUpperCase()) : "",
     tecnico: tecnico ? tecnico[1].trim() : null,
     story: storyM ? storyM[0].replace(/\*\*/g, "").trim() : "",
   });

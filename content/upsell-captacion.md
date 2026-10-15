@@ -12,7 +12,6 @@ La que le muestras al dueño en la primera cita, en tu laptop, tableta o impresa
 
 - [X años] ayudando a familias a vender y rentar
 - Trabajo en [tu zona] y conozco sus colonias
-- [teléfono] · [correo]
 - [Domicilio de tu oficina]
 
 Nota: Preséntate en menos de un minuto. Cuenta por qué trabajas en esta zona y pregúntale al dueño cómo te conoció. Lo importante de esta diapositiva es que te vea como una persona, no como un anuncio.

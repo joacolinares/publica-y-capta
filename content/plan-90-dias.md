@@ -12,7 +12,7 @@ Mezcla: Tu marca 16, Compradores 26, Vendedores 25, Propiedad 12, Rentas 11. Los
 | 4 | Propiedad | Recién captada en [colonia] | Post (NOM-247) |
 | 5 | Compradores | Infonavit: cómo saber cuánto te prestan | Reel sin cara |
 | 6 | Vendedores | ¿En cuánto vendo mi depa? | Story + post |
-| 7 | Tu marca | Así es un día como asesor | Reel con cara |
+| 7 | Tu marca | Así es un día como asesor/a | Reel con cara |
 | 8 | Compradores | Enganche: cuánto ahorrar y de dónde sale | Carrusel |
 | 9 | Vendedores | Por qué tu casa lleva meses publicada | Post |
 | 10 | Rentas | Antes de rentar un depa, revisa esto | Carrusel |
@@ -61,7 +61,7 @@ Mezcla: Tu marca 16, Compradores 26, Vendedores 25, Propiedad 12, Rentas 11. Los
 | 53 | Propiedad | Recién captada: recorrido en video | Reel sin cara |
 | 54 | Rentas | Qué revisar en la entrega del depa | Carrusel |
 | 55 | Vendedores | Visitas: cómo preparar tu casa el día de la cita | Post |
-| 56 | Tu marca | Lo que aprendí este año en bienes raíces | Reel con cara |
+| 56 | Tu marca | Lo que he aprendido en bienes raíces | Reel con cara |
 | 57 | Compradores | Mitos de comprar casa | Carrusel |
 | 58 | Vendedores | Cuánto tarda vender una casa | Post |
 | 59 | Compradores | Comprar para rentar: números básicos | Post |
@@ -83,12 +83,12 @@ Mezcla: Tu marca 16, Compradores 26, Vendedores 25, Propiedad 12, Rentas 11. Los
 | 75 | Compradores | Seguros de la casa con crédito | Post |
 | 76 | Rentas | Aumento de renta: lo que conviene saber | Post |
 | 77 | Vendedores | Qué pasa después de aceptar una oferta | Carrusel |
-| 78 | Tu marca | Te presento a mi equipo (o cómo trabajo solo/a) | Reel con cara |
+| 78 | Tu marca | Te presento a mi equipo (o cómo trabajo por mi cuenta) | Reel con cara |
 | 79 | Compradores | 5 preguntas para hacer en la visita | Carrusel |
 | 80 | Vendedores | Antes y después de preparar una casa | Reel sin cara |
 | 81 | Propiedad | Recién captada: recorrido en video | Reel sin cara |
 | 82 | Compradores | Cuánto ganar para comprar una casa de $[X] | Post |
-| 83 | Tu marca | Lo que nadie te dice de ser asesor | Reel con cara |
+| 83 | Tu marca | Lo que nadie te dice de ser asesor/a | Reel con cara |
 | 84 | Rentas | Rentas: cómo publicar tu depa | Post |
 | 85 | Vendedores | Tu casa vale lo que pagan por ella, no lo que pediste | Post |
 | 86 | Compradores | Cómo leer un anuncio de casa | Carrusel |

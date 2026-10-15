@@ -27,15 +27,6 @@
     "descripcion": "Sofá azul con cojines claros y mesa de centro redonda de madera junto a un ventanal"
   },
   {
-    "archivo": "cocina-1.jpg",
-    "etiqueta": "cocina",
-    "ancho": 1500,
-    "alto": 996,
-    "orientacion": "horizontal",
-    "posicion": "60% 55%",
-    "descripcion": "Cocina blanca con cubierta de madera, azulejo tipo metro y piso de madera clara"
-  },
-  {
     "archivo": "cocina-2.jpg",
     "etiqueta": "cocina",
     "ancho": 1500,

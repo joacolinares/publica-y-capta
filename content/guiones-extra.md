@@ -26,7 +26,7 @@ _Con cara · 30 a 40 s_
 | 28-33 | Plano medio, sonriendo | "Con esas tres respuestas te enseño solo lo que te sirve." | "Solo casas que sí te sirven" |
 | 33-37 | Señalas hacia abajo, donde va el texto | "¿Buscas casa en [tu zona]? Escríbeme CASA y empezamos." | "Escríbeme CASA" |
 
-**Cierre:** pide la palabra CASA por mensaje. Es corta, es la misma del texto del reel y te avisa que quien escribe está buscando casa y llegó por este video. Cuando te escriba, contéstale con las mismas 3 preguntas: la plática ya empezó.
+**Cierre:** pide la palabra CASA por mensaje. Es corta, es la misma del texto del reel y te avisa que quien escribe está buscando casa. Cuando te escriba, contéstale con las mismas 3 preguntas: la plática ya empezó.
 
 **Portada:** "3 preguntas antes de ver casas" sobre la toma en la que levantas tres dedos.
 
@@ -262,8 +262,8 @@ _Sin cara · 30 a 35 s_
 | Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
 |---|---|---|---|
 | 0-3 | Fachada de una casa; la cámara avanza despacio hacia la puerta | "5 cosas que revisar en una visita" | El gancho que elegiste |
-| 3-9 | Plano cerrado: una mano abre la llave del lavabo a todo; luego jala la cadena | "1. La presión del agua" | "Uno: abre las llaves y jala la cadena. Revisa la presión y si sale agua caliente." |
-| 9-13 | Una lámpara ilumina de lado una esquina del techo | "2. Manchas de humedad" | "Dos: busca manchas en techos, esquinas y detrás de los muebles." |
+| 3-9 | Una mano abre un closet y luego la alacena | "1. Espacio para guardar" | "Uno: abre closets y alacena. ¿Te cabe lo que tienes?" |
+| 9-13 | El boiler, toma fija; luego el tanque o el medidor de gas por fuera | "2. Gas y boiler" | "Dos: pregunta qué gas usa la casa y si el boiler funciona." |
 | 13-17 | Una mano abre la cortina y la ventana; entra la luz | "3. Luz natural y ventilación" | "Tres: abre cortinas y ventanas. ¿Entra luz? ¿Corre el aire?" |
 | 17-21 | Recorrido lento de la calle desde la banqueta | "4. Ruido y estacionamiento" | "Cuatro: escucha la calle y fíjate dónde te vas a estacionar." |
 | 21-24 | Plano cerrado de un apagador | "El 5 es el que más se olvida" | "Y el quinto es el que más se olvida." |
@@ -272,7 +272,7 @@ _Sin cara · 30 a 35 s_
 
 **Cierre:** pide la palabra LISTA, la misma del texto del reel. Es corta y le dice a la persona qué va a recibir. Cuando te escriba, mándale los 5 puntos en un mensaje y pregúntale qué zona busca.
 
-**Portada:** "Revisa esto en tu próxima visita" sobre la toma de la lámpara en la esquina del techo.
+**Portada:** "Revisa esto en tu próxima visita" sobre la toma del apagador.
 
 **Para grabarlo:**
 - Graba todo en una misma casa (una que tengas en venta o con permiso del dueño) y en el orden de la tabla: así editas en un ratito.
@@ -280,13 +280,13 @@ _Sin cara · 30 a 35 s_
 - Pon el número grande y en el mismo lugar en cada toma: ayuda a que la gente lo guarde.
 - Si no grabas voz, deja solo el texto en pantalla y una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
 
-**Ojo:** no muestres el número de la casa ni objetos personales, y no abras el tablero eléctrico: grábalo cerrado, por fuera.
+**Ojo:** no muestres el número de la casa ni objetos personales. No abras el tablero eléctrico ni muevas las llaves del gas: grábalos como están, por fuera.
 
 **Texto del reel**
 
 > ¿Vas a ver una casa? Guarda este video para tu próxima visita 📌
 >
-> Agua, humedad, luz y ventilación, ruido y estacionamiento, e instalación eléctrica. Toma fotos y notas de todo: después de tres casas, todas se te van a revolver.
+> Closets y alacena, gas y boiler, luz y ventilación, ruido y estacionamiento, e instalación eléctrica. Toma fotos y notas de cada casa para compararlas con calma.
 >
 > ¿Buscas casa en [tu zona]? Escríbeme la palabra LISTA y te la mando por mensaje.
 >
@@ -316,7 +316,7 @@ _Sin cara · 40 a 45 s_
 | 28-36 | La ventana del depa con luz de la tarde | "Las reglas cambian según el estado" | "Las reglas de arrendamiento cambian según el estado. Si tienes dudas sobre una cláusula, consúltalo con un abogado o notario antes de firmar." |
 | 36-41 | Fondo liso con tu logo | "Escríbeme RENTA · [Tu nombre]" | "¿Rentas tu depa en [tu zona]? Escríbeme RENTA y te ayudo a encontrar inquilino." |
 
-**Cierre:** pide la palabra RENTA, la misma del texto del reel. Quien la manda tiene un depa para rentar: pregúntale en qué colonia está y si ya tiene sus papeles listos.
+**Cierre:** pide la palabra RENTA, la misma del texto del reel. Quien la manda puede tener un depa para rentar o buscar uno: pregúntale cuál de las dos y en qué colonia.
 
 **Portada:** "¿Rentas tu depa? Ten esto listo" sobre la toma de la llave girando en la puerta.
 
@@ -347,7 +347,7 @@ _Sin cara · 40 a 45 s_
 **La idea:** que quien va a comprar no se lleve sorpresas: el precio no es todo lo que paga. Sin cifras, porque cambian por estado y por caso. Quien quiere su cuenta completa te escribe.
 
 **Gancho (elige uno para los primeros 3 segundos):**
-1. "Compraste en $[precio]. ¿Eso es todo?"
+1. "Ya encontraste casa. ¿El precio es todo lo que vas a pagar?"
 2. "El precio de la casa no es todo lo que pagas."
 3. "Ya juntaste el enganche. ¿Y lo demás?"
 
@@ -370,7 +370,6 @@ _Sin cara · 40 a 45 s_
 **Para grabarlo:**
 - Escribe cada concepto a mano en la libreta mientras grabas: es una toma fácil y se ve real. Sin cifras.
 - Para la firma, una hoja en blanco y una pluma; no muestres escrituras, recibos ni estados de cuenta reales.
-- En el gancho 1, pon un precio redondo de las casas de tu zona, o dilo sin precio: "Compraste tu casa. ¿Eso es todo?".
 - Si no grabas voz, deja solo el texto en pantalla y una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
 
 **Ojo:** no pongas montos ni porcentajes en pantalla ni en la voz: cambian por estado y por caso. Tampoco uses logos de bancos ni del Infonavit.
@@ -448,9 +447,9 @@ _Sin cara · 35 a 40 s_
 |---|---|---|---|
 | 0-3 | Cajas apiladas en una sala vacía; la cámara entra por la puerta | "¿Te mudas? Checklist rápido" | El gancho que elegiste |
 | 3-9 | Plano cerrado del medidor de luz; una mano le toma foto con el celular | "1. Anota la lectura de los medidores" | "Uno, el día que llegas: anota la lectura de los medidores de luz, agua y gas." |
-| 9-13 | Un recibo doblado sobre una caja, sin datos a la vista | "2. Cambia luz y agua a tu nombre" | "Dos: cambia luz y agua a tu nombre." |
+| 9-13 | Un recibo doblado sobre una caja, sin datos a la vista | "2. Si compraste: luz y agua a tu nombre" | "Dos: si compraste, cambia luz y agua a tu nombre." |
 | 13-16 | Plano cerrado de la puerta de entrada | "Este no lo dejes para después" | "Y el tercero no lo dejes para después." |
-| 16-22 | Una mano gira la llave en la chapa; luego, llaves nuevas en la palma | "3. Cambia la chapa de la puerta" | "Tres: cambia la chapa de la puerta. No sabes cuántas copias de esa llave hay por ahí." |
+| 16-22 | Una mano gira la llave en la chapa; luego, llaves nuevas en la palma | "3. Cambia la chapa" | "Tres: cambia la chapa; si rentas, pídeselo al dueño. Nadie sabe cuántas copias hay." |
 | 22-26 | Una mano con el celular, en una pantalla sin datos ni logos | "4. Actualiza tu domicilio en el banco" | "Cuatro: actualiza tu domicilio en el banco." |
 | 26-32 | Papeles que entran a una carpeta; la carpeta se cierra | "5. Tus papeles en una sola carpeta" | "Cinco: guarda tus papeles en una sola carpeta. Cuando los necesites, vas a saber dónde están." |
 | 32-37 | Fondo liso con tu logo, o unas llaves sobre una mesa con luz de tarde | "Bienvenidos a casa · Escríbeme MUDANZA · [Tu nombre]" | "¿Te mudas pronto? Escríbeme MUDANZA y te mando esta lista." |
@@ -471,7 +470,7 @@ _Sin cara · 35 a 40 s_
 
 > Si te acabas de mudar o estás por hacerlo, guarda este checklist 📦
 >
-> Anota la lectura de los medidores, cambia luz y agua a tu nombre, cambia la chapa de la puerta, actualiza tu domicilio en el banco y guarda tus papeles en una sola carpeta.
+> Anota la lectura de los medidores, cambia luz y agua a tu nombre si compraste, cambia la chapa (si rentas, con permiso del dueño), actualiza tu domicilio en el banco y guarda tus papeles en una sola carpeta.
 >
 > ¿Te mudas pronto? Escríbeme la palabra MUDANZA y te mando esta lista.
 >

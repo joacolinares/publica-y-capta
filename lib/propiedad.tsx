@@ -5,6 +5,7 @@ import React from "react";
 import { z } from "zod";
 import { NUM, SANS, SERIF } from "./estilo";
 import { fotoPropia } from "./fotos";
+import { ancho as medirAncho, lineas } from "./medir";
 import { Abs, Boton, Cap, Firma, Img, Lienzo, Monograma, TituloPortada, contexto, type Ctx, type Marca } from "./piezas";
 
 export const PropiedadSchema = z.object({
@@ -45,28 +46,52 @@ async function fotoDe(c: Ctx, x: Propiedad, w: number, h: number, oscurecer = 0)
   try { return await fotoPropia(x.foto, w, h, { oscurecer }); } catch { return null; }
 }
 
-function SinFoto({ c, w, h }: { c: Ctx; w: number; h: number }) {
+/** `arriba`: espacio que se deja abajo, para que el monograma no quede detrás del título. */
+function SinFoto({ c, w, h, arriba = 0 }: { c: Ctx; w: number; h: number; arriba?: number }) {
   return (
-    <div style={{ display: "flex", width: w, height: h, background: c.m.e.arena, alignItems: "center", justifyContent: "center" }}>
+    <div style={{ display: "flex", width: w, height: h, background: c.m.e.arena, alignItems: "center", justifyContent: "center", ...(arriba ? { paddingBottom: arriba } : {}) }}>
       <Monograma m={c.m} size={180} color={c.m.e.topo} />
     </div>
   );
 }
 
+const rolDe = (g: string) => (g === "a" ? "Asesora inmobiliaria" : g === "o" ? "Asesor inmobiliario" : "Asesoría inmobiliaria");
+const domicilioNom = (c: Ctx, x: Propiedad) => `${c.m.perfil.domicilio}${x.operacion === "venta" && !cerrada(x) ? " · Precio en pesos mexicanos" : ""}`;
+const cabeJunto = (nombre: string, resto: string) => medirAncho(nombre, "sansNegrita", 21, 0.6) + 8 + medirAncho(`· ${resto}`, "sans", 21, 0.6) <= 920 - 1;
+
+/** Renglones del bloque NOM, medidos como los corta satori. El nombre comercial va solo si el primer renglón sigue entrando en una línea. */
+function armarNom(c: Ctx, x: Propiedad) {
+  const P = c.m.perfil;
+  const contacto = `${rolDe(P.genero)} · Tel. ${P.whatsapp} · ${P.correo}`;
+  const conComercial = P.nombreComercial ? `${P.nombreComercial} · ${contacto}` : "";
+  const resto = conComercial && cabeJunto(P.nombre, conComercial) ? conComercial : contacto;
+  const juntos = cabeJunto(P.nombre, resto);
+  const l1 = juntos ? 1 : 1 + lineas(resto, "sans", 21, 920, 0.6).length;
+  const l2 = lineas(domicilioNom(c, x), "sans", 21, 920, 0.6).length;
+  return { resto, juntos, alto: 48 + 31.5 * (l1 + l2) };
+}
+const altoNom = (c: Ctx, x: Propiedad) => armarNom(c, x).alto;
+
 /** Bloque de la NOM-247: quién anuncia y cómo contactarlo. En venta agrega "Precio en pesos mexicanos". */
 function Nom({ c, x, abajo = 0, alto }: { c: Ctx; x: Propiedad; abajo?: number; alto?: number }) {
   const P = c.m.perfil, e = c.m.e;
-  const rol = P.genero === "a" ? "Asesora inmobiliaria" : P.genero === "o" ? "Asesor inmobiliario" : "Asesoría inmobiliaria";
+  const { resto, juntos } = armarNom(c, x);
   return (
     <div style={{ position: "absolute", left: 0, right: 0, bottom: abajo, ...(alto ? { height: alto } : {}), display: "flex", flexDirection: "column", justifyContent: "center", padding: "24px 80px", background: e.carbon, color: e.arena, fontFamily: SANS, fontSize: 21, lineHeight: 1.5, letterSpacing: 0.6 }}>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        <span style={{ color: e.blanco, fontWeight: 600, marginRight: 8 }}>{P.nombre}</span>
-        <span>{`· ${rol} · Tel. ${P.whatsapp} · ${P.correo}`}</span>
+      <div style={{ display: "flex", flexDirection: juntos ? "row" : "column" }}>
+        <span style={{ color: e.blanco, fontWeight: 600, ...(juntos ? { marginRight: 8 } : {}) }}>{P.nombre}</span>
+        <span>{juntos ? `· ${resto}` : resto}</span>
       </div>
-      <span>{`${P.domicilio}${x.operacion === "venta" && !cerrada(x) ? " · Precio en pesos mexicanos" : ""}`}</span>
+      <span>{domicilioNom(c, x)}</span>
     </div>
   );
 }
+
+/** "En venta · colonia, ciudad" en una línea; si la colonia es muy larga (ya va en el título), solo la ciudad. */
+const capUbicacion = (c: Ctx, x: Propiedad) => {
+  const t = `En ${x.operacion} · ${ubicacion(c, x)}`;
+  return medirAncho(t.toUpperCase(), "sansNegrita", 18, 18 * 0.3) <= 920 ? t : `En ${x.operacion} · ${c.m.perfil.ciudad}`;
+};
 
 function Datos({ c, x, color, size = 24 }: { c: Ctx; x: Propiedad; color: string; size?: number }) {
   const d = datosDe(x);
@@ -86,20 +111,21 @@ const ubicacion = (c: Ctx, x: Propiedad) => `${x.colonia}, ${c.m.perfil.ciudad}`
 async function PostFicha(c: Ctx, x: Propiedad) {
   const e = c.m.e;
   const foto = await fotoDe(c, x, 1080, 720);
+  const an = altoNom(c, x);
   return (
     <Lienzo fondo={e.crema} color={e.carbon}>
       {foto ? <Img src={foto} w={1080} h={720} style={{ left: 0, top: 0 }} /> : <Abs style={{ left: 0, top: 0 }}><SinFoto c={c} w={1080} h={720} /></Abs>}
       <Abs style={{ left: 80, top: 80, background: e.crema, padding: "16px 26px" }}><Cap color={e.carbon} size={22}>{x.etiqueta}</Cap></Abs>
       <Abs style={{ right: 80, top: 70 }}><Firma m={c.m} tono="oscuro" alto={78} /></Abs>
-      <Abs style={{ left: 80, right: 80, top: 760, height: 450, flexDirection: "column", justifyContent: "center" }}>
-        <Cap color={e.topo} size={22}>{`En ${x.operacion} · ${ubicacion(c, x)}`}</Cap>
+      <Abs style={{ left: 80, right: 80, top: 740, bottom: an + 24, flexDirection: "column", justifyContent: "center" }}>
+        <Cap color={e.topoTexto} size={22} max={920}>{capUbicacion(c, x)}</Cap>
         <div style={{ display: "flex", marginTop: 18 }}>
-          <TituloPortada t={{ serif: `${corto(x.tipo)} en`, script: x.colonia }} ancho={920} color={e.carbon} colorScript={e.acento} serifMax={92} serifLineas={1} sangria={90} scriptMax={124} />
+          <TituloPortada t={{ serif: `${corto(x.tipo)} en`, script: x.colonia }} ancho={920} color={e.carbon} colorScript={e.acento} serifMax={92} serifLineas={1} sangria={90} scriptMax={124} alto={1350 - 740 - an - 24 - 30 - 18 - 26 - 72 - 20 - 32} />
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 26 }}>
           <div style={{ display: "flex", fontFamily: NUM, fontWeight: 700, fontSize: 54, color: e.carbon }}>{precioDe(x)}</div>
         </div>
-        <div style={{ display: "flex", marginTop: 20 }}><Datos c={c} x={x} color={e.topo} /></div>
+        <div style={{ display: "flex", marginTop: 20 }}><Datos c={c} x={x} color={e.topoTexto} /></div>
       </Abs>
       <Nom c={c} x={x} />
     </Lienzo>
@@ -110,6 +136,7 @@ async function PostFicha(c: Ctx, x: Propiedad) {
 async function PostPrecio(c: Ctx, x: Propiedad) {
   const e = c.m.e;
   const foto = await fotoDe(c, x, 540, 1230);
+  const an = altoNom(c, x);
   return (
     <Lienzo fondo={e.carbon} color={e.blanco}>
       {foto ? <Img src={foto} w={540} h={1230} style={{ right: 0, top: 0 }} /> : <Abs style={{ right: 0, top: 0 }}><SinFoto c={c} w={540} h={1230} /></Abs>}
@@ -117,7 +144,7 @@ async function PostPrecio(c: Ctx, x: Propiedad) {
         <Cap color={e.arena} size={22}>{corto(x.tipo)}</Cap>
         <Cap color={e.arena} size={22}>{x.colonia}</Cap>
       </Abs>
-      <Abs style={{ left: 80, top: 260, width: 420, height: 800, flexDirection: "column", justifyContent: "center" }}>
+      <Abs style={{ left: 80, top: 260, width: 420, height: Math.min(800, 1350 - 260 - an - 30 - 64 - 24), flexDirection: "column", justifyContent: "center" }}>
         <div style={{ display: "flex", fontFamily: "Pinyon", fontSize: 140, lineHeight: 1.1, color: e.acentoOscuro }}>Nuevo</div>
         <div style={{ display: "flex", fontFamily: SERIF, fontWeight: 500, fontSize: 150, lineHeight: 1, marginTop: -24 }}>precio</div>
         <div style={{ display: "flex", width: 120, height: 2, background: e.arena, margin: "44px 0", opacity: 0.6 }} />
@@ -126,7 +153,7 @@ async function PostPrecio(c: Ctx, x: Propiedad) {
           {datosDe(x).map((t) => <span key={t} style={{ fontFamily: SANS, fontSize: 26, color: e.arena }}>{t}</span>)}
         </div>
       </Abs>
-      <Abs style={{ left: 80, top: 1110 }}><Firma m={c.m} tono="oscuro" alto={64} /></Abs>
+      <Abs style={{ left: 80, bottom: an + 30 }}><Firma m={c.m} tono="oscuro" alto={64} /></Abs>
       <Nom c={c} x={x} />
     </Lienzo>
   );
@@ -136,11 +163,12 @@ async function PostPrecio(c: Ctx, x: Propiedad) {
 async function PostCierre(c: Ctx, x: Propiedad) {
   const e = c.m.e;
   const foto = await fotoDe(c, x, 1080, 1230, 0.35);
+  const an = altoNom(c, x);
   return (
     <Lienzo fondo={e.carbon} color={e.blanco}>
       {foto ? <Img src={foto} w={1080} h={1230} style={{ left: 0, top: 0 }} /> : null}
-      <Abs style={{ left: 70, top: 70, right: 70, bottom: 190, border: "2px solid rgba(255,253,249,0.7)" }} />
-      <Abs style={{ left: 120, right: 120, top: 120, height: 990, flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <Abs style={{ left: 70, top: 70, right: 70, bottom: an + 79, border: "2px solid rgba(255,253,249,0.7)" }} />
+      <Abs style={{ left: 120, right: 120, top: 120, bottom: an + 129, flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
         <Cap color={e.blanco} size={24}>{x.etiqueta === "Vendida" ? "Otra familia con llaves nuevas" : "Un hogar nuevo para alguien"}</Cap>
         <div style={{ display: "flex", fontFamily: "Pinyon", fontSize: 230, lineHeight: 1.15, marginTop: 20, color: e.blanco }}>{palabraCierre(x)}</div>
         <div style={{ display: "flex", fontFamily: SERIF, fontStyle: "italic", fontWeight: 500, fontSize: 48, marginTop: 6, color: e.arena }}>{`${corto(x.tipo)} en ${x.colonia}`}</div>
@@ -167,25 +195,28 @@ export async function historiaPropiedad(m: Marca, x: Propiedad) {
   const e = m.e;
   const foto = await fotoDe(c, x, 1080, 1920, cerrada(x) ? 0.3 : 0);
   const titulo = cerrada(x) ? { serif: `${corto(x.tipo)} en ${x.colonia}`, script: palabraCierre(x) } : { serif: `${corto(x.tipo)} en`, script: x.colonia };
+  const an = altoNom(c, x);
+  // El bloque va pegado arriba del NOM; el título se achica para no subir a la parte clara de la foto.
+  const libre = 1920 - 230 - an - 30 - 760 - (cerrada(x) ? 0 : 48 + 26 + 74 + 20 + 30 + 30 + 70);
   const el = (
     <Lienzo fondo={e.carbon} color={e.blanco}>
-      {foto ? <Img src={foto} w={1080} h={1920} style={{ left: 0, top: 0 }} /> : <Abs style={{ left: 0, top: 0 }}><SinFoto c={c} w={1080} h={1920} /></Abs>}
-      <Abs style={{ left: 0, top: 0, width: 1080, height: 1920, backgroundImage: "linear-gradient(180deg, rgba(43,42,40,0.55) 0%, rgba(43,42,40,0) 22%, rgba(43,42,40,0) 45%, rgba(43,42,40,0.88) 72%, rgba(43,42,40,0.95) 100%)" }} />
+      {foto ? <Img src={foto} w={1080} h={1920} style={{ left: 0, top: 0 }} /> : <Abs style={{ left: 0, top: 0 }}><SinFoto c={c} w={1080} h={1920} arriba={900} /></Abs>}
+      <Abs style={{ left: 0, top: 0, width: 1080, height: 1920, backgroundImage: "linear-gradient(180deg, rgba(43,42,40,0.55) 0%, rgba(43,42,40,0) 20%, rgba(43,42,40,0) 35%, rgba(43,42,40,0.75) 52%, rgba(43,42,40,0.95) 75%)" }} />
       <Abs style={{ left: 80, right: 80, top: 230, justifyContent: "space-between", alignItems: "center" }}>
         <Cap color={e.blanco} size={24}>{x.etiqueta}</Cap>
         <Firma m={m} tono="oscuro" alto={72} />
       </Abs>
-      <Abs style={{ left: 80, right: 80, top: 1000, height: 480, flexDirection: "column", justifyContent: "flex-end" }}>
-        {!cerrada(x) ? <Cap color={e.arena} size={22} style={{ marginBottom: 18 }}>{`En ${x.operacion} · ${m.perfil.ciudad}`}</Cap> : null}
-        <TituloPortada t={titulo} ancho={920} color={e.blanco} colorScript={e.acentoOscuro} serifMax={cerrada(x) ? 70 : 120} serifLineas={cerrada(x) ? 2 : 1} sangria={cerrada(x) ? 0 : 90} scriptMax={cerrada(x) ? 200 : 160} />
+      <Abs style={{ left: 80, right: 80, bottom: 230 + an + 30, flexDirection: "column" }}>
+        {!cerrada(x) ? <Cap color={e.arena} size={22} max={920} style={{ marginBottom: 18 }}>{`En ${x.operacion} · ${m.perfil.ciudad}`}</Cap> : null}
+        <TituloPortada t={titulo} ancho={920} color={e.blanco} colorScript={e.acentoOscuro} serifMax={cerrada(x) ? 70 : 120} serifLineas={cerrada(x) ? 2 : 1} sangria={cerrada(x) ? 0 : 90} scriptMax={cerrada(x) ? 200 : 160} alto={cerrada(x) ? libre : Math.min(300, libre)} />
         {!cerrada(x) ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 20, marginTop: 26 }}>
             <div style={{ display: "flex", fontFamily: NUM, fontWeight: 700, fontSize: 56 }}>{precioDe(x)}</div>
             <Datos c={c} x={x} color={e.arena} size={24} />
           </div>
         ) : null}
+        {!cerrada(x) ? <div style={{ display: "flex", marginTop: 30 }}><Boton texto='Escríbeme "INFO"' color={e.blanco} /></div> : null}
       </Abs>
-      {!cerrada(x) ? <Abs style={{ left: 80, top: 1500 }}><Boton texto='Escríbeme "INFO"' color={e.blanco} /></Abs> : null}
       <Nom c={c} x={x} abajo={230} />
     </Lienzo>
   );
@@ -195,6 +226,19 @@ export async function historiaPropiedad(m: Marca, x: Propiedad) {
 /** Texto del post que acompaña al diseño. */
 export function textoPropiedad(m: Marca, x: Propiedad) {
   const P = m.perfil;
+  const tag = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  const quien = `${P.nombre}${P.nombreComercial ? ` (${P.nombreComercial})` : ""}`;
+  if (cerrada(x)) {
+    return [
+      `🔑 ¡${palabraCierre(x)}! ${x.tipo} en ${x.colonia}, ${P.ciudad}`,
+      "",
+      "Gracias a los dueños por su confianza.",
+      "",
+      `¿Quieres ${x.etiqueta === "Vendida" ? "vender" : "rentar"} tu propiedad en ${P.zona}? Escríbeme: ${quien} · ${P.whatsapp}`,
+      "",
+      `#${tag(x.colonia)} #${tag(P.ciudad)} #bienesraices`,
+    ].join("\n");
+  }
   const precio = precioDe(x);
   const feats = datosDe(x).join(", ");
   const lineas = [
@@ -210,9 +254,9 @@ export function textoPropiedad(m: Marca, x: Propiedad) {
     lineas.push(`Aceptamos crédito ${y(x.creditos)}.`);
     const pub = x.creditos.filter((c) => c !== "bancario");
     if (pub.length) lineas.push(`El trámite de tu crédito ${pub.join(" o ")} es gratuito.`);
+    lineas.push("Si compras con crédito, el precio total depende de los montos del crédito y de los gastos notariales; consúltalos con nosotros.");
   }
-  lineas.push("", `Agenda tu visita: ${P.nombre} · ${P.whatsapp} · ${P.correo}`, P.domicilio);
-  const tag = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  lineas.push("", `Agenda tu visita: ${quien} · ${P.whatsapp} · ${P.correo}`, P.domicilio);
   lineas.push("", `#${x.tipo === "Departamento" ? "depa" : tag(x.tipo)}en${x.operacion} #${tag(x.colonia)} #${tag(P.ciudad)} #bienesraices`);
   return lineas.join("\n");
 }

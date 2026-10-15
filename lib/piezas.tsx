@@ -39,7 +39,8 @@ export async function prepararMarca(perfil: Perfil, logo?: string, foto?: string
 // ---------- Textos de content/disenos.json ----------
 
 export type Titulo = { serif: string; script?: string; acento?: string };
-export type Lamina = { titulo: Titulo; texto?: string; lista?: string[]; marca?: "si" | "no" };
+/** `tipo` pone etiquetas arriba del título y del texto (mito/realidad, pregunta/respuesta…). `extra`: lámina de cierre fuera de la cuenta. */
+export type Lamina = { titulo: Titulo; texto?: string; lista?: string[]; marca?: "si" | "no"; tipo?: "mito" | "pregunta" | "anuncio"; extra?: boolean };
 export type DiaDiseno = {
   dia: number; tipo: "carrusel" | "post"; etiqueta: string; titulo: Titulo; bajada?: string; boton?: string; foto: Etiqueta;
   laminas?: Lamina[]; cierre?: { titulo: Titulo; texto: string; palabra: string };
@@ -127,10 +128,14 @@ export function Pie({ m, tono, abajo = 62, izq = 80, der = 80 }: { m: Marca; ton
 /** Pie apilado a la izquierda, para diseños con la foto a la derecha. */
 export function PieColumna({ m, tono, ancho = 440 }: { m: Marca; tono: Tono; ancho?: number }) {
   const color = tono === "claro" ? m.e.carbon : m.e.arena;
+  // Un usuario no tiene espacios y no se parte: si es largo, se achica para no encimarse en la foto.
+  const u = usuario(m.perfil);
+  let s = 20;
+  while (s > 12 && medirAncho(u.toUpperCase(), "sansNegrita", s, s * 0.22) > ancho) s--;
   return (
     <div style={{ position: "absolute", left: 80, bottom: 62, width: ancho, display: "flex", flexDirection: "column", gap: 16, fontFamily: SANS, fontWeight: 600, fontSize: 20, letterSpacing: 4.4, textTransform: "uppercase", color }}>
       <div style={{ display: "flex", alignItems: "center", gap: 18 }}><Firma m={m} tono={tono} alto={64} /><span>{m.perfil.nombre}</span></div>
-      <span>{usuario(m.perfil)}</span>
+      <span style={{ fontSize: s, letterSpacing: s * 0.22, whiteSpace: "nowrap" }}>{u}</span>
     </div>
   );
 }
@@ -142,15 +147,19 @@ type MedidaTitulo = { t: Titulo; ancho: number; serifMax?: number; serifLineas?:
 export function medirTitulo({ t, ancho, serifMax = 100, serifLineas = 3, sangria = 0, scriptMax, centrado = false }: MedidaTitulo) {
   const anchoScript = centrado ? ancho : ancho - sangria;
   const ss = ajustar(t.serif, "serif", ancho, serifLineas, serifMax, Math.round(serifMax * 0.5));
-  const sc = t.script ? ajustar(t.script, "script", anchoScript, 2, scriptMax ?? Math.round(ss * 1.35), Math.round(ss * 0.8)) : 0;
-  const nSerif = lineas(t.serif, "serif", ss, ancho).length;
+  const sc = t.script ? ajustar(t.script, "script", anchoScript, 2, scriptMax ?? Math.round(ss * 1.35), Math.round(ss * 0.6)) : 0;
+  const ls = lineas(t.serif, "serif", ss, ancho);
   const nScript = t.script ? lineas(t.script, "script", sc, anchoScript).length : 0;
-  return { ss, sc, alto: nSerif * ss + nScript * sc * 1.12 - Math.round(sc * 0.08) };
+  // La manuscrita se encima un poco en el serif; si el serif tiene letras que bajan (g, p, y…), se separa para que no choquen.
+  const encime = /[gjpqy]/.test(ls[ls.length - 1] ?? "") ? -Math.round(sc * 0.02) : Math.round(sc * 0.08);
+  return { ss, sc, encime, alto: ls.length * ss + nScript * sc * 1.12 - encime };
 }
 
+/** Párrafo listo para pintar: comillas tipográficas y las dos últimas palabras juntas (espacio duro) para que no quede una sola abajo. */
+const parrafo = (t: string) => comillas(t).trim().replace(/ (\S+)$/, "\u00a0$1");
 /** Alto de un párrafo en Montserrat. */
 export const altoTexto = (texto: string, size: number, ancho: number, interlineado = 1.5) =>
-  lineas(comillas(texto), "sans", size, ancho).length * size * interlineado;
+  lineas(parrafo(texto), "sans", size, ancho).length * size * interlineado;
 /** Alto del botón de píldora. */
 export const ALTO_BOTON = 70;
 
@@ -160,19 +169,22 @@ export function TituloPortada({ t, ancho, color, colorScript, serifMax = 100, se
 }) {
   let max = serifMax, sMax = scriptMax;
   let m = medirTitulo({ t, ancho, serifMax: max, serifLineas, sangria, scriptMax: sMax, centrado });
-  // Una palabra corta sola en un renglón ("un", "el", "tu") se ve como error: también se achica hasta que suba al renglón de arriba.
-  const huerfana = () => lineas(t.serif, "serif", m.ss, ancho).some((l) => !/\s/.test(l.trim()) && l.trim().length <= 3);
-  while (max > 44 && ((alto && m.alto > alto) || (huerfana() && max > serifMax * 0.78))) {
+  // Una palabra corta sola en un renglón ("un", "el", "tu"; con frases de tres palabras o más, también "para" o "¿Casa")
+  // se ve como error: también se achica hasta que suba al renglón de arriba. Una palabra larga sola sí se ve bien.
+  const corta = t.serif.trim().split(/\s+/).length >= 3 ? 6 : 3;
+  const sola = (s: number) => lineas(t.serif, "serif", s, ancho).some((l) => !/\s/.test(l.trim()) && l.trim().length <= corta);
+  const huerfana = () => sola(m.ss) && max > serifMax * 0.78 && !sola(Math.floor(serifMax * 0.78));
+  while (max > 44 && ((alto && m.alto > alto) || huerfana())) {
     max = Math.floor(max * 0.94);
     sMax = sMax ? Math.floor(sMax * 0.94) : undefined;
     m = medirTitulo({ t, ancho, serifMax: max, serifLineas: serifLineas + (max < serifMax * 0.8 ? 1 : 0), sangria, scriptMax: sMax, centrado });
   }
-  const { ss, sc } = m;
+  const { ss, sc, encime } = m;
   return (
     <div style={{ display: "flex", flexDirection: "column", width: ancho, alignItems: centrado ? "center" : "flex-start", flexShrink: 0 }}>
       <div style={{ display: "flex", fontFamily: SERIF, fontWeight: 500, fontSize: ss, lineHeight: 1, color, textAlign: centrado ? "center" : "left" }}>{t.serif}</div>
       {t.script ? (
-        <div style={{ display: "flex", fontFamily: SCRIPT, fontSize: sc, lineHeight: 1.12, color: colorScript, marginTop: -Math.round(sc * 0.08), marginLeft: centrado ? 0 : sangria, textAlign: centrado ? "center" : "left" }}>{t.script}</div>
+        <div style={{ display: "flex", fontFamily: SCRIPT, fontSize: sc, lineHeight: 1.12, color: colorScript, marginTop: -encime, marginLeft: centrado ? 0 : sangria, textAlign: centrado ? "center" : "left" }}>{t.script}</div>
       ) : null}
     </div>
   );
@@ -195,7 +207,7 @@ export function TituloLamina({ t, ancho, color, colorAcento, max = 100, lineasMa
 }
 
 export function Texto({ children, color, size = 34, ancho, style }: { children: string; color: string; size?: number; ancho?: number; style?: React.CSSProperties }) {
-  return <div style={{ display: "flex", fontFamily: SANS, fontSize: size, lineHeight: 1.5, color, flexShrink: 0, ...(ancho ? { width: ancho } : {}), ...style }}>{comillas(children)}</div>;
+  return <div style={{ display: "flex", fontFamily: SANS, fontSize: size, lineHeight: 1.5, color, flexShrink: 0, ...(ancho ? { width: ancho } : {}), ...style }}>{parrafo(children)}</div>;
 }
 
 export function Icono({ tipo, color, size = 46 }: { tipo: "si" | "no" | "punto"; color: string; size?: number }) {

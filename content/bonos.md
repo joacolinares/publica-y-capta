@@ -43,12 +43,12 @@ Cuando alguien entra a tu perfil, ve las primeras 9. Publica estas del pack en l
 Copia el prompt en ChatGPT, Gemini o la IA que uses y cambia lo que está entre [corchetes]. Revisa siempre lo que te devuelve: la IA se equivoca con datos de créditos, impuestos y trámites. Para esos temas, usa los textos del pack, que ya están revisados.
 
 ## Para tus publicaciones
-1. "Adapta este texto para una asesora inmobiliaria de [colonia], [ciudad]. Mantén el largo y la llamada a la acción. No agregues cifras ni datos nuevos. Texto: [pega el texto]"
+1. "Adapta este texto para [Tu nombre], asesor/a inmobiliario/a en [colonia], [tu ciudad]. Mantén el largo y la llamada a la acción. No agregues cifras ni datos nuevos. Texto: [pega el texto]"
 2. "Hazme 3 versiones más cortas de este post para un estado de WhatsApp, de máximo 2 líneas cada una: [pega el texto]"
 3. "Reescribe este texto en un tono más [cercano / formal], en español de México y hablando de tú: [pega el texto]"
 4. "Dame 5 ganchos (primeras frases) para este post, que hagan que un [comprador / vendedor] de [colonia] se detenga a leer: [pega el texto]"
 5. "Convierte este post en un carrusel de 5 láminas, con una frase corta por lámina: [pega el texto]"
-6. "Dame 10 hashtags para este post: 4 generales de bienes raíces, 3 de [ciudad] y 3 de [colonia]. Sin hashtags de marcas."
+6. "Dame 10 hashtags para este post: 4 generales de bienes raíces, 3 de [tu ciudad] y 3 de [colonia]. Sin hashtags de marcas."
 
 ## Para tu zona
 7. "Escribe un post de 'Por qué me gusta [colonia]' con lo que te cuento: [3 cosas que te gustan de la colonia]. No inventes lugares."
@@ -69,7 +69,7 @@ Copia el prompt en ChatGPT, Gemini o la IA que uses y cambia lo que está entre 
 
 ## Para tu marca
 18. "Con esta historia mía: [cómo empezaste, por qué te gusta tu trabajo], escribe un post de presentación de 120 palabras, en primera persona."
-19. "Escribe 3 versiones de mi bio de Instagram en máximo 150 caracteres: soy [nombre], trabajo en [zona] y ayudo a [tipo de cliente]."
+19. "Escribe 3 versiones de mi bio de Instagram en máximo 150 caracteres: soy [Tu nombre], trabajo en [tu zona] y ayudo a [tipo de cliente]."
 20. "Con este mensaje de un cliente: [pega el mensaje, sin su nombre], escribe un post de agradecimiento que no exagere lo que dijo."
 
 ## Regla para todos

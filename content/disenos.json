@@ -248,7 +248,7 @@
       "serif": "También se pueden",
       "acento": "combinar"
      },
-     "texto": "El trámite de tu crédito Infonavit es gratuito."
+     "texto": "Con Cofinavit sumas tu crédito Infonavit y uno del banco para la misma casa. El trámite de tu crédito Infonavit es gratuito."
     }
    ],
    "cierre": {
@@ -265,8 +265,8 @@
    "tipo": "post",
    "etiqueta": "Rentas · Requisitos",
    "titulo": {
-    "serif": "¿Qué pide un arrendador para",
-    "script": "rentarte?"
+    "serif": "¿Qué te pide un",
+    "script": "arrendador?"
    },
    "bajada": "Identificación, comprobantes de ingresos y una garantía, según el dueño.",
    "boton": "Escríbeme \"REQUISITOS\"",
@@ -289,21 +289,24 @@
       "serif": "“¿Cuánto vale mi",
       "acento": "casa?”"
      },
-     "texto": "Depende de lo que se ha vendido hace poco en tu colonia. Lo puedo estimar comparando casas parecidas."
+     "texto": "Depende de lo que se ha vendido hace poco en tu colonia. Lo puedo estimar comparando casas parecidas.",
+     "tipo": "pregunta"
     },
     {
      "titulo": {
       "serif": "“¿Me alcanza con mi",
       "acento": "crédito?”"
      },
-     "texto": "Primero consulta tu precalificación con tu banco o en Mi Cuenta Infonavit. Con ese dato buscamos casas en tu presupuesto."
+     "texto": "Primero consulta tu precalificación con tu banco o en Mi Cuenta Infonavit. Con ese dato buscamos casas en tu presupuesto.",
+     "tipo": "pregunta"
     },
     {
      "titulo": {
       "serif": "“¿Cuánto",
       "acento": "cobras?”"
      },
-     "texto": "Te lo explico desde la primera plática, por escrito y sin letras chiquitas."
+     "texto": "Te lo explico desde la primera plática, por escrito y sin letras chiquitas.",
+     "tipo": "pregunta"
     }
    ],
    "cierre": {
@@ -736,8 +739,8 @@
    ],
    "cierre": {
     "titulo": {
-     "serif": "¿Te acompaño a la",
-     "script": "visita?"
+     "serif": "¿Te acompaño",
+     "script": "a la visita?"
     },
     "texto": "Guarda este post y llévalo a la casa que vas a ver.",
     "palabra": "VISITA"
@@ -808,9 +811,9 @@
     "serif": "¿Quieres rentar tu depa sin",
     "script": "perseguir pagos?"
    },
-   "bajada": "Todo por escrito, inventario con fotos y revisa a tu inquilino.",
+   "bajada": "Todo por escrito, inventario con fotos y un inquilino bien revisado.",
    "boton": "Escríbeme \"RENTA\"",
-   "foto": "llaves"
+   "foto": "recamara"
   },
   {
    "dia": 48,
@@ -878,7 +881,7 @@
     "script": "cómoda"
    },
    "bajada": "Ingresos fijos, menos gastos fijos y un colchón: lo que sobra es tu mensualidad.",
-   "boton": "Escribe \"MENSUALIDAD\"",
+   "boton": "Escríbeme \"MENSUALIDAD\"",
    "foto": "escritorio"
   },
   {
@@ -898,7 +901,7 @@
       "serif": "Recorre cada",
       "acento": "espacio"
      },
-     "texto": "Con el inquilino, y toma fotos y video con fecha."
+     "texto": "Hazlo con el inquilino y toma fotos y video con fecha."
     },
     {
      "titulo": {
@@ -962,28 +965,32 @@
       "serif": "“Con Infonavit solo puedes comprar",
       "acento": "casa nueva”"
      },
-     "texto": "También se puede usar para vivienda usada, si cumple con lo que pide el Instituto."
+     "texto": "También se puede usar para vivienda usada, si cumple con lo que pide el Instituto.",
+     "tipo": "mito"
     },
     {
      "titulo": {
       "serif": "“Hay que pagarle a un gestor para",
       "acento": "el Infonavit”"
      },
-     "texto": "El trámite de tu crédito Infonavit es gratuito."
+     "texto": "El trámite de tu crédito Infonavit es gratuito.",
+     "tipo": "mito"
     },
     {
      "titulo": {
       "serif": "“El precio publicado no se",
       "acento": "negocia”"
      },
-     "texto": "Muchas veces hay margen. Depende del mercado y del vendedor."
+     "texto": "Muchas veces hay margen. Depende del mercado y del vendedor.",
+     "tipo": "mito"
     },
     {
      "titulo": {
       "serif": "“Si ya me aprobaron el crédito, ya",
       "acento": "está todo”"
      },
-     "texto": "Falta el avalúo, revisar papeles y la firma ante notario."
+     "texto": "Falta el avalúo, revisar papeles y la firma ante notario.",
+     "tipo": "mito"
     }
    ],
    "cierre": {
@@ -1000,8 +1007,8 @@
    "tipo": "carrusel",
    "etiqueta": "Vendedores",
    "titulo": {
-    "serif": "¿Exclusiva o con varios",
-    "script": "asesores?"
+    "serif": "¿Exclusiva o con",
+    "script": "varios asesores?"
    },
    "bajada": "Las dos formas de vender tu casa.",
    "boton": "Desliza",
@@ -1054,10 +1061,10 @@
    "tipo": "carrusel",
    "etiqueta": "Compradores · Primera casa",
    "titulo": {
-    "serif": "Primera casa: ¿por dónde",
-    "script": "empiezo?"
+    "serif": "Primera casa:",
+    "script": "¿por dónde empiezo?"
    },
-   "bajada": "4 pasos en orden.",
+   "bajada": "Cuatro pasos y un aviso.",
    "boton": "Desliza",
    "foto": "puerta",
    "laminas": [
@@ -1272,7 +1279,8 @@
       "serif": "Además, abre las",
       "acento": "llaves"
      },
-     "texto": "Prende la luz en cada cuarto y fíjate en paredes y techos."
+     "texto": "Prende la luz en cada cuarto y fíjate en paredes y techos.",
+     "extra": true
     }
    ],
    "cierre": {
@@ -1341,7 +1349,8 @@
       "serif": "“Acepta",
       "acento": "crédito”"
      },
-     "texto": "Pregunta qué crédito y pide ver los papeles."
+     "texto": "Pregunta qué crédito y pide ver los papeles.",
+     "tipo": "anuncio"
     },
     {
      "titulo": {

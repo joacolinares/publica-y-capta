@@ -23,16 +23,19 @@ function fuente(t: TipoLetra): Fuente {
   return cargadas.get(t)!;
 }
 
+// Satori acomoda el texto sin kerning: medido igual, la línea parte donde la parte satori.
 export const ancho = (texto: string, t: TipoLetra, size: number, espaciado = 0) =>
-  fuente(t).getAdvanceWidth(texto, size, { kerning: true }) + espaciado * texto.length;
+  fuente(t).getAdvanceWidth(texto, size, { kerning: false }) + espaciado * texto.length;
+/** Satori redondea hacia arriba: un texto que entra justo se pasa a otro renglón. */
+const cabe = (w: number, max: number) => w <= max - 1;
 
-/** Corta en líneas por palabra, como satori. Devuelve las líneas. */
+/** Corta en líneas por palabra, como satori (el espacio duro no parte). Devuelve las líneas. */
 export function lineas(texto: string, t: TipoLetra, size: number, max: number, espaciado = 0) {
   const out: string[] = [];
   let actual = "";
-  for (const p of texto.split(/\s+/).filter(Boolean)) {
+  for (const p of texto.split(/[ \t\n]+/).filter(Boolean)) {
     const prueba = actual ? `${actual} ${p}` : p;
-    if (actual && ancho(prueba, t, size, espaciado) > max) { out.push(actual); actual = p; } else actual = prueba;
+    if (actual && !cabe(ancho(prueba, t, size, espaciado), max)) { out.push(actual); actual = p; } else actual = prueba;
   }
   if (actual) out.push(actual);
   return out;
@@ -42,7 +45,7 @@ export function lineas(texto: string, t: TipoLetra, size: number, max: number, e
 export function ajustar(texto: string, t: TipoLetra, anchoCaja: number, maxLineas: number, max: number, min: number, espaciado = 0) {
   for (let s = max; s > min; s = Math.floor(s * 0.96)) {
     const l = lineas(texto, t, s, anchoCaja, espaciado);
-    if (l.length <= maxLineas && l.every((x) => ancho(x, t, s, espaciado) <= anchoCaja)) return s;
+    if (l.length <= maxLineas && l.every((x) => cabe(ancho(x, t, s, espaciado), anchoCaja))) return s;
   }
   return min;
 }

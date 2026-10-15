@@ -5,7 +5,9 @@ export const NEUTROS = {
   crema: "#F4EFE8",
   arena: "#E4DACC",
   linea: "#D9CFC1",
+  /** Líneas y bordes. Para texto sobre fondo claro va topoTexto, que se lee mejor (4.5:1 o más). */
   topo: "#8A7F72",
+  topoTexto: "#6E6458",
   carbon: "#2B2A28",
   blanco: "#FFFDF9",
 };

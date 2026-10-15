@@ -32,22 +32,28 @@ export function stock(etiqueta: Etiqueta, n = 0): FotoStock {
   return todas[n % todas.length];
 }
 
+/** Lo que pide cada diseño: la etiqueta de la foto y su layout (arco, panel, historia…). */
+export type Pedida = { etiqueta: Etiqueta; estilo: string };
+
 /**
  * Reparte las fotos de stock entre los diseños del pack, en orden: cada uno toma la foto menos usada de su etiqueta
- * o, cuando las de su etiqueta ya salieron más veces, una de las parecidas. Así la misma foto no sale en días seguidos.
+ * o, si esa ya salió, una parecida que no se haya usado. Así la misma foto no sale en días seguidos
+ * y nunca se repite con el mismo layout (dos diseños casi idénticos).
  */
-export function repartir(etiquetas: Etiqueta[]): string[] {
+export function repartir(pedidas: Pedida[]): string[] {
   const usos = new Map<string, number>();
+  const conEstilo = new Set<string>();
   let anterior = "";
-  return etiquetas.map((e) => {
+  return pedidas.map(({ etiqueta: e, estilo }) => {
     const candidatas = [e, ...PARECIDAS[e]].flatMap((t, k) => lista().filter((f) => f.etiqueta === t).map((f) => ({ f, castigo: k === 0 ? 0 : k + 0.5 })));
     if (!candidatas.length) return (anterior = stock(e).archivo);
     let mejor = candidatas[0], puntos = Infinity;
     for (const x of candidatas) {
-      const p = (usos.get(x.f.archivo) ?? 0) + x.castigo + (x.f.archivo === anterior ? 3 : 0);
+      const p = (usos.get(x.f.archivo) ?? 0) * 3 + x.castigo + (x.f.archivo === anterior ? 3 : 0) + (conEstilo.has(`${x.f.archivo}|${estilo}`) ? 10 : 0);
       if (p < puntos) { mejor = x; puntos = p; }
     }
     usos.set(mejor.f.archivo, (usos.get(mejor.f.archivo) ?? 0) + 1);
+    conEstilo.add(`${mejor.f.archivo}|${estilo}`);
     return (anterior = mejor.f.archivo);
   });
 }

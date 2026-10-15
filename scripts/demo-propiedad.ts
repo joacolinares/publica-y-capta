@@ -10,8 +10,8 @@ const foto = process.argv[3] ? `data:image/jpeg;base64,${readFileSync(process.ar
 mkdirSync(out, { recursive: true });
 const m = await prepararMarca(PERFIL_EJEMPLO);
 const base = { operacion: "venta", tipo: "Casa", colonia: "Ciudad Granja", recamaras: "3", banos: "2.5", m2: "180", precio: "4250000", caracteristicas: ["Cocina integral", "Jardín", "2 lugares de estacionamiento"], creditos: ["bancario", "Infonavit"], foto };
-for (const etiqueta of ["Recién captada", "Precio actualizado", "Vendida"] as const) {
-  const x = PropiedadSchema.parse({ ...base, etiqueta });
+for (const etiqueta of ["Recién captada", "Nueva en mi zona", "Precio actualizado", "Vendida", "Rentada"] as const) {
+  const x = PropiedadSchema.parse({ ...base, etiqueta, ...(etiqueta === "Rentada" ? { operacion: "renta", precio: "18500" } : {}) });
   for (const [nombre, armar, f] of [["post", postPropiedad, MEDIDAS.feed], ["historia", historiaPropiedad, MEDIDAS.story]] as const) {
     const { el, conFoto } = await armar(m, x);
     const r = await imagen(el, f.width, f.height, conFoto);
@@ -19,3 +19,5 @@ for (const etiqueta of ["Recién captada", "Precio actualizado", "Vendida"] as c
   }
 }
 console.log(textoPropiedad(m, PropiedadSchema.parse(base)));
+console.log("\n---\n");
+console.log(textoPropiedad(m, PropiedadSchema.parse({ ...base, etiqueta: "Vendida" })));
