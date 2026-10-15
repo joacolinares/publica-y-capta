@@ -2,8 +2,10 @@
 // Regla: la página promete solo lo que trae el pack (90 publicaciones, 40 diseños, 30 guiones). Sin testimonios,
 // números ni urgencia inventados. Las imágenes son diseños reales del pack armados con una marca de ejemplo.
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { BarraCompra, Comprar } from "./_web/Comprar";
 import { ASoporte, DatosProveedor } from "./_web/Contacto";
+import { Opiniones } from "./_web/Opiniones";
 import { PRECIO_MXN, SOPORTE } from "@/lib/oferta";
 import "./landing.css";
 
@@ -14,21 +16,23 @@ export const metadata: Metadata = {
 
 const PRECIO = `$${PRECIO_MXN} MXN`;
 
-const DOLORES = [
-  "Abres Canva, eliges una plantilla bonita y te quedas en blanco con el texto.",
-  "Solo publicas cuando tienes una propiedad nueva, y tu perfil pasa semanas sin moverse.",
-  "Un cliente te busca en Instagram antes de llamarte y lo último que ve es de hace un mes.",
-  "Entre visitas, llamadas y trámites, el contenido siempre queda para mañana.",
-  "Las plantillas gratis se ven igual que las de todos los asesores de tu zona.",
+// [tema, plantilla gratis, Publica y Capta, la plantilla lo trae a medias]
+const COMPARA: [string, string, string, boolean?][] = [
+  ["Diseño", "Sí, pero genérico: el mismo que puede usar cualquiera", "40 diseños hechos para bienes raíces", true],
+  ["Texto de cada publicación", "Texto de muestra que cambias tú, uno por uno", "90 textos completos, listos para copiar"],
+  ["Tu logo, colores y teléfono", "Los pones tú en cada diseño", "Ya vienen puestos en todo"],
+  ["Qué publicar cada día", "Lo decides tú", "Calendario de 90 días"],
+  ["Temas que pregunta el cliente mexicano", "Textos genéricos, a veces en inglés o de España", "Infonavit, enganche, escrituración, predial"],
+  ["Tiempo que te toma", "Lo que tardes en escribir y diseñar cada post", "Unos 5 minutos de formulario y descargas"],
 ];
 
-const INCLUYE: [string, string, string][] = [
-  ["90", "publicaciones con el texto completo", "Gancho, desarrollo, llamada a la acción y hashtags, con tus datos ya puestos donde van. Cada una con su versión para estados de WhatsApp."],
-  ["90", "días de calendario", "Qué publicar cada día, mezclando compradores, vendedores, rentas y tu marca personal."],
-  ["40", "diseños con tu logo y tus colores", "23 carruseles completos, 11 posts y 6 historias, listos para subir."],
-  ["30", "guiones de reels", "Toma por toma, con 3 ganchos para elegir, la portada y el texto para publicar. La mitad, sin salir a cámara."],
-  ["1", "generador para tus propiedades", "Captas una casa, cargas precio, recámaras, m², colonia y una foto, y te arma el post y la historia con tu marca."],
-  ["2", "bonos para arrancar", "Perfil que capta en 1 hora y 20 prompts para adaptar cualquier texto a tu colonia."],
+const PASOS: [string, string, ReactNode][] = [
+  ["Haces tu pago", "Pago único y seguro. Te llega un correo con tu acceso.",
+    <><rect x="5" y="11" width="30" height="20" rx="3" /><path d="M5 17h30M10 25h7" /></>],
+  ["Llenas un formulario", "Tu logo, tus colores, tu zona y tus datos. Toma unos 5 minutos.",
+    <><rect x="9" y="6" width="22" height="28" rx="2" /><path d="M15 6v-1h10v1M14 15h12M14 21h12M14 27h7" /></>],
+  ["Descargas y publicas", "Tus 90 días con tu marca. Copias el texto del día, subes el diseño y listo.",
+    <><path d="M20 6v18M13 17l7 7 7-7" /><path d="M7 25v7h26v-7" /></>],
 ];
 
 // Muestras de la tira (las 5 y 8 son historias, verticales). Salen de scripts/imagenes-web.tsx.
@@ -43,39 +47,33 @@ const MUESTRAS: [number, string][] = [
   [8, "Historia de una propiedad armada con el generador"],
 ];
 
-const PASOS: [string, string][] = [
-  ["Haces tu pago", "Pago único y seguro. No es una suscripción."],
-  ["Llenas un formulario", "Entras con tu correo, sin contraseña, y pones tu logo, tus colores, tu zona y tus datos. Toma unos 5 minutos."],
-  ["Descargas todo con tu marca", "En minutos tienes tus 90 días de contenido. Copias el texto del día, subes el diseño, tu foto o tu reel, según el día, y publicas."],
+const INCLUYE: [string, string][] = [
+  ["90 publicaciones con el texto completo", "gancho, desarrollo, llamada a la acción y hashtags"],
+  ["Calendario de 90 días", "compradores, vendedores, rentas y tu marca personal"],
+  ["40 diseños con tu logo y tus colores", "23 carruseles, 11 posts y 6 historias"],
+  ["30 guiones de reels", "15 sin salir a cámara"],
+  ["Generador de post e historia para cada propiedad", "cargas los datos y una foto, y sale con tu marca"],
+  ["Versión para Instagram, Facebook y WhatsApp", "con su texto corto para tus estados"],
+  ["Guía “Empieza aquí”", "para publicar desde el primer día"],
+  ["2 bonos", "Perfil que capta en 1 hora y 20 prompts para tu colonia"],
 ];
 
 const PREGUNTAS: [string, string][] = [
   ["¿Necesito Canva o saber de diseño?", "No. Llenas un formulario y te entregamos los diseños listos, con tu nombre, tu logo y tus colores."],
-  ["¿Los diseños se pueden editar?", "Vienen como imágenes listas para subir. Si cambias un dato, lo corriges en la app y vuelves a descargar todo actualizado."],
-  ["¿Sirve para Facebook y WhatsApp?", "Sí. Cada publicación sirve para Instagram y Facebook, y trae su versión corta para tus estados de WhatsApp."],
   ["¿Tengo que salir en video?", "No. La mitad de los guiones son sin salir a cámara: texto en pantalla o voz en off."],
-  ["¿Por qué no lo hago con ChatGPT?", "Puedes, pero tendrías que escribir y revisar 90 textos y armar los diseños. Aquí ya están escritos para el cliente mexicano, y además te regalamos 20 prompts para adaptarlos a tu colonia."],
   ["¿Cómo recibo el pack?", "Al terminar el pago te llega un correo con el acceso. Entras con el mismo correo, llenas el formulario y descargas todo. Si no ves el correo, revisa spam o promociones."],
-  ["¿Es una suscripción?", "No. Pagas una sola vez y el pack es tuyo."],
-  ["¿Sirve si trabajo en una inmobiliaria o franquicia?", "Sí. Los textos hablan de comprar, vender y rentar, y los diseños llevan tu logo o el de tu oficina."],
-  ["¿Sirve para cualquier ciudad de México?", "Sí. Los textos no dependen de una ciudad: el formulario pone tu zona y tus colonias."],
+  ["¿Sirve en mi ciudad o si trabajo en una inmobiliaria?", "Sí. Los textos no dependen de una ciudad: el formulario pone tu zona y tus colonias. Si trabajas en una inmobiliaria o franquicia, los diseños llevan tu logo o el de tu oficina."],
+  ["¿Me garantiza clientes?", "No, y nadie te lo puede garantizar. Lo que te da es el contenido listo para que publiques constante y, cuando alguien te busque, encuentre un perfil activo y profesional."],
   ["¿Y si no me sirve?", `Escríbenos${SOPORTE ? ` a ${SOPORTE}` : ""} dentro de los 7 días naturales siguientes a tu compra y te devolvemos lo que pagaste. Al reembolsarte se desactiva tu acceso.`],
 ];
 
-const EJEMPLO = `¿Tu casa lleva meses publicada y nadie llama? Casi siempre es por una de estas 3 razones 👇
-
-1. El precio. Si está arriba de lo que se vendió hace poco en tu colonia, los compradores la comparan y siguen de largo.
-2. Las fotos. Fotos oscuras, chuecas o con la casa desordenada hacen que la gente ni siquiera abra el anuncio.
-3. Los papeles. Si un comprador pregunta por la escritura o el predial y no hay respuesta clara, se enfría.
-
-La buena noticia: las tres se pueden corregir. A veces basta con ajustar una sola para que vuelvan las llamadas.
-
-¿Quieres que revisemos tu anuncio juntos? Mándame la palabra VENTA y lo vemos sin compromiso.
-
-#vendermicasa #bienesraices #asesorinmobiliario`;
-
 function Marca() {
   return <a className="marca" href="/" aria-label="Publica y Capta, inicio"><span className="monograma">P<i>y</i>C</span><b>Publica y Capta</b></a>;
+}
+
+/** El botón de compra de la página: el mismo en todas las secciones. */
+function BotonCompra() {
+  return <Comprar className="compra">Quiero mi pack <span className="compra-precio">{PRECIO}</span><span className="flecha" aria-hidden /></Comprar>;
 }
 
 export default function Inicio() {
@@ -84,13 +82,13 @@ export default function Inicio() {
       <header className="l-barra">
         <Marca />
         <nav aria-label="Secciones">
+          <a href="#como">Así funciona</a>
           <a href="#incluye">Qué incluye</a>
-          <a href="#como">Cómo funciona</a>
           <a href="#preguntas">Preguntas</a>
         </nav>
         <div className="l-barra-acciones">
           <a className="l-entrar" href="/entrar">Entrar</a>
-          <Comprar className="boton l-solo-compu">Comprar</Comprar>
+          <Comprar className="compra l-solo-compu">Quiero mi pack <span className="flecha" aria-hidden /></Comprar>
         </div>
       </header>
 
@@ -100,14 +98,11 @@ export default function Inicio() {
           <div className="l-hero-texto">
             <div className="cap">Para asesores inmobiliarios en México</div>
             <h1>Publica todos los días <em>sin pensar</em> qué escribir.</h1>
-            <p className="l-lead">90 días de contenido para Instagram, Facebook y WhatsApp: el texto completo de cada publicación y los diseños con tu logo, tus colores y tus datos. Llenas un formulario y en minutos lo descargas.</p>
+            <p className="l-lead">90 días de publicaciones con el texto completo y los diseños con tu logo y tus colores, para Instagram, Facebook y WhatsApp.</p>
             <div className="l-cta">
-              <Comprar className="boton">Quiero mi pack · {PRECIO} <span className="flecha" aria-hidden /></Comprar>
-              <p className="ayuda">Pago único, sin suscripción. No necesitas Canva ni saber de diseño.</p>
+              <BotonCompra />
+              <p className="ayuda">Pago único, sin suscripción. Reembolso en 7 días.</p>
             </div>
-            <ul className="l-sellos" aria-label="Incluye">
-              <li>Tu logo</li><li>Tus colores</li><li>Reembolso en 7 días</li>
-            </ul>
           </div>
           <figure className="l-hero-img">
             <img src="/web/hero.webp" width={1200} height={990} alt="Carrusel, post e historia del pack con una marca de ejemplo" fetchPriority="high" />
@@ -120,17 +115,55 @@ export default function Inicio() {
           <div><b>90</b><span>publicaciones</span></div>
           <div><b>40</b><span>diseños</span></div>
           <div><b>30</b><span>guiones de reels</span></div>
-          <div><b>3</b><span>redes: Instagram, Facebook y WhatsApp</span></div>
+          <div><b>3</b><span>redes sociales</span></div>
         </section>
 
-        {/* Dolores */}
-        <section className="l-sec l-dolores">
+        {/* Comparativa */}
+        <section className="l-sec l-dif">
           <div className="l-ancho">
-            <div className="cap">¿Te suena?</div>
-            <h2>Sabes que tienes que publicar. <em>El problema es qué.</em></h2>
-            <ol className="l-lista-num">
-              {DOLORES.map((d, i) => <li key={i}><span>{String(i + 1).padStart(2, "0")}</span>{d}</li>)}
+            <div className="cap">La diferencia</div>
+            <h2>Una plantilla te da el diseño. <em>Aquí ya viene todo hecho.</em></h2>
+            <table className="l-tabla">
+              <caption className="l-solo-lector">Una plantilla gratis contra Publica y Capta</caption>
+              <thead>
+                <tr>
+                  <td />
+                  <th scope="col" className="l-t-ellos">Una plantilla gratis<span>de Canva o de internet</span></th>
+                  <th scope="col" className="l-t-nos"><span className="l-etiqueta">Lo que recibes</span>Publica y Capta</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARA.map(([tema, ellos, nos, aMedias]) => (
+                  <tr key={tema}>
+                    <th scope="row">{tema}</th>
+                    <td className={`l-t-ellos${aMedias ? " a-medias" : ""}`}><i aria-hidden />{ellos}</td>
+                    <td className="l-t-nos"><i aria-hidden />{nos}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="l-accion"><BotonCompra /></div>
+          </div>
+        </section>
+
+        {/* Así funciona */}
+        <section className="l-sec l-como" id="como">
+          <div className="l-ancho">
+            <div className="cap">Así funciona</div>
+            <h2>Tres pasos y <em>a publicar</em></h2>
+            <ol className="l-pasos">
+              {PASOS.map(([t, d, icono], i) => (
+                <li key={t}>
+                  <div className="l-paso-ico">
+                    <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>{icono}</svg>
+                    <span className="l-paso-n">{i + 1}</span>
+                  </div>
+                  <h3>{t}</h3>
+                  <p>{d}</p>
+                </li>
+              ))}
             </ol>
+            <div className="l-accion"><BotonCompra /></div>
           </div>
         </section>
 
@@ -139,7 +172,6 @@ export default function Inicio() {
           <div className="l-ancho">
             <div className="cap">Así se ve por dentro</div>
             <h2>Diseños que se ven de revista, <em>con tu marca.</em></h2>
-            <p className="l-lead">Base neutra y elegante, y tu color como acento. Carruseles para enseñar, posts para tu marca e historias con espacio para la encuesta o la caja de preguntas.</p>
           </div>
           {/* En compu la tira corre sola (la segunda vuelta es copia, para que no se corte); en celular se desliza con el dedo. */}
           <div className="l-carrusel">
@@ -150,94 +182,28 @@ export default function Inicio() {
               ))}
             </div>
           </div>
-          <p className="ayuda l-ancho">Diseños reales del pack con una marca de ejemplo. Los tuyos salen con tu nombre, tu logo, tus colores y tu WhatsApp.</p>
-
-          <div className="l-ejemplo l-ancho">
-            <div className="l-ejemplo-txt">
-              <div className="cap">Y el texto, completo</div>
-              <h3>No es una idea suelta: es lo que <em>copias y pegas</em>.</h3>
-              <p>Cada día trae el texto entero, con gancho, desarrollo, la palabra para que te escriban y los hashtags. Así se ve el del día 9:</p>
-            </div>
-            <div className="l-post">
-              <div className="l-post-cab"><span className="monograma">LG</span><div><b>laura.ejemplo</b><span>Zapopan</span></div></div>
-              <img src="/web/muestra-post.webp" width={540} height={675} alt="Diseño del día 9 con una marca de ejemplo" loading="lazy" />
-              <p className="l-post-texto">{EJEMPLO}</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Qué incluye */}
-        <section className="l-sec l-incluye" id="incluye">
           <div className="l-ancho">
-            <div className="cap">Qué incluye</div>
-            <h2>Todo lo que <em>recibes</em></h2>
-            <div className="l-grilla">
-              {INCLUYE.map(([n, t, d]) => (
-                <article key={t} className="l-item"><b>{n}</b><h3>{t}</h3><p>{d}</p></article>
-              ))}
-            </div>
+            <p className="ayuda l-nota">Diseños reales del pack con una marca de ejemplo. Los tuyos salen con tu nombre, tu logo, tus colores y tu WhatsApp. Y cada día trae el texto completo, listo para copiar y pegar.</p>
+            <div className="l-accion"><BotonCompra /></div>
           </div>
         </section>
 
-        {/* Diferencia */}
-        <section className="l-sec l-dif">
-          <div className="l-ancho">
-            <div className="cap">La diferencia</div>
-            <h2>Una plantilla te da el diseño. <em>Aquí ya viene con el texto y tu marca.</em></h2>
-            <div className="l-dos">
-              <div className="l-col"><h3>Plantilla gratis</h3>
-                <ul className="l-x"><li>Un diseño con texto de muestra que tienes que cambiar uno por uno.</li><li>Textos genéricos, muchas veces en inglés o de España.</li><li>Tú decides qué publicar cada día.</li></ul>
-              </div>
-              <div className="l-col l-col-nuestra"><h3>Publica y Capta</h3>
-                <ul className="lista-check"><li>Diseños ya hechos con tu logo, tus colores y tu teléfono.</li><li>El texto completo de cada publicación, escrito para el cliente mexicano.</li><li>Un calendario que te dice qué subir cada día.</li><li>Temas que tu cliente sí pregunta: Infonavit, enganche, escrituración, predial.</li></ul>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Opiniones><BotonCompra /></Opiniones>
 
-        {/* Cómo funciona */}
-        <section className="l-sec l-como" id="como">
-          <div className="l-ancho">
-            <div className="cap">Cómo funciona</div>
-            <h2>De la compra a tu primera publicación <em>en un rato</em></h2>
-            <ol className="l-pasos">
-              {PASOS.map(([t, d], i) => <li key={t}><span className="l-paso-n">{i + 1}</span><div><h3>{t}</h3><p>{d}</p></div></li>)}
-            </ol>
-            <img className="l-perfil" src="/web/perfil.webp" width={1080} height={1347} alt="Así se ve un perfil con los diseños del pack, con una marca de ejemplo" loading="lazy" />
-          </div>
-        </section>
-
-        {/* Para quién */}
-        <section className="l-sec l-quien">
-          <div className="l-ancho">
-            <div className="cap">Para quién es</div>
-            <h2>Para el asesor que trabaja solo <em>o en una oficina chica</em></h2>
-            <div className="l-dos">
-              <ul className="lista-check"><li>Asesores independientes que manejan su propio Instagram.</li><li>Asesores de inmobiliaria que tienen que publicar por su cuenta.</li><li>Quien empieza en bienes raíces y quiere verse profesional desde el día 1.</li></ul>
-              <ul className="l-x"><li>No es para ti si buscas que alguien maneje tus redes por ti.</li><li>No es un curso de anuncios pagados.</li><li>No promete ventas: te ahorra el tiempo de crear contenido para que te vean constante.</li></ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Precio */}
-        <section className="l-sec l-precio" id="precio">
+        {/* Precio y qué incluye */}
+        <section className="l-sec l-precio" id="incluye">
           <div className="l-ancho l-precio-caja">
+            <div className="l-precio-cab">
+              <div className="cap">Qué incluye</div>
+              <h2>Todo lo que recibes, <em>en un solo pago</em></h2>
+            </div>
             <div className="tarjeta oscura l-oferta">
-              <div className="cap">Publica y Capta</div>
-              <h3>Tus 90 días de contenido, <em>con tu marca</em></h3>
               <ul className="lista-check">
-                <li>90 publicaciones con el texto completo</li>
-                <li>Calendario de 90 días</li>
-                <li>40 diseños con tu logo y tus colores</li>
-                <li>30 guiones de reels (15 sin salir a cámara)</li>
-                <li>Generador de posts e historias para cada propiedad</li>
-                <li>Versión para Instagram, Facebook y WhatsApp</li>
-                <li>Guía &quot;Empieza aquí&quot;</li>
-                <li>Bonos: Perfil que capta en 1 hora y 20 prompts para tu colonia</li>
+                {INCLUYE.map(([t, d]) => <li key={t}><b>{t}</b> <span>· {d}</span></li>)}
               </ul>
               <div className="l-monto"><span className="serif">{PRECIO}</span><span className="cap">Pago único</span></div>
-              <Comprar className="boton ancho">Quiero mi pack <span className="flecha" aria-hidden /></Comprar>
-              <p className="ayuda">Precio en pesos mexicanos. Pago único, sin suscripción: ordena tus próximos 3 meses de contenido.</p>
+              <BotonCompra />
+              <p className="ayuda">Precio en pesos mexicanos. Pago único, sin suscripción.</p>
               <p className="ayuda">Antes de pagar, lee los <a href="/terminos">términos y condiciones</a>.</p>
             </div>
             <div className="l-garantia">
@@ -249,9 +215,11 @@ export default function Inicio() {
 
         {/* Preguntas */}
         <section className="l-sec l-faq" id="preguntas">
-          <div className="l-ancho">
-            <div className="cap">Preguntas frecuentes</div>
-            <h2>Lo que nos preguntan <em>antes de comprar</em></h2>
+          <div className="l-ancho l-faq-caja">
+            <div>
+              <div className="cap">Preguntas frecuentes</div>
+              <h2>Lo que nos preguntan <em>antes de comprar</em></h2>
+            </div>
             <div className="l-acordeon">
               {PREGUNTAS.map(([p, r]) => <details key={p}><summary>{p}</summary><p>{r}</p></details>)}
             </div>
@@ -263,7 +231,7 @@ export default function Inicio() {
           <div className="l-ancho">
             <h2>Cuando un cliente te busque, que encuentre un perfil <em>activo</em>.</h2>
             <p className="l-lead">Ordena hoy tus próximos 90 días en Instagram, Facebook y WhatsApp.</p>
-            <Comprar className="boton">Quiero mi pack · {PRECIO} <span className="flecha" aria-hidden /></Comprar>
+            <BotonCompra />
           </div>
         </section>
       </main>

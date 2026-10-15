@@ -30,7 +30,7 @@ export function BarraCompra({ precio }: { precio: string }) {
     <div className={`l-barra-compra${ver ? " ver" : ""}`} aria-hidden={!ver}>
       <div><b>{precio}</b><span>Pago único</span></div>
       {/* Escondida, no se puede llegar con el teclado. */}
-      <Comprar className="boton" tabIndex={ver ? undefined : -1}>Quiero mi pack</Comprar>
+      <Comprar className="compra" tabIndex={ver ? undefined : -1}>Quiero mi pack <span className="flecha" aria-hidden /></Comprar>
     </div>
   );
 }

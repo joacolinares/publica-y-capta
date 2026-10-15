@@ -23,6 +23,7 @@
 :root {
   --crema: #F4EFE8; --arena: #E4DACC; --linea: #D9CFC1; --topo: #8A7F72; --topo-texto: #6E6458;
   --carbon: #2B2A28; --blanco: #FFFDF9; --salvia: #56624A; --salvia-clara: #9DAA87;
+  --compra: #B4532F; --compra-hover: #9C4526;
   --error: #8A2C22; --error-fondo: #F6E4DF; --ok: #3F4F35; --ok-fondo: #E6EADC;
   --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --script: "Pinyon Script", "Snell Roundhand", cursive;
