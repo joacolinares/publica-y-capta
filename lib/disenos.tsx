@@ -338,9 +338,9 @@ async function HistoriaFoto(c: Ctx, h: Historia) {
     <Lienzo fondo={e.carbon} color={e.blanco}>
       <Img src={foto} w={1080} h={1920} style={{ left: 0, top: 0 }} />
       <Abs style={{ left: 0, top: 0, width: 1080, height: 1920, backgroundImage: "linear-gradient(180deg, rgba(43,42,40,0.5) 0%, rgba(43,42,40,0.15) 25%, rgba(43,42,40,0.6) 40%, rgba(43,42,40,0.9) 70%)" }} />
-      <Abs style={{ left: 80, right: 80, top: 760, height: 800, flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <Abs style={{ left: 80, right: 80, top: 760, height: 780, flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
         <Cap color={e.arena} size={22}>{h.etiqueta}</Cap>
-        <div style={{ display: "flex", marginTop: 22 }}><TituloPortada t={h.titulo} ancho={900} color={e.blanco} colorScript={e.acentoOscuro} serifMax={100} serifLineas={2} centrado alto={800 - ALTO_CAP - 22 - 40 - 250 - (h.bajada ? 26 + altoTexto(h.bajada, 28, 860) : 0)} /></div>
+        <div style={{ display: "flex", marginTop: 22 }}><TituloPortada t={h.titulo} ancho={900} color={e.blanco} colorScript={e.acentoOscuro} serifMax={100} serifLineas={2} centrado alto={780 - ALTO_CAP - 22 - 40 - 250 - (h.bajada ? 26 + altoTexto(h.bajada, 28, 860) : 0)} /></div>
         <div style={{ display: "flex", marginTop: 40 }}><Sticker m={c.m} texto={h.tipo === "encuesta" ? "Pon aquí el sticker de encuesta" : "Pon aquí la caja de preguntas"} opciones={h.opciones} oscuro /></div>
         {h.bajada ? <Texto color={e.blanco} size={28} ancho={860} style={{ marginTop: 26, textAlign: "center", justifyContent: "center", opacity: 0.92 }}>{h.bajada}</Texto> : null}
       </Abs>

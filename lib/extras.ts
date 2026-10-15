@@ -6,7 +6,7 @@ import { reemplazar, reemplazarSinColonia } from "./personalizar";
 import { estilosPagina } from "./pagina";
 import { NEUTROS, type Estilo } from "./estilo";
 
-const marcar = (html: string) => html.replace(/\[([^\]<]{1,80})\]/g, "<mark>[$1]</mark>");
+const marcar = (html: string) => html.replace(/\[([^\]<]{1,200})\]/g, "<mark>[$1]</mark>");
 export const html = (md: string, p: Perfil) => marcar(mdAHtml(reemplazar(md, p)));
 
 /** En el bump y el upsell, [colonia] es la del cliente o la propiedad, no la del asesor: se deja para completar. */
@@ -74,7 +74,7 @@ export function upsell(p: Perfil, e: Estilo) {
 @media print{body{background:#fff}.barra-p,.nota-p{display:none}.d{margin:0;border:0}mark{background:none}}
 @media (max-width:1300px){.d{zoom:.6}}@media (max-width:800px){.d{zoom:.27}}</style></head><body>
 <div class="barra-p"><span>Toca cualquier texto para cambiarlo. Lo marcado en amarillo es lo que completas tú.</span><button onclick="print()">Guardar en PDF</button></div>
-${diapositivas.map((d, i) => `<section class="d"><div class="k">${i === 0 ? firma : `${String(i + 1).padStart(2, "0")} · ${firma}`}</div><h2 contenteditable>${marcar(esc(d.titulo))}</h2><ul contenteditable>${d.bullets.map((b) => `<li>${marcar(esc(b))}</li>`).join("")}</ul><div class="f">${i === 0 ? contacto : firma}</div><div class="pg">${i + 1} / ${diapositivas.length}</div></section>${d.nota ? `<div class="nota-p"><b>Qué decir:</b> ${esc(d.nota)}</div>` : ""}`).join("\n")}
+${diapositivas.map((d, i) => `<section class="d"><div class="k">${i === 0 ? firma : `${String(i + 1).padStart(2, "0")} · ${firma}`}</div><h2 contenteditable>${marcar(esc(d.titulo))}</h2><ul contenteditable>${d.bullets.map((b) => `<li>${marcar(esc(b))}</li>`).join("")}</ul><div class="f">${i === 0 ? contacto : firma}</div><div class="pg">${i + 1} / ${diapositivas.length}</div></section>${d.nota ? `<div class="nota-p"><b>Qué decir:</b> ${marcar(esc(d.nota))}</div>` : ""}`).join("\n")}
 </body></html>`;
 return { presentacion, resto: resto.map((s) => ({ titulo: s.titulo.replace(/^\d+\.\s*/, ""), html: htmlCliente(s.cuerpo, p) })), diapositivas: diapositivas.length };
 }

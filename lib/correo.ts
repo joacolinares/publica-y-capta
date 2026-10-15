@@ -1,13 +1,14 @@
 // Correos con Resend (API REST, sin dependencias). Sin RESEND_API_KEY no se manda nada y la app sigue funcionando.
 // Diseño: el mismo de la marca (crema, serif con una palabra en cursiva, botón carbón). HTML con tablas y estilos en línea,
 // que es lo que leen bien Gmail, Outlook y el correo del celular.
+import { appUrl } from "./sitio";
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 export async function enviarCorreo(para: string, asunto: string, html: string, texto?: string) {
   const key = process.env.RESEND_API_KEY;
   if (!key) { console.warn("Correo sin enviar: falta RESEND_API_KEY"); return false; }
   const r = await fetch("https://api.resend.com/emails", {
-    method: "POST",
+    method: "POST", signal: AbortSignal.timeout(10_000),
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", "User-Agent": "publica-y-capta/1.0" },
     body: JSON.stringify({
       from: process.env.CORREO_REMITENTE || "Publica y Capta <onboarding@resend.dev>", to: [para], subject: asunto, html,
@@ -49,8 +50,9 @@ function contacto() {
 const titulo = (t: string) => esc(t).replace(/\*([^*]+)\*/g, `<em style="font-style:italic;color:${C.salvia}">$1</em>`);
 
 export function plantilla(p: Plantilla) {
-  const app = process.env.APP_URL || "";
-  const pie = [contacto()?.corto, app ? `<a href="${esc(app)}" style="color:${C.topo}">${esc(app.replace(/^https?:\/\//, ""))}</a>` : ""].filter(Boolean).join(" · ");
+  const app = appUrl();
+  const marca = app ? `<a href="${esc(app)}" style="color:${C.topo}">Publica y Capta</a>` : "Publica y Capta";
+  const pie = contacto()?.corto;
   return `<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light only"><title>${esc(p.titulo.replace(/\*/g, ""))}</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"></head>
 <body style="margin:0;padding:0;background:${C.crema};-webkit-text-size-adjust:100%">
@@ -78,7 +80,7 @@ ${p.nota ? `<tr><td style="padding:18px 40px 0;font-family:${SANS};font-size:12.
 <tr><td style="padding:34px 0 0"><div style="height:8px;background:${C.arena};line-height:8px;font-size:1px">&nbsp;</div></td></tr>
 </table>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px"><tr><td align="center" style="padding:20px 20px 0;font-family:${SANS};font-size:11.5px;line-height:1.6;color:${C.topo}">
-  Publica y Capta · 90 días de contenido para asesores inmobiliarios${pie ? `<br>${pie}` : ""}
+  ${marca} · 90 días de contenido para asesores inmobiliarios${pie ? `<br>${pie}` : ""}
 </td></tr></table>
 </td></tr></table></body></html>`;
 }
@@ -103,7 +105,7 @@ export function correoAcceso(para: string, link: string) {
 
 /** Alguien pidió entrar con un correo que no tiene compra: se avisa al dueño del correo (la pantalla no lo revela). */
 export function correoSinCompra(para: string) {
-  const app = process.env.APP_URL;
+  const app = appUrl();
   return mandar(para, "No encontramos tu compra en Publica y Capta", {
     previa: "Entra con el mismo correo que usaste al pagar.",
     etiqueta: "Tu acceso",
@@ -119,8 +121,9 @@ export function correoSinCompra(para: string) {
 
 /** Al aprobarse el pago: respaldo del correo de Impul con el link para entrar a la app. */
 export function correoBienvenida(para: string) {
-  const app = process.env.APP_URL;
+  const app = appUrl();
   if (!app) return Promise.resolve(false);
+  const reembolso = contacto()?.garantia;
   return mandar(para, "Tu acceso a Publica y Capta", {
     previa: "Ya puedes armar tus 90 días de contenido con tu marca.",
     etiqueta: "Gracias por tu compra",
@@ -130,13 +133,13 @@ export function correoBienvenida(para: string) {
       `Entra con este mismo correo (<b>${esc(para)}</b>), llena el formulario de 5 minutos y descarga todo.`,
     ],
     boton: { texto: "Armar mi pack", url: `${app}/entrar` },
-    nota: `Tienes 7 días de garantía: si el pack no te sirve, ${contacto()?.garantia ?? "escríbenos"} y te devolvemos tu dinero.`,
+    nota: `Si el pack no te sirve, tienes 7 días naturales desde tu compra para pedir tu reembolso${reembolso ? `: ${reembolso}` : ""}. Al reembolsarte se desactiva tu acceso.`,
   });
 }
 
 /** Después de generar: link de descarga del ZIP (vale 7 días; se puede volver a armar en la app). */
 export function correoPack(para: string, nombre: string, url: string) {
-  const app = process.env.APP_URL;
+  const app = appUrl();
   return mandar(para, "Tu pack de 90 días ya está listo", {
     previa: "Abre el archivo y empieza por 00 EMPIEZA AQUI.",
     etiqueta: "Tu pack está listo",

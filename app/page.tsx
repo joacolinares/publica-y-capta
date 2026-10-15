@@ -3,6 +3,7 @@
 // números ni urgencia inventados. Las imágenes son diseños reales del pack armados con una marca de ejemplo.
 import type { Metadata } from "next";
 import { BarraCompra, Comprar } from "./_web/Comprar";
+import { ASoporte, DatosProveedor } from "./_web/Contacto";
 import { PRECIO_MXN, SOPORTE } from "@/lib/oferta";
 import "./landing.css";
 
@@ -22,7 +23,7 @@ const DOLORES = [
 ];
 
 const INCLUYE: [string, string, string][] = [
-  ["90", "publicaciones con el texto completo", "Gancho, desarrollo, llamada a la acción y hashtags, con tu nombre y tu zona. Cada una con su versión para estados de WhatsApp."],
+  ["90", "publicaciones con el texto completo", "Gancho, desarrollo, llamada a la acción y hashtags, con tus datos ya puestos donde van. Cada una con su versión para estados de WhatsApp."],
   ["90", "días de calendario", "Qué publicar cada día, mezclando compradores, vendedores, rentas y tu marca personal."],
   ["40", "diseños con tu logo y tus colores", "23 carruseles completos, 11 posts y 6 historias, listos para subir."],
   ["30", "guiones de reels", "Toma por toma, con 3 ganchos para elegir, la portada y el texto para publicar. La mitad, sin salir a cámara."],
@@ -45,7 +46,7 @@ const MUESTRAS: [number, string][] = [
 const PASOS: [string, string][] = [
   ["Haces tu pago", "Pago único y seguro. No es una suscripción."],
   ["Llenas un formulario", "Entras con tu correo, sin contraseña, y pones tu logo, tus colores, tu zona y tus datos. Toma unos 5 minutos."],
-  ["Descargas todo con tu marca", "En minutos tienes tus 90 días de contenido. Copias el texto del día, subes el diseño y publicas."],
+  ["Descargas todo con tu marca", "En minutos tienes tus 90 días de contenido. Copias el texto del día, subes el diseño, tu foto o tu reel, según el día, y publicas."],
 ];
 
 const PREGUNTAS: [string, string][] = [
@@ -58,7 +59,7 @@ const PREGUNTAS: [string, string][] = [
   ["¿Es una suscripción?", "No. Pagas una sola vez y el pack es tuyo."],
   ["¿Sirve si trabajo en una inmobiliaria o franquicia?", "Sí. Los textos hablan de comprar, vender y rentar, y los diseños llevan tu logo o el de tu oficina."],
   ["¿Sirve para cualquier ciudad de México?", "Sí. Los textos no dependen de una ciudad: el formulario pone tu zona y tus colonias."],
-  ["¿Y si no me sirve?", "Escríbenos dentro de los 7 días posteriores a tu compra y te devolvemos tu dinero."],
+  ["¿Y si no me sirve?", `Escríbenos${SOPORTE ? ` a ${SOPORTE}` : ""} dentro de los 7 días naturales siguientes a tu compra y te devolvemos lo que pagaste. Al reembolsarte se desactiva tu acceso.`],
 ];
 
 const EJEMPLO = `¿Tu casa lleva meses publicada y nadie llama? Casi siempre es por una de estas 3 razones 👇
@@ -105,7 +106,7 @@ export default function Inicio() {
               <p className="ayuda">Pago único, sin suscripción. No necesitas Canva ni saber de diseño.</p>
             </div>
             <ul className="l-sellos" aria-label="Incluye">
-              <li>Tu logo</li><li>Tus colores</li><li>Pago único</li><li>Garantía de 7 días</li>
+              <li>Tu logo</li><li>Tus colores</li><li>Reembolso en 7 días</li>
             </ul>
           </div>
           <figure className="l-hero-img">
@@ -158,7 +159,7 @@ export default function Inicio() {
               <p>Cada día trae el texto entero, con gancho, desarrollo, la palabra para que te escriban y los hashtags. Así se ve el del día 9:</p>
             </div>
             <div className="l-post">
-              <div className="l-post-cab"><span className="monograma">LG</span><div><b>laura.bienesraices</b><span>Zapopan</span></div></div>
+              <div className="l-post-cab"><span className="monograma">LG</span><div><b>laura.ejemplo</b><span>Zapopan</span></div></div>
               <img src="/web/muestra-post.webp" width={540} height={675} alt="Diseño del día 9 con una marca de ejemplo" loading="lazy" />
               <p className="l-post-texto">{EJEMPLO}</p>
             </div>
@@ -182,10 +183,10 @@ export default function Inicio() {
         <section className="l-sec l-dif">
           <div className="l-ancho">
             <div className="cap">La diferencia</div>
-            <h2>Canva te da un diseño vacío. <em>Nosotros, listo y con tu marca.</em></h2>
+            <h2>Una plantilla te da el diseño. <em>Aquí ya viene con el texto y tu marca.</em></h2>
             <div className="l-dos">
               <div className="l-col"><h3>Plantilla gratis</h3>
-                <ul className="l-x"><li>Un diseño vacío que tienes que llenar y editar uno por uno.</li><li>Textos genéricos, muchas veces en inglés o de España.</li><li>Tú decides qué publicar cada día.</li></ul>
+                <ul className="l-x"><li>Un diseño con texto de muestra que tienes que cambiar uno por uno.</li><li>Textos genéricos, muchas veces en inglés o de España.</li><li>Tú decides qué publicar cada día.</li></ul>
               </div>
               <div className="l-col l-col-nuestra"><h3>Publica y Capta</h3>
                 <ul className="lista-check"><li>Diseños ya hechos con tu logo, tus colores y tu teléfono.</li><li>El texto completo de cada publicación, escrito para el cliente mexicano.</li><li>Un calendario que te dice qué subir cada día.</li><li>Temas que tu cliente sí pregunta: Infonavit, enganche, escrituración, predial.</li></ul>
@@ -236,11 +237,12 @@ export default function Inicio() {
               </ul>
               <div className="l-monto"><span className="serif">{PRECIO}</span><span className="cap">Pago único</span></div>
               <Comprar className="boton ancho">Quiero mi pack <span className="flecha" aria-hidden /></Comprar>
-              <p className="ayuda">Precio para México. Si pagas desde otro país, el checkout te lo muestra en dólares. Una sola venta te deja decenas de miles de pesos; esto ordena tus próximos 3 meses de contenido.</p>
+              <p className="ayuda">Precio en pesos mexicanos. Pago único, sin suscripción: ordena tus próximos 3 meses de contenido.</p>
+              <p className="ayuda">Antes de pagar, lee los <a href="/terminos">términos y condiciones</a>.</p>
             </div>
             <div className="l-garantia">
               <div className="l-sello"><b>7</b><span>días</span></div>
-              <div><h3>Garantía de <em>7 días</em></h3><p>Si el pack no te sirve, escríbenos dentro de los 7 días posteriores a tu compra y te devolvemos tu dinero.</p></div>
+              <div><h3>Reembolso en <em>7 días</em></h3><p>Si el pack no te sirve, escríbenos<ASoporte /> dentro de los 7 días naturales siguientes a tu compra y te devolvemos lo que pagaste. Al reembolsarte se desactiva tu acceso.</p></div>
             </div>
           </div>
         </section>
@@ -268,10 +270,8 @@ export default function Inicio() {
 
       <footer className="l-pie">
         <Marca />
-        <p>
-          {SOPORTE ? <>Contacto: <a href={`mailto:${SOPORTE}`}>{SOPORTE}</a> · </> : null}
-          <a href="/privacidad">Aviso de privacidad</a> · <a href="/entrar">Ya compré: entrar</a>
-        </p>
+        <DatosProveedor />
+        <p><a href="/terminos">Términos y condiciones</a> · <a href="/privacidad">Aviso de privacidad</a> · <a href="/entrar">Ya compré: entrar</a></p>
       </footer>
       <BarraCompra precio={PRECIO} />
     </div>

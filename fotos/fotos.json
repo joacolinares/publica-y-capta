@@ -27,15 +27,6 @@
     "descripcion": "Sofá azul con cojines claros y mesa de centro redonda de madera junto a un ventanal"
   },
   {
-    "archivo": "cocina-2.jpg",
-    "etiqueta": "cocina",
-    "ancho": 1500,
-    "alto": 1000,
-    "orientacion": "horizontal",
-    "posicion": "45% 60%",
-    "descripcion": "Zanahorias, cebolla, berenjena y ajos sobre tabla de madera con azulejo azul tipo talavera al fondo"
-  },
-  {
     "archivo": "cocina-3.jpg",
     "etiqueta": "cocina",
     "ancho": 850,

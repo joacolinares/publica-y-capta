@@ -93,7 +93,7 @@ export async function reservarGeneracion(uid: string) {
   const hoy = new Date().toISOString().slice(0, 10);
   await db().runTransaction(async (tx) => {
     const l = ((await tx.get(ref)).data() ?? {}) as { enCurso?: number; dia?: string; usadas?: number };
-    if (l.enCurso && Date.now() - l.enCurso < 10 * 60 * 1000) throw new ErrorHttp(429, "Tu pack ya se está armando. Espera a que termine; también te llega por correo.");
+    if (l.enCurso && Date.now() - l.enCurso < 10 * 60 * 1000) throw new ErrorHttp(429, "Tu pack ya se está armando. Espera a que termine" + (process.env.RESEND_API_KEY ? "; también te llega por correo." : " y vuelve a intentarlo en unos minutos."));
     const usadas = l.dia === hoy ? l.usadas ?? 0 : 0;
     if (usadas >= 10) throw new ErrorHttp(429, "Ya armaste tu pack 10 veces hoy. Vuelve a intentarlo mañana.");
     tx.set(ref, { enCurso: Date.now(), dia: hoy, usadas: usadas + 1 });

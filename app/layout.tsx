@@ -1,8 +1,10 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { appUrl } from "@/lib/sitio";
 
-const sitio = process.env.APP_URL || "https://publica-y-capta-production.up.railway.app";
+// Con o sin https:// (Railway muestra el dominio sin esquema): new URL() truena si falta y tumba el build.
+const sitio = appUrl() || "https://publica-y-capta-production.up.railway.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(sitio),

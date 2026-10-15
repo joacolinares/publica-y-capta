@@ -201,9 +201,10 @@ export async function historiaPropiedad(m: Marca, x: Propiedad) {
   const el = (
     <Lienzo fondo={e.carbon} color={e.blanco}>
       {foto ? <Img src={foto} w={1080} h={1920} style={{ left: 0, top: 0 }} /> : <Abs style={{ left: 0, top: 0 }}><SinFoto c={c} w={1080} h={1920} arriba={900} /></Abs>}
-      <Abs style={{ left: 0, top: 0, width: 1080, height: 1920, backgroundImage: "linear-gradient(180deg, rgba(43,42,40,0.55) 0%, rgba(43,42,40,0) 20%, rgba(43,42,40,0) 35%, rgba(43,42,40,0.75) 52%, rgba(43,42,40,0.95) 75%)" }} />
+      <Abs style={{ left: 0, top: 0, width: 1080, height: 1920, backgroundImage: "linear-gradient(180deg, rgba(43,42,40,0.6) 0%, rgba(43,42,40,0.35) 14%, rgba(43,42,40,0) 24%, rgba(43,42,40,0) 35%, rgba(43,42,40,0.75) 52%, rgba(43,42,40,0.95) 75%)" }} />
       <Abs style={{ left: 80, right: 80, top: 230, justifyContent: "space-between", alignItems: "center" }}>
-        <Cap color={e.blanco} size={24}>{x.etiqueta}</Cap>
+        {/* Con fondo, como en el post: sobre un cielo claro el texto blanco solo no se lee. */}
+        <div style={{ display: "flex", background: e.crema, padding: "14px 24px" }}><Cap color={e.carbon} size={22}>{x.etiqueta}</Cap></div>
         <Firma m={m} tono="oscuro" alto={72} />
       </Abs>
       <Abs style={{ left: 80, right: 80, bottom: 230 + an + 30, flexDirection: "column" }}>

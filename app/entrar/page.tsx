@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { isSignInWithEmailLink, onAuthStateChanged, sendSignInLinkToEmail, signInWithEmailLink } from "firebase/auth";
 import { auth } from "@/lib/cliente";
 import { BarraApp } from "../_web/BarraApp";
+import { CorreoSoporte } from "../_web/Contacto";
+import { SOPORTE } from "@/lib/oferta";
 
 type Modo = "cargando" | "pedir" | "enviado" | "entrando" | "confirmar";
 const ESPERA = 60;
@@ -100,7 +102,7 @@ export default function Entrar() {
             <>
               <div className="cap">Un paso más</div>
               <h1>Confirma tu <em>correo</em></h1>
-              <p className="subtitulo">Abriste el link en otro dispositivo. Escribe el correo al que te llegó para entrar.</p>
+              <p className="subtitulo">Abriste el link en otro navegador o dispositivo. Escribe el correo al que te llegó para entrar.</p>
               <form onSubmit={(e) => { e.preventDefault(); completar(email.trim()); }}>
                 <label htmlFor="email">Tu correo</label>
                 <input id="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -118,11 +120,11 @@ export default function Entrar() {
                 <button type="submit" disabled={enviando} style={{ marginTop: 22 }}>{enviando ? "Enviando..." : "Mandarme el link"}</button>
                 {error && <div className="error" role="alert">{error}</div>}
               </form>
-              <p className="ayuda" style={{ marginTop: 26 }}>¿Todavía no tienes tu pack? <a href="/">Conoce Publica y Capta</a>.</p>
+              <p className="ayuda" style={{ marginTop: 26 }}>¿Todavía no tienes tu pack? <a href="/" style={{ whiteSpace: "nowrap" }}>Conoce Publica y Capta</a>.</p>
             </>
           )}
         </div>
-        <p className="pie-app"><a href="/privacidad">Aviso de privacidad</a></p>
+        <p className="pie-app">{SOPORTE ? <>¿Dudas? <CorreoSoporte /> · </> : null}<a href="/privacidad">Aviso de privacidad</a></p>
       </div>
     </div>
   );

@@ -2567,7 +2567,7 @@ _Revisión técnica: pasos entre oferta y escrituración_
 - La pantalla dividida la armas en CapCut con la opción de superposición: una toma arriba y otra abajo.
 - Pon subtítulos automáticos en Instagram o CapCut y una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
 
-**Ojo:** graba con permiso del propietario, desde el mismo ángulo en las dos tomas, y sin mostrar la dirección ni objetos personales: para el "antes", usa portarretratos volteados o sin fotos. No digas que con estos arreglos la casa se vende más rápido o en más dinero: el post solo dice que se ve más amplia.
+**Ojo:** graba con permiso del propietario, desde el mismo ángulo en las dos tomas, y sin mostrar la dirección ni objetos personales: para el "antes", usa portarretratos con la foto de muestra que traen al comprarlos, no fotos reales de la familia. No digas que con estos arreglos la casa se vende más rápido o en más dinero: el post solo dice que se ve más amplia.
 
 **Estado de WhatsApp**
 

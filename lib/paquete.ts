@@ -7,15 +7,19 @@ import { catalogo, prepararMarca, MEDIDAS, totalDisenos, type Pieza } from "./di
 import { imagen } from "./render";
 import { bonos, bump, guionesExtra, upsell } from "./extras";
 import { copiar, esc, pagina } from "./pagina";
+import { appUrl } from "./sitio";
 
 // Nombre de archivo ASCII de hasta 50 caracteres, cortado en una palabra completa.
 const slug = (s: string) => {
-  const t = s.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s+/g, " ").trim();
+  const t = s.replace(/ñ/g, "ni").replace(/Ñ/g, "Ni").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-zA-Z0-9 ]/g, "").replace(/\s+/g, " ").trim();
   return t.length <= 50 ? t : t.slice(0, 51).replace(/\s+\S*$/, "");
 };
 const dd = (n: number) => String(n).padStart(2, "0");
+const app = appUrl();
+// Cómo llegar a la pestaña de propiedades del panel (con el link, si hay APP_URL).
+const panelPropiedades = `entra a tu panel${app ? ` (<a href="${esc(app)}/entrar">${esc(app.replace(/^https?:\/\//, ""))}</a>)` : ""} y abre la pestaña <b>Propiedades</b>: te arma el post y la historia con la foto de la casa, el precio y tus datos.`;
 // Lo que queda entre [corchetes] se marca en amarillo: es lo que completa el asesor.
-const marcar = (html: string) => html.replace(/\[([^\]<]{1,80})\]/g, "<mark>[$1]</mark>");
+const marcar = (html: string) => html.replace(/\[([^\]<]{1,200})\]/g, "<mark>[$1]</mark>");
 
 export type Opciones = { usarIA?: boolean; logo?: string; foto?: string; bump?: boolean; upsell?: boolean };
 
@@ -43,7 +47,8 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
 
   // 1. Diseños: 40 piezas (los carruseles traen varias imágenes). Con foto van en JPG, solo texto en PNG.
   const piezas = catalogo((t) => reemplazar(t, perfil));
-  const hechas = await deANes(piezas, 4, async (p: Pieza, i) => {
+  // DISENOS_A_LA_VEZ (opcional, 2 por defecto): cuántos diseños se arman a la vez. 4 es más rápido pero usa cerca de 1 GB de RAM.
+  const hechas = await deANes(piezas, Math.max(1, Math.floor(Number(process.env.DISENOS_A_LA_VEZ)) || 2), async (p: Pieza, i) => {
     const { el, conFoto } = await p.armar(m, i);
     const { width, height } = MEDIDAS[p.formato];
     const r = await imagen(el, width, height, conFoto);
@@ -97,7 +102,7 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
     if (x?.post) partes.push(`<b>Diseño:</b> ${esc(x.post.replace("03 Disenos/", "03 Disenos › "))}`);
     if (x?.historia) partes.push(`<b>Historia:</b> ${esc(x.historia.replace("03 Disenos/", "03 Disenos › "))}. Pon el sticker de Instagram encima del recuadro punteado.`);
     if (!x && esReel(d)) partes.push(`<b>Reel:</b> el guion está en <a href="../04 Guiones de reels.html#dia-${d.dia}">04 Guiones de reels, Día ${d.dia}</a>.`);
-    if (!x && !esReel(d) && d.publico === "Propiedad") partes.push("<b>Propiedad:</b> entra a la app y usa <b>Nueva propiedad</b>. Te arma el post y la historia con la foto de la casa, el precio y tus datos.");
+    if (!x && !esReel(d) && d.publico === "Propiedad") partes.push(`<b>Propiedad:</b> ${panelPropiedades}`);
     if (!partes.length) partes.push("<b>Imagen:</b> usa una foto tuya, de tu zona o de una propiedad que tengas.");
     return partes.map((p) => `<p class="meta">${p}</p>`).join("");
   };
@@ -110,7 +115,7 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
     zip.file(`02 Publicaciones/Dia ${dd(d.dia)} - ${slug(d.tema)}.txt`, `${d.post}\n\n— Estado de WhatsApp —\n${d.whatsapp}${d.story ? `\n\n— Historia —\n${d.story}` : ""}${extra}\n`);
   }
   const tarjetaDia = (d: DiaPack) => `<section class="tarjeta" id="dia-${d.dia}">
-<div class="cap">Día ${d.dia} · ${esc(d.publico)} · ${esc(d.formato)}</div><h2>${esc(d.tema)}</h2>${queUsaLargo(d)}
+<div class="cap">Día ${d.dia} · ${esc(d.publico)} · ${esc(d.formato)}</div><h2>${marcar(esc(d.tema))}</h2>${queUsaLargo(d)}
 <h4>Texto para Instagram y Facebook</h4>${copiar(`p${d.dia}`)}<div class="post" id="p${d.dia}">${marcar(esc(d.post))}</div>
 ${d.faltan.length ? `<p class="nota">Completa antes de publicar: ${marcar(esc(d.faltan.join(", ")))}</p>` : ""}
 <h4>Estado de WhatsApp</h4>${copiar(`w${d.dia}`)}<div class="wa" id="w${d.dia}">${marcar(esc(d.whatsapp))}</div>
@@ -170,6 +175,12 @@ ${extras.length ? `<h3>Extra</h3><ul class="indice">${extras.map((x) => `<li><a 
   const nombre = esc(perfil.nombre.split(" ")[0]);
   const imagenes = hechas.length;
   const guiones = conGuion.length + extras.length;
+  // Las historias sin día salen como "Historia N": se dice cuándo usarlas.
+  const libres = hechas.map(({ p }) => /^Historias\/Historia (\d+)/.exec(p.archivo)?.[1]).filter((n): n is string => Boolean(n));
+  const seguidas = Number(libres.at(-1)) - Number(libres[0]) === libres.length - 1;
+  const historiasLibres = !libres.length ? ""
+    : libres.length === 1 ? ` La historia ${libres[0]} no tiene día fijo: úsala`
+    : ` Las historias ${seguidas ? `${libres[0]} a ${libres.at(-1)}` : `${libres.slice(0, -1).join(", ")} y ${libres.at(-1)}`} no tienen día fijo: úsalas`;
   const perfilBono = bs[0] ? `05 Bonos › 1 ${esc(slug(bs[0].titulo))}` : "";
   zip.file("00 EMPIEZA AQUI.html", pagina("Empieza aquí", `<div class="cap">Tu contenido de 90 días</div>
 <h1>Hola, <em>${nombre}</em>.<br>Tu contenido ya está listo.</h1>
@@ -181,14 +192,14 @@ ${perfilBono ? `<div class="tarjeta"><div class="cap">Antes del Día 1</div><h2>
 <div class="paso"><div class="n">3</div><div>Sube el diseño de <b>03 Disenos</b> (o tu foto, o tu reel) y pega el texto. Listo.</div></div>
 <h2>Qué hay en cada <em>carpeta</em></h2>
 <ul>
-<li><b>03 Disenos</b>: cada carrusel viene en su carpeta. Sube las imágenes en orden (01, 02, 03…) en una sola publicación. En las historias, pon el sticker de encuesta o la caja de preguntas de Instagram encima del recuadro punteado.</li>
+<li><b>03 Disenos</b>: cada carrusel viene en su carpeta. Sube las imágenes en orden (01, 02, 03…) en una sola publicación. En las historias, pon el sticker de encuesta o la caja de preguntas de Instagram encima del recuadro punteado.${historiasLibres ? `${historiasLibres} cuando quieras subir una encuesta o una caja de preguntas, por ejemplo en los días que no traen historia.` : ""}</li>
 <li><b>04 Guiones de reels</b>: ${guiones} guiones toma por toma, con 3 ganchos para elegir, la portada, tips para grabar y el texto para publicar.</li>
 <li><b>05 Bonos</b>: ${bs.map((b) => esc(b.titulo)).join(" y ")}.</li>
 ${op.bump ? "<li><b>06 Del mensaje a la visita</b>: tus 50 respuestas de WhatsApp.</li>" : ""}
 ${kit ? "<li><b>07 Kit Captacion Exclusiva</b>: tu presentación para dueños (se edita en el navegador y se guarda en PDF), la opinión de valor, el guion para pedir la exclusiva, el checklist de documentos y 10 publicaciones de resultados.</li>" : ""}
 </ul>
 <h2>Para tus <em>propiedades</em></h2>
-<p>Entra a la app y usa <b>Nueva propiedad</b>: te arma el post y la historia con la foto de la casa, el precio y tus datos de contacto.</p>
+<p>${panelPropiedades.replace(/^e/, "E")}</p>
 <p class="meta">Los textos sobre créditos, escrituras e impuestos son información general. Cada caso puede cambiar según el estado y la institución.</p>`, e, firma));
 
   const buf = await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" });

@@ -5,6 +5,8 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { achicar, api, auth, coloresDeLogo } from "@/lib/cliente";
 import type { Perfil } from "@/lib/perfil";
 import { BarraApp } from "../_web/BarraApp";
+import { CorreoSoporte } from "../_web/Contacto";
+import { PROVEEDOR, SOPORTE } from "@/lib/oferta";
 
 type Productos = { pack: boolean; bump: boolean; upsell: boolean };
 type Pestana = "marca" | "descargar" | "propiedad";
@@ -37,9 +39,9 @@ export default function Panel() {
   const salir = () => signOut(auth()).then(() => location.replace("/entrar"));
   const barra = <BarraApp><button className="salir" type="button" onClick={salir}>Salir</button></BarraApp>;
   if (cargando) return <>{barra}<main className="app"><div className="cargando"><div className="punto" /><div className="cap">Abriendo tu panel</div></div></main></>;
-  if (error) return <>{barra}<main className="app"><div className="cap">Tu acceso</div><h1>Algo no <em>cuadra</em></h1><div className="error">{error}</div><button className="sec" style={{ width: "100%", marginTop: 20 }} onClick={salir}>Entrar con otro correo</button></main></>;
+  if (error) return <>{barra}<main className="app"><div className="cap">Tu acceso</div><h1>Algo no <em>cuadra</em></h1><div className="error">{error}</div><button style={{ width: "100%", marginTop: 20 }} onClick={() => location.reload()}>Intentar de nuevo</button><button className="sec" style={{ width: "100%", marginTop: 12 }} onClick={salir}>Entrar con otro correo</button></main></>;
 
-  const nombre = perfil.nombre.split(" ")[0];
+  const nombre = perfil.nombre.trim().split(/\s+/)[0];
   const SUB: Record<Pestana, string> = {
     marca: "Llena tus datos una vez. Todo lo que escribas aparece en tus publicaciones y diseños.",
     descargar: "Tu pack de 90 días con tu nombre, tu logo y tus colores.",
@@ -65,7 +67,7 @@ export default function Panel() {
         {pestana === "descargar" && productos && <Descargar productos={productos} />}
         {pestana === "propiedad" && <NuevaPropiedad />}
       </main>
-      <p className="pie-app"><a href="/privacidad">Aviso de privacidad</a></p>
+      <p className="pie-app">{SOPORTE ? <>¿Dudas? <CorreoSoporte /> · </> : null}<a href="/privacidad">Aviso de privacidad</a></p>
     </>
   );
 }
@@ -91,7 +93,7 @@ function Formulario({ inicial, onGuardado }: { inicial: Perfil; onGuardado: (p: 
   async function guardar(e: React.FormEvent) {
     e.preventDefault();
     setError(""); setEnviando(true);
-    const limpio = { ...p, colonias: p.colonias.map((c) => c.trim()).filter(Boolean) };
+    const limpio = { ...p, nombre: p.nombre.trim(), colonias: p.colonias.map((c) => c.trim()).filter(Boolean) };
     try {
       await api("/api/perfil", { method: "PUT", body: JSON.stringify({ perfil: limpio, logo, foto }) });
       onGuardado(limpio);
@@ -116,16 +118,16 @@ function Formulario({ inicial, onGuardado }: { inicial: Perfil; onGuardado: (p: 
         ))}
       </div>
       <div className="fila">
-        <div><label>WhatsApp</label><input type="tel" required minLength={8} value={p.whatsapp} onChange={(e) => set("whatsapp", e.target.value)} placeholder="33 1234 5678" /></div>
+        <div><label>WhatsApp</label><input type="tel" required minLength={8} value={p.whatsapp} onChange={(e) => set("whatsapp", e.target.value)} placeholder="33 0000 0000" /></div>
         <div><label>Años de experiencia</label><input type="text" inputMode="numeric" value={p.aniosExperiencia} onChange={(e) => set("aniosExperiencia", e.target.value)} placeholder="8" /></div>
       </div>
       <label>Correo para tus anuncios</label>
       <input type="email" required value={p.correo} onChange={(e) => set("correo", e.target.value)} />
       <label>Domicilio de tu oficina</label>
-      <input type="text" required minLength={5} value={p.domicilio} onChange={(e) => set("domicilio", e.target.value)} placeholder="Av. Patria 1234, Zapopan, Jal." />
+      <input type="text" required minLength={5} value={p.domicilio} onChange={(e) => set("domicilio", e.target.value)} placeholder="Av. Ejemplo 100, Zapopan, Jal." />
       <p className="ayuda">La NOM-247 pide tu nombre, domicilio, teléfono y correo en los anuncios de casas en venta. Por eso van en esos diseños.</p>
       <label>Tu usuario de Instagram o Facebook (opcional)</label>
-      <input type="text" value={p.usuarioRedes} onChange={(e) => set("usuarioRedes", e.target.value)} placeholder="@laura.bienesraices" />
+      <input type="text" value={p.usuarioRedes} onChange={(e) => set("usuarioRedes", e.target.value)} placeholder="@laura.ejemplo" />
 
       </div>
       <div className="seccion-form">
@@ -152,7 +154,7 @@ function Formulario({ inicial, onGuardado }: { inicial: Perfil; onGuardado: (p: 
       <label>Tu cliente principal</label>
       <select value={p.cliente} onChange={(e) => set("cliente", e.target.value as Perfil["cliente"])}>
         <option value="primera_casa">Gente que compra su primera casa</option>
-        <option value="familias">Familias que buscan una casa más grande</option>
+        <option value="familias">Familias que buscan más espacio</option>
         <option value="inversionistas">Inversionistas</option>
         <option value="mixto">De todo un poco</option>
       </select>
@@ -177,11 +179,14 @@ function Formulario({ inicial, onGuardado }: { inicial: Perfil; onGuardado: (p: 
       </div>
       <label>Una foto tuya (opcional)</label>
       <Archivo texto="Elegir foto" onElegir={async (f) => { try { setFoto(await achicar(f, 1200, "image/jpeg")); } catch (err) { setError((err as Error).message); } }} />
-      <p className="ayuda">Va en el post de &quot;Conóceme&quot; y en la historia de preguntas. Si no subes una, usamos tus iniciales.</p>
+      <p className="ayuda">Va en el post de &quot;Conóceme&quot; y en las 2 historias de preguntas. Si no subes una, el post lleva tus iniciales y las historias, una foto de ambiente.</p>
       {foto && <img className="vista" src={foto} alt="Tu foto" style={{ maxHeight: 160, marginTop: 10 }} />}
       </div>
 
-      <p className="ayuda" style={{ marginTop: 22 }}>Al guardar confirmas que tienes derecho a usar este logo y esta foto. Usamos tus datos solo para armar tu contenido. Ver el <a href="/privacidad">aviso de privacidad</a>.</p>
+      <p className="ayuda" style={{ marginTop: 22 }}>
+        Al guardar confirmas que tienes derecho a usar este logo y esta foto. {PROVEEDOR.nombre ? `${PROVEEDOR.nombre} usa` : "Usamos"} estos datos para armar tu contenido y darte acceso a tu compra.
+        {SOPORTE ? <> Puedes pedir que los borremos escribiendo a <CorreoSoporte />.</> : " Puedes pedir que los borremos cuando quieras."} Lee el <a href="/privacidad">aviso de privacidad</a>.
+      </p>
       <button type="submit" disabled={enviando} style={{ marginTop: 18 }}>{enviando ? "Guardando..." : "Guardar y seguir"}</button>
       {error && <div className="error">{error}</div>}
     </form>
@@ -212,7 +217,7 @@ function Descargar({ productos }: { productos: Productos }) {
         <div className="cap" style={{ color: "var(--arena)" }}>Publica y Capta</div>
         <h3>Tu pack de <em>90 días</em></h3>
         <ul className="lista-check">
-          <li>90 publicaciones con tu nombre y tu zona, con su versión para WhatsApp</li>
+          <li>90 publicaciones con tus datos ya puestos y su versión para WhatsApp</li>
           <li>Calendario de 90 días</li>
           <li>40 diseños con tu logo y tus colores: carruseles, posts e historias</li>
           <li>30 guiones de reels con el texto para publicar</li>
@@ -250,7 +255,7 @@ function Archivo({ onElegir, required, texto = "Elegir imagen" }: { onElegir: (f
     <label className="archivo">
       <input type="file" accept="image/png,image/jpeg" required={required} onChange={(e) => { const f = e.target.files?.[0]; if (f) { setNombre(f.name); onElegir(f); } }} />
       <span className="archivo-boton">{texto}</span>
-      <span className="archivo-nombre">{nombre || "Ninguna elegida"}</span>
+      <span className="archivo-nombre">{nombre || "Ningún archivo elegido"}</span>
     </label>
   );
 }
@@ -284,7 +289,7 @@ function NuevaPropiedad() {
       <div className="opciones">
         {["venta", "renta"].map((v) => <label key={v}><input type="radio" name="op" checked={x.operacion === v} onChange={() => set("operacion", v)} />{v === "venta" ? "Venta" : "Renta"}</label>)}
       </div>
-      <div className="fila">
+      <div className="fila apilar">
         <div><label>Tipo</label><select value={x.tipo} onChange={(e) => set("tipo", e.target.value)}>{["Casa", "Departamento", "Terreno", "Local"].map((t) => <option key={t}>{t}</option>)}</select></div>
         <div><label>Etiqueta</label><select value={x.etiqueta} onChange={(e) => set("etiqueta", e.target.value)}>{["Recién captada", "Nueva en mi zona", "Precio actualizado", "Vendida", "Rentada"].map((t) => <option key={t}>{t}</option>)}</select></div>
       </div>
@@ -336,7 +341,7 @@ function NuevaPropiedad() {
           <label style={{ marginTop: 26 }}>Texto para publicar</label>
           <pre className="texto" style={{ marginTop: 0 }}>{res.texto}</pre>
           <button type="button" className="sec" style={{ width: "100%", marginTop: 12 }} onClick={() => navigator.clipboard.writeText(res.texto).then(() => setCopiado(true))}>{copiado ? "Texto copiado" : "Copiar texto"}</button>
-          {x.operacion === "venta" && <p className="ayuda" style={{ marginTop: 14 }}>El post y la historia de venta ya traen tu nombre, domicilio, teléfono, correo y el precio en pesos, como pide la NOM-247.</p>}
+          {x.operacion === "venta" && <p className="ayuda" style={{ marginTop: 14 }}>El post y la historia de venta ya traen tu nombre, domicilio, teléfono, correo y el precio en pesos. Si aceptas crédito, el texto avisa que el precio total depende del crédito y de los gastos notariales, como pide la NOM-247.</p>}
         </div>
       )}
     </form>

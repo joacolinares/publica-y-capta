@@ -3,7 +3,7 @@ import { z } from "zod";
 const color = z.string().regex(/^#[0-9a-fA-F]{6}$/, "Color en formato #RRGGBB");
 
 export const PerfilSchema = z.object({
-  nombre: z.string().min(2).max(60),
+  nombre: z.string().trim().min(2).max(60),
   nombreComercial: z.string().max(60).optional().default(""),
   whatsapp: z.string().min(8).max(25),
   correo: z.string().email(),
@@ -29,9 +29,10 @@ export type Perfil = z.infer<typeof PerfilSchema>;
 export const PERFIL_EJEMPLO: Perfil = {
   nombre: "Laura Gómez",
   nombreComercial: "Laura Gómez Bienes Raíces",
-  whatsapp: "33 1234 5678",
-  correo: "laura@ejemplo.mx",
-  domicilio: "Av. Patria 1234, Zapopan, Jal.",
+  // Datos de contacto claramente ficticios: salen en las imágenes públicas de la página de venta.
+  whatsapp: "33 0000 0000",
+  correo: "laura@example.com",
+  domicilio: "Av. Ejemplo 100, Zapopan, Jal.",
   ciudad: "Zapopan",
   zona: "Zapopan",
   colonias: ["Ciudad Granja", "Jardines Universidad", "Puerta de Hierro"],
@@ -43,5 +44,5 @@ export const PERFIL_EJEMPLO: Perfil = {
   genero: "a",
   aniosExperiencia: "8",
   historia: "",
-  usuarioRedes: "@laura.bienesraices",
+  usuarioRedes: "@laura.ejemplo",
 };

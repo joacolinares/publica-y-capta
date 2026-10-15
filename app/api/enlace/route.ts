@@ -4,26 +4,48 @@
 import { createHash } from "node:crypto";
 import { correoAcceso, correoSinCompra } from "@/lib/correo";
 import { asegurarUsuario, authAdmin, compraDe, db, leerCuerpo, normalizar } from "@/lib/servidor";
+import { appUrl } from "@/lib/sitio";
 
 export const runtime = "nodejs";
 
 const ok = (modo: "propio" | "firebase") => Response.json({ modo });
 
-/** Hasta 1 correo por minuto y 6 por día para cada dirección: evita usar la página para llenarle el buzón a alguien. */
-async function permitido(email: string) {
-  const ref = db().collection("enlaces").doc(createHash("sha256").update(email).digest("hex"));
-  const hoy = new Date().toISOString().slice(0, 10);
+/** Día en hora de Ciudad de México (AAAA-MM-DD). */
+const hoyMx = () => new Date().toLocaleDateString("en-CA", { timeZone: "America/Mexico_City" });
+
+/** El buzón real: sin +etiqueta y, en Gmail, sin puntos. Así las variantes de un correo comparten el mismo cupo. */
+function buzon(email: string) {
+  let [local, dom] = email.split("@");
+  local = local.split("+")[0];
+  if (dom === "googlemail.com") dom = "gmail.com";
+  if (dom === "gmail.com") local = local.replace(/\./g, "");
+  return `${local}@${dom}`;
+}
+
+/** Hasta 1 correo por minuto y 6 por día para cada buzón: evita usar la página para llenarle el buzón a alguien. */
+async function permitido(email: string): Promise<"espera" | "tope" | "ok"> {
+  const ref = db().collection("enlaces").doc(createHash("sha256").update(buzon(email)).digest("hex"));
+  const hoy = hoyMx();
   return db().runTransaction(async (tx) => {
     const l = ((await tx.get(ref)).data() ?? {}) as { ultimo?: number; dia?: string; n?: number };
     const n = l.dia === hoy ? l.n ?? 0 : 0;
-    if ((l.ultimo && Date.now() - l.ultimo < 60_000) || n >= 6) return false;
+    if (l.ultimo && Date.now() - l.ultimo < 60_000) return "espera";
+    if (n >= 6) return "tope";
     tx.set(ref, { ultimo: Date.now(), dia: hoy, n: n + 1 });
-    return true;
+    return "ok";
   });
 }
 
+// Tope global de correos a direcciones sin compra (Railway corre un solo proceso): cuida la cuota y la reputación del dominio.
+let sinCompra = { dia: "", n: 0 };
+function cupoSinCompra() {
+  const hoy = hoyMx();
+  if (sinCompra.dia !== hoy) sinCompra = { dia: hoy, n: 0 };
+  return ++sinCompra.n <= 50;
+}
+
 function origen(req: Request) {
-  if (process.env.APP_URL) return process.env.APP_URL.replace(/\/$/, "");
+  if (appUrl()) return appUrl();
   const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
   return host ? `${req.headers.get("x-forwarded-proto") ?? "https"}://${host}` : new URL(req.url).origin;
 }
@@ -34,19 +56,23 @@ export async function POST(req: Request) {
     const cuerpo = JSON.parse(await leerCuerpo(req, 2048)) as { email?: unknown };
     email = typeof cuerpo.email === "string" ? normalizar(cuerpo.email) : "";
   } catch { return ok("firebase"); }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 200) return ok("firebase");
+  if (email.length > 200 || !/^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(email)) return ok("firebase");
 
   try {
+    // El límite va antes de leer la compra: responde igual para todos.
+    const p = await permitido(email);
+    // "espera": ya se mandó uno hace menos de un minuto. "tope": se acabaron los del día; que lo mande Firebase.
+    if (p === "espera") return ok(process.env.RESEND_API_KEY ? "propio" : "firebase");
+    if (p === "tope") return ok("firebase");
     const compra = await compraDe(email);
     // Sin correo propio: se deja la cuenta lista (si compró) y el link lo manda Firebase.
     if (!process.env.RESEND_API_KEY) {
       if (compra?.productos?.pack) await asegurarUsuario(email);
       return ok("firebase");
     }
-    if (!(await permitido(email))) return ok("propio");
     if (!compra?.productos?.pack) {
-      await correoSinCompra(email);
-      return ok("propio");
+      if (!cupoSinCompra()) return ok("propio");
+      return ok((await correoSinCompra(email)) ? "propio" : "firebase");
     }
     await asegurarUsuario(email);
     const link = await authAdmin().generateSignInWithEmailLink(email, { url: `${origen(req)}/entrar`, handleCodeInApp: true });

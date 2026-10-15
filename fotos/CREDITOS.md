@@ -28,23 +28,6 @@ Todas las fotos son CC0 (dominio público): no exigen atribución, pero aquí qu
 - Licencia: CC0 1.0
 - URL: https://wordpress.org/photos/photo/58767b0267/
 
-## cocina-1.jpg
-
-- Título original: Kök i Klockargården, Botkyrka.jpg
-- Autor: Botkyrkafotografen
-- Fuente: Wikimedia Commons (trabajo propio)
-- Licencia: CC0 1.0
-- URL: https://commons.wikimedia.org/wiki/File:K%C3%B6k_i_Klockarg%C3%A5rden,_Botkyrka.jpg
-- Retoque: Se difuminaron las marcas pequeñas de la cafetera y el horno.
-
-## cocina-2.jpg
-
-- Título original: sin título propio (la página solo muestra «Photo detail»). Texto alternativo de la página: «Fresh vegetables in a country-style kitchen.»
-- Autor: Roy Tanck
-- Fuente: WordPress Photo Directory (wordpress.org/photos)
-- Licencia: CC0 1.0
-- URL: https://wordpress.org/photos/photo/950657f3cf/
-
 ## cocina-3.jpg
 
 - Título original: sin título propio (la página solo muestra «Photo detail»). Texto alternativo de la página: «Modern kitchen display with dark wood cabinets, beige countertop, wall-mounted open shelving, and marble-effect wall tiles»
