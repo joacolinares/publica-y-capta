@@ -21,6 +21,7 @@ function app() {
 
 export const db = () => getFirestore(app());
 export const bucket = () => getStorage(app()).bucket();
+export const authAdmin = () => getAuth(app());
 
 export type Productos = { pack: boolean; bump: boolean; upsell: boolean };
 export type Compra = { email: string; productos: Productos; activo: boolean; ordenes: Record<string, { productos: (keyof Productos)[]; estado: string; fecha: string }> };

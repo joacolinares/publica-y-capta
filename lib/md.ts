@@ -1,6 +1,10 @@
 // Markdown mínimo a HTML para los extras (títulos, listas, tablas, citas, negritas y casillas).
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const inline = (s: string) => esc(s).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>").replace(/`([^`]+)`/g, "<code>$1</code>");
+const inline = (s: string) =>
+  esc(s)
+    .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+    .replace(/(^|[\s(])_([^_\n]+)_(?=[\s.,;:)!?]|$)/g, "$1<i>$2</i>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>");
 
 export function mdAHtml(md: string) {
   const out: string[] = [];
@@ -23,7 +27,9 @@ export function mdAHtml(md: string) {
         if (!c.every((x) => /^:?-+:?$/.test(x))) filas.push(c);
       }
       i--;
-      out.push(`<table>${filas.map((f, k) => `<tr>${f.map((x) => (k ? `<td>${inline(x)}</td>` : `<th>${inline(x)}</th>`)).join("")}</tr>`).join("")}</table>`);
+      // data-l: el título de cada columna, para mostrar la tabla como tarjetas en el celular.
+      const cab = filas[0] ?? [];
+      out.push(`<table class="t">${filas.map((f, k) => `<tr>${f.map((x, j) => (k ? `<td data-l="${esc(cab[j] ?? "")}">${inline(x)}</td>` : `<th>${inline(x)}</th>`)).join("")}</tr>`).join("")}</table>`);
       continue;
     }
     if (/^\s*([-*]|\d+\.)\s/.test(l)) {

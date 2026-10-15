@@ -116,18 +116,36 @@ Versión base que la app personaliza. Lo que va entre [corchetes] se reemplaza c
 >
 > #infonavit #creditoinfonavit #comprarcasa #bienesraices
 
-**Guion corto**
+**Guion del reel** (sin cara · 30 a 35 s)
 
-| Seg. | Qué se ve | Texto en pantalla |
-|---|---|---|
-| 0-3 | Fachada de una casa | "¿Cotizas en el Infonavit y no sabes cuánto te prestan?" |
-| 3-7 | Mano con el celular (sin datos reales en pantalla) | "Consúltalo gratis en Mi Cuenta Infonavit con tu NSS" |
-| 7-12 | Interior de una casa | "El monto depende de tu salario, tu edad y tu ahorro" |
-| 12-17 | Otra toma de la casa | "Si no te alcanza, hay opciones para sumar otro crédito" |
-| 17-21 | Una puerta o unas llaves | "El trámite de tu crédito Infonavit es gratuito" |
-| 21-27 | Fondo liso con tu logo | "¿Ya sabes tu monto? Escríbeme CRÉDITO y te digo qué casas entran en tu presupuesto" |
+**La idea:** resolver en medio minuto la duda que frena a quien cotiza en el Infonavit, y que te escriba para buscar casas que entren en su monto.
 
-Regla: no uses el logo del Infonavit ni capturas con datos de otra persona.
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "¿Cotizas en el Infonavit y no sabes cuánto te prestan?"
+2. "Antes de ver casas, haz esta consulta desde tu celular."
+3. "Tu monto del Infonavit no es un secreto. Así lo consultas."
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | Fachada de una casa; el celular entra a cuadro desde abajo | El gancho que elegiste | El gancho que elegiste |
+| 3-7 | Tu mano con el celular en una pantalla de inicio de sesión, sin datos reales | "Entra a Mi Cuenta Infonavit con tu NSS" | "Entra a Mi Cuenta Infonavit con tu Número de Seguridad Social." |
+| 7-11 | Plano cerrado: tu pulgar baja por la pantalla | "Ahí ves tu precalificación" | "Ahí ves tu precalificación. Y ahora, 3 cosas que conviene saber." |
+| 11-18 | Recorrido lento por una sala con luz natural | "1. Depende de salario, edad, tiempo cotizando y ahorro" | "Uno: el monto depende, entre otras cosas, de tu salario, tu edad, el tiempo que llevas cotizando y tu ahorro en la subcuenta de vivienda." |
+| 18-23 | Dos tazas de café sobre una mesa | "2. ¿No te alcanza? Se puede sumar otro crédito" | "Dos: si no te alcanza, hay opciones para sumar un crédito bancario o el de tu pareja." |
+| 23-29 | Plano cerrado: una mano gira la llave de una puerta | "3. El trámite es gratuito" | "Y tres, para que nadie te sorprenda: el trámite de tu crédito Infonavit es gratuito. Nadie te debe cobrar por tramitarlo." |
+| 29-35 | Tu logo o el diseño del día sobre fondo liso | "¿Ya sabes tu monto? Escríbeme CRÉDITO" | "¿Ya sabes tu monto? Escríbeme CRÉDITO y te digo qué casas de [tu zona] entran en tu presupuesto." |
+
+**Cierre:** pide la palabra CRÉDITO, la misma del texto del post, para saber quién llegó por este reel.
+
+**Portada:** "¿Cuánto te presta el Infonavit?" sobre la toma de la fachada.
+
+**Para grabarlo:**
+- Graba cada toma 2 o 3 segundos más larga de lo que dice la tabla: en la edición recortas.
+- Si grabas la pantalla del celular, usa una pantalla de inicio sin datos o tapa todo lo personal.
+- Pon subtítulos automáticos en Instagram o CapCut: mucha gente ve los reels sin sonido.
+- Si no quieres grabar voz, deja solo el texto en pantalla y una canción suave de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Ojo:** no uses el logo del Infonavit ni capturas con datos de otra persona, y no digas montos: cada quien ve el suyo en su precalificación.
 
 **Estado de WhatsApp**
 
@@ -164,18 +182,40 @@ Regla: no uses el logo del Infonavit ni capturas con datos de otra persona.
 
 ## Día 7 · Tu marca · Así es un día como asesor
 
-**Guion corto**
+**Guion del reel** (con cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Tú, de frente, con café en la mano | "¿Quieres ver cómo es un día real de un asesor inmobiliario en [tu ciudad]?" |
-| 3-8 | Clips cortos: manejando, llegando a una casa, abriendo la puerta | Texto: "9:00 · Primera visita" |
-| 8-13 | Revisando papeles o hablando por teléfono | Texto: "12:00 · Papeles y llamadas" |
-| 13-18 | Mostrando un detalle de una propiedad (cocina, jardín) | Texto: "16:00 · Otra visita" |
-| 18-25 | Tú, de frente otra vez | "Lo que más disfruto es cuando una familia encuentra su casa. Si estás buscando la tuya, escríbeme." |
-| 25-28 | Pantalla final con tu nombre y teléfono | Texto: "[Tu nombre] · [teléfono]" |
+**La idea:** enseñar en medio minuto todo lo que pasa detrás de "enseñar casas": visitas, llamadas, papeles y mucho café. Quien busca casa o quiere vender la suya ve que detrás hay alguien trabajando de verdad, y te escribe.
 
-Tip: luz de ventana de frente, celular a la altura de los ojos, clips de 2 a 3 segundos. Con hablar al principio y al final alcanza.
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "¿Crees que mi trabajo es solo enseñar casas?"
+2. "POV: me acompañas un día de trabajo."
+3. "Así es un día real de asesor/a en [tu ciudad]."
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, en la puerta de tu casa, con un café en la mano | El gancho que elegiste | "Un día real en [tu ciudad]" |
+| 3-6 | Plano cerrado: tu mano toma las llaves y la carpeta de la mesa (tu voz encima) | "Empieza temprano: primera visita." | "9:00 · Primera visita" |
+| 6-10 | Tú de espaldas, abriendo la puerta de una casa y prendiendo las luces (tu voz encima) | "Llego antes, abro y dejo todo listo." | "Llego antes de la cita" |
+| 10-14 | Tú en el coche estacionado, hablando por teléfono, visto de lado | "Al mediodía: llamadas, mensajes... y más mensajes." | "12:00 · Llamadas y mensajes" |
+| 14-18 | Plano cerrado desde arriba: tus manos acomodan papeles junto a tu taza, sin datos visibles (tu voz encima) | "Y papeles. Muchos papeles. Esta parte casi nadie la ve." | "La parte que no se ve" |
+| 18-22 | Tú a cámara, levantas la taza | "Tercer café... y todavía falta lo que más me gusta." | "Falta lo que más me gusta" |
+| 22-26 | Recorrido lento por la cocina o el jardín de una casa; tu mano señala un detalle (tu voz encima) | "En la tarde, otra visita. Ninguna casa es igual." | "16:00 · Otra visita" |
+| 26-31 | Tú a cámara, de frente, tono tranquilo | "Lo que más disfruto: ver a una familia encontrar su casa." | "Ver a una familia encontrar su casa" |
+| 31-37 | Tú a cámara, un poco más cerca | "¿Buscas casa o vendes la tuya? Escríbeme CASA y te acompaño en todo el proceso." | "Escríbeme CASA" |
+
+**Cierre:** pide la palabra CASA por mensaje. Sirve igual para quien busca y para quien vende, y te dice quién llegó por este reel.
+
+**Portada:** "Un día real de asesor/a" sobre la toma tuya con el café en la puerta.
+
+**Para grabarlo:**
+- Grábalo durante un día de trabajo real: ten el celular a la mano y saca clips de 5 segundos de cada momento (llaves, puerta, llamada, papeles, café). Las partes a cámara las grabas al final del día, todas en el mismo lugar.
+- Cambia las horas de la pantalla por las de tu día. Si tu día empieza con papeles y no con visitas, cambia el orden de las tomas.
+- Para las tomas a cámara: luz de ventana de frente y el celular a la altura de los ojos, recargado en un librero o en el tablero del coche estacionado.
+- Pon subtítulos automáticos en Instagram o en CapCut y elige una canción de la biblioteca de Instagram a volumen bajo, para que se oiga tu voz; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** cambia las tomas a cámara por tus manos con el café y las llaves, y di las frases como voz en off o déjalas solo en texto.
+
+**Ojo:** no grabes mientras manejas: las tomas en el coche, siempre con el coche estacionado. Y que no salgan clientes, placas de coches ni mensajes o números de otras personas en tu celular.
 
 **Texto del reel (Instagram y Facebook)**
 
@@ -183,7 +223,7 @@ Tip: luz de ventana de frente, celular a la altura de los ojos, clips de 2 a 3 s
 >
 > Visitas, llamadas, papeles y mucho café. Lo mejor del día: ver a una familia encontrar su casa.
 >
-> Si estás buscando casa o quieres vender la tuya, escríbeme. Te acompaño en todo el proceso.
+> Si estás buscando casa o quieres vender la tuya, escríbeme la palabra CASA. Te acompaño en todo el proceso.
 >
 > #diadetrabajo #asesorinmobiliario #bienesraices #[tuciudad]
 
@@ -364,16 +404,40 @@ _Revisión técnica: avalúo (quién lo hace, quién lo paga, uso en impuestos)_
 >
 > #asesorinmobiliario #bienesraices #[tuciudad] #[tuzona]
 
-**Guion corto**
+**Guion del reel** (con cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Tú a cámara, en tu colonia o en tu oficina | "¿Por qué me dedico a bienes raíces?" |
-| 3-8 | Foto tuya de cuando empezaste o tu primer letrero | "Empecé [cómo empezaste]." |
-| 8-13 | Tú caminando por [tu zona] | "Me gusta acompañar a la gente en una decisión tan grande." |
-| 13-18 | Tus manos revisando papeles o carpetas | "Te explico cada paso, sin prisa y sin presiones." |
-| 18-22 | Tú abriendo la puerta de una casa | "Porque cada casa es distinta, y cada familia también." |
-| 22-25 | Tú a cámara, sonriendo | "¿Platicamos? Escríbeme HOLA." |
+**La idea:** contar con tus palabras cómo empezaste y por qué te quedaste, para que quien piensa comprar, vender o rentar en [tu zona] sienta que ya te conoce y te escriba con confianza.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Me preguntan seguido por qué me dedico a esto."
+2. "Así empecé en bienes raíces, y por esto me quedé."
+3. "Tres razones por las que sigo en bienes raíces."
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, plano medio, en una calle de [tu zona] o en tu oficina | El gancho que elegiste | "¿Por qué me dedico a esto?" |
+| 3-8 | Tu mano sostiene frente a la cámara una foto tuya de cuando empezaste (o de tu primer letrero de "Se vende"); si no tienes, tú a cámara | "Empecé [cómo empezaste]." | "Así empecé" |
+| 8-11 | Tú a cámara, levantas tres dedos | "Y me quedé por tres razones." | "Me quedé por 3 razones" |
+| 11-16 | Tú en la puerta de una casa, platicando con alguien que está de espaldas a la cámara (o tus manos entregando una carpeta) | "Uno: acompañar a la gente en una decisión tan grande como su casa." | "1. Acompañarte en una decisión grande" |
+| 16-21 | Cámara fija en la banqueta: tú caminas por [tu zona] y pasas frente a ella (tu voz encima) | "Dos: conozco [tu zona] y me gusta que la gente encuentre aquí su lugar." | "2. Que encuentres tu lugar aquí" |
+| 21-25 | Tú a cámara, más cerca | "Y la tercera no tiene nada que ver con vender." | "La tercera no es por vender" |
+| 25-29 | Plano cerrado: tu mano abre la puerta de otra casa; corte a tu libreta con apuntes (tu voz encima) | "Cada operación es distinta, y siempre aprendo algo nuevo." | "3. Siempre aprendo algo nuevo" |
+| 29-34 | Tú a cámara, tono tranquilo | "Mi trabajo es explicarte cada paso con calma, para que decidas sin presiones." | "Cada paso con calma, sin presiones" |
+| 34-38 | Tú a cámara, sonriendo | "¿Piensas comprar, vender o rentar? Mándame HOLA y platicamos." | "Mándame HOLA" |
+
+**Cierre:** pide HOLA, la misma palabra del post. Es la más fácil de mandar para alguien que todavía no sabe si va a comprar, vender o rentar, y te avisa que llegó por este reel.
+
+**Portada:** "Por qué me dedico a esto" sobre la toma tuya a cámara en [tu zona].
+
+**Para grabarlo:**
+- Antes de grabar, cambia [cómo empezaste] por una frase tuya, real y corta (máximo 12 palabras). Por ejemplo: "después de comprar mi propia casa y ver lo difícil que era", "cuando ayudé a vender la casa de mi familia y me gustó" o "por invitación de un amigo que ya trabajaba en una inmobiliaria".
+- Si no tienes foto de cuando empezaste, usa una tuya en una de tus primeras propiedades, o di esa frase a cámara. No hace falta nada más.
+- Graba primero todas las frases a cámara en el mismo lugar (luz de frente, celular a la altura de los ojos) y después las tomas de apoyo: la calle, la puerta, la libreta.
+- Pon subtítulos automáticos en Instagram o en CapCut y elige una canción suave de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** usa la foto de cuando empezaste, tomas de tus manos y de las calles de [tu zona], y di todo como voz en off.
+
+**Ojo:** cuenta tu historia real, sin adornarla. Si sale otra persona, aunque sea de espaldas, pídele permiso antes de publicar.
 
 **Estado de WhatsApp**
 
@@ -423,16 +487,37 @@ _Revisión técnica: diferencias entre crédito bancario e Infonavit_
 >
 > #vendermicasa #fotosinmobiliarias #bienesraices #[tuciudad]
 
-**Guion corto**
+**Guion del reel** (sin cara · 30 a 35 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Una sala oscura y desordenada | "¿Así fotografías tu casa para venderla?" |
-| 3-7 | Manos abriendo cortinas y prendiendo focos | "Paso 1: luz natural." |
-| 7-11 | Manos guardando cosas de la barra de la cocina | "Paso 2: menos cosas a la vista." |
-| 11-15 | Celular tomando foto desde una esquina | "Paso 3: desde la esquina, celular derecho." |
-| 15-19 | La misma sala, iluminada y ordenada | "Mismo espacio, otra impresión." |
-| 19-22 | Texto en pantalla | "¿Vas a vender? Escríbeme FOTOS." |
+**La idea:** enseñar con el mismo cuarto, antes y después, cómo preparas una casa para fotografiarla, para que quien va a vender vea que sabes presentar su casa y te escriba.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "¿Así le tomas fotos a tu casa para venderla?"
+2. "Antes de tomarle fotos a tu casa, haz estos 3 pasos."
+3. "Las fotos son lo primero que ve un comprador. Cuídalas así."
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | Sala con cortinas cerradas y cosas sobre la mesa; tu mano toma una foto desde el centro del cuarto, con el celular chueco | El gancho que elegiste | El gancho que elegiste |
+| 3-7 | Plano cerrado: tus manos abren las cortinas; corte: prendes el foco | "1. Luz: cortinas abiertas y focos prendidos" | "Uno: luz natural. Abre cortinas, prende focos y toma las fotos de día." |
+| 7-12 | Tus manos quitan trastes, frascos y cargadores de la barra de la cocina | "2. Menos cosas a la vista" | "Dos: menos cosas. Guarda lo que está en la barra, en el baño y en el refri." |
+| 12-15 | Dos cortes rápidos: quitas imanes y papeles de la puerta del refri; guardas cepillos y botes del lavabo | "Barra, baño y refri despejados" | "Así los espacios se ven más amplios." |
+| 15-20 | Te paras en una esquina del cuarto; la cámara, por encima de tu hombro, muestra el celular derecho a la altura del pecho | "3. Desde una esquina, celular derecho" | "Tres, fíjate bien: desde una esquina, celular derecho y a la altura del pecho." |
+| 20-25 | Plano cerrado: tus manos estiran la colcha de la cama; corte: bajas la tapa del baño | "El detalle: cama tendida y tapa abajo" | "Y un detalle que se nota: tiende las camas y baja la tapa del baño." |
+| 25-30 | La sala ya con luz y en orden, grabada desde la esquina; termina en la pantalla del celular con la foto nueva | "Así sí dan ganas de ir a verla" | "Unas fotos bien tomadas hacen que más gente abra tu anuncio y quiera ir a verla." |
+| 30-35 | Fondo liso con tu logo, o la foto nueva de la sala | "¿Vas a vender? Escríbeme FOTOS" | "¿Vas a vender y quieres que te ayude con las fotos? Escríbeme FOTOS." |
+
+**Cierre:** pide la palabra FOTOS, la misma del texto del post. Te la manda quien ya está pensando en vender, y así sabes que llegó por este reel.
+
+**Portada:** "Fotos de tu casa: 3 pasos" sobre la toma de la sala ya arreglada.
+
+**Para grabarlo:**
+- Graba todo en el mismo cuarto y en orden: primero el "antes" tal como está, luego cada paso y al final el "después".
+- Para que se note la diferencia, el "antes" va desde el centro del cuarto y con el celular chueco; el "después", desde una esquina y con el celular derecho.
+- Graba cada toma 2 o 3 segundos más larga y recorta en la edición; los planos cerrados de tus manos bastan, no necesitas salir a cuadro.
+- Pon subtítulos automáticos en Instagram o CapCut y una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Ojo:** si grabas en la casa de un cliente, pide permiso y cuida que no salgan fotos familiares, papeles ni la dirección.
 
 **Estado de WhatsApp**
 
@@ -555,16 +640,37 @@ _Revisión técnica: gastos notariales (ISAI, honorarios, derechos de registro, 
 >
 > #casaenventa #[colonia] #[tuciudad] #recorridovirtual
 
-**Guion corto**
+**Guion del reel** (sin cara · 30 a 35 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Fachada, toma de frente | "Recién captada en [colonia]." |
-| 3-7 | Entrada y sala, cámara caminando despacio | "[X] recámaras, [X] baños." |
-| 7-11 | Cocina | "[Característica 1]." |
-| 11-15 | Recámara principal | "[Característica 2]." |
-| 15-19 | Patio, terraza o estacionamiento | "[Característica 3]." |
-| 19-24 | Texto fijo en pantalla con precio y datos | "$[precio] MXN · [Tu nombre] · [teléfono] · [correo] · [domicilio]" |
+**La idea:** recorrer la propiedad recién captada en [colonia] deteniéndote en los 3 detalles que más te gustaron, para que quien busca en la zona se imagine viviendo ahí y te escriba para agendar visita.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Recién captada en [colonia]: 3 detalles que me encantaron."
+2. "Recorre conmigo esta propiedad. El tercer detalle es mi favorito."
+3. "¿Buscas dónde vivir en [colonia]? Mira estos 3 detalles."
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | Fachada de frente; la cámara avanza de la banqueta hacia la puerta, sin número visible | El gancho que elegiste | El gancho que elegiste |
+| 3-7 | Plano cerrado: tu mano abre la puerta y la cámara entra despacio | "[X] recámaras · [X] baños" | "[X] recámaras y [X] baños. Pásale." |
+| 7-12 | Toma abierta del espacio de [Característica 1] (por ejemplo, la sala y el comedor con luz natural) y luego te acercas al detalle | "Detalle 1: [Característica 1]" | "Detalle uno: [Característica 1]." |
+| 12-15 | Paso rápido por la cocina, de lado a lado | "Por aquí, la cocina" | "Por aquí queda la cocina." |
+| 15-20 | Entras a la recámara principal y giras despacio hasta [Característica 2] (por ejemplo, el vestidor) | "Detalle 2: [Característica 2]" | "Detalle dos: [Característica 2]." |
+| 20-23 | Plano cerrado: tu mano en la manija de la puerta que da afuera | "Y el tercero es mi favorito" | "Y el tercero es mi favorito." |
+| 23-28 | Abres y sales al espacio de [Característica 3] (por ejemplo, el estacionamiento o el patio); la cámara se queda quieta 2 segundos | "Detalle 3: [Característica 3]" | "Detalle tres: [Característica 3]." |
+| 28-34 | Pantalla final fija: foto de la fachada con una capa oscura encima (o fondo liso) y tus datos en letra grande | Arriba: "Escríbeme RECORRIDO". Abajo, fijo: "$[precio] MXN · [Tu nombre] · [teléfono] · [correo] · [domicilio]" | "¿Te gustó? Escríbeme RECORRIDO y agendamos tu visita." |
+
+**Cierre:** pide la palabra RECORRIDO, la misma del texto del post, en la pantalla final y en la voz. Quien te la manda ya vio la casa completa: contéstale con dos o tres horarios para la visita.
+
+**Portada:** "Recién captada: 3 detalles" sobre la toma del detalle que más te gusta.
+
+**Para grabarlo:**
+- Cuando llenes las características en el texto del post, deja al final la que más te guste: así el video y el texto coinciden y el "es mi favorito" es cierto.
+- En pantalla, escribe cada característica corta, de 3 a 5 palabras (por ejemplo, "Vestidor en la recámara principal").
+- Graba de día, con cortinas abiertas, y camina más despacio de lo que crees: en video, lo rápido marea.
+- Deja la pantalla final fija al menos 5 segundos, con letra grande sobre fondo oscuro. Música: una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Ojo:** es un anuncio de venta: la pantalla final con el precio en pesos, tu nombre, teléfono, correo y domicilio va siempre, fija y legible. Enseña solo lo que dice el anuncio, sin exagerar; si mencionas Infonavit o Fovissste, que sea en texto, sin sus logos y aclarando que el trámite es gratuito. Graba con permiso del dueño y sin número de la casa, fotos familiares ni objetos personales.
 
 **Estado de WhatsApp**
 
@@ -715,16 +821,40 @@ _Revisión técnica: documentos del vendedor para la escrituración_
 >
 > #detrasdecamaras #asesorinmobiliario #bienesraices #[tuciudad]
 
-**Guion corto**
+**Guion del reel** (con cara · 30 a 35 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Tú a cámara, frente a la casa | "Esto hago antes de enseñarte una casa." |
-| 3-7 | Tú abriendo cortinas y prendiendo luces | "Llego antes y la preparo." |
-| 7-11 | Tu carpeta o celular con la ficha de la casa | "Llevo todos los datos a la mano." |
-| 11-16 | Tú recorriendo la cocina, señalando detalles | "Te enseño lo que te importa a ti." |
-| 16-20 | Tú revisando una ventana o una llave | "Y te digo también qué revisaría con calma." |
-| 20-24 | Tú a cámara, en la puerta | "¿Vamos a ver casas? Escríbeme AGENDA." |
+**La idea:** enseñar lo que haces antes y durante una visita (llegar antes, llevar los datos, escuchar), para que quien busca casa en [tu zona] vea que contigo no pierde la tarde y te pida una cita.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "¿Qué hago antes de enseñarte una casa?"
+2. "Detrás de cámaras: así preparo una visita."
+3. "Esto pasa antes de que tú llegues."
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, en la banqueta frente a la casa, con las llaves en la mano | El gancho que elegiste | "Detrás de cámaras de una visita" |
+| 3-6 | Plano cerrado: la llave entra en la cerradura y la puerta se abre (tu voz encima) | "Uno: llego antes." | "1. Llego antes" |
+| 6-10 | Celular en el suelo, frente a la ventana: abres las cortinas y entra la luz; corte a tu mano en el apagador (tu voz encima) | "Abro cortinas, prendo luces y reviso que todo esté en orden." | "Cortinas, luces y todo en orden" |
+| 10-14 | Plano cerrado: tu carpeta o tu celular con la ficha de la casa, sin datos de nadie (tu voz encima) | "Dos: preparo la información. Metros, recámaras, precio..." | "2. Los datos, a la mano" |
+| 14-17 | Tú a cámara, das golpecitos con el dedo en la carpeta | "...y cuánto cuestan el predial y el mantenimiento." | "Predial y mantenimiento, también" |
+| 17-20 | Tú a cámara, más cerca | "Pero lo más importante pasa cuando llegas tú." | "Lo importante viene ahora" |
+| 20-25 | Tú en la cocina, de frente a alguien que está de espaldas a la cámara (o hablándole a la cámara como si fuera esa persona) | "Tres: te escucho. No te recito la casa: te enseño lo que te importa." | "3. Primero te escucho" |
+| 25-30 | Plano cerrado: tu mano abre una ventana; corte a una llave del agua que se abre (tu voz encima) | "Al final te digo qué me gusta y qué revisaría con calma." | "Lo que me gusta y lo que revisaría" |
+| 30-35 | Tú a cámara, en la puerta de la casa | "¿Vas a ver casas en [tu zona]? Mándame AGENDA y te acompaño." | "Mándame AGENDA" |
+
+**Cierre:** pide AGENDA, la misma palabra del post. Quien la manda ya está pensando en ver casas: contéstale con dos o tres horarios y pregúntale qué busca.
+
+**Portada:** "Antes de enseñarte una casa" sobre el plano cerrado de la llave en la cerradura.
+
+**Para grabarlo:**
+- Grábalo en una visita real: llega con tiempo antes que tus clientes y graba las tomas de la casa vacía. Las frases a cámara las puedes grabar después, afuera.
+- Para la toma de las cortinas, pon el celular en el suelo o recargado en un mueble frente a la ventana y abre las cortinas de un jalón: la luz que entra hace el efecto sola.
+- Para "te escucho" no necesitas a nadie: háblale a la cámara como si fuera tu cliente, o pide a alguien de confianza que salga de espaldas.
+- Pon subtítulos automáticos en Instagram o en CapCut y elige una canción de la biblioteca de Instagram a volumen bajo; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** graba solo tus manos (la llave, las cortinas, la carpeta, la ventana) y pon cada paso en texto con tu voz en off.
+
+**Ojo:** graba solo en una casa que tengas permiso de enseñar, con el permiso del dueño, y cuida que no salgan el número de la casa, fotos familiares ni papeles con datos.
 
 **Estado de WhatsApp**
 
@@ -874,16 +1004,40 @@ _Revisión técnica: Unamos Crédito (quién puede unirse, copropiedad, pago de 
 >
 > #vendermicasa #asesorinmobiliario #bienesraices #[tuciudad]
 
-**Guion corto**
+**Guion del reel** (con cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Tú a cámara, con el celular en la mano | "Alguien pregunta por tu casa. ¿Qué hago yo?" |
-| 3-7 | Pantalla del celular respondiendo un mensaje (sin datos reales) | "Respondo rápido y con datos claros." |
-| 7-12 | Tú en una llamada, tomando nota | "Pregunto qué buscan y cómo van a pagar." |
-| 12-16 | Tú abriendo la puerta de la casa | "Agendo solo visitas con interés real." |
-| 16-20 | Tú escribiendo un mensaje al dueño | "Y después te cuento cómo les fue." |
-| 20-24 | Tú a cámara | "¿Vendes tu casa? Escríbeme VENDER." |
+**La idea:** mostrarle a quien vende su casa qué pasa con cada persona que pregunta por ella (respuesta rápida, preguntas antes de la visita y un reporte después), para que vea que no tiene que atender a desconocidos a toda hora y te escriba.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Alguien pregunta por tu casa. ¿Qué pasa después?"
+2. "¿Te escriben por tu casa a todas horas?"
+3. "Así filtro a quien quiere ver tu casa."
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, con el celular en la mano; vibra una notificación y la miras | El gancho que elegiste | "Alguien pregunta por tu casa" |
+| 3-7 | Plano cerrado: tu pulgar contesta un chat de prueba, sin nombres ni números reales (tu voz encima) | "Uno: respondo rápido y con datos claros." | "1. Respondo rápido y claro" |
+| 7-11 | Tú a cámara, contando con los dedos | "Precio, metros, recámaras y forma de pago." | "Precio · metros · recámaras · forma de pago" |
+| 11-16 | Tú caminando en tu oficina o en tu casa, con audífonos, en una llamada; anotas en una libreta | "Dos: antes de agendar, pregunto qué buscan y cómo piensan pagar." | "2. Antes de agendar, pregunto" |
+| 16-20 | Tú a cámara | "Para no llevarte visitas que no van a ningún lado." | "Para no llevarte visitas en vano" |
+| 20-23 | Tú a cámara, más cerca | "Y la tercera es para tu tranquilidad." | "La tercera, para tu tranquilidad" |
+| 23-28 | Tú en la puerta de una casa, despides con la mano a alguien fuera de cuadro y sacas el celular | "Tres: después de cada visita, te cuento qué les gustó y qué no." | "3. Sabes cómo va tu venta" |
+| 28-33 | Tú a cámara, tono tranquilo | "Tú no contestas llamadas a toda hora, ni enseñas tu casa a desconocidos." | "Sin llamadas a toda hora" |
+| 33-38 | Tú a cámara, sonriendo | "¿Quieres saber cómo trabajaría la venta de tu casa? Escríbeme VENDER." | "Escríbeme VENDER" |
+
+**Cierre:** pide VENDER, la misma palabra del post. Te separa a los dueños de los compradores en tus mensajes y te dice que esa persona quiere hablar de su casa.
+
+**Portada:** "Alguien pregunta por tu casa" sobre la toma tuya con el celular en la mano.
+
+**Para grabarlo:**
+- Arma el chat de prueba antes: mándate desde otro celular "¿Sigue disponible la casa?" y grábate contestándolo. Nada de chats reales.
+- Para la llamada, ponte audífonos y finge la plática: así el celular queda libre para grabarte.
+- Graba las frases a cámara una tras otra en el mismo lugar, con luz de ventana de frente; después intercalas las tomas del celular, la libreta y la puerta.
+- Pon subtítulos automáticos en Instagram o en CapCut y elige una canción de la biblioteca de Instagram a volumen bajo; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** graba solo el celular, la libreta y la puerta, con cada paso en texto grande y tu voz en off.
+
+**Ojo:** no prometas tiempos ni precios de venta en el video: el reel es sobre cómo atiendes a los interesados. Y en pantalla, solo chats de prueba.
 
 **Estado de WhatsApp**
 
@@ -907,16 +1061,36 @@ _Revisión técnica: Unamos Crédito (quién puede unirse, copropiedad, pago de 
 >
 > #[colonia] #[tuciudad] #vivirenmizona #bienesraices
 
-**Guion corto**
+**Guion del reel** (sin cara · 30 a 35 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Letrero de la calle o vista de la colonia | "Lo que más me gusta de [colonia]." |
-| 3-7 | [Lugar 1] | "[Lugar 1]." |
-| 7-11 | [Lugar 2] | "[Lugar 2]." |
-| 11-15 | [Ventaja 3]: avenida, escuela o parada de transporte | "[Ventaja 3]." |
-| 15-19 | Una calle tranquila de la colonia al atardecer | "Así se vive aquí." |
-| 19-22 | Texto en pantalla | "¿Te quieres mudar a [colonia]? Escríbeme ZONA." |
+**La idea:** enseñar los 3 lugares que más te gustan de [colonia], como los ve un vecino, para que quien piensa mudarse vea que conoces la zona de verdad y te escriba para saber qué hay disponible.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "3 cosas que me encantan de [colonia]."
+2. "Lo que no sale en los anuncios de casas en [colonia]."
+3. "¿Piensas mudarte a [colonia]? Te enseño lo que más me gusta."
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | Caminas por una banqueta de la colonia con un café en la mano; al fondo, el letrero de la calle | El gancho que elegiste | El gancho que elegiste |
+| 3-8 | [Lugar 1] en dos tomas: una abierta y un detalle (por ejemplo, el parque: las bancas, un perro corriendo), sin caras de cerca | "1. [Lugar 1]" | "Uno: [Lugar 1]." |
+| 8-13 | [Lugar 2] en dos tomas: la fachada y un detalle (por ejemplo, el pan en la vitrina de la panadería o la fruta de un puesto del mercado) | "2. [Lugar 2]" | "Dos: [Lugar 2]." |
+| 13-16 | Llegas a una esquina y la cámara voltea despacio hacia la avenida | "Y esto es lo que más me preguntan" | "Y esto es lo que más me preguntan:" |
+| 16-21 | [Ventaja 3]: la avenida, la parada del camión o la entrada de una escuela, sin niños a cuadro | "3. [Ventaja 3]" | "Tres: [Ventaja 3]." |
+| 21-27 | Una calle tranquila de la colonia al atardecer, cámara quieta | "Te cuento cómo se vive de verdad" | "Conocer la colonia me ayuda a contarte cómo se vive de verdad: el tráfico, las escuelas y los servicios." |
+| 27-32 | Fondo liso con tu logo, o la misma calle con el texto grande | "¿Te quieres mudar a [colonia]? Escríbeme ZONA" | "¿Estás pensando en mudarte a [colonia]? Escríbeme ZONA y te cuento qué hay disponible." |
+
+**Cierre:** pide la palabra ZONA, la misma del texto del post. Quien te la manda ya se imagina viviendo en [colonia]: pregúntale si busca comprar o rentar y qué necesita.
+
+**Portada:** "Lo que me gusta de [colonia]" sobre la toma abierta de [Lugar 1].
+
+**Para grabarlo:**
+- Antes de salir, llena los corchetes con lugares que de verdad conoces y usas, igual que en el texto del post. Por ejemplo: [Lugar 1] "el parque donde los domingos hay familias y mascotas"; [Lugar 2] "la panadería de la esquina" o "el mercado"; [Ventaja 3] "a dos cuadras de la parada del camión".
+- En pantalla, escríbelos cortos (por ejemplo, "El parque de los domingos"); si grabas voz, agrega con tus palabras una frase de por qué te gusta cada lugar.
+- Graba los lugares en la mañana y deja la calle del final para el atardecer.
+- Pon subtítulos automáticos en Instagram o CapCut y una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Ojo:** en negocios, pide permiso antes de grabar adentro; no grabes caras de cerca, niños ni placas. Si dices que algo está cerca, que sea cierto.
 
 **Estado de WhatsApp**
 
@@ -1096,16 +1270,40 @@ _Revisión técnica: escrituración y registro_
 >
 > #consejosinmobiliarios #asesorinmobiliario #bienesraices #[tuciudad]
 
-**Guion corto** (reel con cara)
+**Guion del reel** (con cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto en pantalla / qué dices |
-|---|---|---|
-| 0-3 | Tú, de frente, en tu oficina o en una casa | "Hay un consejo que le doy a todos mis clientes." |
-| 3-7 | Primer plano de un papel sobre la mesa | Texto: "No firmes nada que no entiendas" |
-| 7-12 | Tú, señalando una hoja | "Léelo completo, con calma." |
-| 12-17 | Tú, de frente | "Pregunta todo, aunque te dé pena." |
-| 17-23 | Tú, cerrando una carpeta | "Y si algo no te convence, pide tiempo y consulta al notario." |
-| 23-28 | Pantalla final con tu nombre y teléfono | Texto: "Escríbeme CONSEJO · [Tu nombre] · [teléfono]" |
+**La idea:** dar un consejo que sirve igual para quien compra y para quien vende ("no firmes nada que no entiendas") con tres pasos simples, para que quien tenga un papel con dudas te escriba.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Hay un consejo que le doy a todos mis clientes."
+2. "¿Vas a firmar algo de tu casa? Espérate."
+3. "Suena obvio, pero con las prisas se nos olvida."
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, en una mesa, con una pluma en la mano | El gancho que elegiste | "El consejo que le doy a todos" |
+| 3-6 | Plano cerrado desde arriba: una hoja sobre la mesa; la pluma baja para firmar... y se detiene | "No firmes nada que no entiendas." | "No firmes nada que no entiendas" |
+| 6-12 | Tú a cámara, dejas la pluma | "Suena sencillo, pero con la emoción de la casa nueva o las prisas, se nos olvida." | "Con la emoción, se nos olvida" |
+| 12-17 | Plano cerrado desde arriba: tu dedo recorre la hoja renglón por renglón (tu voz encima) | "Antes de firmar, uno: lee el documento completo, con calma." | "1. Léelo completo, con calma" |
+| 17-22 | Tú a cámara, más cerca, tono de confianza | "Dos: pregunta todo lo que no te quede claro, aunque te dé pena." | "2. Pregunta todo, aunque te dé pena" |
+| 22-25 | Tú a cámara, levantas tres dedos | "Y la tercera es la que más cuesta hacer." | "La tercera es la que más cuesta" |
+| 25-30 | Tú cierras una carpeta y la dejas sobre la mesa | "Tres: si algo no te convence, pide tiempo y consulta al notario." | "3. Pide tiempo y consulta al notario" |
+| 30-35 | Tú a cámara | "Mi trabajo también es explicarte cada papel antes de que lo firmes." | "Te explico cada papel antes de firmar" |
+| 35-40 | Tú a cámara, sonriendo | "¿Tienes un documento que no entiendes? Escríbeme CONSEJO y lo vemos juntos." | "Escríbeme CONSEJO" |
+
+**Cierre:** pide CONSEJO, la misma palabra del post. Cuando te la manden, pregunta qué documento es y para cuándo lo tienen que firmar: así sabes si es compra, venta o renta y por dónde empezar.
+
+**Portada:** "No firmes nada que no entiendas" sobre el plano cerrado de la pluma detenida sobre la hoja.
+
+**Para grabarlo:**
+- Para las tomas de la hoja, pon el celular arriba de la mesa, apoyado entre dos pilas de libros, y graba desde arriba.
+- La pluma que se detiene es el corazón del reel: grábala 3 o 4 veces y quédate con la más lenta.
+- Usa una hoja impresa cualquiera o con texto de relleno, nunca un documento de un cliente.
+- Pon subtítulos automáticos en Instagram o en CapCut y elige una canción tranquila de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** graba solo la mesa: la hoja, tu dedo leyendo, la pluma que se detiene y la carpeta que se cierra, con las frases en texto y tu voz en off.
+
+**Ojo:** quédate en el consejo general: no expliques en el video tipos de contratos ni trámites, y no enseñes documentos reales con nombres, firmas o direcciones.
 
 **Estado de WhatsApp**
 
@@ -1155,16 +1353,38 @@ _Revisión técnica: escrituración y registro_
 >
 > #vendermicasa #homestaging #bienesraices #[tuciudad]
 
-**Guion corto** (reel sin cara)
+**Guion del reel** (sin cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto en pantalla |
-|---|---|---|
-| 0-3 | Una sala con muchas cosas | "5 arreglos sencillos antes de vender tu casa" |
-| 3-7 | Manos guardando objetos en una caja | "1. Saca lo que sobra" |
-| 7-11 | Rodillo pintando una pared | "2. Pinta lo manchado, en tonos claros" |
-| 11-15 | Cortina abriéndose, foco encendiéndose | "3. Luz: focos nuevos y cortinas abiertas" |
-| 15-19 | Mano apretando una llave de agua | "4. Arregla lo pequeño" |
-| 19-26 | Cocina limpia y ordenada | "5. Cocina y baños impecables · Escríbeme ARREGLOS" |
+**La idea:** enseñar 5 arreglos sencillos que cualquiera puede hacer antes de enseñar su casa, para que quien va a vender vea que no necesita remodelar y te escriba para saber qué arreglar primero.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "No necesitas remodelar tu casa para enseñarla. Haz esto."
+2. "5 arreglos sencillos antes de vender tu casa."
+3. "El número 5 es lo primero que revisa un comprador."
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | Sala con muebles de más y cosas por todos lados; la cámara entra despacio | El gancho que elegiste | El gancho que elegiste |
+| 3-7 | Tus manos meten adornos y papeles en una caja; luego sacas la caja de cuadro | "1. Saca lo que sobra" | "Uno: saca lo que sobra. Menos muebles y menos cosas, espacios más amplios." |
+| 7-11 | Plano cerrado: un rodillo con pintura clara pasa sobre una mancha de la pared | "2. Pinta lo manchado, en tonos claros" | "Dos: pinta lo que esté manchado, de preferencia en tonos claros." |
+| 11-15 | Tu mano enrosca un foco nuevo; corte: abres las cortinas y entra la luz | "3. Focos nuevos y cortinas abiertas" | "Tres: cambia los focos fundidos y abre cortinas para que entre luz." |
+| 15-19 | Plano cerrado: aprietas una llave que gotea; corte: unas gotas de aceite en la bisagra de una puerta que rechina | "4. Arregla lo pequeño" | "Cuatro: arregla lo pequeño. Llaves que gotean, chapas, puertas que rechinan." |
+| 19-22 | La puerta del baño cerrada; tu mano en la manija | "El 5 es lo primero que revisan" | "Y el cinco es lo primero que revisa el comprador:" |
+| 22-27 | Abres la puerta: un trapo pasa por el lavabo y la llave brilla; corte: la barra de la cocina limpia | "5. Cocina y baños, limpios a fondo" | "Cocina y baños, limpios a fondo." |
+| 27-31 | Recorrido lento por la sala ya despejada y con luz | "Que se imagine viviendo aquí" | "Lo que buscas es que el comprador se imagine viviendo aquí." |
+| 31-36 | Fondo liso con tu logo | "¿Qué arreglas primero? Escríbeme ARREGLOS" | "¿Quieres que te diga qué arreglar en tu casa antes de vender? Escríbeme ARREGLOS." |
+
+**Cierre:** pide la palabra ARREGLOS, la misma del texto del post. Quien te la manda está por vender: ofrécele ir a ver su casa y decirle qué conviene arreglar primero.
+
+**Portada:** "5 arreglos antes de vender" sobre la toma de la sala ya despejada.
+
+**Para grabarlo:**
+- Graba los arreglos en el orden que te acomode, según lo que tengas a la mano ese día, y en la edición acomódalos del 1 al 5.
+- Con planos cerrados de tus manos se entiende todo; no necesitas salir a cuadro.
+- Pon el número de cada arreglo grande en una esquina: así la gente se queda a ver cuál sigue.
+- Pon subtítulos automáticos en Instagram o CapCut y una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Ojo:** no digas que con estos arreglos la casa se vende más rápido o en más dinero; el post habla de que se vea más amplia, limpia y con luz en fotos y visitas. Si grabas en casa de un cliente, pide permiso y que no salgan fotos familiares ni la dirección.
 
 **Estado de WhatsApp**
 
@@ -1340,16 +1560,38 @@ _Revisión técnica: contrato de arrendamiento, aval y póliza jurídica_
 >
 > #asesorinmobiliario #bienesraices #diadetrabajo #[tuciudad]
 
-**Guion corto** (reel sin cara)
+**Guion del reel** (sin cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto en pantalla |
-|---|---|---|
-| 0-3 | Una mochila o bolsa sobre la mesa | "Lo que cargo todos los días como asesor/a" |
-| 3-7 | Mano sacando el celular | "Celular: fotos, videos y llamadas" |
-| 7-11 | Cinta o medidor láser midiendo una pared | "Para confirmar los metros" |
-| 11-15 | Carpeta abierta con hojas | "Listas de papeles y notas de cada casa" |
-| 15-20 | Lámpara iluminando bajo un fregadero | "Para revisar humedad" |
-| 20-26 | Llavero con etiquetas | "Todo en orden para que no tengas sorpresas · Escríbeme KIT" |
+**La idea:** enseñar lo que cargas para trabajar y para qué sirve cada cosa, para que quien tiene una casa para vender o rentar vea que la revisas con orden y te escriba para que vayas a conocerla.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Lo que cargo todos los días para trabajar."
+2. "5 cosas que nunca faltan en mi mochila de trabajo."
+3. "¿Para qué llevo una lámpara cuando voy a ver tu casa?"
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | Desde arriba: tu mochila o bolsa cae sobre la mesa y la abres | El gancho que elegiste | El gancho que elegiste |
+| 3-7 | Desde arriba: tu mano saca el celular y lo deja en la mesa; corte: tomas una foto de una sala | "1. Celular: fotos, videos y mensajes" | "Uno: el celular. Fotos, videos, llamadas y mensajes con compradores y vendedores." |
+| 7-11 | Sacas la cinta o el medidor láser; corte: mides una pared y se ve la cinta extendida | "2. Cinta: confirmo los metros" | "Dos: una cinta o medidor láser, para confirmar los metros de cada espacio." |
+| 11-15 | Abres la carpeta: hojas con listas y formatos en blanco, sin datos de nadie | "3. Carpeta: papeles, formatos y notas" | "Tres: mi carpeta. Listas de papeles, formatos de visita y notas de cada propiedad." |
+| 15-18 | Sacas la lámpara y la prendes hacia la cámara | "4. ¿Una lámpara? Sí, mira" | "Cuatro: ¿una lámpara? Sí." |
+| 18-23 | La lámpara alumbra bajo un fregadero; corte: un rincón del techo | "Para revisar humedad en rincones" | "Para revisar humedad en los rincones y bajo el fregadero." |
+| 23-27 | Tu mano levanta un llavero con etiquetas y lo hace sonar | "5. Llaves bien etiquetadas" | "Y cinco: un llavero bien etiquetado." |
+| 27-32 | Desde arriba: las 5 cosas acomodadas en la mesa | "Todo en orden, para que no tengas sorpresas" | "Nada de esto es complicado. Lo importante es llevar todo en orden, para que tú no tengas sorpresas." |
+| 32-37 | Cierras la mochila y te la cuelgas al hombro; última toma: la puerta de una casa | "¿Quieres que conozca tu casa? Escríbeme KIT" | "¿Quieres que vaya a conocer tu casa? Escríbeme KIT." |
+
+**Cierre:** pide la palabra KIT, la misma del texto del post. Es corta y fácil de recordar; quien te la manda quiere que vayas a conocer su casa, así que contéstale para agendar la visita.
+
+**Portada:** "Lo que cargo para trabajar" sobre la toma desde arriba con las 5 cosas en la mesa.
+
+**Para grabarlo:**
+- Para las tomas desde arriba, sostén el celular con una mano a la altura del pecho, apuntando a la mesa, y saca cada cosa con la otra.
+- Usa una mesa de madera o un mantel liso, para que las cosas resalten. Si usas bolsa en vez de mochila, cámbialo en el gancho.
+- Las tomas de medir una pared y alumbrar bajo el fregadero grábalas en tu casa o en una visita, con permiso del dueño.
+- Pon subtítulos automáticos en Instagram o CapCut y una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Ojo:** que en la carpeta no se vean nombres, direcciones ni papeles de clientes, y que las etiquetas del llavero no digan direcciones: usa números o colores.
 
 **Estado de WhatsApp**
 
@@ -1430,16 +1672,37 @@ _Revisión técnica: capacidad de pago y simulación de crédito_
 >
 > #casaenventa #[colonia] #[tuciudad] #bienesraices
 
-**Guion corto** (reel sin cara)
+**Guion del reel** (sin cara · 30 a 35 s)
 
-| Seg. | Qué se ve | Texto en pantalla |
-|---|---|---|
-| 0-3 | Fachada, de la calle hacia la puerta | "Recién captada en [colonia]" |
-| 3-8 | Entrada a la sala y comedor | "[X] recámaras · [X] baños" |
-| 8-13 | Cocina, de lado a lado | "[Característica 1]" |
-| 13-18 | Recámara principal | "[Característica 2]" |
-| 18-22 | Patio, terraza o estacionamiento | "[Característica 3]" |
-| 22-28 | Pantalla final con datos | "$[precio] MXN · [Tu nombre] · [teléfono] · [correo] · [domicilio]" |
+**La idea:** enseñar en un recorrido casi sin cortes lo que las fotos no dejan ver, cómo se conectan los espacios y cómo entra la luz, para que quien busca en [colonia] decida si quiere ir en persona y te pida horarios.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Esto no te lo enseñan las fotos de un anuncio."
+2. "Antes de agendar visita, mira cómo se conecta cada espacio."
+3. "Acompáñame a conocerla: recién captada en [colonia]."
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | Caminas de la banqueta hacia la puerta, sin número visible | El gancho que elegiste | El gancho que elegiste |
+| 3-7 | Sin cortar: abres la puerta y entras despacio a la sala | "[X] recámaras · [X] baños en [colonia]" | "Recién captada en [colonia]: [X] recámaras y [X] baños. Ven, te enseño." |
+| 7-12 | Sigues sin cortar: de la sala al comedor y a la cocina, para que se vea cómo se conectan | "Así pasas de la sala a la cocina" | "Fíjate cómo pasas de la sala a la cocina. Eso no lo ves en una foto." |
+| 12-16 | Te detienes frente a la ventana con más luz; la cámara se queda quieta | "Ahora fíjate en la luz" | "Ahora fíjate en la luz: así entra a esta hora del día." |
+| 16-20 | Toma del espacio de [Característica 1] (por ejemplo, la cocina o la sala) | "[Característica 1]" | "[Característica 1]." |
+| 20-25 | Sin cortar, recorres el pasillo o subes la escalera hasta las recámaras y el espacio de [Característica 2]; giro lento | "[Característica 2]" | "Por aquí quedan las recámaras. [Característica 2]." |
+| 25-29 | Abres la puerta al espacio de [Característica 3] (por ejemplo, el patio, la terraza o el estacionamiento) | "[Característica 3]" | "[Característica 3]." |
+| 29-35 | Pantalla final fija: foto de la fachada con una capa oscura encima (o fondo liso) y tus datos en letra grande | Arriba: "Escríbeme RECORRIDO". Abajo, fijo: "$[precio] MXN · [Tu nombre] · [teléfono] · [correo] · [domicilio]" | "¿Te gustó? Escríbeme RECORRIDO y te paso horarios para verla en persona." |
+
+**Cierre:** pide la palabra RECORRIDO, la misma del texto del post. Como el post dice que pasas horarios, ten dos o tres listos para contestar rápido.
+
+**Portada:** "Lo que las fotos no enseñan" sobre la toma de la ventana con luz.
+
+**Para grabarlo:**
+- Graba de la puerta a la cocina en una sola toma: camina despacio, con los codos pegados al cuerpo y el celular a la altura del pecho, para que la imagen no brinque.
+- Usa la cámara normal, no la gran angular, y no le pongas filtros: la idea es que los espacios y la luz se vean como son.
+- Pregúntale al dueño a qué hora entra más luz y graba a esa hora, con las cortinas abiertas.
+- Deja la pantalla final fija al menos 5 segundos, con letra grande sobre fondo oscuro. Música: una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Ojo:** es un anuncio de venta: la pantalla final con el precio en pesos, tu nombre, teléfono, correo y domicilio va siempre, fija y legible. Enseña solo lo que dice el anuncio, sin exagerar; si mencionas Infonavit o Fovissste, que sea en texto, sin sus logos y aclarando que el trámite es gratuito. Graba con permiso del dueño y sin número de la casa, fotos familiares ni objetos personales.
 
 **Estado de WhatsApp**
 
@@ -1513,16 +1776,40 @@ _Revisión técnica: inventario como anexo del contrato de arrendamiento_
 >
 > #asesorinmobiliario #bienesraices #aprendizaje #[tuciudad]
 
-**Guion corto** (reel con cara)
+**Guion del reel** (con cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto en pantalla / qué dices |
-|---|---|---|
-| 0-3 | Tú, de frente | "Tres cosas que aprendí este año en bienes raíces." |
-| 3-9 | Tú, platicando con alguien (de espaldas, sin mostrar su cara) | "Uno: escuchar primero, antes de enseñar casas." |
-| 9-15 | Tus manos con una carpeta de papeles | "Dos: los papeles van antes que las fotos." |
-| 15-21 | Tú, de frente | "Tres: decir las cosas claras, aunque no sea lo que quieres oír." |
-| 21-25 | Tú, sonriendo | "Y sigo aprendiendo todos los días." |
-| 25-28 | Pantalla final con tu nombre y teléfono | Texto: "Escríbeme APRENDÍ · [Tu nombre] · [teléfono]" |
+**La idea:** compartir tres lecciones de tu año (escuchar primero, papeles antes que fotos y hablar claro) con un momento tuyo de verdad, para que quien te ve sepa cómo trabajas y te escriba qué quiere que le expliques.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Tres cosas que aprendí este año en bienes raíces."
+2. "Este año me dejó tres lecciones. Te las cuento."
+3. "Mi año en bienes raíces, en tres lecciones."
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, plano medio, en tu escritorio o en una calle de [tu zona] | El gancho que elegiste | "3 cosas que aprendí este año" |
+| 3-9 | Tú platicando con alguien que está de espaldas a la cámara, o tus manos tomando nota en una libreta (tu voz encima) | "Uno: escuchar primero. Antes de enseñar casas, entender qué necesita cada familia y en qué tiempos." | "1. Escuchar primero" |
+| 9-13 | Plano cerrado: tus manos ponen una carpeta de papeles sobre la mesa y la abren (tu voz encima) | "Dos: los papeles van antes que las fotos." | "2. Los papeles van antes que las fotos" |
+| 13-19 | Tú a cámara, tono serio | "Una venta se puede atorar al final por algo que se pudo revisar al inicio." | "Revísalo al inicio, no al final" |
+| 19-23 | Tú a cámara, más cerca | "Lo viví este año: [cuándo lo viviste]." | "Lo viví este año" |
+| 23-26 | Tú a cámara | "Y la tercera no siempre cae bien." | "La tercera no siempre cae bien" |
+| 26-31 | Tú a cámara, de frente, tono tranquilo | "Tres: decir las cosas claras, aunque no sea lo que quieres oír." | "3. Decir las cosas claras" |
+| 31-34 | Plano cerrado: tu mano cierra la carpeta y la deja sobre la mesa (tu voz encima) | "Eso da más confianza que una promesa." | "Más confianza que una promesa" |
+| 34-39 | Tú a cámara, sonriendo | "Sigo aprendiendo. ¿Qué quieres que te explique el próximo año? Escríbeme APRENDÍ." | "Escríbeme APRENDÍ" |
+
+**Cierre:** pide APRENDÍ, la misma palabra del post, y que te cuenten qué tema quieren que les expliques. Cada respuesta es una idea para tus próximas publicaciones y una plática que ya empezó. Si alguien la manda sin acento, cuenta igual.
+
+**Portada:** "3 cosas que aprendí este año" sobre la toma tuya a cámara.
+
+**Para grabarlo:**
+- Antes de grabar, cambia [cuándo lo viviste] por un momento tuyo y real, en una frase corta y sin nombres. Por ejemplo: "una venta casi se atora por un papel pendiente", "revisé los papeles antes de publicar y encontré un pendiente" o "ya había comprador y faltaba un papel". Si no tienes una historia así, quita esa toma: el reel funciona igual.
+- Graba todas las frases a cámara en el mismo lugar y con la misma luz, así el corte entre lecciones no se nota.
+- Pon el número de cada lección grande en pantalla ("1", "2", "3"): ayuda a que la gente se quede hasta la tercera.
+- Pon subtítulos automáticos en Instagram o en CapCut y elige una canción suave de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** usa tomas de tus manos (libreta, carpeta) y de calles de [tu zona], con las tres lecciones en texto grande y tu voz en off.
+
+**Ojo:** cuenta tu historia sin nombres, direcciones ni datos de clientes. Si sale otra persona, aunque sea de espaldas, pídele permiso.
 
 **Estado de WhatsApp**
 
@@ -1777,18 +2064,40 @@ _Revisión técnica: apartado y promesa de compraventa_
 >
 > #notaria #escrituras #asesorinmobiliario #[tuciudad]
 
-**Guion corto**
+**Guion del reel** (con cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Tú afuera de la notaría, hablando a cámara | "Hoy es día de firma." |
-| 3-8 | Carpeta con documentos cerrada, sin datos visibles | "Antes de llegar, revisamos todo." |
-| 8-14 | Pasillo o sala de espera, sin caras de clientes | "El notario lee la escritura y resuelve dudas." |
-| 14-20 | Manos con una pluma (con permiso) | "Se firma y se explican los siguientes pasos." |
-| 20-25 | Tú a cámara | "Mi trabajo: que llegues tranquilo/a." |
-| 25-30 | Texto en pantalla con tu nombre y teléfono | "¿Compras o vendes? Escríbeme FIRMA." |
+**La idea:** llevar a quien te ve a un día de firma en la notaría (cómo se llega, qué pasa adentro y cómo se sale) y contarle las semanas de trabajo que hay detrás, para que quien piensa comprar o vender te escriba antes de empezar.
 
-Antes de grabar, pide permiso a la notaría y a tus clientes. No muestres caras, documentos ni direcciones.
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Hoy toca firma en la notaría. Vente conmigo."
+2. "¿Cómo es por dentro un día de firma?"
+3. "Este día lleva semanas de trabajo detrás."
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, afuera de la notaría (sin que se vea el letrero ni el número), con tu carpeta bajo el brazo | El gancho que elegiste | "Hoy toca firma" |
+| 3-8 | Tú caminando hacia la entrada; la cámara te sigue desde atrás (tu voz encima) | "Es de los días que más disfruto, y de los que más se preparan." | "De los días que más disfruto" |
+| 8-12 | Plano cerrado: miras la hora en tu reloj o en el celular bloqueado, con la carpeta cerrada en la otra mano (tu voz encima) | "Uno: llegamos con tiempo y con identificaciones en mano." | "1. Con tiempo e identificación en mano" |
+| 12-17 | Sala de espera o pasillo vacío, sin caras ni pantallas; o tus manos con la pluma sobre la carpeta cerrada (tu voz encima) | "Dos: el notario o su equipo lee la escritura y resuelve dudas." | "2. Se lee la escritura" |
+| 17-21 | Tú a cámara, en voz baja si estás adentro | "Y este es el momento de preguntar todo. Todo." | "Pregunta todo" |
+| 21-25 | Plano cerrado: una pluma que firma una hoja de prueba (tu voz encima) | "Tres: se firma, y cada quien sale sabiendo los siguientes pasos." | "3. Firma y siguientes pasos" |
+| 25-30 | Tú afuera, de salida, a cámara | "Lo que no se ve: semanas de papeles, llamadas y revisiones antes de este día." | "Semanas de trabajo detrás" |
+| 30-35 | Tú a cámara, más cerca | "Mi trabajo es que llegues a la firma con calma y sin sorpresas." | "Que llegues sin sorpresas" |
+| 35-40 | Tú a cámara, sonriendo | "¿Compras o vendes? Escríbeme FIRMA y te cuento el proceso de principio a fin." | "Escríbeme FIRMA" |
+
+**Cierre:** pide FIRMA, la misma palabra del post. Sirve para compradores y vendedores: cuando te la manden, pregunta si van a comprar o a vender para contarles el proceso que les toca.
+
+**Portada:** "Así es un día de firma" sobre la toma tuya afuera de la notaría con la carpeta.
+
+**Para grabarlo:**
+- Graba las tomas de apoyo (la hora, la carpeta, la pluma sobre una hoja de prueba) en tu casa u oficina un día antes: el día de la firma solo grabas tus frases a cámara, afuera.
+- Si adentro no se puede grabar, no pasa nada: la parte de adentro la cuentas con tus manos y la carpeta, y todo lo demás lo grabas afuera.
+- En la calle hay ruido: habla cerca del celular y de frente, o graba la voz después con la opción de voz en off del editor de Instagram o de CapCut.
+- Pon subtítulos automáticos y elige una canción de la biblioteca de Instagram a volumen bajo; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** graba solo la carpeta, la pluma y el camino a la entrada, y pon los tres pasos en texto con tu voz en off.
+
+**Ojo:** antes de grabar, pide permiso a la notaría y a tus clientes. No muestres caras, documentos, firmas, direcciones ni el letrero o el nombre de la notaría.
 
 **Estado de WhatsApp**
 
@@ -1951,16 +2260,36 @@ _Revisión técnica: terminación anticipada de contrato de renta_
 >
 > #[colonia] #[tuciudad] #bienesraices #asesorinmobiliario
 
-**Guion corto**
+**Guion del reel** (sin cara · 25 a 30 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Letrero de la calle o vista general de la colonia | "[Colonia] en 30 segundos." |
-| 3-9 | [Lugar 1] | "Aquí está [lugar 1]." |
-| 9-15 | Avenida, parada o estación | "[Dato de transporte]." |
-| 15-21 | [Escuela, deportivo o tianguis], sin caras de niños | "[Algo para las familias]." |
-| 21-26 | Calle tranquila al atardecer | "Conoce la zona antes de mudarte." |
-| 26-30 | Texto en pantalla con tu nombre y teléfono | "¿Te gustaría vivir aquí? Escríbeme ZONA." |
+**La idea:** dar en 30 segundos una guía rápida de [colonia] (un lugar, cómo te mueves y algo para las familias) y el consejo de conocerla de día y de noche, para que quien busca casa o renta ahí te escriba.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Así es [colonia] en 30 segundos."
+2. "Lo que les cuento a quienes buscan casa en [colonia]."
+3. "Antes de comprar o rentar en [colonia], mira esto."
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | Desde una esquina con el letrero de la calle; la cámara gira despacio hacia la calle | El gancho que elegiste | El gancho que elegiste |
+| 3-8 | [Lugar 1] (por ejemplo, el parque, el mercado o la plaza): una toma abierta y un detalle | "1. [Lugar 1]" | "Uno: [Lugar 1]." |
+| 8-13 | La avenida, la parada o la estación: pasa un camión o cambia el semáforo | "2. [Dato práctico]" | "Dos: [Dato práctico]." |
+| 13-18 | [Algo para las familias] (por ejemplo, la escuela, el deportivo o el tianguis), desde la banqueta y sin niños a cuadro | "3. [Algo para las familias]" | "Tres: [Algo para las familias]." |
+| 18-21 | Vuelves a la esquina del inicio, mismo encuadre | "Y un consejo antes de mudarte" | "Y un consejo que siempre doy:" |
+| 21-26 | La misma calle de día y de noche: corte de una a otra con el mismo encuadre | "Date una vuelta de día y de noche" | "Date una vuelta de día y de noche. Cada colonia tiene su ritmo, y conocerlo te ahorra sorpresas." |
+| 26-30 | Fondo liso con tu logo y, abajo, [Tu nombre] · [teléfono] en letra chica (o la calle de noche con el texto grande) | "¿Te gustaría vivir aquí? Escríbeme ZONA" | "¿Te gustaría vivir por aquí? Escríbeme ZONA y te cuento qué hay disponible." |
+
+**Cierre:** pide la palabra ZONA, la misma del texto del post, con tu nombre y teléfono a la vista. Quien te escribe ya conoce un poco la colonia por el video: pregúntale qué le gustó y si busca comprar o rentar.
+
+**Portada:** "[colonia] en 30 segundos" sobre la toma de la calle de día y de noche.
+
+**Para grabarlo:**
+- Llena los corchetes antes de salir, igual que en el texto del post. Por ejemplo: [Lugar 1] "el parque de la glorieta" o "el mercado de los sábados"; [Dato práctico] "a 10 minutos de la avenida principal"; [Algo para las familias] "tianguis los domingos" o "deportivo con alberca".
+- La toma de noche grábala otro día, desde el mismo lugar: toma una foto del encuadre de día para repetirlo igual. Ve con alguien más y en una calle que conozcas.
+- Cambia de toma cada 2 o 3 segundos, al ritmo de una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+- Pon subtítulos automáticos en Instagram o CapCut: mucha gente ve los reels sin sonido.
+
+**Ojo:** si das un tiempo de traslado, que sea uno que tú mediste. No grabes caras de niños, placas ni fachadas con número.
 
 **Estado de WhatsApp**
 
@@ -2119,18 +2448,40 @@ _Revisión técnica: pasos entre oferta y escrituración_
 >
 > #asesorinmobiliario #bienesraices #[tuciudad] #[tuzona]
 
-**Guion corto**
+**Guion del reel** (con cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Tú a cámara, en tu oficina o en la calle | "Te presento a quienes están detrás de cada operación." |
-| 3-9 | Tu equipo saludando (o tú en tu escritorio) | "[Él es / Ella es…] o "Trabajo por mi cuenta."" |
-| 9-15 | Cámara o fotos de una propiedad | "Me apoyo en [fotógrafo/a]." |
-| 15-20 | Tú caminando con una carpeta | "Y en notarías con las que trabajo seguido." |
-| 20-25 | Tú a cámara | "Saber con quién tratas da tranquilidad." |
-| 25-30 | Texto en pantalla con tu nombre y teléfono | "¿Platicamos? Escríbeme HOLA." |
+**La idea:** presentar a quienes están detrás de cada operación (tu equipo, o tú si trabajas por tu cuenta, y las personas de confianza en las que te apoyas), para que quien te ve sepa con quién va a tratar y te escriba con confianza. La tabla trae las dos versiones: en las filas que dicen "Con equipo" y "Por tu cuenta", usa solo la tuya.
 
-Si sale alguien de tu equipo, pídele permiso antes de publicar.
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Cuando me escribes, ¿quién te contesta?"
+2. "Te presento a quienes están detrás de cada operación."
+3. "¿Con quién vas a tratar si me escribes?"
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, en tu oficina, en tu escritorio o en la calle | El gancho que elegiste | "Quién está detrás de cada operación" |
+| 3-8 | **Con equipo:** la primera persona saluda a cámara en su lugar de trabajo. **Por tu cuenta:** tú en tu escritorio, contestando un mensaje en el celular (tu voz encima) | **Con equipo:** "Te presento a [nombre], que se encarga de [tarea]." **Por tu cuenta:** "Trabajo por mi cuenta, así que cuando me escribes, te contesto yo." | **Con equipo:** "[nombre] · [tarea]" **Por tu cuenta:** "Me escribes, te contesto yo" |
+| 8-12 | **Con equipo:** la segunda persona saluda, o todo el equipo junto. **Por tu cuenta:** plano cerrado de tu celular con un chat de prueba, sin datos de nadie (tu voz encima) | **Con equipo:** "Y a [nombre], que [tarea]." **Por tu cuenta:** "Visitas, llamadas y dudas: hablas directo conmigo." | **Con equipo:** "[nombre] · [tarea]" **Por tu cuenta:** "Hablas directo conmigo" |
+| 12-16 | Tú a cámara, más cerca | "Y hay personas que no ves, pero están en cada operación." | "Las personas que no ves" |
+| 16-21 | Grabación de la pantalla de tu celular pasando las fotos de una propiedad que tienes publicada, sin dirección (tu voz encima) | "Uno: [Fotógrafo/a], para que tu casa se vea bien en redes." | "1. Que tu casa se vea bien" |
+| 21-25 | Tú caminando por la calle con tu carpeta bajo el brazo (tu voz encima) | "Dos: notarías con las que trabajo seguido." | "2. Notarías con las que trabajo seguido" |
+| 25-29 | Tú a cámara | "Y tres: [Otro apoyo], cuando el caso lo pide." | "3. [Otro apoyo]" |
+| 29-35 | Tú a cámara (con tu equipo junto a ti, si tienes) | "Saber con quién tratas da tranquilidad. Por eso me gusta que sepas cómo trabajo antes de empezar." | "Sabes con quién tratas" |
+| 35-38 | Tú a cámara, sonriendo (con tu equipo, si tienes) | "¿Platicamos? Escríbeme HOLA." | "Escríbeme HOLA" |
+
+**Cierre:** pide HOLA, la misma palabra del post. Después de ver a quién le va a escribir, mandar "hola" cuesta poco. Contesta con una pregunta sencilla: "¿Buscas comprar, vender o rentar?"
+
+**Portada:** "¿Quién te contesta cuando escribes?" sobre la toma tuya a cámara (o con tu equipo).
+
+**Para grabarlo:**
+- **Con equipo:** pide a cada persona que mire a la cámara, sonría y salude con la mano 2 o 3 segundos en su lugar de trabajo; tú pones la voz encima. Si son más de dos, una toma corta por persona.
+- **Por tu cuenta:** arma antes el chat de prueba (mándate un "Hola" desde otro celular) para grabar la pantalla sin datos de nadie.
+- Cambia [nombre], [tarea], [Fotógrafo/a] y [Otro apoyo] antes de grabar. En [Otro apoyo] puedes poner, por ejemplo, a quien te hace los avalúos o un despacho de abogados. Si alguno de los tres apoyos no aplica para ti, quita esa toma.
+- Pon subtítulos automáticos en Instagram o en CapCut y elige una canción de la biblioteca de Instagram a volumen bajo; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** con equipo, deja que salgan ellos y tú pon la voz; por tu cuenta, usa tus manos con el celular y la carpeta, con las frases en texto y tu voz en off.
+
+**Ojo:** pide permiso a cada persona que salga (tu equipo o quien toma las fotos) antes de publicar, y no muestres el nombre ni el letrero de las notarías sin su permiso. Menciona solo los apoyos que de verdad tienes.
 
 **Estado de WhatsApp**
 
@@ -2184,18 +2535,37 @@ Si sale alguien de tu equipo, pídele permiso antes de publicar.
 >
 > #vendermicasa #homestaging #bienesraices #[tuciudad]
 
-**Guion corto**
+**Guion del reel** (sin cara · 30 a 35 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Sala "antes": cosas sobre la mesa, cortinas cerradas | "Antes." |
-| 3-6 | La misma sala "después", mismo ángulo | "Después." |
-| 6-12 | Manos guardando cosas en una caja | "1. Saca lo que sobra." |
-| 12-18 | Cambio de foco, apriete de una manija | "2. Arregla lo pequeño." |
-| 18-24 | Se abren las cortinas y entra la luz | "3. Abre cortinas y toma fotos de día." |
-| 24-30 | Texto en pantalla con tu nombre y teléfono | "¿Vas a vender? Escríbeme ANTES." |
+**La idea:** enseñar el mismo espacio antes y después de 3 arreglos sencillos, para que quien va a vender vea que no se trata de gastar mucho y te escriba para saber qué arreglar primero en su casa.
 
-Graba con permiso del propietario, desde el mismo ángulo en las dos tomas, y sin mostrar la dirección ni objetos personales.
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Mismo espacio, otra impresión. Mira."
+2. "Antes y después, con arreglos sencillos."
+3. "¿Cuánto cambia una sala con 3 arreglos sencillos?"
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | El "antes", con el celular fijo: cosas sobre la mesa, cortinas cerradas y una lámpara que no prende por el foco fundido | El gancho que elegiste | El gancho que elegiste |
+| 3-6 | Tapas el lente con la mano y, al quitarla, aparece el "después" con el mismo encuadre | "Después" | "Así queda después." |
+| 6-9 | Corte de regreso al "antes" | "Lo que se hizo: 3 cosas" | "Esto es lo que se hizo:" |
+| 9-14 | Tus manos guardan en una caja lo que había sobre la mesa | "1. Sacar lo que sobra" | "Uno: sacar lo que sobra. Con menos cosas, el espacio se ve más amplio." |
+| 14-20 | Plano cerrado: cambias el foco fundido; corte: aprietas una manija y pasas un trapo por la mesa | "2. Limpiar y arreglar lo pequeño" | "Dos: limpiar a fondo y arreglar lo pequeño: focos, manijas, llaves que gotean." |
+| 20-25 | Abres las cortinas y entra la luz del día | "3. Cortinas abiertas y luz de día" | "Tres: abrir cortinas y tomar las fotos con luz de día." |
+| 25-30 | Pantalla dividida: el "antes" arriba y el "después" abajo, mismo ángulo | "Que el comprador se imagine viviendo ahí" | "No se trata de gastar mucho, sino de que el comprador se imagine viviendo ahí." |
+| 30-35 | Fondo liso con tu logo | "¿Vas a vender? Escríbeme ANTES" | "¿Vas a vender? Escríbeme ANTES y te digo qué conviene arreglar primero en tu casa." |
+
+**Cierre:** pide la palabra ANTES, la misma del texto del post. Quien te la manda quiere saber qué arreglar primero: pídele dos o tres fotos de su casa o agenda una visita.
+
+**Portada:** "Mismo espacio, otra impresión" sobre la pantalla dividida del antes y el después.
+
+**Para grabarlo:**
+- Deja el celular fijo en el mismo lugar para el antes y el después, recargado en un mueble o en una pila de libros: si lo mueves, la comparación no se nota.
+- Para el cambio del inicio, al final de la toma "antes" tapa el lente con la mano y al empezar la toma "después" destápalo; en la edición une las dos tomas justo ahí.
+- La pantalla dividida la armas en CapCut con la opción de superposición: una toma arriba y otra abajo.
+- Pon subtítulos automáticos en Instagram o CapCut y una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Ojo:** graba con permiso del propietario, desde el mismo ángulo en las dos tomas, y sin mostrar la dirección ni objetos personales. No digas que con estos arreglos la casa se vende más rápido o en más dinero: el post habla de que el comprador se imagine viviendo ahí.
 
 **Estado de WhatsApp**
 
@@ -2226,18 +2596,37 @@ Graba con permiso del propietario, desde el mismo ángulo en las dos tomas, y si
 >
 > #casaenventa #[colonia] #[tuciudad] #bienesraices
 
-**Guion corto**
+**Guion del reel** (sin cara · 30 a 35 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Fachada o entrada, sin número visible | "Recién captada en [colonia]." |
-| 3-9 | Sala y comedor, toma caminando | "[X] m² de construcción." |
-| 9-15 | Cocina | "[Característica de la cocina]." |
-| 15-21 | Recámara principal y baño | "[X] recámaras y [X] baños." |
-| 21-26 | Patio, terraza o vista | "[Característica destacada]." |
-| 26-30 | Pantalla final con precio en MXN, tu nombre, teléfono, correo y domicilio | "$[precio] MXN. Escríbeme RECORRIDO." |
+**La idea:** llevar a quien ve el reel de la entrada al patio en unos 30 segundos, con cortes rápidos, y cerrar con una invitación a verla en persona, porque la luz, el ruido de la calle y la colonia se conocen ahí.
 
-La pantalla final con tus datos y el precio en pesos va siempre, porque es un anuncio de venta.
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Te llevo de la entrada al patio en 30 segundos."
+2. "Recién captada en [colonia]. Recórrela conmigo en 30 segundos."
+3. "30 segundos, de la puerta al patio. ¿Entramos?"
+
+| Seg. | Toma | Texto en pantalla | Voz en off (opcional) |
+|---|---|---|---|
+| 0-3 | Entrada desde la banqueta, sin número visible; la cámara avanza hacia la puerta | El gancho que elegiste | El gancho que elegiste |
+| 3-7 | Se abre la puerta y entras caminando a la sala y el comedor | "[X] m² de construcción" | "[X] metros cuadrados de construcción." |
+| 7-10 | Cocina: la cámara la recorre despacio de lado a lado | "[Característica de la cocina]" | "En la cocina: [Característica de la cocina]." |
+| 10-15 | Dos cortes: la recámara principal y el baño | "[X] recámaras y [X] baños" | "[X] recámaras y [X] baños." |
+| 15-18 | Tu mano abre la puerta o corre la cortina que da al patio | "Ya casi: falta el patio" | "Ya casi llegamos. Lo último: el patio." |
+| 18-23 | Sales al patio, la terraza o la vista; la cámara se queda quieta 2 segundos | "[Característica destacada]" | "[Característica destacada]." |
+| 23-29 | Desde la puerta de entrada, la cámara voltea hacia la calle, sin placas, números ni vecinos a cuadro | "Luz, calle y colonia: se conocen en persona" | "Un video te da una idea. La luz, el ruido de la calle y la colonia se conocen en persona." |
+| 29-35 | Pantalla final fija: foto de la fachada con una capa oscura encima (o fondo liso) y tus datos en letra grande | Arriba: "Escríbeme RECORRIDO". Abajo, fijo: "$[precio] MXN · [Tu nombre] · [teléfono] · [correo] · [domicilio]" | "Si te gustó lo que viste, escríbeme RECORRIDO y agendamos tu visita en persona." |
+
+**Cierre:** pide la palabra RECORRIDO, la misma del texto del post. El video invita a verla en persona: contesta con horarios de visita, no con más fotos.
+
+**Portada:** "De la puerta al patio" sobre la toma del patio.
+
+**Para grabarlo:**
+- Graba cada espacio por separado, 5 o 6 segundos, y en la edición deja 3 o 4 de cada uno: ese ritmo es el que hace que quepa todo en 30 segundos.
+- Si es depa y no tiene patio, termina en la terraza, el balcón o la ventana con más vista, y nombra ese espacio en el gancho.
+- La toma de la calle grábala desde la puerta, sin que se vean números, placas ni caras.
+- Deja la pantalla final fija al menos 5 segundos, con letra grande sobre fondo oscuro. Música: una canción de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Ojo:** es un anuncio de venta: la pantalla final con el precio en pesos, tu nombre, teléfono, correo y domicilio va siempre, fija y legible. Enseña solo lo que dice el anuncio, sin exagerar; si mencionas Infonavit o Fovissste, que sea en texto, sin sus logos y aclarando que el trámite es gratuito. Graba con permiso del dueño y sin número de la casa, fotos familiares ni objetos personales.
 
 **Estado de WhatsApp**
 
@@ -2290,16 +2679,40 @@ _Revisión técnica: cómo calculan bancos e Infonavit la capacidad de pago_
 >
 > #asesorinmobiliario #bienesraices #detrasdecamaras #[tuciudad]
 
-**Guion corto**
+**Guion del reel** (con cara · 35 a 40 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Tú a cámara, en el coche o en tu escritorio | "Lo que nadie te dice de ser asesor/a." |
-| 3-9 | Escritorio con papeles y teléfono | "Gran parte del trabajo no se ve." |
-| 9-15 | Tú cerrando la puerta de una casa después de una visita | "No todas las visitas terminan en venta." |
-| 15-21 | Tú a cámara | "Mi trabajo no es convencerte." |
-| 21-26 | Manos con unas llaves | "Entregar unas llaves lo compensa." |
-| 26-30 | Texto en pantalla con tu nombre y teléfono | "¿Tienes una duda? Escríbeme DUDA." |
+**La idea:** contar cuatro verdades de tu trabajo que casi no se ven (el trabajo que nadie ve, las visitas que no terminan en venta, que tu trabajo no es convencer y lo que se siente entregar unas llaves), para que quien te ve confíe en ti y te escriba la duda que trae.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Lo que nadie te dice de ser asesor/a."
+2. "Cuatro cosas de mi trabajo que no ves."
+3. "Esto no sale en las fotos de las casas."
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, plano cerrado, en el coche estacionado o en tu escritorio | El gancho que elegiste | "Lo que nadie te dice" |
+| 3-8 | Plano cerrado desde arriba: tu escritorio con papeles y el celular que vibra; corte a ti esperando con el celular en la mano (tu voz encima) | "Uno: gran parte del trabajo no se ve. Papeles, llamadas, seguimiento... y esperar respuestas." | "1. Gran parte no se ve" |
+| 8-13 | Tú sales de una casa, cierras la puerta y caminas hacia la cámara (tu voz encima) | "Dos: no todas las visitas terminan en venta. Y está bien." | "2. No todas terminan en venta" |
+| 13-17 | Tú a cámara | "Cada visita me enseña algo de lo que busca la gente." | "Cada visita me enseña algo" |
+| 17-21 | Tú a cámara, más cerca | "La tercera es la que más quiero que sepas." | "Esta es para ti" |
+| 21-26 | Tú a cámara, tono tranquilo | "Tres: mi trabajo no es convencerte. Es que tomes una decisión informada." | "3. Sin presiones: decides tú" |
+| 26-30 | Plano cerrado: tu mano pone unas llaves en la mano de alguien de tu casa, sin que se vea su cara (tu voz encima) | "Cuatro: hay días largos, pero entregar unas llaves los compensa." | "4. Unas llaves lo compensan" |
+| 30-35 | Tú a cámara, sonriendo | "La primera vez que entregué unas llaves, [qué pasó o qué sentiste]." | "La primera vez que entregué llaves" |
+| 35-40 | Tú a cámara | "¿Tienes una duda que nadie te ha resuelto? Escríbeme DUDA." | "Escríbeme DUDA" |
+
+**Cierre:** pide DUDA, la misma palabra del post. Cuando te la manden, contesta la duda en corto y después pregunta si están pensando en comprar, vender o rentar.
+
+**Portada:** "Lo que nadie te dice" sobre la toma tuya a cámara.
+
+**Para grabarlo:**
+- Antes de grabar, cambia [qué pasó o qué sentiste] por algo tuyo y real, en pocas palabras. Por ejemplo: "no me salían las palabras", "le marqué a mi familia para contarles" o "se me olvidó todo el cansancio del día". Si todavía no te ha tocado entregar llaves, quita esa toma.
+- Para la toma de las llaves, pide a alguien de tu casa que ponga la mano y graba solo las manos, con luz de ventana. Si estás sin nadie, desliza las llaves sobre la mesa hacia la cámara.
+- El coche estacionado funciona como set para las frases a cámara: buena luz, poco ruido y el celular recargado en el tablero.
+- Pon subtítulos automáticos en Instagram o en CapCut y elige una canción suave de la biblioteca de Instagram; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** usa solo tomas de tu escritorio, la puerta y las llaves, con los cuatro puntos en texto grande y tu voz en off.
+
+**Ojo:** la historia de las llaves tiene que ser tuya y real, sin nombres, caras ni dirección de la familia.
 
 **Estado de WhatsApp**
 
@@ -2481,16 +2894,40 @@ _Revisión técnica: pasos de la venta e impuestos ante notario_
 >
 > #asesorinmobiliario #bienesraices #gracias #[tuciudad]
 
-**Guion corto**
+**Guion del reel** (con cara · 30 a 35 s)
 
-| Seg. | Qué se ve | Texto / voz |
-|---|---|---|
-| 0-3 | Tú a cámara, sonriendo | "90 días publicando por aquí." |
-| 3-8 | Pantallazos rápidos de tus publicaciones | "Hablamos de comprar, vender y rentar." |
-| 8-14 | Tú a cámara | "Gracias por leer y escribirme." |
-| 14-20 | Tú caminando por [tu zona] | "Lo que viene: [tu plan]." |
-| 20-25 | Tú a cámara | "Sigo aquí para lo de siempre." |
-| 25-30 | Texto en pantalla con tu nombre y teléfono | "¿Qué tema quieres? Escríbeme TEMA." |
+**La idea:** cerrar los 90 días dando las gracias, recordando de qué platicaron y contando qué viene, para que quien te sigue te escriba el tema que quiere ver. Sin cifras ni resultados: es un reel para agradecer y escuchar.
+
+**Gancho (elige uno para los primeros 3 segundos):**
+1. "Hoy cumplo 90 días publicando por aquí."
+2. "90 días publicando. Esto es lo que viene."
+3. "Gracias. Y ahora te toca elegir a ti."
+
+| Seg. | Toma | Lo que dices | Texto en pantalla |
+|---|---|---|---|
+| 0-3 | Tú a cámara, sonriendo, en el lugar donde grabaste tu primer video o en una calle de [tu zona] | El gancho que elegiste | "90 días publicando por aquí" |
+| 3-7 | Tú a cámara, más cerca | "Gracias por leer, guardar, compartir... y escribirme." | "Gracias por leer y escribirme" |
+| 7-11 | Grabación de pantalla: deslizas rápido por las publicaciones de tu perfil, de arriba abajo (tu voz encima) | "En este tiempo platicamos de tres cosas." | "En estos 90 días:" |
+| 11-14 | Fachada de una casa, toma fija (tu voz encima) | "Cómo comprar sin sorpresas." | "Comprar sin sorpresas" |
+| 14-17 | Tus manos abren unas cortinas y entra la luz (tu voz encima) | "Cómo preparar tu casa para vender." | "Preparar tu casa para vender" |
+| 17-20 | Plano cerrado: una llave entra en la cerradura de un depa (tu voz encima) | "Y qué revisar antes de rentar." | "Qué revisar antes de rentar" |
+| 20-25 | Tú caminando por [tu zona] hacia la cámara | "¿Y lo que viene? [lo que planeas]." | "Lo que viene" |
+| 25-30 | Tú a cámara | "Y sigo aquí para lo de siempre: comprar, vender o rentar en [tu zona]." | "Comprar, vender o rentar en [tu zona]" |
+| 30-35 | Tú a cámara, más cerca, sonriendo | "Ahora te toca a ti: ¿qué tema quieres que toque? Escríbeme TEMA." | "Escríbeme TEMA" |
+
+**Cierre:** pide TEMA, la misma palabra del post. Cada respuesta te dice qué le interesa a tu gente y es una plática que ya empezó: contesta a cada quien y apunta los temas para tus siguientes publicaciones.
+
+**Portada:** "Gracias por estos 90 días" sobre la toma tuya sonriendo.
+
+**Para grabarlo:**
+- Antes de grabar, cambia [lo que planeas] por algo que sí vas a hacer, en una frase corta. Por ejemplo: "más recorridos de propiedades", "transmisiones en vivo para resolver tus preguntas" o "guías de las colonias de mi zona".
+- En la grabación de pantalla, recorta la parte de arriba si se ven tus números o tus notificaciones. Si prefieres, en lugar de la pantalla pon tres diseños del pack, uno tras otro.
+- Las tomas de la fachada, las cortinas y la llave quizá ya las tienes en tu galería de reels anteriores: reúsalas.
+- Pon subtítulos automáticos en Instagram o en CapCut y elige una canción alegre de la biblioteca de Instagram a volumen bajo; si tu cuenta es de empresa, usa las que te aparecen disponibles.
+
+**Si no quieres salir a cuadro:** usa la grabación de tu perfil y tomas de [tu zona], con las frases en texto y tu voz en off; el "gracias" se siente igual.
+
+**Ojo:** no digas cifras ni resultados (seguidores, mensajes, ventas): este reel es para agradecer y preguntar. Y en lo que viene, pon solo lo que sí vas a cumplir.
 
 **Estado de WhatsApp**
 
