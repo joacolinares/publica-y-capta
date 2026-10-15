@@ -2,7 +2,7 @@ import JSZip from "jszip";
 import type { Perfil } from "./perfil";
 import { TEXTOS, reemplazar, reemplazarSinColonia, pendientes, revisar } from "./personalizar";
 import { mdAHtml } from "./md";
-import { adaptarConIA } from "./ia";
+import { adaptarConIA, type CacheIA } from "./ia";
 import { catalogo, prepararMarca, MEDIDAS, totalDisenos, type Pieza } from "./disenos";
 import { imagen } from "./render";
 import { bonos, bump, guionesExtra, upsell } from "./extras";
@@ -21,7 +21,7 @@ const panelPropiedades = `entra a tu panel${app ? ` (<a href="${esc(app)}/entrar
 // Lo que queda entre [corchetes] se marca en amarillo: es lo que completa el asesor.
 const marcar = (html: string) => html.replace(/\[([^\]<]{1,200})\]/g, "<mark>[$1]</mark>");
 
-export type Opciones = { usarIA?: boolean; logo?: string; foto?: string; bump?: boolean; upsell?: boolean };
+export type Opciones = { usarIA?: boolean; cacheIA?: CacheIA; logo?: string; foto?: string; bump?: boolean; upsell?: boolean };
 
 /** Corre `fn` sobre todos los elementos, `n` a la vez, y devuelve los resultados en el mismo orden. */
 async function deANes<T, R>(items: T[], n: number, fn: (x: T, i: number) => Promise<R>): Promise<R[]> {
@@ -43,7 +43,7 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
   const zip = new JSZip();
 
   // La IA (red) y los diseños (CPU) van al mismo tiempo: así el pack sale antes.
-  const iaP = op.usarIA ? adaptarConIA(TEXTOS, perfil) : Promise.resolve(new Map<number, { post: string; whatsapp: string }>());
+  const iaP = op.usarIA ? adaptarConIA(TEXTOS, perfil, op.cacheIA) : Promise.resolve({ textos: new Map<number, { post: string; whatsapp: string }>(), llamadas: 0 });
 
   // 1. Diseños: 40 piezas (los carruseles traen varias imágenes). Con foto van en JPG, solo texto en PNG.
   const piezas = catalogo((t) => reemplazar(t, perfil));
@@ -69,7 +69,7 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
   }
 
   // 2. Textos: IA solo para los días no técnicos; después, los datos del formulario.
-  const ia = await iaP;
+  const { textos: ia, llamadas: llamadasIA } = await iaP;
   const dias = TEXTOS.map((d) => {
     const base = ia.get(d.dia) ?? { post: d.post, whatsapp: d.whatsapp };
     // En los días de propiedad, [colonia] es la de la casa: se deja para completar.
@@ -203,5 +203,5 @@ ${kit ? "<li><b>07 Kit Captacion Exclusiva</b>: tu presentación para dueños (s
 <p class="meta">Los textos sobre créditos, escrituras e impuestos son información general. Cada caso puede cambiar según el estado y la institución.</p>`, e, firma));
 
   const buf = await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" });
-  return { zip: buf, resumen: { publicaciones: dias.length, adaptadasConIA: ia.size, disenos: totalDisenos(), imagenes, guiones, bonos: bs.length, bump: Boolean(op.bump), upsell: Boolean(kit), alertas } };
+  return { zip: buf, resumen: { publicaciones: dias.length, adaptadasConIA: ia.size, llamadasIA, disenos: totalDisenos(), imagenes, guiones, bonos: bs.length, bump: Boolean(op.bump), upsell: Boolean(kit), alertas } };
 }
