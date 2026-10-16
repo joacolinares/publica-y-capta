@@ -9,7 +9,6 @@
 .v2 h1 em, .v2 h2 em, .v2 h3 em { color: var(--v2-dorado); }
 .v2 :focus-visible { outline: 2px solid var(--v2-dorado); outline-offset: 3px; }
 .v2 .compra:focus-visible { outline: 3px solid var(--v2-texto); outline-offset: 4px; }
-.v2-solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .v2-ancho { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 .v2-angosto { max-width: 800px; }
 .v2-centro { text-align: center; }
@@ -84,8 +83,11 @@
 .v2-ig-destacadas { list-style: none; margin: 4.5cqw 0 0; padding: 0; display: flex; justify-content: space-between; }
 .v2-ig-destacadas li { display: flex; flex-direction: column; align-items: center; gap: 1.6cqw; width: 19cqw; font-size: 3cqw; line-height: 1.1; text-align: center; color: var(--carbon); }
 .v2-ig-destacadas i { width: 14cqw; height: 14cqw; border: .6cqw solid; border-radius: 50%; background: #EFEAE2; box-shadow: 0 0 0 .8cqw #FFFDF9 inset; }
-/* La cuadrícula llena hasta abajo de la pantalla, como si el perfil siguiera. */
-.v2-ig img { flex: 1 0 auto; width: 100%; height: auto; min-height: 0; object-fit: cover; object-position: top center; }
+.v2-ig-tabs { display: flex; justify-content: space-around; align-items: center; height: 10.6cqw; margin: 3.5cqw -5cqw -3.5cqw; border-top: .3cqw solid #E5DED3; }
+.v2-ig-tabs i { width: 4.5cqw; height: 4.5cqw; border: .45cqw solid #B5ACA0; border-radius: .8cqw; }
+.v2-ig-tabs i:first-child { border-color: var(--carbon); }
+/* La cuadrícula, completa a lo ancho; si sobra, la pantalla la corta por abajo como un feed que sigue. */
+.v2-ig img { flex: 0 0 auto; width: 100%; height: auto; }
 
 /* 2. Sección clara */
 .v2-clara { background: var(--crema); color: var(--carbon); }
@@ -327,7 +329,11 @@
   .v2-copia { display: block; }
   .v2-pista { animation: v2-pasar 70s linear infinite; }
   .v2-galeria.inversa .v2-pista { animation-direction: reverse; }
-  .v2-galeria:hover .v2-pista, .v2-galeria:focus .v2-pista, .v2-galerias:has(.v2-pausa input:checked) .v2-pista { animation-play-state: paused; }
+  .v2-galeria:hover .v2-pista, .v2-galeria:focus .v2-pista { animation-play-state: paused; }
+  /* Con "Detener", las galerías quedan como en celular: completas y desplazables. */
+  .v2-galerias:has(.v2-pausa input:checked) .v2-galeria { overflow-x: auto; -webkit-mask-image: none; mask-image: none; padding-inline: 20px; }
+  .v2-galerias:has(.v2-pausa input:checked) .v2-pista { animation: none; }
+  .v2-galerias:has(.v2-pausa input:checked) .v2-copia { display: none; }
   .v2-pausa { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font: 500 13px/1.3 var(--sans); letter-spacing: normal; text-transform: none; color: var(--v2-suave); cursor: pointer; }
   .v2-pausa input { width: 16px; height: 16px; margin: 0; accent-color: var(--v2-dorado); }
 }

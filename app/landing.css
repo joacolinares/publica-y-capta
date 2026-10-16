@@ -19,7 +19,7 @@
 /* Pulso: un anillo que sale por fuera del botón, sin aclarar el fondo detrás del texto. */
 .compra::after { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: inherit; pointer-events: none; }
 @keyframes compra-pulso { 0%, 55% { box-shadow: 0 0 0 0 rgba(180,83,47,.5); } 100% { box-shadow: 0 0 0 14px rgba(180,83,47,0); } }
-@media (prefers-reduced-motion: no-preference) { .compra::after { animation: compra-pulso 3s ease-out 4; } }
+@media (prefers-reduced-motion: no-preference) { .compra::after { animation: compra-pulso 3s ease-out 1; } }
 .l-como .compra:focus-visible, .l-oferta .compra:focus-visible, .l-cierre .compra:focus-visible, .l-oferta a:focus-visible { outline-color: var(--blanco); }
 .l-como .compra, .l-oferta .compra, .l-cierre .compra { box-shadow: 0 0 0 1px rgba(255,253,249,.2), 0 16px 32px -10px rgba(0,0,0,.6); }
 

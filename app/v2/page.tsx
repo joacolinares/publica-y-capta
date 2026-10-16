@@ -16,7 +16,7 @@ import "./v2.css";
 
 export const metadata: Metadata = {
   title: { absolute: "Publica y Capta · 90 días de contenido con tu marca" },
-  description: "90 publicaciones con el texto completo, 40 diseños con tu logo y tus colores y 30 guiones de reels para Instagram, Facebook y WhatsApp. Pago único.",
+  description: "90 publicaciones con el texto completo, 40 diseños con tu logo y tus colores, y 30 guiones de reels para Instagram, Facebook y WhatsApp. Pago único.",
   robots: { index: false, follow: false },
 };
 
@@ -87,10 +87,10 @@ const PREGUNTAS: [string, ReactNode][] = [
   ["¿Tengo que salir en video?", "No. De los 30 guiones, 15 son sin salir a cámara: texto en pantalla, tomas de casas y voz en off si quieres."],
   ["¿Sirve para mi ciudad? ¿Y si trabajo en una inmobiliaria?", "Sí. Los textos no dependen de una ciudad: en el formulario pones tu zona y tus colonias, y los textos salen con ellas. Si trabajas en una inmobiliaria o franquicia, los diseños pueden llevar tu logo o el de tu oficina."],
   ["¿Me garantiza clientes?", "No. Nadie te lo puede garantizar. Lo que te da es contenido listo para que publiques con constancia y quien te busque encuentre un perfil activo y profesional."],
-  ["¿Y si no me sirve?", <>{SOPORTE ? <>Escríbenos<ASoporte /></> : process.env.CORREO_RESPUESTAS ? "Responde al correo con el que recibiste tu acceso" : "Escríbenos"} dentro de los 7 días naturales siguientes a tu compra y te devolvemos lo que pagaste. Al reembolsarte se desactiva tu acceso.</>],
+  ["¿Y si no me sirve?", <>{SOPORTE ? <>Escríbenos<ASoporte /></> : process.env.CORREO_RESPUESTAS ? "Responde el correo en el que te llegó tu acceso" : "Escríbenos"} dentro de los 7 días naturales siguientes a tu compra y te devolvemos lo que pagaste. Al reembolsarte se desactiva tu acceso. Las condiciones están en los <a href="/terminos">términos y condiciones</a>.</>],
 ];
 
-type Autor = { nombre: string; rol: string; texto: string[]; foto: string };
+type Autor = { nombre?: string; rol?: string; texto?: string[]; foto?: string };
 
 function Marca() {
   return <a className="marca" href="/v2" aria-label="Publica y Capta, inicio"><span className="monograma">P<i>y</i>C</span><b>Publica y Capta</b></a>;
@@ -128,6 +128,7 @@ function PerfilIG({ usuario, ini, nombre, bio, img, alt, color, carga = "lazy" }
         <ul className="v2-ig-destacadas">
           {DESTACADAS.map((d) => <li key={d}><i style={{ borderColor: color }} />{d}</li>)}
         </ul>
+        <div className="v2-ig-tabs"><i /><i /><i /></div>
       </div>
       <img src={img} width={1080} height={1347} alt={alt} loading={carga} />
     </div>
@@ -167,7 +168,7 @@ function Dispositivos({ prioridad, decorativa }: { prioridad?: boolean; decorati
       <Telefono className="v2-disp-der">
         <img src="/web/muestra-5.webp" width={540} height={960} alt={decorativa ? "" : "Historia del pack con espacio para la caja de preguntas"} loading={carga} />
       </Telefono>
-      {!decorativa && <figcaption className="v2-solo-lector">Carruseles, posts e historias reales del pack, armados con una marca de ejemplo</figcaption>}
+      {!decorativa && <figcaption className="l-solo-lector">Carruseles, posts e historias reales del pack, armados con una marca de ejemplo</figcaption>}
     </figure>
   );
 }
@@ -193,7 +194,7 @@ function Galeria({ imagenes, etiqueta, inversa }: { imagenes: Img[]; etiqueta: s
 /** "Quién está detrás": solo si content/autor.json tiene nombre. Nada inventado. */
 function QuienEsta() {
   const a = autor as Autor;
-  if (!a.nombre.trim()) return null;
+  if (!a.nombre?.trim()) return null;
   return (
     <section className="v2-sec v2-clara v2-autor">
       <div className="v2-ancho">
@@ -203,7 +204,7 @@ function QuienEsta() {
           <div>
             <h2>{a.nombre}</h2>
             {a.rol && <p className="v2-autor-rol">{a.rol}</p>}
-            {a.texto.map((t, i) => <p key={i}>{t}</p>)}
+            {(a.texto ?? []).map((t, i) => <p key={i}>{t}</p>)}
           </div>
         </div>
       </div>
@@ -252,14 +253,14 @@ export default function V2() {
           <div className="v2-ancho v2-centro">
             <Etiqueta>Hecho con tu marca</Etiqueta>
             <h2>Todo sale <em>con tus colores</em></h2>
-            <p className="v2-bajada">Llenas un formulario con tu logo, tus colores, tu zona y tus datos, y con eso se arman los 40 diseños y los 90 textos. Aquí, las mismas piezas con dos marcas de ejemplo.</p>
+            <p className="v2-bajada">Llenas un formulario con tu logo, tus colores, tu zona y tus datos, y con eso se arman los 40 diseños y los 90 textos. Aquí, el pack armado con dos marcas de ejemplo.</p>
             <div className="v2-dos-tel">
               <figure>
                 <Telefono><PerfilIG {...LAURA} alt={`Perfil de Instagram con los diseños del pack en ${COLORES_LAURA}`} /></Telefono>
                 <figcaption><Muestras p={PERFIL_EJEMPLO} />Marca de ejemplo en {COLORES_LAURA}</figcaption>
               </figure>
               <figure>
-                <Telefono><PerfilIG {...ANDREA} alt={`Perfil de Instagram con los mismos diseños del pack en ${COLORES_ANDREA}`} /></Telefono>
+                <Telefono><PerfilIG {...ANDREA} alt={`Perfil de Instagram con los diseños del pack en ${COLORES_ANDREA}`} /></Telefono>
                 <figcaption><Muestras p={PERFIL_EJEMPLO_2} />Marca de ejemplo en {COLORES_ANDREA}</figcaption>
               </figure>
             </div>
@@ -285,10 +286,10 @@ export default function V2() {
         </section>
 
         {/* 4. Galerías */}
-        <section className="v2-sec v2-galerias" aria-labelledby="v2-carruseles">
+        <section className="v2-sec v2-galerias">
           <div className="v2-ancho v2-centro">
             <Etiqueta>Galería · Carruseles</Etiqueta>
-            <h2 id="v2-carruseles">Carruseles que <em>enseñan</em></h2>
+            <h2>Carruseles que <em>enseñan</em></h2>
             <p className="v2-sub">23 carruseles sobre enganche, crédito, papeles, precio y rentas. Aquí van algunos.</p>
             <label className="v2-pausa"><input type="checkbox" /> Detener las galerías</label>
           </div>
@@ -296,7 +297,7 @@ export default function V2() {
           <div className="v2-ancho v2-centro v2-galeria-2">
             <Etiqueta>Galería · Posts e historias</Etiqueta>
             <h2>Posts e <em>historias</em></h2>
-            <p className="v2-sub">11 posts y 6 historias, con espacio para encuestas y cajas de preguntas.</p>
+            <p className="v2-sub">11 posts y 6 historias; las historias traen espacio para tu encuesta o tu caja de preguntas.</p>
           </div>
           <Galeria imagenes={POSTS} etiqueta="Ejemplos de posts e historias del pack" inversa />
           <div className="v2-ancho">
@@ -333,8 +334,8 @@ export default function V2() {
           <div className="v2-ancho v2-dos-col">
             <div className="v2-col-cab">
               <Etiqueta>El texto, completo</Etiqueta>
-              <h2>No solo el diseño: <em>lo que escribes</em></h2>
-              <p className="v2-texto">Cada uno de los 90 días trae el texto entero, con tus datos ya puestos. En unos cuantos (los de tus propiedades y tu historia) solo completas lo que va entre corchetes. Este es el del día 9, tal como le sale a la marca de ejemplo.</p>
+              <h2>No solo el diseño: <em>también el texto</em></h2>
+              <p className="v2-texto">Cada uno de los 90 días trae el texto entero, con tus datos ya puestos. En algunos, como los de tus propiedades o tu historia, completas lo que va entre corchetes. Este es el del día 9, tal como le sale a la marca de ejemplo.</p>
             </div>
             <article className="v2-col-media v2-post" aria-label="Ejemplo de publicación del día 9">
               <header className="v2-post-cab"><span className="v2-ig-ini" style={{ borderColor: LAURA.color, color: LAURA.color }}>{LAURA.ini}</span><div><b>{LAURA.usuario}</b><span>{PERFIL_EJEMPLO.ciudad}</span></div></header>
@@ -364,11 +365,11 @@ export default function V2() {
           <div className="v2-ancho v2-centro">
             <Etiqueta>Reels</Etiqueta>
             <h2>30 guiones de reels, <em>toma por toma</em></h2>
-            <p className="v2-bajada">Qué grabar en cada segundo, qué texto poner en pantalla y qué decir. Se graban con el celular, sin equipo.</p>
+            <p className="v2-bajada">Qué grabar en cada toma, qué texto poner en pantalla y, si quieres, qué decir en voz en off. Se graban con el celular, sin equipo.</p>
           </div>
           <div className="v2-ancho">
             <figure className="v2-guion">
-              <div className="v2-guion-cab"><span>Día 5 · Infonavit: cuánto te prestan</span><span className="v2-guion-tipo">Sin cara · 30 a 35 segundos</span></div>
+              <div className="v2-guion-cab"><span>Día 5 · Infonavit: cuánto te prestan</span><span className="v2-guion-tipo">Sin salir a cámara · 30 a 35 segundos</span></div>
               <p className="v2-guion-sub">Gancho: elige uno para los primeros 3 segundos</p>
               <ol className="v2-guion-ganchos">
                 <li>“¿Cotizas en el Infonavit y no sabes cuánto te prestan?”</li>
@@ -379,7 +380,7 @@ export default function V2() {
                 <thead><tr><th scope="col">Seg.</th><th scope="col">Toma</th><th scope="col">Texto en pantalla</th></tr></thead>
                 <tbody>
                   <tr><td>0-3</td><td>Fachada de una casa; el celular entra a cuadro desde abajo</td><td>El gancho que elegiste</td></tr>
-                  <tr><td>3-7</td><td>Tu mano con el celular en una pantalla de inicio de sesión</td><td>“Entra a Mi Cuenta Infonavit con tu NSS”</td></tr>
+                  <tr><td>3-7</td><td>Tu mano con el celular en una pantalla de inicio de sesión, sin datos reales</td><td>“Entra a Mi Cuenta Infonavit con tu NSS”</td></tr>
                   <tr><td>7-11</td><td>Plano cerrado: tu pulgar baja por la pantalla</td><td>“Ahí ves tu precalificación”</td></tr>
                 </tbody>
               </table>
@@ -397,9 +398,9 @@ export default function V2() {
         {/* 8. Y además */}
         <section className="v2-sec v2-ademas">
           <div className="v2-ancho v2-centro">
-            <Etiqueta llena>Para arrancar</Etiqueta>
+            <Etiqueta llena>Bonos y extras</Etiqueta>
             <h2>Dos bonos y lo que necesitas <em>para&nbsp;arrancar</em></h2>
-            <p className="v2-bajada">Dos bonos, más el calendario y la versión para estados de WhatsApp, para que publiques desde el primer día.</p>
+            <p className="v2-bajada">Además del calendario y la versión para tus estados de WhatsApp, te llevas dos bonos para dejar listo tu perfil y adaptar los textos a tu colonia.</p>
           </div>
           <div className="v2-ancho">
             <ul className="v2-extras">
@@ -429,7 +430,7 @@ export default function V2() {
             </div>
             <ul className="v2-lista">
               {RESUMEN.map(([tipo, t, d]) => (
-                <li key={t}><span className={`v2-tipo v2-tipo-${tipo.toLowerCase()}`}>{tipo}</span><p><b>{t}</b> <span>· {d}</span></p></li>
+                <li key={t}><span className={`v2-tipo v2-tipo-${tipo.toLowerCase()}`}>{tipo}</span><p><b>{t}</b>{"\u00a0·"} <span>{d}</span></p></li>
               ))}
             </ul>
           </div>
@@ -458,7 +459,7 @@ export default function V2() {
               <p className="v2-monto">{PRECIO}</p>
               <p className="v2-precio-nota">Pago único, sin suscripción</p>
               <Comprar className="compra">Quiero mi pack <span className="flecha" aria-hidden /></Comprar>
-              <p className="v2-precio-pie"><span className="nw">Acceso por correo al terminar el pago</span> <span className="nw"><span className="v2-sep" aria-hidden>· </span>Reembolso en 7 días</span></p>
+              <p className="v2-precio-pie"><span className="nw">Acceso por correo al terminar el pago</span> <span className="nw"><span className="v2-sep" aria-hidden>· </span>Reembolso en 7 días naturales</span></p>
               <p className="v2-precio-pie">Antes de pagar, lee los <a href="/terminos">términos y condiciones</a>.</p>
             </div>
           </div>

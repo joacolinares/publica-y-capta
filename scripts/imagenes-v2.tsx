@@ -1,5 +1,5 @@
 // Imágenes de /v2 con una segunda marca de ejemplo (otro color) para mostrar que todo sale con los colores del asesor.
-// Uso: FOTOS_DIR=fotos npx tsx scripts/imagenes-v2.tsx   → public/web/v2/*.webp
+// Uso: FOTOS_DIR=fotos ./node_modules/.bin/tsx scripts/imagenes-v2.tsx   → public/web/v2/*.webp
 import { mkdirSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
@@ -12,10 +12,8 @@ import { NEUTROS } from "../lib/estilo";
 const SALIDA = path.join(process.cwd(), "public/web/v2");
 mkdirSync(SALIDA, { recursive: true });
 
-const PERFIL_V2 = PERFIL_EJEMPLO_2;
-
-const m = await prepararMarca(PERFIL_V2);
-const piezas = catalogo((t) => reemplazar(t, PERFIL_V2));
+const m = await prepararMarca(PERFIL_EJEMPLO_2);
+const piezas = catalogo((t) => reemplazar(t, PERFIL_EJEMPLO_2));
 
 async function pieza(id: string) {
   const i = piezas.findIndex((p) => p.id === id);
@@ -28,8 +26,8 @@ async function pieza(id: string) {
 
 const webp = (b: Buffer, w: number, out: string, q = 80) => sharp(b).resize({ width: w }).webp({ quality: q }).toFile(path.join(SALIDA, out));
 
-// Perfil 3x3 con las mismas piezas que public/web/perfil.webp, para compararlos lado a lado.
-const feed = ["dia-01", "dia-02-1", "dia-03", "dia-06", "dia-08-1", "dia-09", "dia-10-1", "dia-11", "dia-15-1"];
+// Perfil 3x3: 4 piezas en común con public/web/perfil.webp (01, 09, 10-1, 15-1) y otras donde el color pesa más, en otro orden.
+const feed = ["dia-28-1", "dia-01", "dia-20-1", "dia-40", "dia-42-1", "dia-52", "dia-10-1", "dia-15-1", "dia-09"];
 const T = { w: 356, h: 445, g: 6 };
 const tiles = await Promise.all(feed.map(async (id) => sharp(await pieza(id)).resize(T.w, T.h).png().toBuffer()));
 const perfil = await sharp({ create: { width: T.w * 3 + T.g * 2, height: T.h * 3 + T.g * 2, channels: 4, background: NEUTROS.blanco } })
