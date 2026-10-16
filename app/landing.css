@@ -7,7 +7,7 @@
 .l-accion { margin-top: 34px; display: flex; flex-direction: column; align-items: center; }
 
 /* Botón de compra: el único con el color de compra, en toda la página y en la barra del celular. */
-.compra { white-space: nowrap; position: relative; overflow: hidden; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 64px; padding: 12px 18px 12px 28px;
+.compra { white-space: nowrap; position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 64px; padding: 12px 18px 12px 28px;
   font: 700 14px/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; text-align: center; text-decoration: none; color: #FFFDF9; background: var(--compra); border: 0; border-radius: 999px; cursor: pointer;
   box-shadow: 0 1px 0 rgba(255,255,255,.22) inset, 0 14px 28px -10px rgba(156,69,38,.75), 0 4px 10px rgba(43,42,40,.14); transition: background .2s, transform .2s, box-shadow .2s; }
 .compra:hover { background: var(--compra-hover); transform: translateY(-2px); box-shadow: 0 1px 0 rgba(255,255,255,.22) inset, 0 20px 34px -12px rgba(156,69,38,.85), 0 6px 14px rgba(43,42,40,.16); }
@@ -15,14 +15,19 @@
 .compra:focus-visible { outline: 3px solid var(--carbon); outline-offset: 4px; }
 .compra .flecha { flex: 0 0 auto; transition: transform .2s; }
 .compra:hover .flecha { transform: translateX(4px); }
-.compra-precio { font-weight: 600; letter-spacing: .04em; font-variant-numeric: lining-nums; white-space: nowrap; background: rgba(255,253,249,.18); border: 1px solid rgba(255,253,249,.35); border-radius: 999px; padding: 8px 13px; }
-.compra::after { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -40%; width: 30%; background: linear-gradient(100deg, transparent, rgba(255,253,249,.32), transparent); transform: skewX(-20deg) translateX(-120%); }
-@keyframes compra-brillo { 0%, 70% { transform: skewX(-20deg) translateX(-120%); } 100% { transform: skewX(-20deg) translateX(560%); } }
-@media (prefers-reduced-motion: no-preference) { .compra::after { animation: compra-brillo 4.5s ease-in-out infinite; } }
-.l-como .compra:focus-visible, .l-oferta .compra:focus-visible, .l-cierre .compra:focus-visible, .l-barra-compra .compra:focus-visible { outline-color: var(--blanco); }
+.compra-precio { font-weight: 600; letter-spacing: .04em; font-variant-numeric: lining-nums; white-space: nowrap; background: rgba(43,42,40,.22); border: 1px solid rgba(255,253,249,.45); border-radius: 999px; padding: 8px 13px; }
+/* Pulso: un anillo que sale por fuera del botón, sin aclarar el fondo detrás del texto. */
+.compra::after { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: inherit; pointer-events: none; }
+@keyframes compra-pulso { 0%, 55% { box-shadow: 0 0 0 0 rgba(180,83,47,.5); } 100% { box-shadow: 0 0 0 14px rgba(180,83,47,0); } }
+@media (prefers-reduced-motion: no-preference) { .compra::after { animation: compra-pulso 3s ease-out 4; } }
+.l-como .compra:focus-visible, .l-oferta .compra:focus-visible, .l-cierre .compra:focus-visible, .l-oferta a:focus-visible { outline-color: var(--blanco); }
 .l-como .compra, .l-oferta .compra, .l-cierre .compra { box-shadow: 0 0 0 1px rgba(255,253,249,.2), 0 16px 32px -10px rgba(0,0,0,.6); }
 
 /* Barra */
+/* Para que la barra fija no tape el título al saltar a una sección. */
+html { scroll-padding-top: 90px; }
+/* Y la barra de compra del celular, abajo, que no tape lo que tiene el foco. */
+@media (max-width: 979px) { html { scroll-padding-bottom: 96px; } }
 .l-barra { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 20px; background: rgba(244,239,232,.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .l-barra nav { display: none; gap: 28px; }
 .l-barra nav a, .l-entrar { font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--carbon); text-decoration: none; }
@@ -34,12 +39,13 @@
 
 /* Portada */
 .l-hero { display: grid; gap: 28px; max-width: 1180px; margin: 0 auto; padding: 16px 20px 40px; align-items: center; }
+.l-hero > * { min-width: 0; }
 .l-hero h1 { margin: 14px 0 16px; }
-.l-hero h1 em { display: inline; }
 .l-cta { margin: 26px 0 0; }
 .l-cta .compra { width: 100%; min-height: 68px; font-size: 15px; }
 .l-cta .ayuda { margin-top: 12px; }
 .l-hero-img { margin: 0; }
+@media (min-width: 560px) and (max-width: 979px) { .l-hero-img { max-width: 520px; margin: 0 auto; } }
 .l-hero-img img { width: 100%; height: auto; }
 .l-hero-img figcaption { font-size: 12px; color: var(--topo-texto); text-align: center; margin-top: 6px; }
 
@@ -47,7 +53,7 @@
 .l-numeros { background: var(--carbon); color: var(--blanco); display: grid; grid-template-columns: repeat(4, 1fr); }
 .l-numeros div { padding: 18px 6px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .l-numeros b { font: 500 40px/1 var(--serif); font-variant-numeric: lining-nums; }
-.l-numeros span { font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--arena); line-height: 1.3; }
+.l-numeros span { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--arena); line-height: 1.3; }
 
 /* Secciones */
 .l-sec { padding: 64px 0; }
@@ -64,8 +70,7 @@
 .l-tabla .l-t-ellos { color: var(--topo-texto); }
 .l-tabla .l-t-nos { background: var(--carbon); color: var(--blanco); }
 .l-tabla thead .l-t-nos { color: var(--blanco); border-radius: 14px 14px 0 0; padding-top: 22px; }
-.l-tabla tbody tr:last-child .l-t-nos { border-radius: 0 0 14px 14px; }
-.l-etiqueta { display: table; margin-bottom: 10px; font: 700 9.5px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; background: var(--compra); color: #FFFDF9; border-radius: 999px; padding: 7px 11px; }
+.l-etiqueta { display: block; width: fit-content; margin-bottom: 10px; font: 700 9.5px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; background: var(--salvia-clara); color: var(--carbon); border-radius: 999px; padding: 7px 11px; }
 .l-tabla td i { display: inline-flex; vertical-align: -3px; width: 18px; height: 18px; margin-right: 9px; border-radius: 50%; position: relative; flex: 0 0 auto; }
 .l-tabla .l-t-ellos i { border: 1px solid var(--topo); }
 .l-tabla .l-t-ellos i::before, .l-tabla .l-t-ellos i::after { content: ""; position: absolute; left: 4px; top: 8px; width: 8px; height: 1.3px; background: var(--topo); transform: rotate(45deg); }
@@ -77,14 +82,14 @@
 /* Celular: cada fila es el tema arriba y las dos opciones lado a lado. */
 .l-tabla, .l-tabla thead, .l-tabla tbody, .l-tabla tr { display: block; }
 .l-tabla tr { display: grid; grid-template-columns: 1fr 1fr; }
-.l-tabla thead td { display: none; }
+.l-tabla thead td { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .l-tabla thead th { font-size: 19px; padding: 14px 12px 12px; }
 .l-tabla tbody th { grid-column: 1 / -1; padding: 16px 0 8px; border-top: 1px solid var(--linea); }
 .l-tabla tbody tr:first-child th { border-top: 0; }
 .l-tabla tbody td { padding: 6px 12px 14px; font-size: 13.5px; }
 .l-tabla tbody td i { display: flex; margin: 0 0 6px; }
 .l-tabla tbody .l-t-nos { border-radius: 0; }
-.l-tabla tbody tr:last-child .l-t-nos { border-radius: 0 0 14px 0; }
+.l-tabla tbody tr:last-child .l-t-nos { border-radius: 0 0 14px 14px; }
 
 /* Así funciona */
 .l-como { background: var(--carbon); color: var(--blanco); text-align: center; }
@@ -92,11 +97,11 @@
 .l-como h2 em { color: var(--salvia-clara); display: inline; }
 .l-como .cap { color: var(--arena); }
 .l-pasos { list-style: none; padding: 0; margin: 38px 0 0; display: grid; gap: 30px; }
-.l-pasos li { position: relative; display: flex; flex-direction: column; align-items: center; }
-.l-paso-ico { position: relative; z-index: 1; width: 84px; height: 84px; border-radius: 50%; border: 1px solid var(--salvia-clara); background: #34332F; color: var(--blanco); display: flex; align-items: center; justify-content: center; }
+.l-pasos li { position: relative; display: grid; grid-template-columns: 64px 1fr; column-gap: 16px; text-align: left; align-items: start; }
+.l-paso-ico { position: relative; z-index: 1; grid-row: span 2; width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--salvia-clara); background: #34332F; color: var(--blanco); display: flex; align-items: center; justify-content: center; }
 .l-paso-n { position: absolute; top: -4px; right: -4px; width: 28px; height: 28px; border-radius: 50%; background: var(--blanco); color: var(--carbon); font: 600 italic 17px/28px var(--serif); text-align: center; font-variant-numeric: lining-nums; }
-.l-pasos h3 { color: var(--blanco); font-size: 26px; font-weight: 500; margin: 18px 0 6px; }
-.l-pasos p { margin: 0; color: var(--arena); font-size: 15px; max-width: 290px; }
+.l-pasos h3 { color: var(--blanco); font-size: 23px; font-weight: 500; margin: 6px 0 4px; }
+.l-pasos p { margin: 0; color: var(--arena); font-size: 15px; }
 
 /* Muestras */
 .l-carrusel { overflow-x: auto; scroll-snap-type: x mandatory; padding: 18px 20px 20px; margin-top: 18px; scrollbar-width: thin; }
@@ -117,22 +122,23 @@ p.l-nota { text-align: center; max-width: 620px; margin: 4px auto 0; }
 .l-chat-cab div > span { font-size: 12px; color: var(--topo-texto); }
 .l-chat-msjs { list-style: none; margin: 0; padding: 16px 14px 18px; display: flex; flex-direction: column; gap: 8px; }
 .l-chat-msjs li { align-self: flex-start; max-width: 86%; background: var(--blanco); border: 1px solid var(--linea); border-radius: 4px 16px 16px 16px; padding: 9px 12px 7px; font-size: 14.5px; line-height: 1.45; }
-.l-chat-msjs li.nuestro { align-self: flex-end; background: #E6EADC; border-color: #D3DBC4; border-radius: 16px 4px 16px 16px; }
+.l-chat-msjs li.nuestro { align-self: flex-end; background: var(--ok-fondo); border-color: #D3DBC4; border-radius: 16px 4px 16px 16px; }
 .l-chat-msjs time { display: block; text-align: right; font-size: 11px; color: var(--topo-texto); margin-top: 3px; }
 
 /* Precio y qué incluye */
 .l-precio { background: var(--arena); }
 .l-precio-caja { display: grid; gap: 22px; }
 .l-precio-cab h2 { margin-bottom: 6px; }
+.l-precio-cab .cap { color: #5E554A; }
 .l-oferta { padding: 26px 22px 28px; margin: 0; }
 .l-oferta .lista-check { margin: 0; }
 .l-oferta .lista-check li { font-size: 14.5px; line-height: 1.45; }
 .l-oferta .lista-check b { font-weight: 600; }
 .l-oferta .lista-check span { color: var(--arena); }
-.l-oferta .cap { color: var(--arena); }
 .l-monto { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 22px 0 16px; }
 .l-monto .serif { font-size: 60px; color: var(--blanco); line-height: 1; font-variant-numeric: lining-nums; }
 .l-oferta .compra { width: 100%; }
+.l-oferta .compra-precio { display: none; }
 .l-oferta .ayuda { margin-top: 14px; font-size: 13px; }
 .l-oferta .ayuda + .ayuda { margin-top: 4px; }
 .l-oferta .ayuda a { color: var(--blanco); }
@@ -148,7 +154,7 @@ p.l-nota { text-align: center; max-width: 620px; margin: 4px auto 0; }
 .l-acordeon details { border-bottom: 1px solid var(--linea); }
 .l-acordeon summary { list-style: none; cursor: pointer; padding: 18px 40px 18px 0; position: relative; font: 500 22px/1.25 var(--serif); }
 .l-acordeon summary::-webkit-details-marker { display: none; }
-.l-acordeon summary::after { content: "+"; position: absolute; right: 6px; top: 15px; font: 300 26px/1 var(--sans); color: var(--salvia); transition: transform .2s; }
+.l-acordeon summary::after { content: "+"; content: "+" / ""; position: absolute; right: 6px; top: 15px; font: 300 26px/1 var(--sans); color: var(--salvia); transition: transform .2s; }
 .l-acordeon details[open] summary::after { transform: rotate(45deg); }
 .l-acordeon details p { margin: 0 0 18px; color: #3E3C38; max-width: 680px; }
 
@@ -157,25 +163,33 @@ p.l-nota { text-align: center; max-width: 620px; margin: 4px auto 0; }
 .l-cierre h2 { color: var(--blanco); max-width: 820px; margin: 0 auto 16px; }
 .l-cierre h2 em { color: var(--salvia-clara); }
 .l-cierre .l-lead { color: var(--arena); margin: 0 auto 30px; }
-.l-pie { padding: 34px 20px 110px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 13px; color: var(--topo-texto); }
+.l-pie { padding: 34px 20px 44px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 13px; color: var(--topo-texto); }
 .l-pie p { margin: 0; }
 .l-pie a { color: var(--topo-texto); white-space: nowrap; }
 
 /* Barra fija de compra (celular) */
 .l-barra-compra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: var(--blanco); border-top: 1px solid var(--linea); box-shadow: 0 -6px 20px rgba(43,42,40,.08); transform: translateY(110%); transition: transform .25s ease; }
 .l-barra-compra.ver { transform: none; }
-.l-barra-compra div { display: flex; flex-direction: column; line-height: 1.15; }
-.l-barra-compra b { font: 500 26px/1 var(--serif); font-variant-numeric: lining-nums; }
-.l-barra-compra span { font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--topo-texto); margin-top: 4px; }
+.l-barra-compra > div { display: flex; flex-direction: column; line-height: 1.15; }
+.l-barra-compra > div > b { font: 500 26px/1 var(--serif); font-variant-numeric: lining-nums; }
+.l-barra-compra > div > span { font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--topo-texto); margin-top: 4px; }
 .l-barra-compra .compra { min-height: 54px; padding: 10px 20px 10px 24px; font-size: 12.5px; }
-.l-barra-compra .compra:focus-visible { outline-color: var(--carbon); }
 
+@media (max-width: 759px) { .l-accion .compra, .l-cierre .compra { width: 100%; } }
+@media (max-width: 559px) {
+  .l-garantia { flex-direction: column; align-items: flex-start; }
+  .l-sello { flex: 0 0 auto; width: 72px; height: 72px; }
+}
 @media (max-width: 420px) {
   .compra { gap: 9px; padding: 10px 14px 10px 20px; letter-spacing: .05em; }
   .l-cta .compra { font-size: 14px; }
   .compra-precio { padding: 7px 10px; }
   .compra .flecha { width: 22px; }
-  .l-oferta .compra-precio { display: none; }
+}
+@media (max-width: 359px) {
+  .compra { letter-spacing: .02em; gap: 6px; padding: 10px 12px 10px 16px; }
+  .compra .flecha { display: none; }
+  .compra-precio { padding: 6px 8px; }
 }
 @media (min-width: 760px) {
   .l-numeros div { padding: 22px 12px; }
@@ -188,7 +202,7 @@ p.l-nota { text-align: center; max-width: 620px; margin: 4px auto 0; }
   .l-tabla { display: table; font-size: 15.5px; }
   .l-tabla thead { display: table-header-group; } .l-tabla tbody { display: table-row-group; }
   .l-tabla tr { display: table-row; }
-  .l-tabla thead td { display: table-cell; }
+  .l-tabla thead td { display: table-cell; position: static; width: auto; height: auto; clip-path: none; }
   .l-tabla thead th { font-size: 26px; padding: 18px 26px 16px; }
   .l-tabla thead .l-t-nos { padding-top: 24px; }
   .l-tabla tbody th { width: 26%; padding: 18px 20px 18px 0; border-top: 1px solid var(--linea); }
@@ -202,10 +216,12 @@ p.l-nota { text-align: center; max-width: 620px; margin: 4px auto 0; }
   .l-tabla tbody tr:last-child .l-t-nos { border-radius: 0 0 14px 14px; }
 }
 @media (min-width: 980px) {
-  .l-precio-caja { grid-template-columns: 1.25fr 1fr; grid-template-areas: "oferta cab" "oferta garantia"; grid-template-rows: auto 1fr; column-gap: 56px; row-gap: 30px; align-items: start; }
-  .l-precio-cab { grid-area: cab; padding-top: 8px; }
-  .l-oferta { grid-area: oferta; padding: 30px 30px 32px; }
-  .l-garantia { grid-area: garantia; }
+  /* Lista a la izquierda; monto, botón y notas a la derecha, en la misma tarjeta. */
+  .l-oferta { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr repeat(4, auto) 1fr; column-gap: 56px; padding: 34px 40px; }
+  .l-oferta .lista-check { grid-column: 1; grid-row: 1 / -1; }
+  .l-oferta > :not(.lista-check) { grid-column: 2; }
+  .l-oferta > :nth-child(2) { grid-row: 2; } .l-oferta > :nth-child(3) { grid-row: 3; } .l-oferta > :nth-child(4) { grid-row: 4; } .l-oferta > :nth-child(5) { grid-row: 5; }
+  .l-monto { margin-top: 0; }
   .l-faq-caja { display: grid; grid-template-columns: .85fr 1.3fr; gap: 56px; align-items: start; }
   .l-faq-caja .l-acordeon { margin-top: 0; }
   .l-barra { padding: 14px 40px; }
@@ -214,8 +230,12 @@ p.l-nota { text-align: center; max-width: 620px; margin: 4px auto 0; }
   .l-hero { grid-template-columns: 1fr 1.05fr; padding: 28px 40px 56px; gap: 48px; }
   .l-sec { padding: 84px 0; }
   .l-pasos { grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .l-pasos li { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .l-paso-ico { width: 84px; height: 84px; }
+  .l-pasos h3 { font-size: 26px; margin: 18px 0 6px; }
+  .l-pasos p { max-width: 290px; }
   /* Conector punteado entre los pasos. */
-  .l-pasos li:not(:last-child)::after { content: ""; position: absolute; top: 42px; left: calc(50% + 58px); right: calc(-50% + 46px); border-top: 1.5px dashed rgba(157,170,135,.7); }
+  .l-pasos li:not(:last-child)::after { content: ""; position: absolute; top: 42px; left: calc(50% + 58px); right: calc(-50% + 34px); border-top: 1.5px dashed rgba(157,170,135,.7); }
   .l-barra-compra { display: none; }
   .l-carrusel img { width: 250px; } .l-carrusel img.alta { width: 188px; }
 }
@@ -223,7 +243,8 @@ p.l-nota { text-align: center; max-width: 620px; margin: 4px auto 0; }
   .l-carrusel { overflow: hidden; padding: 22px 0 28px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
   .l-carrusel img.l-copia { display: block; }
   .l-pista { animation: l-pasar 80s linear infinite; }
-  .l-carrusel:hover .l-pista { animation-play-state: paused; }
+  .l-carrusel:hover .l-pista, .l-carrusel:focus-within .l-pista { animation-play-state: paused; }
+  /* Por dentro: el mask borra lo que queda fuera de la caja. */
+  .l-carrusel:focus-visible { outline-offset: -3px; }
 }
-@media (min-width: 980px) { .l-pie { padding-bottom: 40px; } }
-@media (prefers-reduced-motion: reduce) { .compra, .compra .flecha { transition: none; } .compra:hover { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .compra, .compra .flecha, .l-barra-compra, .l-acordeon summary::after { transition: none; } .compra:hover { transform: none; } }

@@ -21,7 +21,11 @@ export function Comprar({ children, className = "boton", tabIndex }: { children:
 export function BarraCompra({ precio }: { precio: string }) {
   const [ver, setVer] = useState(false);
   useEffect(() => {
-    const f = () => setVer(window.scrollY > 700 && window.innerHeight + window.scrollY < document.body.scrollHeight - 500);
+    // Se esconde si ya hay un botón de compra de la página en pantalla, para no repetirlo.
+    const f = () => {
+      const enVista = [...document.querySelectorAll("main .compra")].some((a) => { const r = a.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; });
+      setVer(!enVista && window.scrollY > 700 && window.innerHeight + window.scrollY < document.body.scrollHeight - 500);
+    };
     f();
     window.addEventListener("scroll", f, { passive: true });
     return () => window.removeEventListener("scroll", f);

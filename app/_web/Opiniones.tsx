@@ -7,7 +7,7 @@ import datos from "@/content/opiniones.json";
 type Mensaje = { de: "cliente" | "nosotros"; texto: string; hora?: string };
 type Opinion = { nombre: string; detalle?: string; permiso: boolean; mensajes: Mensaje[] };
 
-const OPINIONES = (datos as Opinion[]).filter((o) => o.permiso === true && o.mensajes?.length);
+const OPINIONES = (datos as Opinion[]).filter((o) => o.permiso === true && o.nombre?.trim() && o.mensajes?.length);
 
 export function Opiniones({ children }: { children?: ReactNode }) {
   if (!OPINIONES.length) return null;
@@ -16,6 +16,7 @@ export function Opiniones({ children }: { children?: ReactNode }) {
       <div className="l-ancho">
         <div className="cap">Opiniones</div>
         <h2>Lo que dicen quienes <em>ya lo aplicaron</em></h2>
+        <p className="ayuda">Mensajes reales, compartidos con permiso de quien los escribió.</p>
         <div className="l-chats">
           {OPINIONES.map((o, i) => (
             <article key={i} className="l-chat">
