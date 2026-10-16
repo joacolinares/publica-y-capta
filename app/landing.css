@@ -1,4 +1,4 @@
-/* Página de venta (raíz). Usa los colores y las letras de globals.css. */
+/* Base de la página de venta (raíz); app/v2.css la viste de oscuro encima. Usa los colores y las letras de globals.css. */
 /* clip y no hidden: hidden vuelve a .l un contenedor de scroll y apaga el position: sticky de la barra. */
 .l { overflow-x: hidden; overflow-x: clip; }
 .l-ancho { max-width: 1080px; margin: 0 auto; padding: 0 20px; }

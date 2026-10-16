@@ -70,19 +70,12 @@ async function lienzo(w: number, h: number, fondo: string, capas: { input: Buffe
   return sharp({ create: { width: w, height: h, channels: 4, background: fondo } }).composite(capas).png().toBuffer();
 }
 
-// 1. Portada de la landing: historia, carrusel y post encimados.
+// 1. Piezas que se usan en las muestras y en la vista para compartir.
 const historia = await pieza("story-1");
 const portada = await pieza("dia-02-1");
 const post = await pieza("dia-09");
-const [tH, tC, tP] = await Promise.all([tarjeta(historia, 380, -6), tarjeta(portada, 560, 0), tarjeta(post, 420, 5)]);
-const hero = await lienzo(1200, 990, NEUTROS.crema, [
-  { input: tH, left: 0, top: 170 },
-  { input: tP, left: 700, top: 300 },
-  { input: tC, left: 270, top: 40 },
-]);
-await webp(hero, 1200, "hero.webp", 84);
 
-// 2. Muestras para la tira de "Así se ve por dentro" (las 5 y 8 son verticales).
+// 2. Muestras para las galerías y los teléfonos de la página de venta (las 5 y 8 son verticales).
 const muestras = [
   await pieza("dia-08-1"), await pieza("dia-08-2"), await pieza("dia-26-1"), await pieza("dia-02-5"),
   await pieza("story-2"), await pieza("dia-01"), await propiedad("post"), await propiedad("historia"),
