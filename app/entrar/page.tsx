@@ -65,7 +65,7 @@ export default function Entrar() {
       const modo = r?.modo;
       if (modo === "sin-compra") {
         setModo("pedir");
-        setError(<>No encontramos una compra con <b>{correo}</b>. Escribe el mismo correo con el que pagaste; si acabas de pagar, espera unos minutos y vuelve a intentarlo. ¿Todavía no tienes tu pack? <a href="/">Consíguelo aquí</a>.{SOPORTE ? <> Si ya pagaste y no te deja, escríbenos a <CorreoSoporte />.</> : null}</>);
+        setError(<>No encontramos una compra con <b>{correo}</b>. Escribe el mismo correo con el que pagaste; si acabas de pagar, espera unos minutos y vuelve a intentarlo.{SOPORTE ? <> Si ya pagaste y no te deja, escríbenos a <CorreoSoporte />.</> : null}</>);
       } else if (modo === "invalido") {
         setError("Revisa el correo: parece que le falta algo o tiene un error.");
       } else if (modo === "limite") {
