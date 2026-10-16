@@ -67,8 +67,10 @@ export default function Entrar() {
         setModo("pedir");
         setError(<>No encontramos una compra con <b>{correo}</b>. Escribe el mismo correo con el que pagaste; si acabas de pagar, espera unos minutos y vuelve a intentarlo.{SOPORTE ? <> Si ya pagaste y no te deja, escríbenos a <CorreoSoporte />.</> : null}</>);
       } else if (modo === "invalido") {
+        setModo("pedir");
         setError("Revisa el correo: parece que le falta algo o tiene un error.");
       } else if (modo === "limite") {
+        setModo("pedir");
         setError("Hiciste muchos intentos seguidos. Espera un rato y vuelve a intentarlo con el correo con el que pagaste.");
       } else if (modo === "propio" || modo === "firebase" || modo === "espera") {
         if (modo === "firebase") await sendSignInLinkToEmail(auth(), correo, { url: `${location.origin}/entrar`, handleCodeInApp: true });
@@ -76,11 +78,12 @@ export default function Entrar() {
         setReciente(modo === "espera");
         setModo("enviado"); setFaltan(ESPERA);
       } else {
-        throw new Error();
+        setModo("pedir");
+        setError("Tuvimos un problema para revisar tu compra. Intenta de nuevo en un momento.");
       }
     } catch {
       setModo("pedir");
-      setError("No pudimos mandar el correo. Revisa que esté bien escrito e intenta de nuevo.");
+      setError("No pudimos mandar el correo. Intenta de nuevo en un momento.");
     }
     setEnviando(false);
   }

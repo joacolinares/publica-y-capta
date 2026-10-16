@@ -48,6 +48,7 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
   // 1. Diseños: 40 piezas (los carruseles traen varias imágenes). Con foto van en JPG, solo texto en PNG.
   const piezas = catalogo((t) => reemplazar(t, perfil));
   // DISENOS_A_LA_VEZ (opcional, 2 por defecto): cuántos diseños se arman a la vez. 4 es más rápido pero usa cerca de 1 GB de RAM.
+  // Si falla un diseño, se espera a la IA antes de cortar: así no se libera el armado con llamadas en curso sin guardar.
   const hechas = await deANes(piezas, Math.max(1, Math.floor(Number(process.env.DISENOS_A_LA_VEZ)) || 2), async (p: Pieza, i) => {
     const { el, conFoto } = await p.armar(m, i);
     const { width, height } = MEDIDAS[p.formato];
@@ -55,7 +56,7 @@ export async function armarPaquete(perfil: Perfil, op: Opciones = {}) {
     const ruta = `03 Disenos/${p.archivo}.${r.ext}`;
     zip.file(ruta, r.buf);
     return { p, ruta };
-  });
+  }).catch(async (e) => { await iaP; throw e; });
   const disenoDe = new Map<number, DisenoDia>();
   for (const { p, ruta } of hechas) {
     if (!p.dia) continue;

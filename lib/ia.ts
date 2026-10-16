@@ -83,7 +83,9 @@ export async function adaptarConIA(dias: Dia[], p: Perfil, cache?: CacheIA): Pro
           return;
         }
       }
-      nuevos[k] = textos;
+      // Un lote que volvió casi vacío no se guarda: la próxima vez se vuelve a pedir. Si solo faltan uno o dos días
+      // (los rechazó la revisión), se guarda igual para no pagar el lote completo cada vez.
+      if (textos.length * 2 >= lote.length) nuevos[k] = textos;
       for (const t of textos) {
         const orig = lote.find((d) => d.dia === t.dia);
         if (orig && aceptable(orig, t)) out.set(t.dia, { post: t.post, whatsapp: t.whatsapp });

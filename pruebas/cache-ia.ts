@@ -4,7 +4,7 @@
 import { createServer } from "node:http";
 import type { Perfil } from "../lib/perfil";
 
-let llamadas = 0, fallarLote: number | null = null;
+let llamadas = 0, fallarLote: number | null = null, vacio = false;
 const api = createServer((req, res) => {
   let cuerpo = "";
   req.on("data", (c) => (cuerpo += c));
@@ -13,7 +13,7 @@ const api = createServer((req, res) => {
     const pedido = JSON.parse(cuerpo) as { messages: { content: string }[] };
     const textos = JSON.parse(pedido.messages[0].content.split("Textos a adaptar (JSON):\n")[1]) as { dia: number; post: string; whatsapp: string }[];
     if (textos[0].dia === fallarLote) { res.writeHead(500, { "content-type": "application/json" }); return res.end('{"type":"error","error":{"type":"api_error","message":"falla de prueba"}}'); }
-    const salida = { textos: textos.map((t) => ({ ...t, whatsapp: `${t.whatsapp} ✓` })) };
+    const salida = { textos: vacio ? [] : textos.map((t) => ({ ...t, whatsapp: `${t.whatsapp} ✓` })) };
     res.writeHead(200, { "content-type": "application/json" });
     res.end(JSON.stringify({ id: "msg_prueba", type: "message", role: "assistant", model: "claude-opus-5-5", content: [{ type: "text", text: JSON.stringify(salida) }], stop_reason: "end_turn", stop_sequence: null, usage: { input_tokens: 1, output_tokens: 1 } }));
   });
@@ -64,7 +64,15 @@ fallarLote = null; llamadas = 0;
 r = await adaptarConIA(TEXTOS, perfil, cache);
 check("la vez siguiente solo pide el lote que faltó", llamadas === 1 && r.textos.size === adaptados && Object.keys(guardado).length === 4, `${llamadas} llamadas`);
 
-// 5. Si no se puede leer lo guardado, igual arma el pack (llamando a la IA).
+// 5. Un lote que vuelve vacío no se guarda: la próxima vez se vuelve a pedir.
+guardado = {}; llamadas = 0; vacio = true;
+r = await adaptarConIA(TEXTOS, perfil, cache);
+check("la IA devuelve lotes vacíos → no se guardan", r.textos.size === 0 && Object.keys(guardado).length === 0, `${Object.keys(guardado).length} lotes`);
+vacio = false; llamadas = 0;
+r = await adaptarConIA(TEXTOS, perfil, cache);
+check("y la vez siguiente se vuelven a pedir", llamadas === 4 && r.textos.size === adaptados);
+
+// 6. Si no se puede leer lo guardado, igual arma el pack (llamando a la IA).
 llamadas = 0;
 r = await adaptarConIA(TEXTOS, perfil, { leer: async () => { throw new Error("sin base"); }, guardar: async () => {} });
 check("sin poder leer lo guardado, igual adapta", llamadas === 4 && r.textos.size === adaptados);

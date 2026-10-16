@@ -82,17 +82,26 @@ export function coloresDeLogo(dataUrl: string): Promise<[string, string] | null>
   });
 }
 
-/** true si las 4 esquinas del logo son opacas: casi seguro trae fondo (blanco o de color) en vez de transparente. */
+/** true si el logo casi seguro trae fondo (blanco o de color) en vez de transparente: es opaco casi entero, o lo son el borde
+ *  y una franja un poco más adentro. Así un logo transparente con un marco fino no da aviso, y uno con fondo redondeado sí. */
 export function tieneFondo(dataUrl: string): Promise<boolean> {
   return new Promise((ok) => {
     const img = new Image();
     img.onload = () => {
-      const c = document.createElement("canvas");
-      c.width = img.width; c.height = img.height;
+      const N = 64, c = document.createElement("canvas");
+      c.width = c.height = N;
       const x = c.getContext("2d")!;
-      x.drawImage(img, 0, 0);
-      const esquinas = [[0, 0], [img.width - 1, 0], [0, img.height - 1], [img.width - 1, img.height - 1]];
-      ok(esquinas.every(([px, py]) => x.getImageData(px, py, 1, 1).data[3] > 240));
+      x.drawImage(img, 0, 0, N, N);
+      const d = x.getImageData(0, 0, N, N).data;
+      const opaco = (px: number, py: number) => d[(py * N + px) * 4 + 3] > 240;
+      const anillo = (k: number) => {
+        let n = 0, t = 0;
+        for (let i = k; i < N - k; i++) for (const [px, py] of [[i, k], [i, N - 1 - k], [k, i], [N - 1 - k, i]]) { t++; if (opaco(px, py)) n++; }
+        return n / t;
+      };
+      let total = 0;
+      for (let i = 3; i < d.length; i += 4) if (d[i] > 240) total++;
+      ok(total / (N * N) >= 0.93 || (anillo(0) >= 0.85 && anillo(4) >= 0.85));
     };
     img.onerror = () => ok(false);
     img.src = dataUrl;

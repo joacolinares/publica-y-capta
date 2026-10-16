@@ -139,6 +139,7 @@
 .v2-copia { display: none; }
 .v2-pausa { display: none; }
 .v2-nota { text-align: center; color: var(--v2-suave); font-size: 14px; max-width: 620px; margin: 6px auto 0; }
+.v2-disp-nota { font-size: 12.5px; margin-top: 14px; }
 @keyframes v2-pasar { to { transform: translateX(calc(-50% - 7px)); } }
 
 /* 5. Generador de propiedades */

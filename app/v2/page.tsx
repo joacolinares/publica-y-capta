@@ -168,7 +168,6 @@ function Dispositivos({ prioridad, decorativa }: { prioridad?: boolean; decorati
       <Telefono className="v2-disp-der">
         <img src="/web/muestra-5.webp" width={540} height={960} alt={decorativa ? "" : "Historia del pack con espacio para la caja de preguntas"} loading={carga} />
       </Telefono>
-      {!decorativa && <figcaption className="l-solo-lector">Carruseles, posts e historias reales del pack, armados con una marca de ejemplo</figcaption>}
     </figure>
   );
 }
@@ -232,7 +231,7 @@ export default function V2() {
               <li>90 publicaciones</li><li>40 diseños</li><li>30 guiones</li><li>Reembolso en 7 días</li>
             </ul>
           </div>
-          <div className="v2-ancho"><Dispositivos prioridad /></div>
+          <div className="v2-ancho"><Dispositivos prioridad /><p className="v2-nota v2-disp-nota">Diseños reales del pack, armados con una marca de ejemplo</p></div>
         </section>
 
         {/* 2. Por qué importa (clara) */}
