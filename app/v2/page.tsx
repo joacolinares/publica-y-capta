@@ -6,8 +6,9 @@ import type { ReactNode } from "react";
 import { BarraCompra, Comprar } from "../_web/Comprar";
 import { ASoporte, DatosProveedor } from "../_web/Contacto";
 import { Opiniones } from "../_web/Opiniones";
-import { PRECIO_MXN } from "@/lib/oferta";
-import { PERFIL_EJEMPLO } from "@/lib/perfil";
+import { PRECIO_MXN, SOPORTE } from "@/lib/oferta";
+import { PERFIL_EJEMPLO, type Perfil } from "@/lib/perfil";
+import { PERFIL_EJEMPLO_2 } from "@/lib/perfil-v2";
 import { TEXTOS, reemplazar } from "@/lib/personalizar";
 import autor from "@/content/autor.json";
 import "../landing.css";
@@ -61,9 +62,9 @@ const EXTRAS: [string, string, string, ReactNode][] = [
     <><circle cx="20" cy="15" r="6" /><path d="M9 33c1.5-6 6-9 11-9s9.5 3 11 9" /></>],
   ["Bono", "20 prompts para tu colonia", "Para adaptar cualquier texto a tu colonia con ChatGPT, Gemini o la IA que uses.",
     <><path d="M8 10h24v16H17l-6 5v-5H8z" /><path d="M14 16h12M14 21h8" /></>],
-  ["Incluido", "Calendario de 90 días", "Qué publicar cada día: compradores, vendedores, rentas y tu marca personal.",
+  ["En el pack", "Calendario de 90 días", "Qué publicar cada día: compradores, vendedores, rentas y tu marca personal.",
     <><rect x="7" y="9" width="26" height="24" rx="2" /><path d="M7 16h26M14 6v6M26 6v6M13 22h3M19 22h3M25 22h3M13 27h3M19 27h3" /></>],
-  ["Incluido", "Versión para estados de WhatsApp", "Cada publicación trae su texto corto para tus estados.",
+  ["En el pack", "Versión para estados de WhatsApp", "Cada publicación trae su texto corto para tus estados.",
     <><rect x="12" y="5" width="16" height="30" rx="3" /><path d="M17 9h6M18 30h4" /></>],
 ];
 
@@ -84,15 +85,15 @@ const PREGUNTAS: [string, ReactNode][] = [
   ["¿Cómo recibo el pack?", "Al terminar el pago te llega un correo con el acceso. Entras con el mismo correo con el que pagaste, llenas el formulario (unos 5 minutos) y en minutos descargas todo. Puedes volver a armarlo y descargarlo durante al menos 12 meses. Si no ves el correo, revisa spam o promociones."],
   ["¿Necesito Canva o saber de diseño?", "No. Los diseños te llegan listos, con tu nombre, tu logo y tus colores. Solo descargas y publicas."],
   ["¿Tengo que salir en video?", "No. De los 30 guiones, 15 son sin salir a cámara: texto en pantalla, tomas de casas y voz en off si quieres."],
-  ["¿Sirve para mi ciudad o si trabajo en una inmobiliaria?", "Sí. Los textos no dependen de una ciudad: en el formulario pones tu zona y tus colonias, y los textos salen con ellas. Si trabajas en una inmobiliaria o franquicia, los diseños pueden llevar tu logo o el de tu oficina."],
+  ["¿Sirve para mi ciudad? ¿Y si trabajo en una inmobiliaria?", "Sí. Los textos no dependen de una ciudad: en el formulario pones tu zona y tus colonias, y los textos salen con ellas. Si trabajas en una inmobiliaria o franquicia, los diseños pueden llevar tu logo o el de tu oficina."],
   ["¿Me garantiza clientes?", "No. Nadie te lo puede garantizar. Lo que te da es contenido listo para que publiques con constancia y quien te busque encuentre un perfil activo y profesional."],
-  ["¿Y si no me sirve?", <>Escríbenos<ASoporte /> dentro de los 7 días naturales siguientes a tu compra y te devolvemos lo que pagaste. Al reembolsarte se desactiva tu acceso.</>],
+  ["¿Y si no me sirve?", <>{SOPORTE ? <>Escríbenos<ASoporte /></> : process.env.CORREO_RESPUESTAS ? "Responde al correo con el que recibiste tu acceso" : "Escríbenos"} dentro de los 7 días naturales siguientes a tu compra y te devolvemos lo que pagaste. Al reembolsarte se desactiva tu acceso.</>],
 ];
 
 type Autor = { nombre: string; rol: string; texto: string[]; foto: string };
 
 function Marca() {
-  return <a className="marca" href="/" aria-label="Publica y Capta, inicio"><span className="monograma">P<i>y</i>C</span><b>Publica y Capta</b></a>;
+  return <a className="marca" href="/v2" aria-label="Publica y Capta, inicio"><span className="monograma">P<i>y</i>C</span><b>Publica y Capta</b></a>;
 }
 
 function BotonCompra() {
@@ -133,25 +134,38 @@ function PerfilIG({ usuario, ini, nombre, bio, img, alt, color, carga = "lazy" }
   );
 }
 
-const LAURA = { usuario: "laura.ejemplo", ini: "LG", nombre: "Laura Gómez", bio: "Asesora inmobiliaria · Zapopan", img: "/web/perfil.webp", color: "#1F3A5F" };
+/** Lo que PerfilIG necesita de una marca de ejemplo, sacado del mismo perfil con el que se armaron sus imágenes. */
+function marcaIG(p: Perfil, img: string) {
+  const ini = p.nombre.split(/\s+/).map((x) => x[0]).join("").slice(0, 2).toUpperCase();
+  return { usuario: p.usuarioRedes.replace(/^@/, ""), ini, nombre: p.nombre, bio: `Asesora inmobiliaria · ${p.ciudad}`, img, color: p.colorPrincipal };
+}
+const LAURA = marcaIG(PERFIL_EJEMPLO, "/web/perfil.webp");
+const ANDREA = marcaIG(PERFIL_EJEMPLO_2, "/web/v2/perfil.webp");
+// Nombres de los colores para el pie de cada teléfono (si se regeneran las imágenes con otros colores, cambiarlos aquí).
+const COLORES_LAURA = "azul y ámbar";
+const COLORES_ANDREA = "vino y rosa palo";
+
+function Muestras({ p }: { p: Perfil }) {
+  return <><i style={{ background: p.colorPrincipal }} /><i style={{ background: p.colorAcento }} /></>;
+}
 
 /** Laptop con diseños del pack y dos teléfonos, todo de la misma marca de ejemplo: portada y oferta. `decorativa`: la segunda vez, sin repetir los alt. */
 function Dispositivos({ prioridad, decorativa }: { prioridad?: boolean; decorativa?: boolean }) {
-  const tiles = ["/web/muestra-1.webp", "/web/muestra-6.webp", "/web/muestra-2.webp", "/web/muestra-post.webp", "/web/muestra-3.webp", "/web/muestra-7.webp", "/web/muestra-4.webp", "/web/muestra-8.webp"];
-  const carga = prioridad ? undefined : ("lazy" as const);
+  const tiles: [string, number][] = [["/web/muestra-1.webp", 675], ["/web/muestra-6.webp", 675], ["/web/muestra-2.webp", 675], ["/web/muestra-post.webp", 675], ["/web/muestra-3.webp", 675], ["/web/muestra-7.webp", 675], ["/web/muestra-4.webp", 675], ["/web/muestra-8.webp", 960]];
+  const carga = prioridad ? "eager" : "lazy";
   return (
     <figure className="v2-disp" aria-hidden={decorativa || undefined}>
       <div className="v2-laptop">
         <div className="v2-laptop-pantalla">
-          {tiles.map((s) => <img key={s} src={s} width={540} height={675} alt="" loading={carga} />)}
+          {tiles.map(([s, h]) => <img key={s} src={s} width={540} height={h} alt="" loading={carga} />)}
         </div>
         <div className="v2-laptop-base" />
       </div>
       <Telefono className="v2-disp-izq">
-        <PerfilIG {...LAURA} alt={decorativa ? "" : "Perfil de Instagram armado con los diseños del pack"} carga="lazy" />
+        <PerfilIG {...LAURA} alt={decorativa ? "" : "Perfil de Instagram armado con los diseños del pack"} carga={carga} />
       </Telefono>
       <Telefono className="v2-disp-der">
-        <img src="/web/muestra-5.webp" width={540} height={960} alt={decorativa ? "" : "Historia del pack con espacio para la caja de preguntas"} loading="lazy" />
+        <img src="/web/muestra-5.webp" width={540} height={960} alt={decorativa ? "" : "Historia del pack con espacio para la caja de preguntas"} loading={carga} />
       </Telefono>
       {!decorativa && <figcaption className="v2-solo-lector">Carruseles, posts e historias reales del pack, armados con una marca de ejemplo</figcaption>}
     </figure>
@@ -167,7 +181,7 @@ function Galeria({ imagenes, etiqueta, inversa }: { imagenes: Img[]; etiqueta: s
           const copia = k >= imagenes.length;
           return (
             <li key={k} className={copia ? "v2-copia" : undefined} aria-hidden={copia || undefined}>
-              <img src={src} width={w} height={h} alt={copia ? "" : alt} loading="lazy" className={h > w * 1.4 ? "alta" : undefined} />
+              <img src={src} width={w} height={h} alt={copia ? "" : alt} loading="lazy" />
             </li>
           );
         })}
@@ -227,8 +241,8 @@ export default function V2() {
             <h2>Antes de llamarte, <em>te buscan.</em></h2>
             <p>Quien piensa comprar, vender o rentar suele revisar tu Instagram antes de mandarte un mensaje.</p>
             <p>Si encuentra un perfil <strong>activo</strong>, con consejos claros y tu marca, llega con más confianza.</p>
-            <p>Lo difícil no es el diseño. Es <strong>publicar constante</strong> y saber qué escribir cada día.</p>
-            <p className="v2-porque-cierre">Eso es lo que resuelve el pack: el texto, el diseño y el calendario de 90 días, listos para que tú solo publiques.</p>
+            <p>Lo difícil no es el diseño. Es <strong>publicar con constancia</strong> y saber qué escribir cada día.</p>
+            <p className="v2-porque-cierre">Eso es lo que resuelve el pack: el texto, el diseño y el calendario de 90 días, listos para que te enfoques en publicar.</p>
             <div className="v2-adorno" aria-hidden><span /></div>
           </div>
         </section>
@@ -236,17 +250,17 @@ export default function V2() {
         {/* 3. Qué recibes */}
         <section className="v2-sec v2-recibes">
           <div className="v2-ancho v2-centro">
-            <Etiqueta>Qué recibes</Etiqueta>
+            <Etiqueta>Hecho con tu marca</Etiqueta>
             <h2>Todo sale <em>con tus colores</em></h2>
             <p className="v2-bajada">Llenas un formulario con tu logo, tus colores, tu zona y tus datos, y con eso se arman los 40 diseños y los 90 textos. Aquí, las mismas piezas con dos marcas de ejemplo.</p>
             <div className="v2-dos-tel">
               <figure>
-                <Telefono><PerfilIG {...LAURA} alt="Perfil de Instagram con los diseños del pack en azul y ámbar" /></Telefono>
-                <figcaption><i style={{ background: "#1F3A5F" }} /><i style={{ background: "#E8A33D" }} />Marca de ejemplo en azul y ámbar</figcaption>
+                <Telefono><PerfilIG {...LAURA} alt={`Perfil de Instagram con los diseños del pack en ${COLORES_LAURA}`} /></Telefono>
+                <figcaption><Muestras p={PERFIL_EJEMPLO} />Marca de ejemplo en {COLORES_LAURA}</figcaption>
               </figure>
               <figure>
-                <Telefono><PerfilIG usuario="andrea.ejemplo" ini="AR" nombre="Andrea Ruiz" bio="Asesora inmobiliaria · Monterrey" img="/web/v2/perfil.webp" alt="Perfil de Instagram con los mismos diseños del pack en verde y menta" color="#1F5E4F" /></Telefono>
-                <figcaption><i style={{ background: "#1F5E4F" }} /><i style={{ background: "#A9D6C5" }} />Marca de ejemplo en verde y menta</figcaption>
+                <Telefono><PerfilIG {...ANDREA} alt={`Perfil de Instagram con los mismos diseños del pack en ${COLORES_ANDREA}`} /></Telefono>
+                <figcaption><Muestras p={PERFIL_EJEMPLO_2} />Marca de ejemplo en {COLORES_ANDREA}</figcaption>
               </figure>
             </div>
           </div>
@@ -255,7 +269,7 @@ export default function V2() {
               <article className="v2-tarjeta">
                 <Etiqueta>Tus colores</Etiqueta>
                 <h3>Con tus colores de marca</h3>
-                <p>Los diseños usan una base neutra y elegante, y tus dos colores como acento: el principal en las palabras clave y los detalles; el de acento, sobre los fondos oscuros.</p>
+                <p>Los diseños tienen una base neutra y elegante, y tus colores de marca en las palabras clave y los detalles. Si uno de tus colores no se lee bien sobre algún fondo, se usa el otro o un tono neutro para que todo se lea.</p>
               </article>
               <article className="v2-tarjeta">
                 <Etiqueta>Tus datos</Etiqueta>
@@ -320,17 +334,17 @@ export default function V2() {
             <div className="v2-col-cab">
               <Etiqueta>El texto, completo</Etiqueta>
               <h2>No solo el diseño: <em>lo que escribes</em></h2>
-              <p className="v2-texto">Cada uno de los 90 días trae el texto entero, listo para copiar y pegar. Este es el del día 9, tal como le sale a la marca de ejemplo.</p>
+              <p className="v2-texto">Cada uno de los 90 días trae el texto entero, con tus datos ya puestos. En unos cuantos (los de tus propiedades y tu historia) solo completas lo que va entre corchetes. Este es el del día 9, tal como le sale a la marca de ejemplo.</p>
             </div>
             <article className="v2-col-media v2-post" aria-label="Ejemplo de publicación del día 9">
-              <header className="v2-post-cab"><span className="v2-ig-ini">LG</span><div><b>laura.ejemplo</b><span>Zapopan</span></div></header>
+              <header className="v2-post-cab"><span className="v2-ig-ini" style={{ borderColor: LAURA.color, color: LAURA.color }}>{LAURA.ini}</span><div><b>{LAURA.usuario}</b><span>{PERFIL_EJEMPLO.ciudad}</span></div></header>
               <img src="/web/muestra-post.webp" width={540} height={675} alt="Diseño del día 9: ¿Tu casa lleva meses publicada?" loading="lazy" />
               <div className="v2-post-iconos" aria-hidden>
                 <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 20s-7-4.4-7-9.5A4 4 0 0 1 12 8a4 4 0 0 1 7 2.5C19 15.6 12 20 12 20z" /></svg>
                 <svg viewBox="0 0 24 24" width="22" height="22"><path d="M20 12a8 8 0 1 1-3.2-6.4A8 8 0 0 1 20 12zM20 20l-2.6-2.6" /></svg>
                 <svg viewBox="0 0 24 24" width="22" height="22"><path d="M21 4 3 11l7 2 2 7z" /></svg>
               </div>
-              <p className="v2-post-texto"><b>laura.ejemplo</b> {POST_9}</p>
+              <p className="v2-post-texto"><b>{LAURA.usuario}</b> {POST_9}</p>
             </article>
             <div className="v2-col-detalle">
               <ol className="v2-partes">
@@ -383,8 +397,8 @@ export default function V2() {
         {/* 8. Y además */}
         <section className="v2-sec v2-ademas">
           <div className="v2-ancho v2-centro">
-            <Etiqueta llena>Y además</Etiqueta>
-            <h2>Lo que viene <em>de&nbsp;regalo</em> y para empezar</h2>
+            <Etiqueta llena>Para arrancar</Etiqueta>
+            <h2>Dos bonos y lo que necesitas <em>para&nbsp;arrancar</em></h2>
             <p className="v2-bajada">Dos bonos, más el calendario y la versión para estados de WhatsApp, para que publiques desde el primer día.</p>
           </div>
           <div className="v2-ancho">
@@ -444,7 +458,7 @@ export default function V2() {
               <p className="v2-monto">{PRECIO}</p>
               <p className="v2-precio-nota">Pago único, sin suscripción</p>
               <Comprar className="compra">Quiero mi pack <span className="flecha" aria-hidden /></Comprar>
-              <p className="v2-precio-pie"><span className="nw">Acceso por correo al terminar el pago</span> <span className="nw">· Reembolso en 7 días</span></p>
+              <p className="v2-precio-pie"><span className="nw">Acceso por correo al terminar el pago</span> <span className="nw"><span className="v2-sep" aria-hidden>· </span>Reembolso en 7 días</span></p>
               <p className="v2-precio-pie">Antes de pagar, lee los <a href="/terminos">términos y condiciones</a>.</p>
             </div>
           </div>

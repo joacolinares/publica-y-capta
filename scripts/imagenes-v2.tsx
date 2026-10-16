@@ -4,7 +4,7 @@ import { mkdirSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 import { catalogo, prepararMarca, MEDIDAS, type Pieza } from "../lib/disenos";
-import type { Perfil } from "../lib/perfil";
+import { PERFIL_EJEMPLO_2 } from "../lib/perfil-v2";
 import { reemplazar } from "../lib/personalizar";
 import { imagen } from "../lib/render";
 import { NEUTROS } from "../lib/estilo";
@@ -12,26 +12,7 @@ import { NEUTROS } from "../lib/estilo";
 const SALIDA = path.join(process.cwd(), "public/web/v2");
 mkdirSync(SALIDA, { recursive: true });
 
-// Datos claramente ficticios: salen en imágenes públicas.
-const PERFIL_V2: Perfil = {
-  nombre: "Andrea Ruiz",
-  nombreComercial: "Andrea Ruiz Inmobiliaria",
-  whatsapp: "81 0000 0000",
-  correo: "andrea@example.com",
-  domicilio: "Av. Ejemplo 200, Monterrey, N.L.",
-  ciudad: "Monterrey",
-  zona: "Monterrey",
-  colonias: ["Cumbres", "Contry", "Del Valle"],
-  colorPrincipal: "#1F5E4F",
-  colorAcento: "#A9D6C5",
-  especialidad: "ambas",
-  cliente: "mixto",
-  tono: "cercano",
-  genero: "a",
-  aniosExperiencia: "6",
-  historia: "",
-  usuarioRedes: "@andrea.ejemplo",
-};
+const PERFIL_V2 = PERFIL_EJEMPLO_2;
 
 const m = await prepararMarca(PERFIL_V2);
 const piezas = catalogo((t) => reemplazar(t, PERFIL_V2));
