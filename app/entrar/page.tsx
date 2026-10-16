@@ -1,6 +1,6 @@
 "use client";
 // Entrar: el asesor escribe el correo con el que pagó y recibe un link para entrar, sin contraseña.
-// La misma página termina el acceso cuando abre el link del correo.
+// Solo se manda a correos con compra. La misma página termina el acceso cuando abre el link del correo.
 import { useEffect, useState } from "react";
 import { isSignInWithEmailLink, onAuthStateChanged, sendSignInLinkToEmail, signInWithEmailLink } from "firebase/auth";
 import { auth } from "@/lib/cliente";
@@ -21,7 +21,8 @@ export default function Entrar() {
   const [modo, setModo] = useState<Modo>("cargando");
   const [email, setEmail] = useState("");
   const [enviando, setEnviando] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<React.ReactNode>("");
+  const [reciente, setReciente] = useState(false);
   const [faltan, setFaltan] = useState(0);
 
   async function completar(correo: string) {
@@ -60,12 +61,29 @@ export default function Entrar() {
     setError(""); setEnviando(true);
     try {
       // Con correo propio configurado, el servidor manda el link con la marca; si no, lo manda Firebase.
-      const r = await fetch("/api/enlace", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: correo }) }).then((x) => x.json()).catch(() => null);
-      if (r?.modo !== "propio") await sendSignInLinkToEmail(auth(), correo, { url: `${location.origin}/entrar`, handleCodeInApp: true });
-      try { localStorage.setItem("correo", correo); } catch {}
-      setModo("enviado"); setFaltan(ESPERA);
+      const r = (await fetch("/api/enlace", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: correo }) }).then((x) => x.json()).catch(() => null)) as { modo?: string } | null;
+      const modo = r?.modo;
+      if (modo === "sin-compra") {
+        setModo("pedir");
+        setError(<>No encontramos una compra con <b>{correo}</b>. Escribe el mismo correo con el que pagaste; si acabas de pagar, espera unos minutos y vuelve a intentarlo.{SOPORTE ? <> Si ya pagaste y no te deja, escríbenos a <CorreoSoporte />.</> : null}</>);
+      } else if (modo === "invalido") {
+        setModo("pedir");
+        setError("Revisa el correo: parece que le falta algo o tiene un error.");
+      } else if (modo === "limite") {
+        setModo("pedir");
+        setError("Hiciste muchos intentos seguidos. Espera un rato y vuelve a intentarlo con el correo con el que pagaste.");
+      } else if (modo === "propio" || modo === "firebase" || modo === "espera") {
+        if (modo === "firebase") await sendSignInLinkToEmail(auth(), correo, { url: `${location.origin}/entrar`, handleCodeInApp: true });
+        try { localStorage.setItem("correo", correo); } catch {}
+        setReciente(modo === "espera");
+        setModo("enviado"); setFaltan(ESPERA);
+      } else {
+        setModo("pedir");
+        setError("Tuvimos un problema para revisar tu compra. Intenta de nuevo en un momento.");
+      }
     } catch {
-      setError("No pudimos mandar el correo. Revisa que esté bien escrito e intenta de nuevo.");
+      setModo("pedir");
+      setError("No pudimos mandar el correo. Intenta de nuevo en un momento.");
     }
     setEnviando(false);
   }
@@ -87,7 +105,7 @@ export default function Entrar() {
                 <svg width="30" height="22" viewBox="0 0 30 22"><rect x="0.7" y="0.7" width="28.6" height="20.6" fill="none" stroke="currentColor" strokeWidth="1.4" /><path d="M1 1l14 11L29 1" fill="none" stroke="currentColor" strokeWidth="1.4" /></svg>
               </div>
               <h1>Revisa tu <em>correo</em></h1>
-              <p className="subtitulo">Te mandamos un link para entrar a <b>{email.trim()}</b>. Ábrelo desde este mismo celular o compu.</p>
+              <p className="subtitulo">{reciente ? "Ya te mandamos un link hace un momento" : "Te mandamos un link"} para entrar a <b>{email.trim()}</b>. Ábrelo desde este mismo celular o compu.</p>
               <ul className="lista-check">
                 <li>Si no lo ves en unos minutos, busca en spam o promociones.</li>
                 <li>El link sirve una sola vez. Si lo abres después de mucho tiempo, pide otro.</li>

@@ -35,4 +35,5 @@ for _ in $(seq 1 30); do curl -fs localhost:3124 >/dev/null && break; sleep 1; d
 FALLO=0
 node pruebas/robo-de-cuenta.mjs || FALLO=1
 node pruebas/compra-completa.mjs || FALLO=1
+./node_modules/.bin/tsx pruebas/cache-ia.ts || FALLO=1
 exit $FALLO

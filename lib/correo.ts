@@ -103,22 +103,6 @@ export function correoAcceso(para: string, link: string) {
   });
 }
 
-/** Alguien pidió entrar con un correo que no tiene compra: se avisa al dueño del correo (la pantalla no lo revela). */
-export function correoSinCompra(para: string) {
-  const app = appUrl();
-  return mandar(para, "No encontramos tu compra en Publica y Capta", {
-    previa: "Entra con el mismo correo que usaste al pagar.",
-    etiqueta: "Tu acceso",
-    titulo: "No encontramos tu *compra*",
-    parrafos: [
-      `Alguien pidió entrar a Publica y Capta con <b>${esc(para)}</b>, pero no encontramos una compra con este correo.`,
-      "Si pagaste con otro correo, entra con ese. Si acabas de pagar, espera unos minutos y vuelve a intentarlo.",
-    ],
-    ...(app ? { boton: { texto: "Volver a entrar", url: `${app}/entrar` } } : {}),
-    nota: "Si no fuiste tú, ignora este correo.",
-  });
-}
-
 /** Al aprobarse el pago: respaldo del correo de Impul con el link para entrar a la app. */
 export function correoBienvenida(para: string) {
   const app = appUrl();

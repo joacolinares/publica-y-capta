@@ -30,7 +30,20 @@ await fetch(`${FS}/v1/projects/${P}/databases/(default)/documents/enlaces/${crea
 await fetch(`${APP}/api/enlace`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
 const acc2 = await fetch(`${APP}/api/acceso`, { headers: { Authorization: `Bearer ${l.idToken}` } });
 check("pedir otro link no la saca de su cuenta", acc2.status === 200, String(acc2.status));
-const pr = await (await fetch(`${APP}/api/enlace`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: "nadie@x.com" }) })).json();
-check("enlace no revela si compró", pr.modo === "firebase");
+const enlace = async (correo, ip) => (await (await fetch(`${APP}/api/enlace`, { method: "POST", headers: { "Content-Type": "application/json", ...(ip ? { "X-Forwarded-For": ip } : {}) }, body: JSON.stringify({ email: correo }) })).json()).modo;
+check("otro link enseguida, sin Resend → firebase (lo vuelve a mandar el navegador)", (await enlace(email)) === "firebase");
+// Sin compra no se manda nada: ni nuestro correo ni el de Firebase.
+const pr = await enlace("nadie@x.com");
+const codigosNadie = (await (await fetch(`${AUTH}/emulator/v1/projects/${P}/oobCodes`)).json()).oobCodes.filter((c) => c.email === "nadie@x.com");
+check("correo sin compra → sin-compra y no se manda link", pr === "sin-compra" && codigosNadie.length === 0, `${pr} ${codigosNadie.length}`);
+const modos = [];
+for (let i = 0; i < 11; i++) modos.push(await enlace(`prueba${i}@x.com`, "203.0.113.9"));
+check("probar muchos correos desde una IP → limite", modos.slice(0, 10).every((m) => m === "sin-compra") && modos[10] === "limite", modos.join(","));
+// Pasado el límite, la respuesta tampoco dice si un correo compró: el de la compradora también sale "limite".
+check("pasado el límite, una compradora también sale limite", (await enlace(email, "203.0.113.9")) === "limite");
+const otros = [];
+for (let i = 0; i < 31; i++) otros.push(await enlace(email, "203.0.113.10"));
+check("más de 30 pedidos por hora desde una IP → limite", otros.slice(0, 30).every((m) => m !== "limite") && otros[30] === "limite", otros.slice(-2).join(","));
+check("correo con apóstrofo → no es invalido", (await enlace("o'brien@x.com", "203.0.113.11")) === "sin-compra");
 console.log(`${ok}/${n} ok`);
 process.exitCode = ok === n ? 0 : 1;

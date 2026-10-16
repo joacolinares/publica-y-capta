@@ -2,7 +2,7 @@
 // Panel del asesor: 1) su marca (formulario), 2) descargar el pack, 3) nueva propiedad.
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { achicar, api, auth, coloresDeLogo } from "@/lib/cliente";
+import { achicar, api, auth, coloresDeLogo, tieneFondo } from "@/lib/cliente";
 import type { Perfil } from "@/lib/perfil";
 import { BarraApp } from "../_web/BarraApp";
 import { CorreoSoporte } from "../_web/Contacto";
@@ -76,6 +76,7 @@ function Formulario({ inicial, onGuardado }: { inicial: Perfil; onGuardado: (p: 
   const [p, setP] = useState<Perfil>(inicial);
   const [logo, setLogo] = useState<string>();
   const [foto, setFoto] = useState<string>();
+  const [conFondo, setConFondo] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState("");
   const set = <K extends keyof Perfil>(k: K, v: Perfil[K]) => setP((x) => ({ ...x, [k]: v }));
@@ -85,6 +86,7 @@ function Formulario({ inicial, onGuardado }: { inicial: Perfil; onGuardado: (p: 
     try {
       const d = await achicar(f, 800, "image/png");
       setLogo(d);
+      setConFondo(await tieneFondo(d));
       const c = await coloresDeLogo(d);
       if (c) setP((x) => ({ ...x, colorPrincipal: c[0], colorAcento: c[1] }));
     } catch (e) { setError((e as Error).message); }
@@ -168,10 +170,11 @@ function Formulario({ inicial, onGuardado }: { inicial: Perfil; onGuardado: (p: 
       </div>
       <div className="seccion-form">
       <h2>Tu <em>imagen</em></h2>
-      <label>Tu logo (PNG o JPG)</label>
+      <label>Tu logo, sin fondo (PNG transparente)</label>
       <Archivo texto="Elegir logo" onElegir={subirLogo} />
-      <p className="ayuda">Si no tienes logo, ponemos tus iniciales en un monograma. Al subirlo tomamos tus colores de ahí.</p>
-      {logo && <img className="vista" src={logo} alt="Tu logo" style={{ maxHeight: 120, marginTop: 10, background: "#fff" }} />}
+      <p className="ayuda">Súbelo <b>sin fondo</b>: un PNG transparente, no con fondo blanco ni de color. Así se ve limpio sobre cada diseño. Si no tienes logo, ponemos tus iniciales en un monograma. Al subirlo tomamos tus colores de ahí.</p>
+      {logo && <img className="vista" src={logo} alt="Tu logo" style={{ maxHeight: 120, marginTop: 10, background: "var(--crema)" }} />}
+      {logo && conFondo && <div className="error" role="alert">Parece que tu logo tiene fondo y se va a ver como un recuadro en los diseños. Quítale el fondo (por ejemplo, gratis en remove.bg) y súbelo de nuevo en PNG.</div>}
       <p className="ayuda" style={{ marginTop: 14 }}>Los diseños usan una base crema y neutra, y tu color como acento (títulos, líneas y botones). Así se ven elegantes con cualquier color.</p>
       <div className="fila">
         <div><label>Color principal</label><div className="color"><input type="color" value={p.colorPrincipal} onChange={(e) => set("colorPrincipal", e.target.value.toUpperCase())} /><span>{p.colorPrincipal}</span></div></div>

@@ -19,7 +19,13 @@ export async function POST(req: Request) {
     const liberar = await reservarGeneracion(s.uid);
     try {
       const [logo, foto] = await Promise.all([leerImagen(s.uid, "logo"), leerImagen(s.uid, "foto")]);
-      const { zip, resumen } = await armarPaquete(perfil, { usarIA: true, logo, foto, bump: s.compra.productos.bump, upsell: s.compra.productos.upsell });
+      // Lo que adaptó la IA queda guardado: si el perfil no cambió, volver a armar no la vuelve a llamar.
+      const guardado = db().collection("adaptaciones").doc(s.uid);
+      const cacheIA = {
+        leer: async () => ((await guardado.get()).data()?.lotes ?? {}) as Record<string, { dia: number; post: string; whatsapp: string }[]>,
+        guardar: async (lotes: Record<string, { dia: number; post: string; whatsapp: string }[]>) => { await guardado.set({ lotes, actualizado: new Date().toISOString() }); },
+      };
+      const { zip, resumen } = await armarPaquete(perfil, { usarIA: true, cacheIA, logo, foto, bump: s.compra.productos.bump, upsell: s.compra.productos.upsell });
 
       // Un solo ZIP por usuario: el nuevo reemplaza al anterior.
       await subir(`usuarios/${s.uid}/pack.zip`, zip, "application/zip");

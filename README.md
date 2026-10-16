@@ -51,6 +51,7 @@ npm run demo:propiedad -- salida    # post de propiedad de ejemplo
 - `busquedas/{correo}`: última consulta de respaldo a la API de Impul (una cada 10 minutos por correo).
 - `limites/{uid}`: una generación a la vez y hasta 10 por día.
 - `perfiles/{uid}`: el formulario. Logo y foto en Storage `usuarios/{uid}/logo|foto`.
+- `adaptaciones/{uid}`: los textos que ya adaptó la IA para ese perfil. Si el perfil no cambia, volver a armar el pack no llama a la IA (`llamadasIA` en `generaciones` dice cuántas llamadas hizo cada armado).
 - `webhooks/{id}`: entregas ya procesadas (Impul puede reenviar).
 - `generaciones`: registro de cada ZIP armado (sirve como prueba de entrega en una disputa).
 

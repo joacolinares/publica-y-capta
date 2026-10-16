@@ -21,7 +21,11 @@ export function Comprar({ children, className = "boton", tabIndex }: { children:
 export function BarraCompra({ precio }: { precio: string }) {
   const [ver, setVer] = useState(false);
   useEffect(() => {
-    const f = () => setVer(window.scrollY > 700 && window.innerHeight + window.scrollY < document.body.scrollHeight - 500);
+    // Se esconde si ya hay un botón de compra de la página en pantalla, para no repetirlo.
+    const f = () => {
+      const enVista = [...document.querySelectorAll("main .compra")].some((a) => { const r = a.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; });
+      setVer(!enVista && window.scrollY > 700 && window.innerHeight + window.scrollY < document.body.scrollHeight - 500);
+    };
     f();
     window.addEventListener("scroll", f, { passive: true });
     return () => window.removeEventListener("scroll", f);
@@ -30,7 +34,7 @@ export function BarraCompra({ precio }: { precio: string }) {
     <div className={`l-barra-compra${ver ? " ver" : ""}`} aria-hidden={!ver}>
       <div><b>{precio}</b><span>Pago único</span></div>
       {/* Escondida, no se puede llegar con el teclado. */}
-      <Comprar className="boton" tabIndex={ver ? undefined : -1}>Quiero mi pack</Comprar>
+      <Comprar className="compra" tabIndex={ver ? undefined : -1}>Quiero mi pack <span className="flecha" aria-hidden /></Comprar>
     </div>
   );
 }

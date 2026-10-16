@@ -63,10 +63,10 @@ if (okG) {
 [s, j] = await api("/api/generar", token, { method: "POST" });
 check("generar otra vez al terminar → 200", s === 200, j?.error ?? "");
 
-// 5b. Pedir el link para entrar: sin Resend, la app le deja el envío a Firebase y no revela si hay compra.
-for (const correo of [comprador, "nadie@x.com", "no-es-correo"]) {
+// 5b. Pedir el link para entrar: sin Resend, a quien compró se lo manda Firebase; a los demás no se les manda nada.
+for (const [correo, esperado] of [[comprador, "firebase"], ["nadie@x.com", "sin-compra"], ["no-es-correo", "invalido"]]) {
   [s, j] = await api("/api/enlace", "", { method: "POST", body: JSON.stringify({ email: correo }) });
-  check(`enlace ${correo} → firebase`, s === 200 && j?.modo === "firebase", `${s} ${JSON.stringify(j)}`);
+  check(`enlace ${correo} → ${esperado}`, s === 200 && j?.modo === esperado, `${s} ${JSON.stringify(j)}`);
 }
 
 // 6. Nueva propiedad
