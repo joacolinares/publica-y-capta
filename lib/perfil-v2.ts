@@ -1,6 +1,6 @@
 import type { Perfil } from "./perfil";
 
-// Segunda marca de ejemplo de /v2 (scripts/imagenes-v2.tsx y app/v2/page.tsx). Datos claramente ficticios: salen en imágenes públicas.
+// Segunda marca de ejemplo de la página de venta (scripts/imagenes-v2.tsx y app/page.tsx). Datos claramente ficticios: salen en imágenes públicas.
 export const PERFIL_EJEMPLO_2: Perfil = {
   nombre: "Andrea Ruiz",
   nombreComercial: "Andrea Ruiz Inmobiliaria",

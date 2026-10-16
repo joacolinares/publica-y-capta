@@ -1,4 +1,5 @@
-/* /v2: versión oscura de la página de venta. Va encima de landing.css (botón de compra y barra del celular). */
+/* Página de venta (raíz), versión oscura. Va encima de landing.css (botón de compra y barra del celular).
+   Todo va dentro de .v2 (el nombre viene de cuando estaba en /v2) para no tocar las demás pantallas. */
 .v2 {
   --v2-fondo: #1C1B19; --v2-fondo-2: #22211E; --v2-tarjeta: #2A2926; --v2-pie: #151412;
   --v2-linea: rgba(244,239,232,.13); --v2-texto: #F4EFE8; --v2-suave: #BDB4A7; --v2-tenue: #9C9488;
@@ -340,7 +341,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .v2-acordeon summary::after { transition: none; } }
 
-/* Fondo y barra del navegador oscuros solo en /v2 (rebote al estirar, barras de scroll). */
+/* Fondo y barra del navegador oscuros solo en la página de venta (rebote al estirar, barras de scroll). */
 html:has(.v2), html:has(.v2) body { background: #1C1B19; color-scheme: dark; }
 /* Que el foco con teclado no quede debajo de la barra fija de compra; arriba no hay barra fija. */
 html:has(.v2) { scroll-padding-top: 16px; }

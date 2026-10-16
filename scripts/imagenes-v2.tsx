@@ -1,4 +1,4 @@
-// Imágenes de /v2 con una segunda marca de ejemplo (otro color) para mostrar que todo sale con los colores del asesor.
+// Imágenes de la página de venta con una segunda marca de ejemplo (otro color) para mostrar que todo sale con los colores del asesor.
 // Uso: FOTOS_DIR=fotos ./node_modules/.bin/tsx scripts/imagenes-v2.tsx   → public/web/v2/*.webp
 import { mkdirSync } from "node:fs";
 import path from "node:path";
