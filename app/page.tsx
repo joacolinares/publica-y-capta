@@ -16,9 +16,12 @@ import autor from "@/content/autor.json";
 import "./landing.css";
 import "./v2.css";
 
+// Es lo que sale en Google: el título y el resumen dicen para quién es el pack. El canonical hace que las visitas
+// con ?utm_... o fbclid cuenten como la misma página.
 export const metadata: Metadata = {
-  title: { absolute: "Publica y Capta · 90 días de contenido con tu marca" },
-  description: "90 publicaciones con el texto completo, 40 diseños con tu logo y tus colores, y 30 guiones de reels para Instagram, Facebook y WhatsApp. Pago único.",
+  title: { absolute: "Publica y Capta · 90 días de contenido para asesores inmobiliarios" },
+  description: "Para asesores inmobiliarios en México: 90 publicaciones con el texto completo, 40 diseños con tu logo y tus colores y 30 guiones de reels. Pago único.",
+  alternates: { canonical: "/" },
 };
 
 // Barra del navegador oscura, como la página; las demás pantallas siguen con la clara de app/layout.tsx.
