@@ -8,6 +8,7 @@ import type { ReactNode } from "react";
 import { BarraCompra, Comprar } from "./_web/Comprar";
 import { ASoporte, DatosProveedor } from "./_web/Contacto";
 import { Opiniones } from "./_web/Opiniones";
+import { PixelMeta } from "./_web/PixelMeta";
 import { PRECIO_MXN, SOPORTE } from "@/lib/oferta";
 import { PERFIL_EJEMPLO, type Perfil } from "@/lib/perfil";
 import { PERFIL_EJEMPLO_2 } from "@/lib/perfil-v2";
@@ -504,6 +505,7 @@ export default function Inicio() {
         <ul className="v2-pie-enlaces"><li><a href="/terminos">Términos y condiciones</a></li><li><a href="/privacidad">Aviso de privacidad</a></li><li><a href="/entrar">Ya compré: entrar</a></li></ul>
       </footer>
       <BarraCompra precio={PRECIO} />
+      <PixelMeta />
     </div>
   );
 }

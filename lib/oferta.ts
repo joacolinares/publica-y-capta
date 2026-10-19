@@ -4,6 +4,8 @@ export const PRECIO_MXN = process.env.NEXT_PUBLIC_PRECIO_MXN || "279";
 // Respaldo: no lo dejes vacío (Comprar.tsx arma una URL con él). Cámbialo por el link del producto en cuanto lo tengas.
 export const CHECKOUT = process.env.NEXT_PUBLIC_CHECKOUT_URL || "https://publica-y-capta.impultienda.ar/checkout";
 export const SOPORTE = (process.env.NEXT_PUBLIC_CORREO_SOPORTE || "").trim();
+// ID del píxel de Meta (el mismo que cargas en Impul). Vacío: la página no mide nada para anuncios.
+export const PIXEL_META = (process.env.NEXT_PUBLIC_META_PIXEL_ID || "").trim();
 
 /** Quién vende (la LFPC pide mostrarlo antes de la compra). El dato que falte no se muestra. */
 export const PROVEEDOR = {
@@ -13,4 +15,4 @@ export const PROVEEDOR = {
 };
 
 /** Fecha de la última versión del aviso de privacidad y de los términos. */
-export const LEGAL_ACTUALIZADO = "15 de octubre de 2026";
+export const LEGAL_ACTUALIZADO = "19 de octubre de 2026";
