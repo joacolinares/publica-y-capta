@@ -2,6 +2,7 @@
 // Botón de compra: lleva al checkout de Impul con los parámetros del anuncio (utm, fbclid) para no perder de dónde vino.
 import { useEffect, useState, type ReactNode } from "react";
 import { CHECKOUT } from "@/lib/oferta";
+import { eventoMeta } from "./PixelMeta";
 
 function conParametros() {
   const q = new URLSearchParams(location.search);
@@ -14,7 +15,7 @@ function conParametros() {
 export function Comprar({ children, className = "boton", tabIndex }: { children: ReactNode; className?: string; tabIndex?: number }) {
   const [href, setHref] = useState(CHECKOUT);
   useEffect(() => setHref(conParametros()), []);
-  return <a className={className} href={href} tabIndex={tabIndex}>{children}</a>;
+  return <a className={className} href={href} tabIndex={tabIndex} onClick={() => eventoMeta("ClicComprar")}>{children}</a>;
 }
 
 /** Barra fija abajo en el celular, aparece cuando ya bajaste del primer botón. */
