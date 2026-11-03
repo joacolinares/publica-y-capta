@@ -465,7 +465,7 @@ export default function Inicio() {
               <p className="v2-precio-nota">Pago único, sin suscripción</p>
               <Comprar className="compra">Quiero mi pack <span className="flecha" aria-hidden /></Comprar>
               <p className="v2-precio-pie"><span className="nw">Acceso por correo al terminar el pago</span> <span className="nw"><span className="v2-sep" aria-hidden>· </span>Reembolso en 7 días naturales</span></p>
-              <p className="v2-precio-pie">Antes de pagar, lee los <a href="/terminos">términos y condiciones</a>.</p>
+              <p className="v2-precio-pie">Antes de pagar, lee los <a href="/terminos">términos y condiciones</a> y el <a href="/privacidad">aviso de privacidad</a>.</p>
             </div>
           </div>
         </section>
