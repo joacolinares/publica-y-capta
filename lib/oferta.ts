@@ -14,5 +14,7 @@ export const PROVEEDOR = {
   telefono: (process.env.NEXT_PUBLIC_PROVEEDOR_TELEFONO || "").trim(),
 };
 
-/** Fecha de la última versión del aviso de privacidad y de los términos. */
+/** Fecha de la última versión de los términos. */
 export const LEGAL_ACTUALIZADO = "19 de octubre de 2026";
+/** Fecha de la última versión del aviso de privacidad. */
+export const PRIVACIDAD_ACTUALIZADO = "3 de noviembre de 2026";
